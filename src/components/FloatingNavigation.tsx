@@ -101,14 +101,14 @@ const FloatingNavigation: React.FC = () => {
               >
                 Sobre Nosotros
               </button>
-              <button 
+              {/* <button 
                 onClick={() => handleNavigation('comparar')}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${
                   isScrolled ? 'text-[var(--color-text)] hover:text-[var(--color-secondary)]' : 'text-white/90 hover:text-white'
                 }`}
               >
                 Comparar
-              </button>
+              </button> */}
               <button 
                 onClick={handleContactClick}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${
@@ -117,7 +117,7 @@ const FloatingNavigation: React.FC = () => {
               >
                 Contacto
               </button>
-              
+
               {/* Language Selector */}
               <div className="flex items-center space-x-2">
                 <Globe className={`w-4 h-4 ${isScrolled ? 'text-[var(--color-text)]' : 'text-white/90'}`} />
@@ -127,7 +127,6 @@ const FloatingNavigation: React.FC = () => {
                   <option value="es">ES</option>
                   <option value="en">EN</option>
                 </select>
-                <ChevronDown className={`w-3 h-3 ${isScrolled ? 'text-[var(--color-text)]' : 'text-white/90'}`} />
               </div>
             </div>
 

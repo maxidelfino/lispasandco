@@ -220,12 +220,14 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <button
-          onClick={scrollToServices}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 hover:text-white transition-all duration-300 hover:scale-110 animate-bounce z-10"
-        >
-          <ChevronDown className="w-8 h-8" />
-        </button>
+        <div className="absolute bottom-8 inset-x-0 flex justify-center z-10 animate-bounce">
+          <button
+            onClick={scrollToServices}
+            className="text-white/80 hover:text-white transition-all duration-300 hover:scale-110"
+          >
+            <ChevronDown className="w-8 h-8" />
+          </button>
+        </div>
       </section>
 
       {/* Services Section */}
@@ -377,34 +379,34 @@ const HomePage: React.FC = () => {
             <div>
               <input
                 type="text"
-                placeholder="First Name"
+                placeholder="Nombre completo"
                 className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent"
               />
             </div>
             <div>
               <input
                 type="text"
-                placeholder="Company"
+                placeholder="Empresa"
                 className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent"
               />
             </div>
             <div>
               <input
                 type="tel"
-                placeholder="Phone"
+                placeholder="Número de teléfono"
                 className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent"
               />
             </div>
             <div>
               <input
                 type="email"
-                placeholder="Email"
+                placeholder="Correo electrónico"
                 className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent"
               />
             </div>
             <div className="md:col-span-2">
               <textarea
-                placeholder="Message"
+                placeholder="Mensaje"
                 rows={5}
                 className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent resize-none"
               ></textarea>
@@ -435,7 +437,7 @@ const HomePage: React.FC = () => {
               </a>
             </div>
             <p className="text-white/70">
-              © 2024 LYSPAS & CO. Todos los derechos reservados.
+              © {(new Date()).getFullYear()} LYSPAS & CO. Todos los derechos reservados.
             </p>
           </div>
         </div>

@@ -61,18 +61,18 @@ const ServicesModal: React.FC<ServicesModalProps> = ({ isOpen, onClose, title, s
         <div className="p-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Program WasteZero */}
-            <div 
+            <div
               className="bg-white rounded-xl p-8 border border-[var(--color-border)] hover:shadow-lg transition-all duration-300 cursor-pointer group"
               onClick={() => handleProgramClick('wastezero')}
             >
               <h3 className="text-3xl font-bold text-[var(--color-primary)] mb-6 group-hover:text-[var(--color-secondary)] transition-colors">
                 Program WasteZero™
               </h3>
-              
+
               <p className="text-[var(--color-text)] mb-4 leading-relaxed text-lg">
                 WasteZero™ es un programa táctico de implementación LEAN diseñado para empresas que buscan reducir pérdidas operativas de manera concreta, visible y sostenida.
               </p>
-              
+
               <p className="text-[var(--color-text)] mb-8 leading-relaxed text-lg">
                 Se centra en identificar y eliminar los 8 desperdicios clásicos de la gestión LEAN, combinando análisis visual, trabajo de campo y proyectos de mejora con impacto real.
               </p>

@@ -3,6 +3,7 @@ import { Target, Eye, Users, Award, CheckCircle, ArrowRight, Globe, Heart, Zap, 
 import FloatingNavigation from '../components/FloatingNavigation';
 import { usePalette } from '../hooks/usePalette';
 import { useNavigate } from 'react-router-dom';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 const AboutUsPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,6 +27,8 @@ const AboutUsPage: React.FC = () => {
     }, 100);
   };
   
+  useScrollToTop();
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -293,7 +296,7 @@ const AboutUsPage: React.FC = () => {
               return (
                 <div
                   key={valor.id}
-                  className={`relative bg-white rounded-2xl p-8 border border-[var(--color-border)] transition-all duration-500 cursor-pointer ${
+                  className={`relative bg-white rounded-2xl p-8 border border-[var(--color-border)] transition-all duration-500 ${
                     isActive 
                       ? 'shadow-2xl scale-105 border-[var(--color-secondary)]' 
                       : 'shadow-lg hover:shadow-xl hover:scale-102'
