@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
     {
       id: 'iniciar',
       title: 'Iniciar la mejora',
-      subtitle: 'Etapa 1: Iniciar la mejora',
+      subtitle: 'Etapa de iniciación',
       description: 'Problemas visibles, Foco en el equipo',
       quote: '"El primer paso para dejar de perder valor sin darte cuenta."',
       details: [
@@ -64,34 +64,37 @@ const HomePage: React.FC = () => {
     {
       id: 'estabilizar',
       title: 'Estabilizar y profesionalizar',
-      subtitle: 'Etapa 2: Estabilizar y profesionalizar',
+      subtitle: 'Etapa Estabilizar',
       description: 'Procesos, Métricas, Liderazgo',
+      quote: '"La base sólida que convierte iniciativas en resultados sostenibles."',
       details: [
-        'Se establecen procesos estandarizados y métricas de control.',
-        'Se desarrolla el liderazgo interno para sostener las mejoras.',
-        'Se implementan sistemas de monitoreo y seguimiento continuo.'
+        'Diseño e implementación de procedimientos estandarizados en toda la operación.',
+        'Definición y seguimiento de indicadores clave (KPI) para medir cada paso del proceso.',
+        'Capacitación y empoderamiento de los líderes de equipo para mantener el ritmo de mejora.'
       ]
     },
     {
       id: 'transformar',
       title: 'Transformar la organización',
-      subtitle: 'Etapa 3: Transformar la organización',
+      subtitle: 'Etapa Transformar',
       description: 'Alinear estrategia con ejecución',
+      quote: '"Donde la visión se convierte en la nueva forma de trabajo."',
       details: [
-        'Se alinea toda la estrategia organizacional con la ejecución operativa.',
-        'Se implementa una cultura de mejora continua a nivel empresarial.',
-        'Se establecen sistemas de innovación y adaptación constante.'
+        'Integración de la estrategia corporativa con los procesos del día a día para un alineamiento total.',
+        'Fomento de una cultura de mejora continua que impulse la innovación diaria.',
+        'Despliegue de mecanismos de feedback y adaptación rápida para responder a cambios del mercado.'
       ]
     },
     {
-      id: 'transformar2',
-      title: 'Transformar la organización',
-      subtitle: 'Etapa 3: Transformar la organización',
-      description: 'Alinear estrategia con ejecución',
+      id: 'aplicaciones',
+      title: 'Aplicaciones en la industria',
+      subtitle: 'Etapa de aplicación avanzada',
+      description: 'Transformación de procesos industriales',
+      quote: '"Donde la mejora se convierte en parte del ADN industrial."',
       details: [
-        'Se alinea toda la estrategia organizacional con la ejecución operativa.',
-        'Se implementa una cultura de mejora continua a nivel empresarial.',
-        'Se establecen sistemas de innovación y adaptación constante.'
+        'Implementación de herramientas avanzadas de gestión en líneas de producción y procesos industriales.',
+        'Aplicación de modelos de mejora continua adaptados a contextos reales como manufactura, logística o servicios técnicos.',
+        'Casos de éxito y resultados concretos: reducción de tiempos muertos, aumento de eficiencia, y mejora de indicadores clave.'
       ]
     }
   ];
@@ -129,7 +132,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-bg)' }}>
       <FloatingNavigation />
-      
+
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
@@ -160,7 +163,7 @@ const HomePage: React.FC = () => {
               </div>
             ))}
           </div>
-          
+
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
@@ -174,7 +177,7 @@ const HomePage: React.FC = () => {
           >
             <ChevronRight className="w-6 h-6" />
           </button>
-          
+
           {/* Carousel Indicators */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
             {carouselSlides.map((_, index) => (
@@ -238,11 +241,11 @@ const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
             {evolutionCards.map((card) => (
               <div
                 key={card.id}
-                className={`relative bg-[var(--color-surface)] rounded-2xl p-8 border border-[var(--color-border)] transition-all duration-500 cursor-pointer ${
+                className={`group relative bg-[var(--color-surface)] rounded-2xl p-8 border border-[var(--color-border)] transition-all duration-500 cursor-pointer ${
                   activeCard === card.id
                     ? 'shadow-2xl scale-105 border-[var(--color-secondary)]'
                     : 'shadow-lg hover:shadow-xl hover:scale-102'
@@ -251,7 +254,7 @@ const HomePage: React.FC = () => {
                 onMouseLeave={() => setActiveCard(null)}
                 onClick={() => handleCardClick(card)}
               >
-                <div className="mb-6">
+                <div className="mb-6 text-center">
                   <h3 className="text-xl font-bold text-[var(--color-primary)] mb-2">
                     {card.title}
                   </h3>
@@ -298,7 +301,7 @@ const HomePage: React.FC = () => {
             Te contamos un poco más sobre nosotros
           </h2>
           <div className="w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-12"></div>
-          
+
           <div className="relative rounded-2xl overflow-hidden shadow-2xl">
             <iframe
               width="100%"
@@ -320,14 +323,14 @@ const HomePage: React.FC = () => {
           <h2 className="text-4xl font-bold text-[var(--color-primary)] mb-12">
             Conecta con nosotros
           </h2>
-          
+
           <div className="bg-[var(--color-surface)] rounded-2xl shadow-xl p-8 border border-[var(--color-border)]">
             <div className="flex items-center justify-center mb-6">
               <div className="w-20 h-20 bg-[var(--color-secondary)] rounded-full flex items-center justify-center">
                 <Linkedin className="w-10 h-10 text-white" />
               </div>
             </div>
-            
+
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-2">
                 LYSPAS & CO.
@@ -349,7 +352,7 @@ const HomePage: React.FC = () => {
                 13,330 seguidores • Más de 500 contactos
               </p>
             </div>
-            
+
             <div className="flex justify-center space-x-4">
               <button className="bg-[var(--color-secondary)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--color-primary)] transition-colors">
                 Ver perfil
@@ -369,7 +372,7 @@ const HomePage: React.FC = () => {
             <h2 className="text-4xl font-bold mb-4">Contáctanos</h2>
             <div className="w-24 h-1 bg-[var(--color-accent)] mx-auto"></div>
           </div>
-          
+
           <form className="grid md:grid-cols-2 gap-6">
             <div>
               <input
