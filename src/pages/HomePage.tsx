@@ -52,43 +52,40 @@ const HomePage: React.FC = () => {
     {
       id: 'iniciar',
       title: 'Iniciar la mejora',
-      subtitle: 'Etapa de iniciación',
+      subtitle: 'Etapa 1: Iniciar la mejora',
       description: 'Problemas visibles, Foco en el equipo',
-      quote: '"El primer paso para dejar de perder valor sin darte cuenta."',
+      quote: '“El primer paso para dejar de perder valor sin darte cuenta.”',
       details: [
         'Acá comienza todo. En esta etapa se identifican desperdicios, se ordenan los espacios y se entrena a los equipos para que vean oportunidades donde antes solo había rutina.',
-        '',
-        'Ideal para empresas que quieren mejorar pero aún no saben por dónde empezar'
+        'Ideal para empresas que quieren mejorar pero aún no saben por dónde empezar.'
       ]
     },
     {
       id: 'estabilizar',
       title: 'Estabilizar y profesionalizar',
-      subtitle: 'Etapa Estabilizar',
+      subtitle: 'Etapa 2: Estabilizar y profesionalizar',
       description: 'Procesos, Métricas, Liderazgo',
-      quote: '"La base sólida que convierte iniciativas en resultados sostenibles."',
+      quote: '“Cuando las cosas ya no alcanzan con funcionar: ahora tienen que funcionar siempre bien.”',
       details: [
-        'Diseño e implementación de procedimientos estandarizados en toda la operación.',
-        'Definición y seguimiento de indicadores clave (KPI) para medir cada paso del proceso.',
-        'Capacitación y empoderamiento de los líderes de equipo para mantener el ritmo de mejora.'
+        'Una vez que eliminaste lo innecesario, llega el momento de poner foco en la estabilidad, el control de procesos y el empoderamiento del liderazgo operativo.',
+        'Esta etapa convierte la mejora en una práctica sistemática y medible.'
       ]
     },
     {
       id: 'transformar',
       title: 'Transformar la organización',
-      subtitle: 'Etapa Transformar',
+      subtitle: 'Etapa 3: Transformar la organización',
       description: 'Alinear estrategia con ejecución',
-      quote: '"Donde la visión se convierte en la nueva forma de trabajo."',
+      quote: '“De las mejoras puntuales a una cultura que transforma todo.”',
       details: [
-        'Integración de la estrategia corporativa con los procesos del día a día para un alineamiento total.',
-        'Fomento de una cultura de mejora continua que impulse la innovación diaria.',
-        'Despliegue de mecanismos de feedback y adaptación rápida para responder a cambios del mercado.'
+        'El paso más ambicioso. Aquí se alinean la estrategia, los datos, los procesos y los equipos. La mejora continua ya no es un proyecto: es la forma en la que se gestiona la empresa.',
+        'Ideal para quienes buscan escalar, integrar o reinventar su modelo de trabajo.',
       ]
     },
     {
       id: 'aplicaciones',
       title: 'Aplicaciones en la industria',
-      subtitle: 'Etapa de aplicación avanzada',
+      subtitle: 'Etapa 4: Aplicación avanzada',
       description: 'Transformación de procesos industriales',
       quote: '"Donde la mejora se convierte en parte del ADN industrial."',
       details: [
@@ -238,6 +235,9 @@ const HomePage: React.FC = () => {
               Ofrecemos un camino de evolución organizacional
             </h2>
             <div className="w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-8"></div>
+            <p className="text-xl text-[var(--color-secondary)] italic max-w-2xl mx-auto mb-8">
+              “Cada empresa tiene su punto de partida. Nosotros te acompañamos desde ahí.”
+            </p>
             <p className="text-xl text-[var(--color-text)] max-w-2xl mx-auto">
               Selecciona tu camino
             </p>

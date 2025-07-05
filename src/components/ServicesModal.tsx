@@ -22,14 +22,14 @@ const ServicesModal: React.FC<ServicesModalProps> = ({ isOpen, onClose, title, s
   };
 
   const wasteIcons = [
-    { icon: Users, title: 'Talento no utilizado', description: 'No utilizar la experiencia, conocimientos y creatividad del personal' },
-    { icon: Package, title: 'Inventario', description: 'Exceso de materia prima, productos en proceso no en uso' },
-    { icon: ArrowLeftRight, title: 'Movimientos', description: 'Movimientos innecesarios realizados por el personal' },
-    { icon: Timer, title: 'Espera', description: 'Tiempo perdido mientras se espera por el próximo paso en el proceso' },
-    { icon: Truck, title: 'Transportación', description: 'Movimiento innecesario de productos y materia prima' },
-    { icon: XCircle, title: 'Defectos', description: 'Información, productos o servicios defectuosos o incompletos' },
-    { icon: Settings, title: 'Sobreproducción', description: 'Producción demás o antes de que se necesite' },
-    { icon: Factory, title: 'Sobre-procesamiento', description: 'Más trabajo o calidad más alta de la que el cliente requiere' }
+    { icon: Users, title: 'Talento no utilizado', description: ''},
+    { icon: Package, title: 'Inventario', description: ''},
+    { icon: ArrowLeftRight, title: 'Movimientos', description: ''},
+    { icon: Timer, title: 'Espera', description: ''},
+    { icon: Truck, title: 'Transportación', description: ''},
+    { icon: XCircle, title: 'Defectos', description: ''},
+    { icon: Settings, title: 'Sobreproducción', description: ''},
+    { icon: Factory, title: 'Sobre-procesamiento', description: ''}
   ];
 
   const fiveSSteps = [
@@ -88,10 +88,10 @@ const ServicesModal: React.FC<ServicesModalProps> = ({ isOpen, onClose, title, s
                           <Icon className="w-8 h-8 text-white" />
                         </div>
                         {/* Tooltip mejorado */}
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-[var(--color-primary)] text-white text-xs rounded-lg opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none z-10 shadow-xl">
+                        {/* <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-[var(--color-primary)] text-white text-xs rounded-lg opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none z-10 shadow-xl">
                           {waste.description}
                           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[var(--color-primary)]"></div>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="text-sm">
                         <div className="font-bold text-[var(--color-primary)] mb-1 leading-tight">{waste.title}</div>
@@ -114,12 +114,12 @@ const ServicesModal: React.FC<ServicesModalProps> = ({ isOpen, onClose, title, s
               <h3 className="text-3xl font-bold text-[var(--color-primary)] mb-6 group-hover:text-[var(--color-secondary)] transition-colors">
                 5S Plus™
               </h3>
-              
+
               <p className="text-[var(--color-text)] mb-4 leading-relaxed text-lg">
                 5S Plus™ es un programa práctico de intervención que ayuda a las organizaciones a crear espacios de trabajo limpios, ordenados, eficientes y seguros, como base indispensable para cualquier camino de mejora continua.
               </p>
-              
-              <p className="text-[var(--color-text)] mb-8 leading-relaxed text-lg">
+
+              <p className="text-[var(--color-text)] mb-4 leading-relaxed text-lg">
                 A través de cinco pasos simples, 5S Plus™ identifica con claridad aquellas cosas que NO deberían estar en el lugar y ayuda a ordenar aquellas otras que SÍ lo deberían estar. Instala hábitos y estándares que permiten sostener la disciplina operativa en el tiempo.
               </p>
 
@@ -129,7 +129,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({ isOpen, onClose, title, s
                 <div className="w-32 h-32 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full flex items-center justify-center text-white font-bold text-3xl z-10 shadow-xl">
                   5S
                 </div>
-                
+
                 {/* Surrounding Steps */}
                 {fiveSSteps.map((step, index) => {
                   const angle = (index * 72) - 90; // 360/5 = 72 degrees between each step, start from top

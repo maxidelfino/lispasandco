@@ -3,12 +3,12 @@ import { ColorPalette } from '../types';
 import { palettes } from '../data/palettes';
 
 export const usePalette = () => {
-  const [currentPalette, setCurrentPalette] = useState<number>(1); // Sustainability Green
+  const [currentPalette, setCurrentPalette] = useState<number>(1);
 
   const changePalette = (paletteId: number) => {
     setCurrentPalette(paletteId);
     const palette = palettes[paletteId];
-    
+
     // Apply CSS custom properties
     const root = document.documentElement;
     Object.entries(palette).forEach(([key, value]) => {
@@ -17,7 +17,7 @@ export const usePalette = () => {
   };
 
   useEffect(() => {
-    changePalette(1); // Initialize with Sustainability Green
+    changePalette(1);
   }, []);
 
   return {
