@@ -21,7 +21,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
   servicesData
 }) => {
   if (!isOpen) return null;
-  console.log("servicesData", servicesData);
+
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();

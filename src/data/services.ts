@@ -26,6 +26,7 @@ export const servicesData_iniciar: Service[] = [
     ],
     icon: "Settings",
     color: "from-[var(--color-accent)] to-[var(--color-primary)]",
+    route: "/5splus",
     isActive: false,
   },
 ];
@@ -42,10 +43,10 @@ export const servicesData_estabilizar: Service[] = [
       "Su metodología incluye una secuencia diaria de mejora, seguimiento de desvíos, y aplicación de acciones correctivas en tiempo real, generando resultados rápidos y sostenidos.",
       "La implementación se realiza en 7 fases durante 7 meses, que van desde diagnóstico inicial hasta la consolidación de equipos y auditorías de gestión.",
     ],
-    icon: "TrendingUp",
+    icon: "ChartNoAxesCombined",
     color: "from-[var(--color-primary)] to-[var(--color-secondary)]",
     route: "/flowstable",
-    isActive: true,
+    isActive: false,
   },
   {
     id: "leanbridge",
@@ -62,7 +63,7 @@ export const servicesData_estabilizar: Service[] = [
     icon: "Bridge",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/leanbridge",
-    isActive: true,
+    isActive: false,
   },
   {
     id: "kaizen-action",
@@ -80,7 +81,7 @@ export const servicesData_estabilizar: Service[] = [
     icon: "Lightbulb", // o "Spark", "Ideas"
     color: "from-[var(--color-accent)] to-[var(--color-primary)]",
     route: "/kaizen-action",
-    isActive: true,
+    isActive: false,
   },
   {
     id: "decisiones-estadisticas",
@@ -98,7 +99,7 @@ export const servicesData_estabilizar: Service[] = [
     icon: "BarChart", // sugerencia: gráfico de barras
     color: "from-[var(--color-accent)] to-[var(--color-secondary)]",
     route: "/decisiones-estadisticas",
-    isActive: true,
+    isActive: false,
   },
 ];
 
@@ -119,7 +120,7 @@ export const servicesData_transformar: Service[] = [
     icon: "BuildingOffice2", // o el que se adecue a management
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/lean-enterprise-transformation",
-    isActive: true,
+    isActive: false,
   },
   {
     id: "stratbridge",
@@ -137,7 +138,7 @@ export const servicesData_transformar: Service[] = [
     icon: "Compass",
     color: "from-[var(--color-primary)] to-[var(--color-accent)]",
     route: "/stratbridge",
-    isActive: true,
+    isActive: false,
   },
   {
     id: "projectfocus",
@@ -157,7 +158,7 @@ export const servicesData_transformar: Service[] = [
     icon: "PuzzlePiece", // simboliza unión de estrategia y acción
     color: "from-[var(--color-primary)] to-[var(--color-accent)]",
     route: "/projectfocus",
-    isActive: true,
+    isActive: false,
   },
 ];
 
