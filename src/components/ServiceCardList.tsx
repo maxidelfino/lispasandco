@@ -11,6 +11,8 @@ import {
   Zap,
   Award,
   Smartphone,
+  TrendingUp,
+  ChartNoAxesCombined,
 } from "lucide-react";
 import type { Service } from "../types";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +36,8 @@ const iconMap = {
   Zap,
   Award,
   Smartphone,
+  TrendingUp,
+  ChartNoAxesCombined,
 };
 
 const ICON_COMPONENTS_MAP = {

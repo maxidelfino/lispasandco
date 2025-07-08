@@ -34,7 +34,7 @@ const EightGridWastes = () => {
                 <Icon className="w-8 h-8 text-white" />
               </div>
             </div>
-            <div className="text-sm">
+            <div className="text-sm hidden md:block">
               <div className="font-bold text-[var(--color-primary)] mb-1 leading-tight">
                 {waste.title}
               </div>

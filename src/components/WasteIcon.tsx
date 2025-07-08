@@ -1,14 +1,14 @@
-import React from 'react';
-import { 
-  Users, 
-  Package, 
-  ArrowLeftRight, 
-  Timer, 
-  Truck, 
-  XCircle, 
-  Settings, 
-  Factory 
-} from 'lucide-react';
+import React from "react";
+import {
+  Users,
+  Package,
+  ArrowLeftRight,
+  Timer,
+  Truck,
+  XCircle,
+  Settings,
+  Factory,
+} from "lucide-react";
 
 interface WasteIconProps {
   iconName: string;
@@ -24,10 +24,14 @@ const iconMap = {
   Truck,
   XCircle,
   Settings,
-  Factory
+  Factory,
 };
 
-const WasteIcon: React.FC<WasteIconProps> = ({ iconName, title, description }) => {
+const WasteIcon: React.FC<WasteIconProps> = ({
+  iconName,
+  title,
+  description,
+}) => {
   const Icon = iconMap[iconName as keyof typeof iconMap];
 
   return (

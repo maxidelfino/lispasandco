@@ -181,12 +181,12 @@ const FloatingNavigation: React.FC = () => {
             >
               Sobre Nosotros
             </button>
-            <button
+            {/* <button
               onClick={() => handleNavigation("comparar")}
               className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
             >
               Comparar
-            </button>
+            </button> */}
             <button
               onClick={handleContactClick}
               className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"

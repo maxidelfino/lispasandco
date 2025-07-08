@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Users, 
-  Package, 
-  ArrowLeftRight, 
-  Timer, 
-  Truck, 
-  XCircle, 
-  Settings, 
-  Factory 
-} from 'lucide-react';
-import { wastes } from '../data/wastes';
+import React, { useState, useEffect } from "react";
+import {
+  Users,
+  Package,
+  ArrowLeftRight,
+  Timer,
+  Truck,
+  XCircle,
+  Settings,
+  Factory,
+} from "lucide-react";
+import { wastes } from "../data/wastes";
 
 const iconMap = {
   Users,
@@ -19,7 +19,7 @@ const iconMap = {
   Truck,
   XCircle,
   Settings,
-  Factory
+  Factory,
 };
 
 const CircularWasteDiagram: React.FC = () => {
@@ -36,7 +36,7 @@ const CircularWasteDiagram: React.FC = () => {
       { threshold: 0.3 }
     );
 
-    const element = document.getElementById('waste-diagram');
+    const element = document.getElementById("waste-diagram");
     if (element) observer.observe(element);
 
     return () => observer.disconnect();
@@ -54,25 +54,23 @@ const CircularWasteDiagram: React.FC = () => {
           Los 8 Desperdicios
         </h2>
         <p className="text-xl text-[var(--color-text)] max-w-2xl mx-auto">
-          Identificamos y eliminamos sistemáticamente cada tipo de desperdicio en sus procesos
+          Identificamos y eliminamos sistemáticamente cada tipo de desperdicio
+          en sus procesos
         </p>
       </div>
 
       {/* Circular Diagram */}
       <div className="relative">
-        <svg
-          width="500"
-          height="500"
-          viewBox="0 0 500 500"
-          className="mx-auto"
-        >
+        <svg width="500" height="500" viewBox="0 0 500 500" className="mx-auto">
           {/* Center Circle */}
           <circle
             cx={centerX}
             cy={centerY}
             r="80"
             fill="var(--color-secondary)"
-            className={`transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+            className={`transition-all duration-1000 ${
+              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"
+            }`}
           />
           <text
             x={centerX}
@@ -110,7 +108,7 @@ const CircularWasteDiagram: React.FC = () => {
                 strokeWidth="2"
                 strokeDasharray="5,5"
                 className={`transition-all duration-1000 delay-${index * 100} ${
-                  isVisible ? 'opacity-100' : 'opacity-0'
+                  isVisible ? "opacity-100" : "opacity-0"
                 }`}
               />
             );
@@ -127,9 +125,9 @@ const CircularWasteDiagram: React.FC = () => {
           return (
             <div
               key={waste.id}
-              className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 delay-${index * 100} ${
-                isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-              }`}
+              className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 delay-${
+                index * 100
+              } ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
               style={{
                 left: `${(x / 500) * 100}%`,
                 top: `${(y / 500) * 100}%`,
@@ -137,41 +135,52 @@ const CircularWasteDiagram: React.FC = () => {
             >
               <div
                 className={`relative group cursor-pointer transition-all duration-300 ${
-                  activeWaste === waste.id ? 'scale-110' : 'hover:scale-105'
+                  activeWaste === waste.id ? "scale-110" : "hover:scale-105"
                 }`}
                 onMouseEnter={() => setActiveWaste(waste.id)}
                 onMouseLeave={() => setActiveWaste(null)}
               >
                 {/* Icon Container */}
-                <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  activeWaste === waste.id 
-                    ? 'bg-[var(--color-accent)] shadow-lg' 
-                    : 'bg-[var(--color-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-secondary)]'
-                }`}>
-                  <Icon className={`w-8 h-8 transition-colors duration-300 ${
-                    activeWaste === waste.id ? 'text-white' : 'text-[var(--color-secondary)]'
-                  }`} />
+                <div
+                  className={`w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    activeWaste === waste.id
+                      ? "bg-[var(--color-accent)] shadow-lg"
+                      : "bg-[var(--color-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-secondary)]"
+                  }`}
+                >
+                  <Icon
+                    className={`w-8 h-8 transition-colors duration-300 ${
+                      activeWaste === waste.id
+                        ? "text-white"
+                        : "text-[var(--color-secondary)]"
+                    }`}
+                  />
                 </div>
 
                 {/* Tooltip */}
-                <div className={`absolute z-10 w-64 p-4 bg-white rounded-lg shadow-xl border border-[var(--color-border)] transition-all duration-300 ${
-                  activeWaste === waste.id ? 'opacity-100 visible' : 'opacity-0 invisible'
-                }`} style={{
-                  left: x > centerX ? '-100%' : '0%',
-                  top: y > centerY ? '-100%' : '100%',
-                  marginTop: y > centerY ? '-8px' : '8px',
-                  marginLeft: x > centerX ? '8px' : '-8px'
-                }}>
+                <div
+                  className={`absolute z-10 w-64 p-4 bg-white rounded-lg shadow-xl border border-[var(--color-border)] transition-all duration-300 ${
+                    activeWaste === waste.id
+                      ? "opacity-100 visible"
+                      : "opacity-0 invisible"
+                  }`}
+                  style={{
+                    left: x > centerX ? "-100%" : "0%",
+                    top: y > centerY ? "-100%" : "100%",
+                    marginTop: y > centerY ? "-8px" : "8px",
+                    marginLeft: x > centerX ? "8px" : "-8px",
+                  }}
+                >
                   <h3 className="font-bold text-[var(--color-primary)] mb-2">
                     {waste.title}
                   </h3>
                   <p className="text-sm text-[var(--color-text)]">
                     {waste.description}
                   </p>
-                  <div className="absolute w-3 h-3 bg-white border border-[var(--color-border)] transform rotate-45" style={{
+                  {/* <div className="absolute w-3 h-3 bg-white border border-[var(--color-border)] transform rotate-45" style={{
                     [y > centerY ? 'bottom' : 'top']: '-6px',
                     [x > centerX ? 'right' : 'left']: '20px'
-                  }}></div>
+                  }}></div> */}
                 </div>
               </div>
             </div>

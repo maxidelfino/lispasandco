@@ -1,4 +1,4 @@
-import type { Service } from "../types";
+import type { Service } from "../types"
 
 export const servicesData_iniciar: Service[] = [
   {
@@ -27,9 +27,9 @@ export const servicesData_iniciar: Service[] = [
     icon: "Settings",
     color: "from-[var(--color-accent)] to-[var(--color-primary)]",
     route: "/5splus",
-    isActive: false,
+    isActive: true,
   },
-];
+]
 
 export const servicesData_estabilizar: Service[] = [
   {
@@ -92,23 +92,22 @@ export const servicesData_estabilizar: Service[] = [
       "Este programa capacita a profesionales para interpretar datos, analizar variaciones y fundamentar decisiones con evidencia, usando herramientas como Excel y Minitab.",
       "El diseño incluye 5 módulos teórico-prácticos que cubren desde modelado de datos y estadística descriptiva hasta inferencia, regresión y diseño de experimentos.",
       "Los participantes desarrollan un proyecto real en cada módulo (TP1–TP4), aplicando lo aprendido en su propio entorno o en ejemplos proporcionados.",
-      "Disponibles dos modalidades: académica (12 clases de 2 h) o empresarial (6 clases intensivas de 4 h), con 70 % de tiempo dedicado a la práctica.",
+      "Disponibles dos modalidades: académica (12 clases de 2 h) o empresarial (6 clases intensivas de 4 h), con 70 % de tiempo dedicado a la práctica.",
       "El curso es ideal para quienes necesitan decisiones basadas en datos (mandos medios, calidad, finanzas, etc.) y es un complemento clave para mejorar programas como WasteZero™, FlowStable™ y LeanBridge™.",
       "Al completar el curso los participantes reciben certificación en análisis estadístico aplicado, orientado a estándares Green Belt.",
     ],
-    icon: "BarChart", // sugerencia: gráfico de barras
+    icon: "TrendingUp", // sugerencia: gráfico de barras
     color: "from-[var(--color-accent)] to-[var(--color-secondary)]",
     route: "/decisiones-estadisticas",
     isActive: false,
   },
-];
+]
 
 export const servicesData_transformar: Service[] = [
   {
     id: "lean-enterprise-transformation",
     name: "Lean Enterprise Transformation™",
-    description:
-      "Programa integral para implementar un sistema de gestión de mejora continua en toda la empresa.",
+    description: "Programa integral para implementar un sistema de gestión de mejora continua en toda la empresa.",
     longDescription: [
       "Lean Enterprise Transformation™ es un programa diseñado por LYSPAS & CO para instaurar un sistema de gestión basado en mejora continua, abarcando cultura, procesos, personas y resultados.",
       "Está dirigido a empresas que buscan ordenar su operación, eliminar desperdicios, estabilizar procesos e integrar indicadores reales, sin importar su sector o tamaño.",
@@ -128,10 +127,10 @@ export const servicesData_transformar: Service[] = [
     description:
       "Programa de planificación estratégica (Hoshin Kanri) para alinear visión, objetivos y ejecución diaria.",
     longDescription: [
-      "StratBridge™ es el programa de planificación estructurada que ofrece LYSPAS & CO basado en la metodología Hoshin Kanri, para convertir visión y misión en acciones concretas y medibles.",
+      "StratBridge™ es el programa de planificación estructurada que ofrece LYSPAS & CO basado en la metodología Hoshin Kanri, para convertir visión y misión en acciones concretas y medibles.",
       "Abarca la definición colaborativa de objetivos a largo plazo (5–10 años), desglosándolos en metas anuales, KPIs, iniciativas y tareas por área.",
       "Se construye la matriz Hoshin (X‑Matrix), que despliega estrategia mediante herramientas visuales, tableros, asignación de recursos y seguimiento.",
-      "La metodología incluye reuniones secuenciales con feedback (catchball) y revisiones regulares (mensuales y anuales), según la práctica recomendada de Hoshin Kanri :contentReference[oaicite:1]{index=1}.",
+      "La metodología incluye reuniones secuenciales con feedback (catchball) y revisiones regulares (mensuales y anuales), según la práctica recomendada de Hoshin Kanri.",
       "Al final, los colaboradores entienden cómo cada tarea contribuye al propósito institucional, promoviendo autonomía y alineamiento.",
       "StratBridge™ sirve de marco general: escala entornos operativos de LeanBridge™, Kaizen Action™, FlowStable™ y decisiones estratégicas basadas en datos.",
     ],
@@ -153,14 +152,14 @@ export const servicesData_transformar: Service[] = [
       "Ideal para empresas industriales, logísticas, comerciales, agroexportadoras o de servicios que realizan planificación anual de inversiones o expansión y desean involucrar a gerentes intermedios en la toma de decisiones.",
       "Consta de fases claras: exploración de oportunidades, mapeo funcional, análisis de alineación, brainstorming, valoración de proyectos, priorización e identificación de responsables y ejecución.",
       "Se implementa por medio de un primer encuentro virtual o presencial para alinear ideas, seguido de dos sesiones presenciales de medio día para presentar, discutir y decidir proyectos en grupo.",
-      "Se integra con StratBridge™, llevando la estrategia definida a acciones concretas, seleccionando cuidadosamente los proyectos que “zarparán” alineados a la visión y respaldados por los tomadores de decisión.",
+      "Se integra con StratBridge™, llevando la estrategia definida a acciones concretas, seleccionando cuidadosamente los proyectos que alineados a la visión y respaldados por los tomadores de decisión.",
     ],
     icon: "PuzzlePiece", // simboliza unión de estrategia y acción
     color: "from-[var(--color-primary)] to-[var(--color-accent)]",
     route: "/projectfocus",
     isActive: false,
   },
-];
+]
 
 export const servicesData_aplicaciones: Service[] = [
   {
@@ -176,7 +175,7 @@ export const servicesData_aplicaciones: Service[] = [
     ],
     icon: "TrendingUp",
     color: "from-[var(--color-primary)] to-[var(--color-secondary)]",
-    // route: "/flowstable",
+    route: "/flowstable",
     isActive: false,
   },
   {
@@ -193,7 +192,7 @@ export const servicesData_aplicaciones: Service[] = [
     ],
     icon: "Bridge",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
-    // route: "/leanbridge",
+    route: "/leanbridge",
     isActive: false,
   },
-];
+]

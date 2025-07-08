@@ -14,9 +14,9 @@ const Header: React.FC = () => {
         <a href="#" className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity">
           Sobre Nosotros
         </a>
-        <a href="#" className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity">
+        {/* <a href="#" className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity">
           Comparar
-        </a>
+        </a> */}
         <a href="#" className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity">
           Contacto
         </a>

@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import WasteZeroPage from './pages/WasteZeroPage';
 import AboutUsPage from './pages/AboutUsPage';
-import { usePalette } from './hooks/usePalette';
+import FiveSPlusPage from './pages/FiveSPlusPage';
 
 function App() {
-  const { currentPalette, changePalette } = usePalette();
 
   return (
     <Router>
@@ -15,6 +14,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/wastezero" element={<WasteZeroPage />} />
           <Route path="/sobre-nosotros" element={<AboutUsPage />} />
+          <Route path="/5splus" element={<FiveSPlusPage />} />
         </Routes>
       </div>
     </Router>
