@@ -1,12 +1,9 @@
 import type React from "react"
 import FloatingNavigation from "../components/FloatingNavigation"
-import HeroSection5S from "../components/HeroSection5S"
-import FiveStepsSection from "../components/FiveStepsSection"
-import MethodologyTimeline from "../components/MethodologyTimeline"
-import FloatingCTAs from "../components/FloatingCTAs"
+import HeroSection5S from "../components/FiveSPlus/HeroSection5S"
 import { useScrollToTop } from "../hooks/useScrollToTop"
-import FiveSCircularDiagram from "../components/FiveSCircularDiagram"
-import FiveSPlusContent from "../components/FiveSPlusContent"
+import FiveSCircularDiagram from "../components/FiveSPlus/FiveSCircularDiagram"
+import FiveSPlusContent from "../components/FiveSPlus/FiveSPlusContent"
 const FiveSPlusPage: React.FC = () => {
   useScrollToTop()
 
@@ -29,7 +26,6 @@ const FiveSPlusPage: React.FC = () => {
       </div>
 
       {/* Main Content Layout */}
-      {/* <div className="container mx-auto py-20 px-4"> */}
         {/* Call to Action */}
         <section className="my-20">
           <div className="max-w-4xl mx-auto text-center">
@@ -49,7 +45,6 @@ const FiveSPlusPage: React.FC = () => {
             </div>
           </div>
         </section>
-      {/* </div> */}
 
       {/* <FloatingCTAs /> */}
     </div>

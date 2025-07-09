@@ -1,6 +1,6 @@
 import React from 'react';
 import TabButton from './TabButton';
-import { tabsData } from '../data/tabs';
+import { tabsData } from '../../data/tabs';
 
 interface TabsSectionProps {
   activeTab: string | null;

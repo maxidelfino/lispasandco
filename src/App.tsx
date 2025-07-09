@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage';
 import WasteZeroPage from './pages/WasteZeroPage';
 import AboutUsPage from './pages/AboutUsPage';
 import FiveSPlusPage from './pages/FiveSPlusPage';
+import FlowStablePage from './pages/FlowStablePage';
+import LeanBridgePage from './pages/LeanBridgePage';
 
 function App() {
 
@@ -15,6 +17,8 @@ function App() {
           <Route path="/wastezero" element={<WasteZeroPage />} />
           <Route path="/sobre-nosotros" element={<AboutUsPage />} />
           <Route path="/5splus" element={<FiveSPlusPage />} />
+          <Route path="/flowstable" element={<FlowStablePage />} />
+          <Route path="/leanbridge" element={<LeanBridgePage />} />
         </Routes>
       </div>
     </Router>

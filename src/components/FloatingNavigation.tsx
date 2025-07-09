@@ -107,14 +107,6 @@ const FloatingNavigation: React.FC = () => {
               >
                 Sobre Nosotros
               </button>
-              {/* <button 
-                onClick={() => handleNavigation('comparar')}
-                className={`font-medium transition-all duration-300 hover:scale-105 ${
-                  isScrolled ? 'text-[var(--color-text)] hover:text-[var(--color-secondary)]' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Comparar
-              </button> */}
               <button
                 onClick={handleContactClick}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${
@@ -181,12 +173,6 @@ const FloatingNavigation: React.FC = () => {
             >
               Sobre Nosotros
             </button>
-            {/* <button
-              onClick={() => handleNavigation("comparar")}
-              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
-            >
-              Comparar
-            </button> */}
             <button
               onClick={handleContactClick}
               className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"

@@ -12,9 +12,6 @@ import {
   X,
   Users,
   Settings,
-  Award,
-  ArrowRight,
-  MapPin,
   Grid,
   Droplet,
   ShieldCheck,
@@ -31,8 +28,8 @@ import {
   CheckSquare,
   Shield,
 } from "lucide-react";
-import MethodologyFiveSPlus from "../icons-componets/MethodologyFiveSPlus";
-import ConnectionsGraphic from "../icons-componets/ConnectionsGraphic";
+import MethodologyFiveSPlus from "../../icons-componets/FiveSPlus/MethodologyFiveSPlus";
+import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -55,44 +52,6 @@ interface ModalProps {
   };
   graphic: React.ReactNode;
 }
-
-const RoadmapGraphic = () => (
-  <div className="flex items-center justify-center py-6">
-    <div className="relative">
-      {/* Camino */}
-      <div className="flex items-center space-x-8">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-red-100 border-2 border-red-300 rounded-full flex items-center justify-center mb-2">
-            <MapPin className="w-8 h-8 text-red-600" />
-          </div>
-          <p className="text-xs text-[var(--color-text)]">Problemas</p>
-          <p className="text-xs text-[var(--color-text)]">Recurrentes</p>
-        </div>
-
-        <ArrowRight className="w-6 h-6 text-[var(--color-secondary)]" />
-
-        <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full flex items-center justify-center mb-2">
-            <CircleQuestionMark className="w-8 h-8 text-white" />
-          </div>
-          <p className="text-xs text-[var(--color-text)] font-bold">
-            WasteZero™
-          </p>
-        </div>
-
-        <ArrowRight className="w-6 h-6 text-[var(--color-secondary)]" />
-
-        <div className="text-center">
-          <div className="w-16 h-16 bg-green-100 border-2 border-green-300 rounded-full flex items-center justify-center mb-2">
-            <Award className="w-8 h-8 text-green-600" />
-          </div>
-          <p className="text-xs text-[var(--color-text)]">Cultura de</p>
-          <p className="text-xs text-[var(--color-text)]">Mejora</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
 
 const methodologyDetails = [
   "Formación técnica práctica sobre desperdicios, flujos y herramientas visuales",
@@ -359,7 +318,7 @@ const FiveSPlusContent: React.FC = () => {
       id: "1",
       icon: CircleQuestionMark,
       title: "¿Qué es 5S Plus™?",
-      subtitle: "",
+      subtitle: "Características del programa",
       children: (
         <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
           <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
@@ -542,7 +501,7 @@ const FiveSPlusContent: React.FC = () => {
       id: "3",
       icon: TrendingUp,
       title: "¿Qué ofrece 5S Plus™?",
-      subtitle: "",
+      subtitle: "Beneficios del programa 5S Plus™",
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {[
@@ -601,7 +560,7 @@ const FiveSPlusContent: React.FC = () => {
       id: "6",
       icon: Users,
       title: "¿Para quién está pensado?",
-      subtitle: "",
+      subtitle: "Tipos de empresas ideales para 5S Plus™",
       children: (
         <div className="bg-gradient-to-br from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl p-8 border border-[var(--color-border)]">
           <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-6">

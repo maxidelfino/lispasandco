@@ -17,12 +17,12 @@ import {
   MapPin,
   RulerDimensionLine,
 } from "lucide-react";
-import WhatIsGraphic from "../icons-componets/WhatIsGraphic";
-import ProblemsGraphic from "../icons-componets/ProblemsGraphic";
-import ResultsGraphic from "../icons-componets/ResultsGraphic";
-import MethodologyGraphic from "../icons-componets/MethodologyGraphic";
-import ConnectionsGraphic from "../icons-componets/ConnectionsGraphic";
-import MeasurementGraphic from "../icons-componets/MeasurementGraphic";
+import WhatIsGraphic from "../../icons-componets/WasteZero/WhatIsGraphic";
+import ProblemsGraphic from "../../icons-componets/ProblemsGraphic";
+import ResultsGraphic from "../../icons-componets/ResultsGraphic";
+import MethodologyGraphic from "../../icons-componets/MethodologyGraphic";
+import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
+import MeasurementGraphic from "../../icons-componets/MeasurementGraphic";
 
 interface ContentSectionProps {
   id: string;

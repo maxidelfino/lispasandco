@@ -17,13 +17,14 @@ import {
 import type { Service } from "../types";
 import { useNavigate } from "react-router-dom";
 import EightGridWastes from "../icons-componets/EightGridWastes";
-import Central5SCircle from "../icons-componets/Central5SCircle";
-import FlowStableIcon from "../icons-componets/FlowStableIcon";
+import Central5SCircle from "../icons-componets/FiveSPlus/Central5SCircle";
+import FlowStableIcon from "../icons-componets/FlowStable/FlowStableIcon";
 import KaizenActionIcon from "../icons-componets/KaizenActionIcon";
 import DecisionesEstadisticasIcon from "../icons-componets/DecisionesEstadisticasIcon";
 import LeanEnterpriseIcon from "../icons-componets/LeanEnterpriseIcon";
 import StratBridgeIcon from "../icons-componets/StratBridgeIcon";
 import ProjectFocusIcon from "../icons-componets/ProjectFocusIcon";
+import BridgeIcon from "../icons-componets/LeanBridge/BridgeIcon";
 
 interface ServiceCardListProps {
   services: Service[];
@@ -44,7 +45,7 @@ const ICON_COMPONENTS_MAP = {
   wastezero: EightGridWastes,
   "5s-plus": Central5SCircle,
   flowstable: FlowStableIcon,
-  leanbridge: Central5SCircle, // Reusing for now
+  leanbridge: BridgeIcon,
   "kaizen-action": KaizenActionIcon,
   "decisiones-estadisticas": DecisionesEstadisticasIcon,
   "lean-enterprise-transformation": LeanEnterpriseIcon,
@@ -244,7 +245,7 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
                     ))}
 
                   {/* Service Icon Component */}
-                  <div className="my-6 flex justify-center">
+                  <div className="flex justify-center">
                     <div className="scale-75 origin-center">
                       {renderServiceIcon(service.id)}
                     </div>

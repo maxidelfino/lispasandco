@@ -1,52 +1,8 @@
 "use client";
 
 import type React from "react";
-import Central5SCircle from "../icons-componets/Central5SCircle";
 
 const FiveSCircularDiagram: React.FC = () => {
-  const steps = [
-    {
-      id: 1,
-      japanese: "SEIRI",
-      spanish: "ORGANIZAR",
-      color: "bg-red-600",
-      position: { top: "10%", left: "50%", transform: "translateX(-50%)" },
-      arrowRotation: "rotate-45",
-    },
-    {
-      id: 2,
-      japanese: "SEITON",
-      spanish: "ORDENAR",
-      color: "bg-green-500",
-      position: { top: "25%", right: "15%", transform: "none" },
-      arrowRotation: "rotate-90",
-    },
-    {
-      id: 3,
-      japanese: "SEISŌ",
-      spanish: "LIMPIAR",
-      color: "bg-purple-600",
-      position: { bottom: "25%", right: "15%", transform: "none" },
-      arrowRotation: "rotate-135",
-    },
-    {
-      id: 4,
-      japanese: "SEIKETSU",
-      spanish: "ESTANDARIZAR",
-      color: "bg-cyan-500",
-      position: { bottom: "25%", left: "15%", transform: "none" },
-      arrowRotation: "rotate-180",
-    },
-    {
-      id: 5,
-      japanese: "SHITSUKE",
-      spanish: "MANTENER",
-      color: "bg-orange-500",
-      position: { top: "25%", left: "15%", transform: "none" },
-      arrowRotation: "rotate-225",
-    },
-  ];
-
   return (
     <div className="w-full max-w-2xl mx-auto p-8">
       {/* Container with aspect ratio */}
@@ -91,25 +47,6 @@ const FiveSCircularDiagram: React.FC = () => {
           />
         </svg>
       </div>
-
-      {/* Legend for larger screens */}
-      {/* <div className="hidden md:block mt-8">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-          {steps.map((step) => (
-            <div key={step.id} className="flex items-center space-x-2 mr-9">
-              <div
-                className={`w-4 h-4 ${step.color} rounded-full flex-shrink-0`}
-              ></div>
-              <div className="text-sm">
-                <div className="font-semibold text-gray-800">
-                  {step.japanese}
-                </div>
-                <div className="text-gray-600 text-xs">{step.spanish}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
 
       {/* Description */}
       <div className="mt-6 text-center">

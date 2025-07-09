@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Check, X as XIcon } from 'lucide-react';
-import { TabData } from '../types';
+import { TabData } from '../../types';
 
 interface SidebarProps {
   isOpen: boolean;

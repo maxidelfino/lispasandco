@@ -34,8 +34,8 @@ const KaizenActionIcon = () => {
             style={{
               left: `calc(50% + ${x}px)`,
               top: `calc(50% + ${y}px)`,
-              width: "72px",
-              height: "72px",
+              width: "80px",
+              height: "80px",
             }}
           >
             <Icon className="w-6 h-6 mb-1" />
@@ -45,7 +45,7 @@ const KaizenActionIcon = () => {
       })}
 
       {/* Action Arrows */}
-      {kaizenSteps.map((_, index) => {
+      {/* {kaizenSteps.map((_, index) => {
         const currentAngle = index * 72 - 90
         const nextAngle = ((index + 1) % kaizenSteps.length) * 72 - 90
         const radius = 120
@@ -74,7 +74,7 @@ const KaizenActionIcon = () => {
             />
           </svg>
         )
-      })}
+      })} */}
     </div>
   )
 }

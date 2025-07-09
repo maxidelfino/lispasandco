@@ -46,7 +46,7 @@ export const servicesData_estabilizar: Service[] = [
     icon: "ChartNoAxesCombined",
     color: "from-[var(--color-primary)] to-[var(--color-secondary)]",
     route: "/flowstable",
-    isActive: false,
+    isActive: true,
   },
   {
     id: "leanbridge",
@@ -63,7 +63,7 @@ export const servicesData_estabilizar: Service[] = [
     icon: "Bridge",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/leanbridge",
-    isActive: false,
+    isActive: true,
   },
   {
     id: "kaizen-action",
@@ -78,7 +78,7 @@ export const servicesData_estabilizar: Service[] = [
       "KAIZEN ACTION™ se basa en el ciclo DMAIC (Definir, Medir, Analizar, Mejorar y Controlar) e integra preparación, ejecución presencial de al menos 3 días y hasta 3 meses de seguimiento.",
       "Es una evolución de LeanBridge™, orientada a la acción real y al empoderamiento de agentes internos, con impacto exponencial cuando participan áreas transversales.",
     ],
-    icon: "Lightbulb", // o "Spark", "Ideas"
+    icon: "Lightbulb",
     color: "from-[var(--color-accent)] to-[var(--color-primary)]",
     route: "/kaizen-action",
     isActive: false,
@@ -96,7 +96,7 @@ export const servicesData_estabilizar: Service[] = [
       "El curso es ideal para quienes necesitan decisiones basadas en datos (mandos medios, calidad, finanzas, etc.) y es un complemento clave para mejorar programas como WasteZero™, FlowStable™ y LeanBridge™.",
       "Al completar el curso los participantes reciben certificación en análisis estadístico aplicado, orientado a estándares Green Belt.",
     ],
-    icon: "TrendingUp", // sugerencia: gráfico de barras
+    icon: "TrendingUp",
     color: "from-[var(--color-accent)] to-[var(--color-secondary)]",
     route: "/decisiones-estadisticas",
     isActive: false,
@@ -116,7 +116,7 @@ export const servicesData_transformar: Service[] = [
       "La implementación es secuencial, con alta presencia de especialistas y agentes internos, y se completa en 12 meses, finalizando con una auditoría de valor y madurez.",
       "Ofrece resultados como procesos estables y visuales, equipos comprometidos, aumento de productividad sin inversiones en activos, reducción de desperdicios y liderazgo interno de mejora continua.",
     ],
-    icon: "BuildingOffice2", // o el que se adecue a management
+    icon: "BuildingOffice2",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/lean-enterprise-transformation",
     isActive: false,
@@ -154,7 +154,7 @@ export const servicesData_transformar: Service[] = [
       "Se implementa por medio de un primer encuentro virtual o presencial para alinear ideas, seguido de dos sesiones presenciales de medio día para presentar, discutir y decidir proyectos en grupo.",
       "Se integra con StratBridge™, llevando la estrategia definida a acciones concretas, seleccionando cuidadosamente los proyectos que alineados a la visión y respaldados por los tomadores de decisión.",
     ],
-    icon: "PuzzlePiece", // simboliza unión de estrategia y acción
+    icon: "PuzzlePiece",
     color: "from-[var(--color-primary)] to-[var(--color-accent)]",
     route: "/projectfocus",
     isActive: false,

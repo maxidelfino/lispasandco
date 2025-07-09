@@ -9,7 +9,7 @@ import {
   Settings,
   Factory,
 } from "lucide-react";
-import { wastes } from "../data/wastes";
+import { wastes } from "../../data/wastes";
 
 const iconMap = {
   Users,

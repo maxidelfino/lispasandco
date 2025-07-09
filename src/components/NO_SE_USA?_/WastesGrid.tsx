@@ -1,6 +1,6 @@
 import React from 'react';
 import WasteIcon from './WasteIcon';
-import { wastes } from '../data/wastes';
+import { wastes } from '../../data/wastes';
 
 const WastesGrid: React.FC = () => {
   return (

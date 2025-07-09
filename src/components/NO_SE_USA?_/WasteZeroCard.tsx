@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowLeft, Download, Mail } from 'lucide-react';
+import React from "react";
+import { ArrowLeft, Download, Mail } from "lucide-react";
 
 interface WasteZeroCardProps {
   onBack: () => void;
@@ -15,22 +15,23 @@ const WasteZeroCard: React.FC<WasteZeroCardProps> = ({ onBack }) => {
         <ArrowLeft className="w-4 h-4" />
         <span>Volver</span>
       </button>
-      
+
       <div className="mt-8">
         <h2 className="text-2xl font-bold text-[var(--color-secondary)] mb-3 tracking-wide">
           Programa WasteZero™
         </h2>
-        
+
         <p className="text-[var(--color-text)] mb-4 leading-relaxed">
-          <strong>WasteZero™</strong> es nuestro sistema de mejora continua end-to-end, 
-          adaptado a cada cliente desde el punto de origen hasta el cliente final.
+          <strong>WasteZero™</strong> es nuestro sistema de mejora continua
+          end-to-end, adaptado a cada cliente desde el punto de origen hasta el
+          cliente final.
         </p>
-        
+
         <p className="text-[var(--color-text)] mb-6 leading-relaxed">
-          Generamos disciplina operativa, estandarización y valor sostenible, 
+          Generamos disciplina operativa, estandarización y valor sostenible,
           acompañando al equipo sin reemplazarlo.
         </p>
-        
+
         <div className="flex flex-wrap gap-3">
           <button className="bg-[var(--color-primary)] text-white px-6 py-3 rounded-xl text-sm font-semibold tracking-wide hover:bg-[var(--color-secondary)] transition-all duration-300 hover:-translate-y-1 flex items-center space-x-2">
             <Download className="w-4 h-4" />
