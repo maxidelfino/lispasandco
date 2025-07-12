@@ -13,17 +13,21 @@ import {
   Smartphone,
   TrendingUp,
   ChartNoAxesCombined,
+  Puzzle,
+  Compass,
+  Building2,
+  Binoculars,
 } from "lucide-react";
 import type { Service } from "../types";
 import { useNavigate } from "react-router-dom";
 import EightGridWastes from "../icons-componets/EightGridWastes";
 import Central5SCircle from "../icons-componets/FiveSPlus/Central5SCircle";
 import FlowStableIcon from "../icons-componets/FlowStable/FlowStableIcon";
-import KaizenActionIcon from "../icons-componets/KaizenActionIcon";
+import KaizenActionIcon from "../icons-componets/KaizenAction/KaizenActionIcon";
 import DecisionesEstadisticasIcon from "../icons-componets/DecisionesEstadisticasIcon";
-import LeanEnterpriseIcon from "../icons-componets/LeanEnterpriseIcon";
-import StratBridgeIcon from "../icons-componets/StratBridgeIcon";
-import ProjectFocusIcon from "../icons-componets/ProjectFocusIcon";
+import LeanEnterpriseIcon from "../icons-componets/LeanEnterprise/LeanEnterpriseIcon";
+import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
+import ProjectFocusIcon from "../icons-componets/ProjectFocus/ProjectFocusIcon";
 import BridgeIcon from "../icons-componets/LeanBridge/BridgeIcon";
 
 interface ServiceCardListProps {
@@ -39,6 +43,10 @@ const iconMap = {
   Smartphone,
   TrendingUp,
   ChartNoAxesCombined,
+  Puzzle,
+  Compass,
+  Building2,
+  Binoculars
 };
 
 const ICON_COMPONENTS_MAP = {

@@ -32,13 +32,13 @@ const ObjectivesKaizenGraphic: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Header */}
-      <div className="text-center mb-8">
+      {/* <div className="text-center mb-8">
         <div className="w-16 h-16 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full flex items-center justify-center text-white mb-4 mx-auto">
           <Award className="w-8 h-8" />
         </div>
         <h3 className="text-xl font-bold text-[var(--color-primary)] mb-2">Objetivos del Programa</h3>
-        {/* <p className="text-[var(--color-text)] text-sm">Transformar problemas en oportunidades de mejora</p> */}
-      </div>
+        <p className="text-[var(--color-text)] text-sm">Transformar problemas en oportunidades de mejora</p>
+      </div> */}
 
       {/* Objectives Grid */}
       <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">

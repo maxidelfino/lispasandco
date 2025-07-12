@@ -2,12 +2,12 @@ import { Building2, Users, Cog, TrendingUp, Target, Award, Network } from "lucid
 
 const LeanEnterpriseIcon = () => {
   const enterpriseElements = [
-    { icon: Building2, title: "ORGANIZACIÓN", position: { x: 0, y: -100 } },
-    { icon: Users, title: "EQUIPOS", position: { x: 87, y: -50 } },
-    { icon: Cog, title: "PROCESOS", position: { x: 87, y: 50 } },
-    { icon: TrendingUp, title: "MEJORA", position: { x: 0, y: 100 } },
-    { icon: Target, title: "OBJETIVOS", position: { x: -87, y: 50 } },
-    { icon: Award, title: "RESULTADOS", position: { x: -87, y: -50 } },
+    { icon: Building2, title: "ORGANIZACIÓN", position: { x: 0, y: -130 } },
+    { icon: Users, title: "EQUIPOS", position: { x: 100, y: -70 } },
+    { icon: Cog, title: "PROCESOS", position: { x: 100, y: 70 } },
+    { icon: TrendingUp, title: "MEJORA", position: { x: 0, y: 130 } },
+    { icon: Target, title: "OBJETIVOS", position: { x: -100, y: 70 } },
+    { icon: Award, title: "RESULTADOS", position: { x: -100, y: -70 } },
   ]
 
   return (
@@ -42,7 +42,7 @@ const LeanEnterpriseIcon = () => {
       })}
 
       {/* Connection Lines */}
-      {enterpriseElements.map((element, index) => {
+      {/* {enterpriseElements.map((element, index) => {
         const x1 = element.position.x * 0.4 // Closer to center
         const y1 = element.position.y * 0.4
         const x2 = element.position.x * 0.7 // Closer to elements
@@ -62,10 +62,10 @@ const LeanEnterpriseIcon = () => {
             />
           </svg>
         )
-      })}
+      })} */}
 
       {/* Orbital rings */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      {/* <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="w-48 h-48 border border-[var(--color-secondary)] border-dashed rounded-full opacity-20 animate-spin"
           style={{ animationDuration: "30s" }}
@@ -76,7 +76,7 @@ const LeanEnterpriseIcon = () => {
           className="w-64 h-64 border border-[var(--color-accent)] border-dashed rounded-full opacity-10 animate-spin"
           style={{ animationDuration: "45s", animationDirection: "reverse" }}
         ></div>
-      </div>
+      </div> */}
     </div>
   )
 }

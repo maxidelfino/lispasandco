@@ -4,6 +4,7 @@ import HeroSectionFlowStable from "../components/FlowStable/HeroSectionFlowStabl
 import FlowStableContent from "../components/FlowStable/FlowStableContent";
 import FlowStableDiagram from "../components/FlowStable/FlowStableDiagram";
 import { useScrollToTop } from "../hooks/useScrollToTop";
+import CTASection from "../components/CTASection";
 
 const FlowStablePage: React.FC = () => {
   useScrollToTop();
@@ -27,7 +28,16 @@ const FlowStablePage: React.FC = () => {
       </div>
 
       {/* Call to Action */}
-      <section className="my-20">
+      <CTASection
+        title="¿Listo para dominar tus procesos y mejorar tus resultados?"
+        description="Implementa FlowStable™ y construye procesos estables y previsibles que generen mejores promedios, mayor control y más productividad."
+        primaryButtonText="Contactar Ahora"
+        secondaryButtonText="Descargar Ficha Técnica"
+        // onSecondaryClick={() => console.log("Descargar clicked")}
+        // className="mb-32"
+      />
+
+      {/* <section className="my-20">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-2xl p-12 text-white shadow-2xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -47,7 +57,7 @@ const FlowStablePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

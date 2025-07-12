@@ -4,6 +4,7 @@ import HeroSection from "../components/WasteZero/HeroSection";
 import CircularWasteDiagram from "../components/WasteZero/CircularWasteDiagram";
 import WasteZeroContent from "../components/WasteZero/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
+import CTASection from "../components/CTASection";
 
 const WasteZeroPage: React.FC = () => {
   useScrollToTop();
@@ -27,7 +28,15 @@ const WasteZeroPage: React.FC = () => {
       </div>
 
       {/* Call to Action */}
-      <section className="my-20">
+      <CTASection
+        title="¿Listo para eliminar los desperdicios ocultos de tu operación?"
+        description="Implementa WasteZero™ y establece la base de disciplina operativa que impulsa mejoras continuas, eficiencia y resultados sostenibles."
+        primaryButtonText="Contactar Ahora"
+        secondaryButtonText="Descargar Ficha Técnica"
+        // onSecondaryClick={() => console.log("Descargar clicked")}
+        // className="mb-32"
+      />
+      {/* <section className="my-20">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-2xl p-12 text-white shadow-2xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -48,7 +57,7 @@ const WasteZeroPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <FloatingCTAs /> */}
     </div>

@@ -1,39 +1,45 @@
 import type React from "react";
 import { useScrollToTop } from "../hooks/useScrollToTop";
-import HeroSectionLeanBridge from "../components/LeanBridge/HeroSectionLeanBridge";
-import LeanBridgeContent from "../components/LeanBridge/LeanBridgeContent";
-import BridgeDiagram from "../icons-componets/LeanBridge/BridgeDiagram";
 import FloatingNavigation from "../components/FloatingNavigation";
+import HeroSectionProjectFocus from "../components/ProjectFocus/HeroSectionProjectFocus";
+import ProjectFocusContent from "../components/ProjectFocus/ProjectFocusContent";
+import ProjectFocusDiagram from "../components/ProjectFocus/ProjectFocusDiagram";
 import CTASection from "../components/CTASection";
 
-const LeanBridgePage: React.FC = () => {
+const ProjectFocusPage: React.FC = () => {
   useScrollToTop();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
-      <HeroSectionLeanBridge />
+      <HeroSectionProjectFocus />
 
-      {/* Responsive layout: two columns on desktop, stacked on tablet/mobile */}
       <div className="container mx-auto flex flex-col lg:flex-row items-start py-20 px-4 gap-8">
         {/* Left: Content */}
         <div className="w-full lg:w-1/2 order-1">
-          <LeanBridgeContent />
+          <ProjectFocusContent />
         </div>
 
         {/* Right: Diagram */}
-        <div className="w-full lg:w-1/2 flex justify-center order-2 h-full m-auto">
-          <BridgeDiagram />
+        <div className="w-full lg:w-1/2 order-2">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              ProjectFocus™ en Detalle
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Descubre cómo nuestra metodología transforma la selección de
+              proyectos en tu organización
+            </p>
+          </div>
+          <ProjectFocusDiagram />
         </div>
       </div>
 
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para llevar tu operación al siguiente nivel?"
-        description={[
-          "Con LeanBridge™ vas a implementar un puente sólido entre tu situación actual y tus metas estratégicas.",
-          "Empoderarás a tu equipo para resolver problemas en el origen, liberarás a la supervisión para enfocarse en iniciativas de alto impacto y consolidarás una cultura sostenible de mejora continua y eficiencia.",
-        ]}
+        title="¿Listo para priorizar tus proyectos estratégicos?"
+        description="Implementa ProjectFocus™ y convierte tu planificación estratégica
+              en un portafolio ejecutable de proyectos clave."
         primaryButtonText="Contactar Ahora"
         secondaryButtonText="Descargar Ficha Técnica"
         // onSecondaryClick={() => console.log("Descargar clicked")}
@@ -44,17 +50,11 @@ const LeanBridgePage: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-2xl p-12 text-white shadow-2xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Listo para llevar tu operación al siguiente nivel?
+              ¿Listo para priorizar tus proyectos estratégicos?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Con <strong>LeanBridge™</strong> vas a implementar un puente
-              sólido entre tu situación actual y tus metas estratégicas.
-            </p>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Empoderarás a tu equipo para resolver problemas en el origen,
-              liberarás a la supervisión para enfocarse en iniciativas de alto
-              impacto y consolidarás una cultura sostenible de mejora continua y
-              eficiencia.
+              Implementa ProjectFocus™ y convierte tu planificación estratégica
+              en un portafolio ejecutable de proyectos clave.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-xl">
@@ -71,4 +71,4 @@ const LeanBridgePage: React.FC = () => {
   );
 };
 
-export default LeanBridgePage;
+export default ProjectFocusPage;

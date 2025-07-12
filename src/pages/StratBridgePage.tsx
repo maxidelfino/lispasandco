@@ -1,39 +1,44 @@
 import type React from "react";
-import { useScrollToTop } from "../hooks/useScrollToTop";
-import HeroSectionLeanBridge from "../components/LeanBridge/HeroSectionLeanBridge";
-import LeanBridgeContent from "../components/LeanBridge/LeanBridgeContent";
-import BridgeDiagram from "../icons-componets/LeanBridge/BridgeDiagram";
+import HeroSectionStratBridge from "../components/StratBridge/HeroSectionStratBridge";
+import StratBridgeContent from "../components/StratBridge/StratBridgeContent";
 import FloatingNavigation from "../components/FloatingNavigation";
+import { useScrollToTop } from "../hooks/useScrollToTop";
+import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
 import CTASection from "../components/CTASection";
 
-const LeanBridgePage: React.FC = () => {
+const StratBridgePage: React.FC = () => {
   useScrollToTop();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
-      <HeroSectionLeanBridge />
+      <HeroSectionStratBridge />
 
-      {/* Responsive layout: two columns on desktop, stacked on tablet/mobile */}
+         {/* Responsive layout: two columns on desktop, stacked on tablet/mobile */}
       <div className="container mx-auto flex flex-col lg:flex-row items-start py-20 px-4 gap-8">
         {/* Left: Content */}
         <div className="w-full lg:w-1/2 order-1">
-          <LeanBridgeContent />
+      <StratBridgeContent />
         </div>
 
         {/* Right: Diagram */}
-        <div className="w-full lg:w-1/2 flex justify-center order-2 h-full m-auto">
-          <BridgeDiagram />
+        <div className="w-full lg:w-1/2 order-2 mt-14">
+        <div className="text-center lg:text-left mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Planificación Estratégica Integral
+            </h2>
+            <p className="text-xl text-gray-600">
+              Transforma tu visión en acciones concretas y resultados medibles
+            </p>
+          </div>
+          <StratBridgeIcon />
         </div>
       </div>
 
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para llevar tu operación al siguiente nivel?"
-        description={[
-          "Con LeanBridge™ vas a implementar un puente sólido entre tu situación actual y tus metas estratégicas.",
-          "Empoderarás a tu equipo para resolver problemas en el origen, liberarás a la supervisión para enfocarse en iniciativas de alto impacto y consolidarás una cultura sostenible de mejora continua y eficiencia.",
-        ]}
+        title="¿Listo para alinear tu estrategia?"
+        description="Implementa StratBridge™ y transforma tu visión en resultados concretos y sostenibles."
         primaryButtonText="Contactar Ahora"
         secondaryButtonText="Descargar Ficha Técnica"
         // onSecondaryClick={() => console.log("Descargar clicked")}
@@ -44,17 +49,10 @@ const LeanBridgePage: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-2xl p-12 text-white shadow-2xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Listo para llevar tu operación al siguiente nivel?
+              ¿Listo para alinear tu estrategia?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Con <strong>LeanBridge™</strong> vas a implementar un puente
-              sólido entre tu situación actual y tus metas estratégicas.
-            </p>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Empoderarás a tu equipo para resolver problemas en el origen,
-              liberarás a la supervisión para enfocarse en iniciativas de alto
-              impacto y consolidarás una cultura sostenible de mejora continua y
-              eficiencia.
+              Implementa StratBridge™ y transforma tu visión en resultados concretos y sostenibles.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-xl">
@@ -71,4 +69,4 @@ const LeanBridgePage: React.FC = () => {
   );
 };
 
-export default LeanBridgePage;
+export default StratBridgePage;

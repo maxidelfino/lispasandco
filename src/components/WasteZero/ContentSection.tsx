@@ -18,11 +18,11 @@ import {
   RulerDimensionLine,
 } from "lucide-react";
 import WhatIsGraphic from "../../icons-componets/WasteZero/WhatIsGraphic";
-import ProblemsGraphic from "../../icons-componets/ProblemsGraphic";
-import ResultsGraphic from "../../icons-componets/ResultsGraphic";
-import MethodologyGraphic from "../../icons-componets/MethodologyGraphic";
+import ProblemsGraphic from "../../icons-componets/WasteZero/ProblemsGraphic";
+import ResultsGraphic from "../../icons-componets/WasteZero/ResultsGraphic";
+import MethodologyGraphic from "../../icons-componets/WasteZero/MethodologyGraphic";
 import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
-import MeasurementGraphic from "../../icons-componets/MeasurementGraphic";
+import MeasurementGraphic from "../../icons-componets/WasteZero/MeasurementGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -44,62 +44,6 @@ interface ModalProps {
   };
   graphic: React.ReactNode;
 }
-
-// const ConnectionsGraphic = () => {
-//   const programs = [
-//     { name: "5S Plus™", icon: Settings, color: "bg-blue-500" },
-//     { name: "FlowStable™", icon: BarChart3, color: "bg-green-500" },
-//     { name: "Kaizen Action™", icon: Lightbulb, color: "bg-yellow-500" },
-//     { name: "LeanBridge™", icon: Network, color: "bg-purple-500" },
-//   ];
-
-//   return (
-//     <div className="flex items-center justify-center py-6">
-//       <div className="relative">
-//         {/* Centro - WasteZero */}
-//         <div className="w-24 h-24 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full flex items-center justify-center text-white font-bold text-sm shadow-xl">
-//           WasteZero™
-//         </div>
-
-//         {/* Programas conectados */}
-//         {programs.map((program, index) => {
-//           const angle = index * 90;
-//           const radius = 80;
-//           const x = Math.cos((angle * Math.PI) / 180) * radius;
-//           const y = Math.sin((angle * Math.PI) / 180) * radius;
-//           const Icon = program.icon;
-
-//           return (
-//             <div key={index}>
-//               {/* Línea de conexión */}
-//               <div
-//                 className="absolute w-0.5 bg-[var(--color-border)]"
-//                 style={{
-//                   left: "50%",
-//                   top: "50%",
-//                   height: `${radius - 20}px`,
-//                   transformOrigin: "top",
-//                   transform: `rotate(${angle}deg)`,
-//                 }}
-//               />
-
-//               {/* Programa */}
-//               <div
-//                 className={`absolute w-16 h-16 ${program.color} rounded-full flex items-center justify-center text-white transform -translate-x-1/2 -translate-y-1/2 shadow-lg`}
-//                 style={{
-//                   left: `calc(50% + ${x}px)`,
-//                   top: `calc(50% + ${y}px)`,
-//                 }}
-//               >
-//                 <Icon className="w-6 h-6" />
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
 
 const RoadmapGraphic = () => (
   <div className="flex items-center justify-center py-6">

@@ -5,22 +5,25 @@ import { useState, useEffect } from "react";
 import {
   CheckCircle,
   XCircle,
-  Target,
+  Globe,
   Clock,
   TrendingUp,
   X,
-  Users,
-  Settings,
+  Bubbles,
   BarChart3,
-  Activity,
-  Eye,
-  GitBranch,
-  Gauge,
-  AlertTriangle,
+  Sparkle,
+  Target,
+  ListChecks,
+  LayoutGrid,
+  CalendarCheck,
+  Wrench,
+  Telescope,
+  Award,
 } from "lucide-react";
-import FlowStableMethodologyGraphic from "../../icons-componets/FlowStable/flowstablemethodologygraphic";
-import FlowStableTimelineGraphic from "../../icons-componets/FlowStable/flowstabletimelinegraphic";
-import FlowStableMeasurementGraphic from "../../icons-componets/FlowStable/flowstablemeasurementgraphic";
+
+import StratBridgeTimelineGraphic from "../../icons-componets/StratBridge/StratBridgeTimelineGraphic";
+import ObjectivesStratBridgeGraphic from "../../icons-componets/StratBridge/ObjectivesStratBridgeGraphic";
+import StratBridgeConnectionsGraphic from "../../icons-componets/StratBridge/StratBridgeConnectionsGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -200,7 +203,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   </section>
 );
 
-const FlowStableContent: React.FC = () => {
+const StratBridgeContent: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<any>(null);
@@ -208,50 +211,132 @@ const FlowStableContent: React.FC = () => {
   const features = [
     {
       id: "1",
-      icon: Target,
-      title: "¿Qué ofrece FlowStable™?",
-      subtitle: "Beneficios y características del programa",
+      icon: Telescope,
+      title: "Visión",
+      //   subtitle: "Beneficios y características del programa",
+      children: (
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Es la aspiración futura.{" "}
+            <strong>¿Qué queremos llegar a ser en 5 o 10 años?</strong>
+          </p>
+          {[
+            "Es proyectiva (5–10 años)",
+            "Es inspiradora pero posible",
+            "Define un destino que guía el cambio, la evolución, el crecimiento",
+          ].map((detail, idx) => (
+            <div
+              key={idx}
+              className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+            >
+              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+              <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                {detail}
+              </span>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: "2",
+      icon: Globe,
+      title: "Misión",
+      //   subtitle: "Beneficios y características del programa",
+      children: (
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Es la razón de ser actual de la organización.{" "}
+            <strong>¿Para qué existe esta empresa hoy?</strong>
+          </p>
+          {[
+            "Es presente",
+            "Es concreta y operativa",
+            "Refleja lo que entrega al cliente",
+          ].map((detail, idx) => (
+            <div
+              key={idx}
+              className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+            >
+              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+              <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                {detail}
+              </span>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: "3",
+      icon: Sparkle,
+      title: "Valores",
+      //   subtitle: "Beneficios y características del programa",
+      children: (
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            <strong>Principios</strong> que guían la decisiones y
+            comportamientos de la organización.
+          </p>
+          {[
+            "¿Cómo nos comportamos?",
+            "¿Qué defendemos?",
+            "Aplican a todos, todos los días. Son no negociables",
+          ].map((detail, idx) => (
+            <div
+              key={idx}
+              className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+            >
+              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+              <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                {detail}
+              </span>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: "4",
+      icon: TrendingUp,
+      title: "¿Qué ofrece StratBridge™?",
+      subtitle: "Beneficios del programa StratBridge™",
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {[
             {
-              icon: TrendingUp,
-              title: "Mejora sostenible",
+              icon: Target,
+              title: "Definición de Objetivos",
               description:
-                "Mejora sostenible de la variable objetivo (Kilos/día, Horas/unidad)",
+                "Definición colaborativa de objetivos estratégicos a largo plazo",
             },
             {
-              icon: Activity,
-              title: "Estabilidad complementaria",
+              icon: CalendarCheck,
+              title: "Objetivos Anuales",
               description:
-                "Estabilidad de variables complementarias (efecto colateral positivo)",
+                "Identificación de objetivos anuales alineados con visión y misión",
             },
             {
-              icon: AlertTriangle,
-              title: "Ingeniería de Pérdidas",
-              description: "Aplicación de Ingeniería de Pérdidas ante desvíos",
+              icon: LayoutGrid,
+              title: "Matriz Hoshin",
+              description: "Construcción de la Matriz Hoshin (X‑Matrix)",
             },
             {
-              icon: Users,
-              title: "Alineación entre áreas",
+              icon: ListChecks,
+              title: "Iniciativas y Tareas",
               description:
-                "Alineación entre áreas operativas, logísticas y comerciales",
-            },
-            {
-              icon: Eye,
-              title: "Visibilidad de métricas",
-              description: "Visibilidad clara de métricas en todos los niveles",
-            },
-            {
-              icon: GitBranch,
-              title: "Diferenciación de soluciones",
-              description:
-                "Diferenciación entre soluciones de corto plazo y proyectos de mediano alcance",
+                "Desglose en iniciativas concretas y tareas específicas por área",
             },
             {
               icon: BarChart3,
-              title: "Gestión basada en datos",
-              description: "Gestión operativa basada en hechos y datos",
+              title: "KPIs Estratégicos",
+              description: "Desarrollo de KPIs estratégicos reales",
+            },
+            {
+              icon: Wrench,
+              title: "Herramientas Complementarias",
+              description:
+                "Herramientas complementarias: asignación de recursos, tablero visual, alertas, seguimiento",
             },
           ].map((feature, index) => (
             <div
@@ -271,111 +356,54 @@ const FlowStableContent: React.FC = () => {
       ),
     },
     {
-      id: "2",
-      icon: Gauge,
-      title: "¿Cómo medir los resultados?",
-      subtitle: "Métricas y seguimiento de FlowStable™",
-      description:
-        "Esta es una de las preguntas más frecuentes antes de iniciar la implementación de un programa que apunta a estabilizar y optimizar las operaciones.",
-      graphic: <FlowStableMeasurementGraphic />,
-      details: [
-        "La aplicación de FlowStable™ genera mejoras rápidas y sostenidas, especialmente en la consistencia de la producción o los servicios.",
-        "Reducción de variabilidad operativa y el cumplimiento de los objetivos diarios.",
-        "Uno de sus pilares es el seguimiento estructurado de desvíos a través de la Secuencia de Mejora diaria™.",
-        "Permite tomar acciones correctivas de forma inmediata, en el lugar donde ocurren.",
-        "Este enfoque práctico y visual ayuda a que los equipos comprendan mejor qué se espera de cada rol.",
-        "Ganando en claridad, autonomía y compromiso con los resultados.",
-      ],
-      footer:
-        "A los pocos meses de implementación, la empresa empieza a experimentar una nueva estabilidad en sus variables clave, que facilita la planificación, reduce el desgaste operativo y crea una base sólida para escalar mejoras.",
-    },
-
-    {
-      id: "4",
-      icon: Settings,
-      title: "Metodología - ¿Cómo funciona FlowStable™?",
-      subtitle: "Secuencia de Mejora diaria™",
-      description:
-        "Con una metodología llamada Secuencia de Mejora diaria™, se entrena a los equipos para aplicar un proceso estructurado de mejora continua.",
-      // graphic: <FlowStableMethodologyGraphic />,
-      details: [
-        "Encontrar la variable CRÍTICA PARA EL PROCESO y determinar su valor para ser usado como línea de base",
-        "Observar las variaciones del día a día y registrarlas de manera ordenada",
-        "Identificar aquellas anomalías que superan los valores normales y generan inestabilidad",
-        "Estudiar los problemas y eliminarlos de raíz de modo tal que no se repitan",
-        "Continuar con la secuencia diaria mejorando los resultados de la variable crítica y haciéndola estable",
-      ],
-      large: true,
-    },
-    {
-      id: "3",
-      icon: Users,
-      title: "¿Para quién está pensado?",
-      subtitle: "Tipos de empresas ideales para FlowStable™",
+      id: "5",
+      icon: Clock,
+      title: "Metodologia",
       children: (
-        <div className="bg-gradient-to-br from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl p-8 border border-[var(--color-border)]">
-          <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-6">
-            Tipos de Empresas
-          </h3>
-          <ul className="space-y-3">
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas industriales o de servicios con procesos operativos
-                continuos o en batch
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas pequeñas o medianas con una sola línea de producción o
-                servicio
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas productivas o de servicios de gran volumen que puedan
-                ser abordadas en secuencias sucesivas
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Negocios en los cuales la estacionalidad juega un papel
-                fundamental en los resultados económicos
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas que necesiten controlar y aumentar su producción en
-                ciertos momentos del año sin necesidad de invertir en activos
-                fijos
-              </span>
-            </li>
-          </ul>
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            El punto de partida de <strong>StratBridge™</strong> es la
+            información estratégica provista por la dirección de la empresa, en
+            especial su visión de largo plazo.
+          </p>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            A partir de esa definición, y mediante una secuencia estructurada de
+            reuniones, se construyen los objetivos de corto plazo, junto con sus
+            tácticas de acción, indicadores de avance y mecanismos de
+            seguimiento.
+          </p>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Como resultado, se entrega la <strong>Matriz Hoshin KanriT™</strong>
+            , que se transforma en una herramienta dinámica de alineación y
+            evolución estratégica para toda la organización{" "}
+          </p>
+
+          <div className="mb-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
+            <StratBridgeTimelineGraphic />
+          </div>
         </div>
       ),
     },
     {
-      id: "5",
-      icon: Clock,
-      title: "Modalidad de implementación",
-      subtitle: "7 meses de transformación estructurada",
-      description:
-        "FlowStable™ se implementa a través de 8 fases estructuradas durante 7 meses, combinando trabajo presencial y virtual para garantizar la adopción y sostenibilidad del programa.",
-      graphic: <FlowStableTimelineGraphic />,
+      id: "6",
+      icon: Award,
+      title: "Resultados esperados",
+    //   subtitle: "Transformar problemas en oportunidades de mejora",
+      graphic: <ObjectivesStratBridgeGraphic />,
+    },
+    {
+      id: "7",
+      icon: Bubbles,
+      title: "¿Cómo se relaciona con otros programas?",
+      subtitle: "",
+      subDescription: "Se relaciona con otros programas de LYSPAS & CO, tales como:",
+      graphic: <StratBridgeConnectionsGraphic />,
       details: [
-        "Fase Inicial: Diagnóstico (presencial) – 1 semana de trabajo en el lugar",
-        "Fase 2: Diseñar el sistema de medición. Discusión sobre objetivos y planes estratégicos. Entrenamiento y despliegue de herramientas (FlowStable PACK 2)",
-        "Fase 3: Establecer reuniones diarias de discusión y ejecución. Recolección de primeros datos (FlowStable PACK 3)",
-        "Fase 4: Consolidación y autonomía del equipo interno. Retrospectiva y ajustes. Identificación de desvíos",
-        "Fase 5: Inicio de resolución de problemas. Herramientas 5W1H – Herramienta A3 (FlowStable PACK 4)",
-        "Fase 6: Curvas de evolución. Herramientas estadísticas. Auditorías de gestión",
-        "Fase 7: Efectos colaterales. Definición técnica y económica",
-        "Fase 8: Auditorías de gestión. Objetivos y planes estratégicos",
+        "LeanBridge™: genera el contexto operativo y cultural ideal para aplicar planificación estratégica",
+"Kaizen Action™: resuelve problemas transversales surgidos de los objetivos e indicadores Hoshin",
+"FlowStable™ y WasteZero™: pueden integrarse como iniciativas específicas dentro de la matrIz.",
       ],
+      large: true,
     },
   ];
 
@@ -390,7 +418,7 @@ const FlowStableContent: React.FC = () => {
   };
 
   return (
-    <div id="flowstable-content" className="bg-[var(--color-bg)]">
+    <div id="StratBridge-content" className="bg-[var(--color-bg)]">
       <ContentSection id="que-es" title="" subtitle="">
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {features.map((feature) => {
@@ -460,4 +488,4 @@ const FlowStableContent: React.FC = () => {
   );
 };
 
-export default FlowStableContent;
+export default StratBridgeContent;

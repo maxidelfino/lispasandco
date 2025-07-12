@@ -16,9 +16,9 @@ const ProjectFocusIcon = () => {
   ]
 
   return (
-    <div className="relative flex items-center justify-center h-80">
+    <div className="relative flex items-center justify-center h-80 w-full max-w-md mx-auto">
       {/* Central Project Focus */}
-      <div className="w-32 h-32 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-secondary)] rounded-2xl flex items-center justify-center text-white font-bold text-lg z-10 shadow-xl">
+      <div className="w-32 h-32 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white font-bold text-lg z-10 shadow-xl">
         <div className="text-center">
           <Puzzle className="w-8 h-8 mx-auto mb-1" />
           <div className="text-sm">PROJECT</div>
@@ -48,8 +48,9 @@ const ProjectFocusIcon = () => {
 
       {/* Project Phases */}
       {projectPhases.map((phase, index) => {
-        const angle = index * 90 - 45 // 90 degrees apart, starting at -45
-        const radius = 140
+        // Distribución simétrica en círculo perfecto
+        const angle = (index * 90) - 45 // 90 grados entre cada elemento, empezando desde -45°
+        const radius = 140 // Radio fijo para mejor simetría
         const x = Math.cos((angle * Math.PI) / 180) * radius
         const y = Math.sin((angle * Math.PI) / 180) * radius
         const Icon = phase.icon
@@ -71,7 +72,7 @@ const ProjectFocusIcon = () => {
 
       {/* Connection Lines to Center */}
       {projectPhases.map((_, index) => {
-        const angle = index * 90 - 45
+        const angle = (index * 90) - 45
         const startRadius = 66
         const endRadius = 100
         const x1 = Math.cos((angle * Math.PI) / 180) * startRadius
@@ -86,7 +87,7 @@ const ProjectFocusIcon = () => {
               y1={`calc(50% + ${y1}px)`}
               x2={`calc(50% + ${x2}px)`}
               y2={`calc(50% + ${y2}px)`}
-              stroke="var(--color-primary)"
+              stroke="#6366f1"
               strokeWidth="3"
               strokeDasharray="6,6"
               opacity="0.5"
@@ -97,7 +98,7 @@ const ProjectFocusIcon = () => {
 
       {/* Focus rings */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-48 h-48 border border-[var(--color-accent)] border-dashed rounded-full opacity-30 animate-pulse"></div>
+        <div className="w-48 h-48 border border-orange-400 border-dashed rounded-full opacity-30 animate-pulse"></div>
       </div>
     </div>
   )

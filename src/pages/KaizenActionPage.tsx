@@ -4,6 +4,7 @@ import KaizenActionDiagram from "../components/KaizenAction/KaizenActionDiagram"
 import KaizenActionContent from "../components/KaizenAction/KaizenActionContent";
 import FloatingNavigation from "../components/FloatingNavigation";
 import { useScrollToTop } from "../hooks/useScrollToTop";
+import CTASection from "../components/CTASection";
 
 const KaizenActionPage: React.FC = () => {
   useScrollToTop();
@@ -23,31 +24,39 @@ const KaizenActionPage: React.FC = () => {
         {/* Right: Diagram */}
         <div className="w-full lg:w-1/2 order-2">
           {/* DMAIC Diagram Section */}
-            <div className="max-w-6xl mx-auto px-4 mt-40">
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
-                  Metodología DMAIC
-                </h2>
-                <p className="text-xl text-[var(--color-text)] max-w-3xl mx-auto">
-                  Ciclo estructurado de mejora continua para resolver problemas
-                  complejos
-                </p>
-              </div>
-              <KaizenActionDiagram />
+          <div className="max-w-6xl mx-auto px-4 mt-40">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
+                Metodología DMAIC
+              </h2>
+              <p className="text-xl text-[var(--color-text)] max-w-3xl mx-auto">
+                Ciclo estructurado de mejora continua para resolver problemas
+                complejos
+              </p>
             </div>
+            <KaizenActionDiagram />
+          </div>
         </div>
       </div>
 
       {/* Call to Action */}
-      <section className="mb-20">
+      <CTASection
+        title="¿Listo para impulsar tu cambio?"
+        description="Transforma tus problemas más complejos en oportunidades de mejora con KAIZEN ACTION™"
+        primaryButtonText="Contactar Ahora"
+        secondaryButtonText="Descargar Ficha Técnica"
+        // onSecondaryClick={() => console.log("Descargar clicked")}
+        // className="mb-32"
+      />
+
+      {/* <section className="mb-20">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-2xl p-12 text-white shadow-2xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Listo para impulsar tu cambio?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Transforma tus problemas más complejos en oportunidades de mejora
-              con KAIZEN ACTION™
+              Transforma tus problemas más complejos en oportunidades de mejora con KAIZEN ACTION™
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-xl">
@@ -59,7 +68,7 @@ const KaizenActionPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

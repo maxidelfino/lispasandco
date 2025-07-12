@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import type React from "react";
 import { useState, useEffect } from "react";
 import {
@@ -10,17 +12,16 @@ import {
   TrendingUp,
   X,
   Users,
-  Settings,
-  BarChart3,
-  Activity,
-  Eye,
-  GitBranch,
-  Gauge,
-  AlertTriangle,
+  Zap,
+  Building2,
+  Calendar,
+  Factory,
+  Link,
 } from "lucide-react";
-import FlowStableMethodologyGraphic from "../../icons-componets/FlowStable/flowstablemethodologygraphic";
-import FlowStableTimelineGraphic from "../../icons-componets/FlowStable/flowstabletimelinegraphic";
-import FlowStableMeasurementGraphic from "../../icons-componets/FlowStable/flowstablemeasurementgraphic";
+import ProblemsProjectFocusGraphic from "../../icons-componets/ProjectFocus/ProblemsProjectFocusGraphic";
+import PhasesProjectFocusGraphic from "../../icons-componets/ProjectFocus/PhasesProjectFocusGraphic";
+import ConnectionProjectFocusGraphic from "../../icons-componets/ProjectFocus/ConnectionProjectFocusGraphic";
+import ProjectFocusMethodologyGraphic from "../../icons-componets/ProjectFocus/ProjectFocusMethodologyGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -200,7 +201,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   </section>
 );
 
-const FlowStableContent: React.FC = () => {
+const ProjectFocusContent: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<any>(null);
@@ -209,49 +210,83 @@ const FlowStableContent: React.FC = () => {
     {
       id: "1",
       icon: Target,
-      title: "¿Qué ofrece FlowStable™?",
-      subtitle: "Beneficios y características del programa",
+      title: "¿Qué es ProjectFocus™?",
+      subtitle: "Características del programa",
+      children: (
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            <strong>ProjectFocus™ – Selección Estratégica de Proyectos</strong>{" "}
+            es una metodología práctica diseñada para ayudar a las
+            organizaciones a identificar, analizar y seleccionar proyectos de
+            inversión, de forma colaborativa y alineada al plan estratégico
+            vigente.
+          </p>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Este programa parte de una premisa clara: no todos los proyectos
+            valen lo mismo. Por eso, ofrece herramientas para mapear beneficios,
+            costos, impactos y riesgos de cada iniciativa, y tomar decisiones
+            basadas en valor, no en urgencias.
+          </p>
+
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Está especialmente diseñado como extensión práctica de StratBridge™,
+            siendo el paso natural para convertir una planificación estratégica
+            en un portafolio ejecutable de proyectos clave.
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: "2",
+      icon: Zap,
+      title: "Problemas que resuelve",
+      subtitle: "Principales desafíos organizacionales",
+      description:
+        "ProjectFocus™ aborda los problemas más comunes que enfrentan las organizaciones al momento de seleccionar y priorizar proyectos de inversión. Estos desafíos impactan directamente en la eficiencia de los recursos y en el logro de objetivos estratégicos.",
+      subDescription: "ProjectFocus™ resuelve esto:",
+      graphic: <ProblemsProjectFocusGraphic />,
+      details: [
+        "Falta de visibilidad sobre iniciativas",
+        "Priorización ineficiente",
+        "Falta de alineamiento con objetivos estratégicos",
+        "Tensiones internas por asignación de recursos",
+        "Evaluación ineficiente de impacto-beneficio",
+        "Falta de responsabilidad en la acción",
+      ],
+      // footer:
+      // "WasteZero™ resuelve el desorden silencioso que afecta los resultados sin que nadie lo note. Ayuda a transformar la frustración en acción concreta y sostenible",
+    },
+    {
+      id: "4",
+      icon: Building2,
+      title: "¿Para qué tipo de empresas?",
+      subtitle: "Perfil de organizaciones objetivo",
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {[
             {
+              icon: Factory,
+              title: "Sectores diversos",
+              description:
+                "Empresas industriales, logísticas, comerciales, agroexportadoras o de servicios",
+            },
+            {
+              icon: Calendar,
+              title: "Planificación anual",
+              description:
+                "Organizaciones que hacen planificación anual de recursos de inversión",
+            },
+            {
               icon: TrendingUp,
-              title: "Mejora sostenible",
+              title: "Planes de expansión",
               description:
-                "Mejora sostenible de la variable objetivo (Kilos/día, Horas/unidad)",
-            },
-            {
-              icon: Activity,
-              title: "Estabilidad complementaria",
-              description:
-                "Estabilidad de variables complementarias (efecto colateral positivo)",
-            },
-            {
-              icon: AlertTriangle,
-              title: "Ingeniería de Pérdidas",
-              description: "Aplicación de Ingeniería de Pérdidas ante desvíos",
+                "Equipos que discuten planes de expansión o reorganización",
             },
             {
               icon: Users,
-              title: "Alineación entre áreas",
+              title: "Decisión participativa",
               description:
-                "Alineación entre áreas operativas, logísticas y comerciales",
-            },
-            {
-              icon: Eye,
-              title: "Visibilidad de métricas",
-              description: "Visibilidad clara de métricas en todos los niveles",
-            },
-            {
-              icon: GitBranch,
-              title: "Diferenciación de soluciones",
-              description:
-                "Diferenciación entre soluciones de corto plazo y proyectos de mediano alcance",
-            },
-            {
-              icon: BarChart3,
-              title: "Gestión basada en datos",
-              description: "Gestión operativa basada en hechos y datos",
+                "Empresas que quieren involucrar a sus mandos medios en la toma de decisiones",
             },
           ].map((feature, index) => (
             <div
@@ -269,113 +304,78 @@ const FlowStableContent: React.FC = () => {
           ))}
         </div>
       ),
-    },
-    {
-      id: "2",
-      icon: Gauge,
-      title: "¿Cómo medir los resultados?",
-      subtitle: "Métricas y seguimiento de FlowStable™",
-      description:
-        "Esta es una de las preguntas más frecuentes antes de iniciar la implementación de un programa que apunta a estabilizar y optimizar las operaciones.",
-      graphic: <FlowStableMeasurementGraphic />,
-      details: [
-        "La aplicación de FlowStable™ genera mejoras rápidas y sostenidas, especialmente en la consistencia de la producción o los servicios.",
-        "Reducción de variabilidad operativa y el cumplimiento de los objetivos diarios.",
-        "Uno de sus pilares es el seguimiento estructurado de desvíos a través de la Secuencia de Mejora diaria™.",
-        "Permite tomar acciones correctivas de forma inmediata, en el lugar donde ocurren.",
-        "Este enfoque práctico y visual ayuda a que los equipos comprendan mejor qué se espera de cada rol.",
-        "Ganando en claridad, autonomía y compromiso con los resultados.",
-      ],
-      footer:
-        "A los pocos meses de implementación, la empresa empieza a experimentar una nueva estabilidad en sus variables clave, que facilita la planificación, reduce el desgaste operativo y crea una base sólida para escalar mejoras.",
-    },
-
-    {
-      id: "4",
-      icon: Settings,
-      title: "Metodología - ¿Cómo funciona FlowStable™?",
-      subtitle: "Secuencia de Mejora diaria™",
-      description:
-        "Con una metodología llamada Secuencia de Mejora diaria™, se entrena a los equipos para aplicar un proceso estructurado de mejora continua.",
-      // graphic: <FlowStableMethodologyGraphic />,
-      details: [
-        "Encontrar la variable CRÍTICA PARA EL PROCESO y determinar su valor para ser usado como línea de base",
-        "Observar las variaciones del día a día y registrarlas de manera ordenada",
-        "Identificar aquellas anomalías que superan los valores normales y generan inestabilidad",
-        "Estudiar los problemas y eliminarlos de raíz de modo tal que no se repitan",
-        "Continuar con la secuencia diaria mejorando los resultados de la variable crítica y haciéndola estable",
-      ],
-      large: true,
+      // large: true,
     },
     {
       id: "3",
-      icon: Users,
-      title: "¿Para quién está pensado?",
-      subtitle: "Tipos de empresas ideales para FlowStable™",
-      children: (
-        <div className="bg-gradient-to-br from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl p-8 border border-[var(--color-border)]">
-          <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-6">
-            Tipos de Empresas
-          </h3>
-          <ul className="space-y-3">
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas industriales o de servicios con procesos operativos
-                continuos o en batch
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas pequeñas o medianas con una sola línea de producción o
-                servicio
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas productivas o de servicios de gran volumen que puedan
-                ser abordadas en secuencias sucesivas
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Negocios en los cuales la estacionalidad juega un papel
-                fundamental en los resultados económicos
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas que necesiten controlar y aumentar su producción en
-                ciertos momentos del año sin necesidad de invertir en activos
-                fijos
-              </span>
-            </li>
-          </ul>
-        </div>
-      ),
+      icon: Clock,
+      title: "Fases del programa",
+      subtitle: "Metodología estructurada en 7 etapas",
+      description:
+        "Proceso completo desde la exploración de oportunidades hasta la matriz de ejecución con responsables.",
+      subDescription: "Modalidad de implementación:",
+      graphic: <PhasesProjectFocusGraphic />,
+      details: [
+        "1. Exploración de oportunidades de inversión",
+        "2. Mapeo sectorial y funcional de propuestas",
+        "3. Análisis de alineamiento con los objetivos estratégicos",
+        "4. Tormenta de ideas con participación interáreas",
+        "5. Presentación y discusión de proyectos",
+        "6. Selección mediante matriz Impacto–Beneficio",
+        "7. Matriz de ejecución con responsables asignados",
+      ],
     },
     {
       id: "5",
-      icon: Clock,
-      title: "Modalidad de implementación",
-      subtitle: "7 meses de transformación estructurada",
+      icon: Calendar,
+      title: "Cronograma de implementación",
+      subtitle: "Proceso ágil y efectivo",
       description:
-        "FlowStable™ se implementa a través de 8 fases estructuradas durante 7 meses, combinando trabajo presencial y virtual para garantizar la adopción y sostenibilidad del programa.",
-      graphic: <FlowStableTimelineGraphic />,
+        "El programa ProjectFocus™ – Selección Estratégica de Proyectos presenta una metodología simple de aplicación que consiste en un primer contacto virtual o presencial con el grupo de trabajo a fin de alinear consignas y plantear expectativas para luego terminar con dos sesiones presenciales de medio día cada una en las cuales se presentaran y discutirán cada una de las iniciativas sugeridas por los miembros de la organización para que finalmente se decide en forma grupal respecto a prioridades de ejecución y responsabilidades",
+      graphic: <ProjectFocusMethodologyGraphic />,
       details: [
-        "Fase Inicial: Diagnóstico (presencial) – 1 semana de trabajo en el lugar",
-        "Fase 2: Diseñar el sistema de medición. Discusión sobre objetivos y planes estratégicos. Entrenamiento y despliegue de herramientas (FlowStable PACK 2)",
-        "Fase 3: Establecer reuniones diarias de discusión y ejecución. Recolección de primeros datos (FlowStable PACK 3)",
-        "Fase 4: Consolidación y autonomía del equipo interno. Retrospectiva y ajustes. Identificación de desvíos",
-        "Fase 5: Inicio de resolución de problemas. Herramientas 5W1H – Herramienta A3 (FlowStable PACK 4)",
-        "Fase 6: Curvas de evolución. Herramientas estadísticas. Auditorías de gestión",
-        "Fase 7: Efectos colaterales. Definición técnica y económica",
-        "Fase 8: Auditorías de gestión. Objetivos y planes estratégicos",
+        "Fase Inicial: Presentacion del programa al equipo.",
+        "Fase 1: Desarrollo de ideas y proyectos.",
+        "Fase 2: Técnicas de selección de proyectos o iniciativa.",
+        "Fase 3: Matriz impacto-beneficio.",
+        "Fase 4: Matriz de responsabilidades.",
+        "Fase 5: Seguimiento de proyectos.",
+        "Fase 6: Documento final de seguimiento.",
       ],
+    },
+    {
+      id: "6",
+      icon: Link,
+      title: "¿Cómo se conecta con StratBridge™?",
+      subtitle: "Complemento ideal para planificación estratégica",
+      children: (
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            <strong>ProjectFocus™</strong> es el complemento ideal para empresas
+            que ya implementaron <strong>StratBridge™</strong> y ahora necesitan
+            pasar del tablero estratégico a la acción concreta.
+          </p>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Mientras StratBridge™ define el rumbo, ProjectFocus™ ayuda a{" "}
+            <strong>elegir bien qué barcos poner a navegar</strong>.
+          </p>
+
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Esta conexión garantiza que cada proyecto esté validado desde su
+            origen, alineado a la visión y sostenido por los responsables
+            correctos.
+          </p>
+
+          <div className="bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
+            <ConnectionProjectFocusGraphic />
+          </div>
+
+          {/* <blockquote className="text-xl font-bold text-[var(--color-secondary)] italic border-l-4 border-[var(--color-accent)] pl-6 mt-8">
+            "5S no es una limpieza profunda. Es un cambio estructurado y
+            sostenido utilizando el orden como forma de trabajo."
+          </blockquote> */}
+        </div>
+      ),
     },
   ];
 
@@ -390,7 +390,7 @@ const FlowStableContent: React.FC = () => {
   };
 
   return (
-    <div id="flowstable-content" className="bg-[var(--color-bg)]">
+    <div id="ProjectFocus-content" className="bg-[var(--color-bg)]">
       <ContentSection id="que-es" title="" subtitle="">
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {features.map((feature) => {
@@ -460,4 +460,4 @@ const FlowStableContent: React.FC = () => {
   );
 };
 
-export default FlowStableContent;
+export default ProjectFocusContent;
