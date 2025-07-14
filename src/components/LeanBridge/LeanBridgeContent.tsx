@@ -312,7 +312,7 @@ const LeanBridgeContent: React.FC = () => {
       id: "6",
       icon: PencilRuler,
       title: "Metodología",
-      subtitle: "Tipos de empresas ideales para LeanBridge™",
+      // subtitle: "Tipos de empresas ideales para LeanBridge™",
       description:
         "El programa LeanBridge™ desarrolla en forma simultánea CUATRO módulos de trabajo que permiten articular de manera sincronizada cada una de las prácticas de mejora continua que serán utilizadas para la gestión de la empresa en todos sus niveles, permitiendo de esta forma que exista una clara conexión entre cada herramienta y el personal afectado encuentre el real sentido y valor del sistema de gestión implementado.",
       graphic: (

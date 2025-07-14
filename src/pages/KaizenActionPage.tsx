@@ -15,7 +15,7 @@ const KaizenActionPage: React.FC = () => {
       <HeroSectionKaizenAction />
 
       {/* Responsive layout: two columns on desktop, stacked on tablet/mobile */}
-      <div className="container mx-auto flex flex-col lg:flex-row items-start py-20 px-4 gap-8">
+      <div className="container mx-auto flex flex-col lg:flex-row items-start px-4 gap-8">
         {/* Left: Content */}
         <div className="w-full lg:w-1/2 order-1">
           <KaizenActionContent />

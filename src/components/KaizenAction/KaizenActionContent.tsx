@@ -17,6 +17,7 @@ import {
 import WhatIsKaizenGraphic from "../../icons-componets/KaizenAction/WhatIsKaizenGraphic";
 import ObjectivesKaizenGraphic from "../../icons-componets/KaizenAction/ObjectivesKaizenGraphic";
 import MethodologyKaizenGraphic from "../../icons-componets/KaizenAction/MethodologyKaizenGraphic";
+import ConnectionsKaizenGraphic from "../../icons-componets/KaizenAction/ConnectionsKaizenGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -335,6 +336,9 @@ const KaizenActionContent: React.FC = () => {
             eventos KAIZEN reales, y así consolidar su rol de agentes de cambio
             dentro de la organización.
           </p>
+          <div className="mt-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
+            <ConnectionsKaizenGraphic />,
+          </div>
         </div>
       ),
 

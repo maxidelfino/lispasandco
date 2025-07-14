@@ -1,6 +1,7 @@
 "use client";
 
 import type React from "react";
+import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import ServiceCardList from "./ServiceCardList";
 import type { Service } from "../types";
@@ -18,14 +19,24 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
   onClose,
   title,
   subtitle,
-  servicesData
+  servicesData,
 }) => {
+  const navigate = useNavigate();
+
   if (!isOpen) return null;
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  const handleContactClick = () => {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.querySelector("footer");
+      element?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   return (
@@ -66,7 +77,10 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
                 Nuestros expertos pueden ayudarte a identificar la solución
                 perfecta para tu organización.
               </p>
-              <button className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[var(--color-secondary)] transition-colors">
+              <button
+                className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[var(--color-secondary)] transition-colors"
+                onClick={handleContactClick}
+              >
                 Solicitar Consulta Gratuita
               </button>
             </div>

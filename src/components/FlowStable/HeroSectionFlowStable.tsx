@@ -75,13 +75,13 @@ const HeroSectionFlowStable: React.FC = () => {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
           <strong>FlowStable™</strong> es el programa más recomendado por{" "}
           <strong>LYSPAS & CO</strong> para empresas que desean aumentar su
           producción o eficiencia <strong>sin invertir en activos fijos</strong>
           .
         </p>
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
           A través de un enfoque estructurado, cambia el foco de la operación:
           de perseguir récords diarios a construir procesos estables y
           previsibles, lo que permite alcanzar mejores promedios, mayor control

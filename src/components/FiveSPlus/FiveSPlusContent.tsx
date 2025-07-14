@@ -27,6 +27,7 @@ import {
   Sparkles,
   CheckSquare,
   Shield,
+  Truck,
 } from "lucide-react";
 import MethodologyFiveSPlus from "../../icons-componets/FiveSPlus/MethodologyFiveSPlus";
 import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
@@ -562,37 +563,50 @@ const FiveSPlusContent: React.FC = () => {
       title: "¿Para quién está pensado?",
       subtitle: "Tipos de empresas ideales para 5S Plus™",
       children: (
-        <div className="bg-gradient-to-br from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl p-8 border border-[var(--color-border)]">
-          <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-6">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+          <h3 className="col-span-full text-2xl font-bold text-[var(--color-primary)]">
             Tipos de Empresas
           </h3>
-          <ul className="space-y-3">
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas industriales o de servicios.
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Áreas de trabajo en las cuales existe alta presencia de personas
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Áreas con alto tráfico, riesgo o dispersión de materiales
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Organizaciones que quieran fortalecer su cultura de orden,
-                seguridad y eficiencia
-              </span>
-            </li>
-          </ul>
+          {[
+            {
+              icon: Factory,
+              title: "Empresas Industriales o de Servicios",
+              description: "Empresas industriales o de servicios.",
+            },
+            {
+              icon: Users,
+              title: "Intervención Integral",
+              description:
+                "Áreas de trabajo en las cuales existe alta presencia de personas.",
+            },
+            {
+              icon: Truck,
+              title: "Sectores de Alto Tráfico",
+              description:
+                "Áreas con alto tráfico, riesgo o dispersión de materiales.",
+            },
+            {
+              icon: CheckCircle,
+              title: "Cultura de Orden y Eficiencia",
+              description:
+                "Organizaciones que quieran fortalecer su cultura de orden, seguridad y eficiencia",
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-4 space-x-3">
+                <feature.icon className="w-8 h-8" />
+                <h4 className="text-xl font-bold text-[var(--color-primary)]">
+                  {feature.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       ),
     },

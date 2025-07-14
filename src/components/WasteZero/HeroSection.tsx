@@ -64,12 +64,12 @@ const HeroSection: React.FC = () => {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
           Es un programa táctico de implementación LEAN diseñado para empresas
           que buscan reducir pérdidas operativas de manera concreta, visible y
           sostenida.
         </p>
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
           Se centra en identificar y eliminar los 8 desperdicios clásicos de la
           gestión LEAN, combinando análisis visual, trabajo de campo y proyectos
           de mejora con impacto real.

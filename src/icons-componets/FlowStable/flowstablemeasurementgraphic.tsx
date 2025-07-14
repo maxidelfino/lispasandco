@@ -42,18 +42,21 @@ const FlowStableMeasurementGraphic: React.FC = () => {
   ];
 
   return (
-    <div className="py-8">
-      <div className="text-center mb-8">
+    // <div className="py-8">
+    <div>
+      {/* <div className="text-center mb-8">
         <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
           Resultados Medibles de FlowStable™
         </h3>
         <p className="text-[var(--color-text)] max-w-2xl mx-auto">
           FlowStable™ no es solo una metodología, sino una forma de pensar el trabajo operativo con foco en la eficiencia, la constancia y el aprendizaje continuo.
         </p>
-      </div>
+      </div> */}
 
       {/* Metrics Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"> */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
           return (
@@ -76,7 +79,7 @@ const FlowStableMeasurementGraphic: React.FC = () => {
       </div>
 
       {/* Flow Diagram */}
-      <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border border-[var(--color-border)]">
+      {/* <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border border-[var(--color-border)]">
         <div className="flex items-center justify-center space-x-8 flex-wrap gap-4">
           <div className="text-center">
             <div className="w-16 h-16 bg-red-100 border-2 border-red-300 rounded-full flex items-center justify-center mb-2">
@@ -107,10 +110,10 @@ const FlowStableMeasurementGraphic: React.FC = () => {
             <p className="text-xs text-[var(--color-text)]">y Control</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Key Benefits */}
-      <div className="mt-8 text-center">
+      {/* <div className="mt-8 text-center">
         <div className="inline-flex items-center space-x-6 text-sm text-[var(--color-text)] flex-wrap justify-center gap-4">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -125,7 +128,7 @@ const FlowStableMeasurementGraphic: React.FC = () => {
             <span>Más productividad</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

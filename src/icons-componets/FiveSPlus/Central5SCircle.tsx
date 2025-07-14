@@ -29,7 +29,7 @@ const Central5SCircle = () => {
         return (
           <div
             key={index}
-            className={`absolute w-20 h-20 ${step.color} rounded-full flex flex-col items-center justify-center text-white text-xs font-bold transform -translate-x-1/2 -translate-y-1/2 shadow-lg hover:scale-110 transition-transform duration-300`}
+            className={`absolute w-24 h-24 ${step.color} rounded-full flex flex-col items-center justify-center text-white text-xs font-bold transform -translate-x-1/2 -translate-y-1/2 shadow-lg hover:scale-110 transition-transform duration-300`}
             style={{
               left: `calc(50% + ${x}px)`,
               top: `calc(50% + ${y}px)`,

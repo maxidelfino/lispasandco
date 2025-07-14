@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   Linkedin,
-  Mail,
-  Phone,
+  // Mail,
+  // Phone,
   MapPin,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +15,12 @@ import {
   servicesData_iniciar,
   servicesData_transformar,
 } from "../data/services";
+import BackgroundCarousel from "../components/BackgroundCarousel";
+import { carouselSlides } from "../data/carouselSlides";
+import ContactFooter from "../components/Footer";
+import LinkedInCard from "../components/LinkedInCard";
 
 const HomePage: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -29,38 +30,6 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  // Carousel images - 4 slides with 5 images each
-  const carouselSlides = [
-    [
-      "https://images.pexels.com/photos/1267337/pexels-photo-1267337.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1108102/pexels-photo-1108102.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267361/pexels-photo-1267361.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1108118/pexels-photo-1108118.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267339/pexels-photo-1267339.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    [
-      "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1108117/pexels-photo-1108117.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    [
-      "https://images.pexels.com/photos/1267334/pexels-photo-1267334.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1108092/pexels-photo-1108092.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267329/pexels-photo-1267329.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267348/pexels-photo-1267348.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    [
-      "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-  ];
 
   const evolutionCards = [
     {
@@ -120,16 +89,6 @@ const HomePage: React.FC = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length
-    );
-  };
-
   const handleCardClick = (card: any) => {
     setModalData({
       title: card.title,
@@ -143,11 +102,6 @@ const HomePage: React.FC = () => {
     navigate("/sobre-nosotros");
   };
 
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div
       className="min-h-screen"
@@ -160,62 +114,12 @@ const HomePage: React.FC = () => {
         id="inicio"
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* Background Carousel */}
-        <div className="absolute inset-0">
-          <div className="relative w-full h-full">
-            {carouselSlides.map((slide, slideIndex) => (
-              <div
-                key={slideIndex}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  slideIndex === currentSlide ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <div className="grid grid-cols-5 h-full">
-                  {slide.map((image, imageIndex) => (
-                    <div
-                      key={imageIndex}
-                      className="relative overflow-hidden"
-                      style={{
-                        backgroundImage: `url(${image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    >
-                      <div className="absolute inset-0 bg-black/40"></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Carousel Controls */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Carousel Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-            {carouselSlides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentSlide ? "bg-white" : "bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+        <BackgroundCarousel
+        slides={carouselSlides}
+        autoPlay={true}
+        autoPlayInterval={5000}
+        className="z-0"
+      />
 
         {/* Hero Content */}
         <div
@@ -364,6 +268,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* LinkedIn Section */}
+      {/* <LinkedInCard /> */}
       <section id="comparar" className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-[var(--color-primary)] mb-12">
@@ -415,7 +320,8 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Contact Form Footer */}
-      <footer
+      <ContactFooter />
+      {/* <footer
         id="contacto"
         className="bg-[var(--color-primary)] text-white py-20 px-4"
       >
@@ -501,7 +407,7 @@ const HomePage: React.FC = () => {
             </p>
           </div>
         </div>
-      </footer>
+      </footer> */}
 
       {/* Services Modal */}
       <ServicesModal

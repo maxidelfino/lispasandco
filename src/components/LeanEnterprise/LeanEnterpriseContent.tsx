@@ -14,6 +14,10 @@ import {
   HandPlatter,
   Merge,
   MonitorCheck,
+  MapPin,
+  Target,
+  Grid,
+  Users,
 } from "lucide-react";
 import LeanEnterpriseTimelineGraphic from "../../icons-componets/LeanEnterprise/LeanEnterpriseTimelineGraphic";
 
@@ -264,60 +268,73 @@ const LeanEnterpriseContent: React.FC = () => {
       title: "¿Para qué tipo de empresas?",
       subtitle: "Perfil empresarial ideal",
       children: (
-        <>
-          <div className="bg-gradient-to-br from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl p-8 border border-[var(--color-border)]">
-            <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-6">
-              Tipos de Empresas
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-                <span className="text-[var(--color-text)]">
-                  Industriales, logísticas, agroexportadoras, comerciales o de
-                  servicios
-                </span>
-              </li>
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-                <span className="text-[var(--color-text)]">
-                  Que atraviesan procesos de expansión, reorganización o madurez
-                </span>
-              </li>
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-                <span className="text-[var(--color-text)]">
-                  Que buscan profesionalizar su gestión sin burocratizarla{" "}
-                </span>
-              </li>
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-                <span className="text-[var(--color-text)]">
-                  Que quieren mayor involucramiento de sus equipos
-                </span>
-              </li>
-            </ul>
-          </div>
-          {/* <div>
-            {[
-              "Industriales, logísticas, agroexportadoras, comerciales o de servicios",
-              "Que atraviesan procesos de expansión, reorganización o madurez",
-              "Que buscan profesionalizar su gestión sin burocratizarla",
-              "Que quieren mayor involucramiento de sus equipos",
-            ].map((detail, idx) => (
-              <div
-                key={idx}
-                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
-              >
-                <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
-
-                <span className="text-[var(--color-text)] leading-relaxed flex-1">
-                  {detail}
-                </span>
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+          <h3 className="col-span-full text-2xl font-bold text-[var(--color-primary)]">
+            Tipos de Empresas
+          </h3>
+          {[
+            {
+              icon: MapPin,
+              title: "Implementación Progresiva",
+              description:
+                "Industriales, logísticas, agroexportadoras, comerciales o de servicios",
+            },
+            {
+              icon: Target,
+              title: "Intervención Focalizada",
+              description:
+                "Que atraviesan procesos de expansión, reorganización o madurez",
+            },
+            {
+              icon: Grid,
+              title: "Escalabilidad Modular",
+              description:
+                "Que buscan profesionalizar su gestión sin burocratizarla",
+            },
+            {
+              icon: Users,
+              title: "Cultura Participativa",
+              description: "Que quieren mayor involucramiento de sus equipos",
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-4 space-x-3">
+                <feature.icon className="w-8 h-8" />
+                <h4 className="text-xl font-bold text-[var(--color-primary)]">
+                  {feature.title}
+                </h4>
               </div>
-            ))}
-          </div> */}
-        </>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
       ),
+      // children: (
+      // {/* <div>
+      //   {[
+      //     "Industriales, logísticas, agroexportadoras, comerciales o de servicios",
+      //     "Que atraviesan procesos de expansión, reorganización o madurez",
+      //     "Que buscan profesionalizar su gestión sin burocratizarla",
+      //     "Que quieren mayor involucramiento de sus equipos",
+      //   ].map((detail, idx) => (
+      //     <div
+      //       key={idx}
+      //       className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+      //     >
+      //       <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+
+      //       <span className="text-[var(--color-text)] leading-relaxed flex-1">
+      //         {detail}
+      //       </span>
+      //     </div>
+      //   ))}
+      // </div> */}
+      // ),
     },
     {
       id: "4",

@@ -17,6 +17,10 @@ import {
   GitBranch,
   Gauge,
   AlertTriangle,
+  Repeat,
+  Factory,
+  Building,
+  ChartCandlestick,
 } from "lucide-react";
 import FlowStableMethodologyGraphic from "../../icons-componets/FlowStable/flowstablemethodologygraphic";
 import FlowStableTimelineGraphic from "../../icons-componets/FlowStable/flowstabletimelinegraphic";
@@ -313,48 +317,57 @@ const FlowStableContent: React.FC = () => {
       title: "¿Para quién está pensado?",
       subtitle: "Tipos de empresas ideales para FlowStable™",
       children: (
-        <div className="bg-gradient-to-br from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl p-8 border border-[var(--color-border)]">
-          <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-6">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+          <h3 className="col-span-full text-2xl font-bold text-[var(--color-primary)]">
             Tipos de Empresas
           </h3>
-          <ul className="space-y-3">
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas industriales o de servicios con procesos operativos
-                continuos o en batch
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas pequeñas o medianas con una sola línea de producción o
-                servicio
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas productivas o de servicios de gran volumen que puedan
-                ser abordadas en secuencias sucesivas
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Negocios en los cuales la estacionalidad juega un papel
-                fundamental en los resultados económicos
-              </span>
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mr-3"></div>
-              <span className="text-[var(--color-text)]">
-                Empresas que necesiten controlar y aumentar su producción en
-                ciertos momentos del año sin necesidad de invertir en activos
-                fijos
-              </span>
-            </li>
-          </ul>
+          {[
+            {
+              icon: Repeat,
+              title: "Implementación Progresiva",
+              description:
+                "Empresas industriales o de servicios con procesos operativos continuos o en batch",
+            },
+            {
+              icon: Building,
+              title: "Intervención Focalizada",
+              description:
+                "Empresas pequeñas o medianas con una sola línea de producción o servicio",
+            },
+            {
+              icon: Factory,
+              title: "Escalabilidad Modular",
+              description:
+                "Empresas productivas o de servicios de gran volumen que puedan ser abordadas en secuencias sucesivas",
+            },
+            {
+              icon: ChartCandlestick,
+              title: "Gestión Estacional",
+              description:
+                "Negocios en los cuales la estacionalidad juega un papel fundamental en los resultados económicos",
+            },
+            {
+              icon: TrendingUp,
+              title: "Flexibilidad de Capacidad",
+              description:
+                "Empresas que necesiten controlar y aumentar su producción en ciertos momentos del año sin necesidad de invertir en activos fijos",
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-4 space-x-3">
+                <feature.icon className="w-8 h-8" />
+                <h4 className="text-xl font-bold text-[var(--color-primary)]">
+                  {feature.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       ),
     },
