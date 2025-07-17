@@ -90,11 +90,21 @@ export const ContactFooter: React.FC = () => {
     message: string;
   } | null>(null);
 
+  React.useEffect(() => {
+  if (toast) {
+    const timeout = setTimeout(() => {
+      setToast(null);
+    }, 3000);
+
+    return () => clearTimeout(timeout); // limpia si cambia antes de tiempo
+  }
+}, [toast]);
+
   const onSubmit = async (data: FormData) => {
     try {
       const res = await emailjs.send(
-        'service_yn9ib5g',     // 👈 tu Service ID
-        'template_uo6xkvy',    // 👈 tu Template ID
+        'service_yn9ib5g',
+        'template_uo6xkvy',
         {
           name: data.name,
           company: data.company || "No especificado",
@@ -102,11 +112,11 @@ export const ContactFooter: React.FC = () => {
           email: data.email,
           message: data.message,
         },
-        'UV6jxCVYKlwvH3GhS'   // 👈 tu Public Key
+        'UV6jxCVYKlwvH3GhS'
       );
 
       if (res.status !== 200) throw new Error("Error en servidor");
-      // setToast({ type: "success", message: "¡Mensaje enviado con éxito!" });
+      setToast({ type: "success", message: "¡Mensaje enviado con éxito!" });
       reset();
     } catch (err) {
       console.error(err);
