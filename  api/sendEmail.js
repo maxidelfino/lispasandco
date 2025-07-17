@@ -1,6 +1,5 @@
 import sgMail from "@sendgrid/mail";
 
-// Inicializa con la clave desde la variable de entorno
 if (!process.env.SENDGRID_API_KEY) {
   throw new Error("Falta la variable SENDGRID_API_KEY");
 }
