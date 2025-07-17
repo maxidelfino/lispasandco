@@ -13,6 +13,8 @@ import {
   X,
 } from "lucide-react";
 
+import emailjs from 'emailjs-com';
+
 // Schema Joi con mensajes explícitos
 const schema = Joi.object({
   name: Joi.string().min(2).max(50).required().messages({
@@ -90,16 +92,21 @@ export const ContactFooter: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const res = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const res = await emailjs.send(
+        'service_yn9ib5g',     // 👈 tu Service ID
+        'template_uo6xkvy',    // 👈 tu Template ID
+        {
+          name: data.name,
+          company: data.company || "No especificado",
+          phone: data.phone || "No especificado",
+          email: data.email,
+          message: data.message,
+        },
+        'UV6jxCVYKlwvH3GhS'   // 👈 tu Public Key
+      );
 
-      console.log("Response:", res);
-
-      if (!res.ok) throw new Error("Error en servidor");
-      setToast({ type: "success", message: "¡Mensaje enviado con éxito!" });
+      if (res.status !== 200) throw new Error("Error en servidor");
+      // setToast({ type: "success", message: "¡Mensaje enviado con éxito!" });
       reset();
     } catch (err) {
       console.error(err);

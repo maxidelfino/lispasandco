@@ -2,6 +2,7 @@
   "name": "lyspas-co",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
     "@sendgrid/mail": "^8.1.5",
+    "emailjs-com": "^3.2.0",
     "joi": "^17.13.3",
     "lucide-react": "^0.525.0",
     "react": "^18.3.1",
