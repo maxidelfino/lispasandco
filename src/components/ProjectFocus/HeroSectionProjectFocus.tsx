@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import CTAButtons from "../CTAButtons";
 
 const HeroSectionProjectFocus: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -13,14 +12,6 @@ const HeroSectionProjectFocus: React.FC = () => {
   const scrollToContent = () => {
     const element = document.getElementById("ProjectFocus-content");
     element?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleContactClick = () => {
-    navigate("/");
-    setTimeout(() => {
-      const element = document.querySelector("footer");
-      element?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
   };
 
   return (
@@ -58,9 +49,6 @@ const HeroSectionProjectFocus: React.FC = () => {
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
             Selección Estratégica de Proyectos
           </span>
-          {/* <span className="block text-3xl md:text-4xl font-normal text-white/80">
-            potenciamos equipos
-          </span> */}
         </h1>
 
         {/* Subtitle */}
@@ -69,24 +57,18 @@ const HeroSectionProjectFocus: React.FC = () => {
           decisiones reales de inversión, priorizadas con criterio y alineadas
           con el rumbo de la empresa.
         </p>
-        {/* <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Se centra en identificar y eliminar los 8 desperdicios clásicos de la
-          gestión LEAN, combinando análisis visual, trabajo de campo y proyectos
-          de mejora con impacto real.
-        </p> */}
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <button
-            onClick={handleContactClick}
-            className="group bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-2xl flex items-center space-x-2"
-          >
-            <span>Contactar</span>
-          </button>
-          <button className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105 hover:shadow-2xl">
-            Descargar Ficha Técnica
-          </button>
-        </div>
+        <CTAButtons
+          onDownload={() => {
+            const link = document.createElement("a");
+            link.href = "assets/pdf/LYS-P010-Project-Focus.pdf";
+            link.download = "LYS-P010-Project-Focus.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+        />
       </div>
 
       {/* Scroll Indicator */}

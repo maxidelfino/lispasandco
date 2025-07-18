@@ -33,7 +33,14 @@ const WasteZeroPage: React.FC = () => {
         description="Implementa WasteZero™ y establece la base de disciplina operativa que impulsa mejoras continuas, eficiencia y resultados sostenibles."
         primaryButtonText="Contactar Ahora"
         secondaryButtonText="Descargar Ficha Técnica"
-        // onSecondaryClick={() => console.log("Descargar clicked")}
+        onSecondaryClick={() => {
+          const link = document.createElement("a");
+          link.href = "assets/pdf/LYS-P003-WASTEZERO.pdf";
+          link.download = "LYS-P003-WASTEZERO.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
         // className="mb-32"
       />
     </div>

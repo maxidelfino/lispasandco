@@ -3,11 +3,10 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import CTAButtons from "../CTAButtons";
 
 const HeroSection5S: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -16,14 +15,6 @@ const HeroSection5S: React.FC = () => {
   const scrollToContent = () => {
     const element = document.getElementById("FiveSPlus-content");
     element?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleContactClick = () => {
-    navigate("/");
-    setTimeout(() => {
-      const element = document.querySelector("footer");
-      element?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
   };
 
   return (
@@ -81,17 +72,16 @@ const HeroSection5S: React.FC = () => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <button
-            onClick={handleContactClick}
-            className="group bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-2xl flex items-center space-x-2"
-          >
-            <span>Contactar</span>
-          </button>
-          <button className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105 hover:shadow-2xl">
-            Descargar Ficha Técnica
-          </button>
-        </div>
+        <CTAButtons
+          onDownload={() => {
+            const link = document.createElement("a");
+            link.href = "/assets/pdf/LYS-P008-5S-PLUS.pdf";
+            link.download = "LYS-P008-5S-PLUS.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+        />
       </div>
 
       {/* Scroll Indicator */}

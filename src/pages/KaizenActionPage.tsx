@@ -45,30 +45,16 @@ const KaizenActionPage: React.FC = () => {
         description="Transforma tus problemas más complejos en oportunidades de mejora con KAIZEN ACTION™"
         primaryButtonText="Contactar Ahora"
         secondaryButtonText="Descargar Ficha Técnica"
-        // onSecondaryClick={() => console.log("Descargar clicked")}
+        onSecondaryClick={() => {
+          const link = document.createElement("a");
+          link.href = "assets/pdf/LYS-P006-Kaizen-Action.pdf";
+          link.download = "LYS-P006-Kaizen-Action.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
         // className="mb-32"
       />
-
-      {/* <section className="mb-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-2xl p-12 text-white shadow-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Listo para impulsar tu cambio?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Transforma tus problemas más complejos en oportunidades de mejora con KAIZEN ACTION™
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-xl">
-                Contactar Ahora
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105">
-                Descargar Ficha Técnica
-              </button>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 };
