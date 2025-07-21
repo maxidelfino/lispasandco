@@ -17,6 +17,9 @@ import {
   Calendar,
   Factory,
   Link,
+  EyeOff,
+  SlidersHorizontal,
+  BarChart3,
 } from "lucide-react";
 import ProblemsProjectFocusGraphic from "../../icons-componets/ProjectFocus/ProblemsProjectFocusGraphic";
 import PhasesProjectFocusGraphic from "../../icons-componets/ProjectFocus/PhasesProjectFocusGraphic";
@@ -241,20 +244,69 @@ const ProjectFocusContent: React.FC = () => {
       icon: Zap,
       title: "Problemas que resuelve",
       subtitle: "Principales desafíos organizacionales",
-      description:
-        "ProjectFocus™ aborda los problemas más comunes que enfrentan las organizaciones al momento de seleccionar y priorizar proyectos de inversión. Estos desafíos impactan directamente en la eficiencia de los recursos y en el logro de objetivos estratégicos.",
-      subDescription: "ProjectFocus™ resuelve esto:",
-      graphic: <ProblemsProjectFocusGraphic />,
-      details: [
-        "Falta de visibilidad sobre iniciativas",
-        "Priorización ineficiente",
-        "Falta de alineamiento con objetivos estratégicos",
-        "Tensiones internas por asignación de recursos",
-        "Evaluación ineficiente de impacto-beneficio",
-        "Falta de responsabilidad en la acción",
-      ],
-      // footer:
-      // "WasteZero™ resuelve el desorden silencioso que afecta los resultados sin que nadie lo note. Ayuda a transformar la frustración en acción concreta y sostenible",
+      // description:
+      //   "ProjectFocus™ aborda los problemas más comunes que enfrentan las organizaciones al momento de seleccionar y priorizar proyectos de inversión. Estos desafíos impactan directamente en la eficiencia de los recursos y en el logro de objetivos estratégicos.",
+      // subDescription: "ProjectFocus™ resuelve esto:",
+      // graphic: <ProblemsProjectFocusGraphic />,
+      // details: [
+      //   "Falta de visibilidad sobre iniciativas",
+      //   "Priorización ineficiente",
+      //   "Falta de alineamiento con objetivos estratégicos",
+      //   "Tensiones internas por asignación de recursos",
+      //   "Evaluación ineficiente de impacto-beneficio",
+      //   "Falta de responsabilidad en la acción",
+      // ],
+      children: (
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+          {[
+            {
+              icon: EyeOff,
+              title: "Falta de Visibilidad",
+              description: "Falta de visibilidad sobre iniciativas",
+            },
+            {
+              icon: SlidersHorizontal,
+              title: "Priorización Débil",
+              description: "Priorización ineficiente",
+            },
+            {
+              icon: Target,
+              title: "Desalineación Estratégica",
+              description: "Falta de alineamiento con objetivos estratégicos",
+            },
+            {
+              icon: Users,
+              title: "Conflictos Internos",
+              description: "Tensiones internas por asignación de recursos",
+            },
+            {
+              icon: BarChart3,
+              title: "Evaluación Inexacta",
+              description: "Evaluación ineficiente de impacto‑beneficio",
+            },
+            {
+              icon: CheckCircle,
+              title: "Baja Responsabilidad",
+              description: "Falta de responsabilidad en la acción",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-3 space-x-3">
+                <item.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {item.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      ),
     },
     {
       id: "4",

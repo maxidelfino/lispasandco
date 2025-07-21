@@ -177,6 +177,7 @@ export const servicesData_aplicaciones: Service[] = [
     color: "from-[var(--color-primary)] to-[var(--color-secondary)]",
     route: "/flowstable",
     isActive: false,
+    comingSoon: true,
   },
   {
     id: "leanbridge",
@@ -194,5 +195,6 @@ export const servicesData_aplicaciones: Service[] = [
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/leanbridge",
     isActive: false,
+    comingSoon: true,
   },
 ]

@@ -388,7 +388,7 @@ const StratBridgeContent: React.FC = () => {
       id: "6",
       icon: Award,
       title: "Resultados esperados",
-    //   subtitle: "Transformar problemas en oportunidades de mejora",
+      //   subtitle: "Transformar problemas en oportunidades de mejora",
       graphic: <ObjectivesStratBridgeGraphic />,
     },
     {
@@ -396,12 +396,13 @@ const StratBridgeContent: React.FC = () => {
       icon: Bubbles,
       title: "¿Cómo se relaciona con otros programas?",
       subtitle: "",
-      subDescription: "Se relaciona con otros programas de LYSPAS & CO, tales como:",
+      subDescription:
+        "Se relaciona con otros programas de LYSPAS & CO, tales como:",
       graphic: <StratBridgeConnectionsGraphic />,
       details: [
         "LeanBridge™: genera el contexto operativo y cultural ideal para aplicar planificación estratégica",
-"Kaizen Action™: resuelve problemas transversales surgidos de los objetivos e indicadores Hoshin",
-"FlowStable™ y WasteZero™: pueden integrarse como iniciativas específicas dentro de la matrIz.",
+        "Kaizen Action™: resuelve problemas transversales surgidos de los objetivos e indicadores Hoshin",
+        "FlowStable™ y WasteZero™: pueden integrarse como iniciativas específicas dentro de la matrIz.",
       ],
       large: true,
     },

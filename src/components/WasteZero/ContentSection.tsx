@@ -16,6 +16,9 @@ import {
   ArrowRight,
   MapPin,
   RulerDimensionLine,
+  View,
+  RefreshCcw,
+  Box,
 } from "lucide-react";
 import WhatIsGraphic from "../../icons-componets/WasteZero/WhatIsGraphic";
 import ProblemsGraphic from "../../icons-componets/WasteZero/ProblemsGraphic";
@@ -41,6 +44,7 @@ interface ModalProps {
     subDescription?: string;
     details: string[];
     footer?: string;
+    children?: React.ReactNode;
   };
   graphic: React.ReactNode;
 }
@@ -157,56 +161,60 @@ const Modal: React.FC<ModalProps> = ({
         </div>
 
         {/* Content */}
-        <div className="p-8">
-          {/* Description */}
-          {content.description && (
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                {content.description}
-              </p>
+        {content.children ? (
+          <div className="p-8">{content.children}</div>
+        ) : (
+          <div className="p-8">
+            {/* Description */}
+            {content.description && (
+              <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+                <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                  {content.description}
+                </p>
+              </div>
+            )}
+
+            {/* Graphic */}
+            <div className="mb-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
+              {graphic}
             </div>
-          )}
 
-          {/* Graphic */}
-          <div className="mb-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
-            {graphic}
-          </div>
-
-          {/* Details */}
-          <div>
-            {content.subDescription && (
-              <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
-                {content.subDescription}
+            {/* Details */}
+            <div>
+              {content.subDescription && (
+                <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+                  {content.subDescription}
+                </p>
+              )}
+              {content.details.map((detail, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+                >
+                  {detail.startsWith("✔") ? (
+                    <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                    </div>
+                  ) : detail.startsWith("✘") ? (
+                    <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <XCircle className="w-4 h-4 text-red-600" />
+                    </div>
+                  ) : (
+                    <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+                  )}
+                  <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                    {detail.replace(/^[✔✘] /, "")}
+                  </span>
+                </div>
+              ))}
+            </div>
+            {content.footer && (
+              <p className="text-[var(--color-text)] leading-relaxed text-lg">
+                {content.footer}
               </p>
             )}
-            {content.details.map((detail, idx) => (
-              <div
-                key={idx}
-                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
-              >
-                {detail.startsWith("✔") ? (
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
-                  </div>
-                ) : detail.startsWith("✘") ? (
-                  <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <XCircle className="w-4 h-4 text-red-600" />
-                  </div>
-                ) : (
-                  <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
-                )}
-                <span className="text-[var(--color-text)] leading-relaxed flex-1">
-                  {detail.replace(/^[✔✘] /, "")}
-                </span>
-              </div>
-            ))}
           </div>
-          {content.footer && (
-            <p className="text-[var(--color-text)] leading-relaxed text-lg">
-              {content.footer}
-            </p>
-          )}
-        </div>
+        )}
 
         {/* Footer */}
         {/* <div className="sticky bottom-0 bg-gradient-to-t from-white to-transparent p-8 pt-4">
@@ -274,18 +282,62 @@ const WasteZeroContent: React.FC = () => {
       icon: Zap,
       title: "Problemas que resuelve",
       subtitle: "Los desperdicios y desafíos operativos",
-      description:
-        "La mayoría de las empresas tienen desperdicios ocultos que consumen tiempo, dinero y energía, pero no saben cómo identificarlos ni tienen un método claro para abordarlos con sus propios equipos.",
-      subDescription: "WasteZero™ resuelve esto:",
-      graphic: <ProblemsGraphic />,
-      details: [
-        "Falta de visibilidad sobre las ineficiencias diarias.",
-        "Pérdida de recursos por procesos innecesarios, movimientos mal diseñados o tiempos muertos.",
-        "Equipos que trabajan duro pero no con enfoque.",
-        "Cultura organizacional que no prioriza la mejora constante.",
-      ],
-      footer:
-        "WasteZero™ resuelve el desorden silencioso que afecta los resultados sin que nadie lo note. Ayuda a transformar la frustración en acción concreta y sostenible",
+      // description:
+      //   "La mayoría de las empresas tienen desperdicios ocultos que consumen tiempo, dinero y energía, pero no saben cómo identificarlos ni tienen un método claro para abordarlos con sus propios equipos.",
+      // subDescription: "WasteZero™ resuelve esto:",
+      // graphic: <ProblemsGraphic />,
+      // details: [
+      //   "Falta de visibilidad sobre las ineficiencias diarias.",
+      //   "Pérdida de recursos por procesos innecesarios, movimientos mal diseñados o tiempos muertos.",
+      //   "Equipos que trabajan duro pero no con enfoque.",
+      //   "Cultura organizacional que no prioriza la mejora constante.",
+      // ],
+      // footer:
+      //   "WasteZero™ resuelve el desorden silencioso que afecta los resultados sin que nadie lo note. Ayuda a transformar la frustración en acción concreta y sostenible",
+      children: (
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+          {[
+            {
+              icon: View,
+              title: "Visibilidad Limitada",
+              description:
+                "Falta de visibilidad sobre las ineficiencias diarias.",
+            },
+            {
+              icon: Box,
+              title: "Recursos Desperdiciados",
+              description:
+                "Pérdida de recursos por procesos innecesarios, movimientos mal diseñados o tiempos muertos.",
+            },
+            {
+              icon: Users,
+              title: "Esfuerzo Sin Enfoque",
+              description: "Equipos que trabajan duro pero no con enfoque.",
+            },
+            {
+              icon: RefreshCcw,
+              title: "Mejora Inconstante",
+              description:
+                "Cultura organizacional que no prioriza la mejora constante.",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-3 space-x-3">
+                <item.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {item.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      ),
     },
     {
       id: "5",
@@ -353,7 +405,7 @@ const WasteZeroContent: React.FC = () => {
       ],
       footer:
         "La visualización del progreso y la participación transversal son el motor de una mejora continua sostenible.",
-        large: true,
+      large: true,
     },
     {
       id: "7",
@@ -447,6 +499,7 @@ const WasteZeroContent: React.FC = () => {
           subDescription: selectedFeature?.subDescription,
           details: selectedFeature?.details || [],
           footer: selectedFeature?.footer,
+          children: selectedFeature?.children,
         }}
         graphic={selectedFeature?.graphic || <div />}
       />

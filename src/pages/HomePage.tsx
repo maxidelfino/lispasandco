@@ -1,102 +1,48 @@
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
-  Linkedin,
+  // Linkedin,
   // Mail,
   // Phone,
-  MapPin,
+  // MapPin,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import FloatingNavigation from "../components/FloatingNavigation";
-import ServicesModal from "../components/ServicesModal";
-import {
-  servicesData_aplicaciones,
-  servicesData_estabilizar,
-  servicesData_iniciar,
-  servicesData_transformar,
-} from "../data/services";
+// import ServicesModal from "../components/ServicesModal";
 import BackgroundCarousel from "../components/BackgroundCarousel";
 import { carouselSlides } from "../data/carouselSlides";
 import ContactFooter from "../components/Footer";
 import LinkedInCard from "../components/LinkedInCard";
+import EvolutionPath from "../components/EvolutionPath";
 
 const HomePage: React.FC = () => {
-  const [activeCard, setActiveCard] = useState<string | null>(null);
+  // const [activeCard, setActiveCard] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState({ title: "", subtitle: "", servicesData: [] });
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [modalData, setModalData] = useState({
+  //   title: "",
+  //   subtitle: "",
+  //   servicesData: [],
+  // });
   const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const evolutionCards = [
-    {
-      id: "iniciar",
-      title: "Iniciar la mejora",
-      subtitle: "Etapa 1: Iniciar la mejora",
-      description: "Problemas visibles, Foco en el equipo",
-      quote: "“El primer paso para dejar de perder valor sin darte cuenta.”",
-      details: [
-        "Acá comienza todo. En esta etapa se identifican desperdicios, se ordenan los espacios y se entrena a los equipos para que vean oportunidades donde antes solo había rutina.",
-        "Ideal para empresas que quieren mejorar pero aún no saben por dónde empezar.",
-      ],
-      servicesData: servicesData_iniciar,
-    },
-    {
-      id: "estabilizar",
-      title: "Estabilizar y profesionalizar",
-      subtitle: "Etapa 2: Estabilizar y profesionalizar",
-      description: "Procesos, Métricas, Liderazgo",
-      quote:
-        "“Cuando las cosas ya no alcanzan con funcionar: ahora tienen que funcionar siempre bien.”",
-      details: [
-        "Una vez que eliminaste lo innecesario, llega el momento de poner foco en la estabilidad, el control de procesos y el empoderamiento del liderazgo operativo.",
-        "Esta etapa convierte la mejora en una práctica sistemática y medible.",
-      ],
-      servicesData: servicesData_estabilizar,
-    },
-    {
-      id: "transformar",
-      title: "Transformar la organización",
-      subtitle: "Etapa 3: Transformar la organización",
-      description: "Alinear estrategia con ejecución",
-      quote: "“De las mejoras puntuales a una cultura que transforma todo.”",
-      details: [
-        "El paso más ambicioso. Aquí se alinean la estrategia, los datos, los procesos y los equipos. La mejora continua ya no es un proyecto: es la forma en la que se gestiona la empresa.",
-        "Ideal para quienes buscan escalar, integrar o reinventar su modelo de trabajo.",
-      ],
-      servicesData: servicesData_transformar,
-    },
-    {
-      id: "aplicaciones",
-      title: "Aplicaciones en la industria",
-      subtitle: "Etapa 4: Aplicación avanzada",
-      description: "Transformación de procesos industriales",
-      quote: '"Donde la mejora se convierte en parte del ADN industrial."',
-      details: [
-        "Implementación de herramientas avanzadas de gestión en líneas de producción y procesos industriales.",
-        "Aplicación de modelos de mejora continua adaptados a contextos reales como manufactura, logística o servicios técnicos.",
-        "Casos de éxito y resultados concretos: reducción de tiempos muertos, aumento de eficiencia, y mejora de indicadores clave.",
-      ],
-      servicesData: servicesData_aplicaciones,
-    },
-  ];
-
   const scrollToServices = () => {
     const element = document.getElementById("services-section");
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleCardClick = (card: any) => {
-    setModalData({
-      title: card.title,
-      subtitle: card.subtitle,
-      servicesData: card.servicesData || [],
-    });
-    setModalOpen(true);
-  };
+  // const handleCardClick = (card: any) => {
+  //   setModalData({
+  //     title: card.title,
+  //     subtitle: card.subtitle,
+  //     servicesData: card.servicesData || [],
+  //   });
+  //   setModalOpen(true);
+  // };
 
   const handleAboutUsClick = () => {
     navigate("/sobre-nosotros");
@@ -115,11 +61,11 @@ const HomePage: React.FC = () => {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
         <BackgroundCarousel
-        slides={carouselSlides}
-        autoPlay={true}
-        autoPlayInterval={5000}
-        className="z-0"
-      />
+          slides={carouselSlides}
+          autoPlay={true}
+          autoPlayInterval={5000}
+          className="z-0"
+        />
 
         {/* Hero Content */}
         <div
@@ -162,7 +108,9 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services-section" className="py-20 px-4">
+      <EvolutionPath />
+
+      {/* <section id="services-section" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
@@ -196,13 +144,10 @@ const HomePage: React.FC = () => {
                     {card.subtitle}
                   </h3>
                   <div className="space-y-2 text-[var(--color-text)]">
-                    {/* <p className="font-medium">{card.subtitle}</p> */}
                     <p className="font-medium">{card.description}</p>
-                    {/* <p className="text-sm">{card.description}</p> */}
                   </div>
                 </div>
 
-                {/* Expanded Content */}
                 <div
                   className={`transition-all duration-500 overflow-hidden ${
                     activeCard === card.id
@@ -229,7 +174,6 @@ const HomePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Click indicator */}
                 <div className="absolute top-4 right-4 text-[var(--color-border)] group-hover:text-[var(--color-secondary)] transition-colors">
                   <div className="text-xs font-medium">
                     Click para ver programas
@@ -239,7 +183,7 @@ const HomePage: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Video Section */}
       <section
@@ -268,8 +212,8 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* LinkedIn Section */}
-      {/* <LinkedInCard /> */}
-      <section id="comparar" className="py-20 px-4">
+      <LinkedInCard />
+      {/* <section id="comparar" className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-[var(--color-primary)] mb-12">
             Conecta con nosotros
@@ -317,7 +261,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Form Footer */}
       <ContactFooter />
@@ -410,13 +354,13 @@ const HomePage: React.FC = () => {
       </footer> */}
 
       {/* Services Modal */}
-      <ServicesModal
+      {/* <ServicesModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         title={modalData.title}
         subtitle={modalData.subtitle}
         servicesData={modalData.servicesData || []} // Ensure servicesData is passed correctly
-      />
+      /> */}
     </div>
   );
 };

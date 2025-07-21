@@ -18,6 +18,12 @@ import {
   Target,
   Grid,
   Users,
+  CalendarClock,
+  Share2,
+  Trash2,
+  BarChart3,
+  Clock,
+  ChartNoAxesGantt,
 } from "lucide-react";
 import LeanEnterpriseTimelineGraphic from "../../icons-componets/LeanEnterprise/LeanEnterpriseTimelineGraphic";
 
@@ -238,25 +244,57 @@ const LeanEnterpriseContent: React.FC = () => {
       title: "¿Qué problemas resuelve?",
       subtitle: "Desafíos organizacionales comunes",
       children: (
-        <div>
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
           {[
-            "Falta de organización general en procesos",
-            "Bajo nivel de planificación y control visual",
-            "Desconexión entre áreas (silos)",
-            "Ausencia de una cultura de mejora estructurada",
-            "Pérdidas ocultas y desperdicios no gestionados",
-            "Indicadores que no reflejan la realidad",
-            "Dificultad para sostener mejoras en el tiempo",
-          ].map((detail, idx) => (
+            {
+              icon: ChartNoAxesGantt,
+              title: "Desorden de Procesos",
+              description: "Falta de organización general en procesos",
+            },
+            {
+              icon: CalendarClock,
+              title: "Planificación Deficiente",
+              description: "Bajo nivel de planificación y control visual",
+            },
+            {
+              icon: Share2,
+              title: "Silos Organizacionales",
+              description: "Desconexión entre áreas (silos)",
+            },
+            {
+              icon: XCircle,
+              title: "Cultura Fragmentada",
+              description: "Ausencia de una cultura de mejora estructurada",
+            },
+            {
+              icon: Trash2,
+              title: "Desperdicios Ocultos",
+              description: "Pérdidas ocultas y desperdicios no gestionados",
+            },
+            {
+              icon: BarChart3,
+              title: "Indicadores Inexactos",
+              description: "Indicadores que no reflejan la realidad",
+            },
+            {
+              icon: Clock,
+              title: "Sostenibilidad Baja",
+              description: "Dificultad para sostener mejoras en el tiempo",
+            },
+          ].map((problem, idx) => (
             <div
               key={idx}
-              className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
-
-              <span className="text-[var(--color-text)] leading-relaxed flex-1">
-                {detail}
-              </span>
+              <div className="flex items-center mb-3 space-x-3">
+                <problem.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {problem.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {problem.description}
+              </p>
             </div>
           ))}
         </div>
@@ -314,27 +352,6 @@ const LeanEnterpriseContent: React.FC = () => {
           ))}
         </div>
       ),
-      // children: (
-      // {/* <div>
-      //   {[
-      //     "Industriales, logísticas, agroexportadoras, comerciales o de servicios",
-      //     "Que atraviesan procesos de expansión, reorganización o madurez",
-      //     "Que buscan profesionalizar su gestión sin burocratizarla",
-      //     "Que quieren mayor involucramiento de sus equipos",
-      //   ].map((detail, idx) => (
-      //     <div
-      //       key={idx}
-      //       className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
-      //     >
-      //       <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
-
-      //       <span className="text-[var(--color-text)] leading-relaxed flex-1">
-      //         {detail}
-      //       </span>
-      //     </div>
-      //   ))}
-      // </div> */}
-      // ),
     },
     {
       id: "4",

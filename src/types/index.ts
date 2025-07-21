@@ -40,4 +40,5 @@ export interface Service {
   color?: string
   route?: string
   isActive: boolean
+  comingSoon?: boolean
 }
