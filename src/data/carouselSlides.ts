@@ -7,15 +7,10 @@ import image5 from "../assets/image5.png";
 // Carousel images - 4 slides with 5 images each
 export const carouselSlides = [
   [
-    // "https://images.pexels.com/photos/1267337/pexels-photo-1267337.jpeg?auto=compress&cs=tinysrgb&w=800",
     image1,
-    // "https://images.pexels.com/photos/1108102/pexels-photo-1108102.jpeg?auto=compress&cs=tinysrgb&w=800",
     image2,
-    // "https://images.pexels.com/photos/1267361/pexels-photo-1267361.jpeg?auto=compress&cs=tinysrgb&w=800",
     image3,
-    // "https://images.pexels.com/photos/1108118/pexels-photo-1108118.jpeg?auto=compress&cs=tinysrgb&w=800",
     image4,
-    // "https://images.pexels.com/photos/1267339/pexels-photo-1267339.jpeg?auto=compress&cs=tinysrgb&w=800",
     image5,
   ],
   // [

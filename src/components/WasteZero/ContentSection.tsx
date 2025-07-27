@@ -20,8 +20,6 @@ import {
   RefreshCcw,
   Box,
 } from "lucide-react";
-import WhatIsGraphic from "../../icons-componets/WasteZero/WhatIsGraphic";
-import ProblemsGraphic from "../../icons-componets/WasteZero/ProblemsGraphic";
 import ResultsGraphic from "../../icons-componets/WasteZero/ResultsGraphic";
 import MethodologyGraphic from "../../icons-componets/WasteZero/MethodologyGraphic";
 import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
@@ -175,9 +173,11 @@ const Modal: React.FC<ModalProps> = ({
             )}
 
             {/* Graphic */}
-            <div className="mb-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
-              {graphic}
-            </div>
+            {graphic && (
+              <div className="mb-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
+                {graphic}
+              </div>
+            )}
 
             {/* Details */}
             <div>
@@ -215,18 +215,6 @@ const Modal: React.FC<ModalProps> = ({
             )}
           </div>
         )}
-
-        {/* Footer */}
-        {/* <div className="sticky bottom-0 bg-gradient-to-t from-white to-transparent p-8 pt-4">
-          <div className="flex justify-center">
-            <button
-              onClick={onClose}
-              className="bg-[var(--color-secondary)] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[var(--color-primary)] transition-all duration-200 hover:scale-105 shadow-lg"
-            >
-              Entendido
-            </button>
-          </div>
-        </div> */}
       </div>
     </div>
   );
@@ -264,36 +252,52 @@ const WasteZeroContent: React.FC = () => {
       icon: Target,
       title: "¿Qué es y qué no es?",
       subtitle: "Definición clara del programa WasteZero™",
-      description:
-        "WasteZero™ es un programa end-to-end de mejora continua que combina formación técnica práctica, aplicación del ciclo DMAIC y desarrollo de proyectos reales, generando disciplina operativa sin reemplazar al equipo interno.",
-      graphic: <WhatIsGraphic />,
-      details: [
-        "✔ Un programa para identificar y eliminar desperdicios según la filosofía Lean",
-        "✔ Una formación práctica que prepara facilitadores de mejora (Kaizen / Green Belt)",
-        "✔ El punto de partida ideal para organizaciones que inician su camino Lean",
-        // "",
-        "✘ Una capacitación sin aplicación real",
-        "✘ Una solución parcial o desconectada de la estrategia",
-        "✘ Un taller genérico sin compromiso de implementación",
-      ],
+      // description:
+      //   "Lideres Lean - WasteZero™ es un programa táctico de implementación LEAN diseñado por LYSPAS & CO para empresas que buscan reducir pérdidas operativas de manera concreta, visible y sostenida. Se centra en identificar y eliminar los 8 desperdicios clásicos de la gestión LEAN, combinando análisis visual, trabajo de campo y proyectos de mejora con impacto real.",
+      // details: [
+      //   "✔ Un programa para identificar y eliminar desperdicios según la filosofía Lean",
+      //   "✔ Una formación práctica que prepara facilitadores de mejora (Kaizen / Green Belt)",
+      //   "✔ El punto de partida ideal para organizaciones que inician su camino Lean",
+      //   // "",
+      //   "✘ Una capacitación sin aplicación real",
+      //   "✘ Una solución parcial o desconectada de la estrategia",
+      //   "✘ Un taller genérico sin compromiso de implementación",
+      // ],
+      children: (
+    <div className="">
+      {/* Intro Block */}
+      <div className="bg-gradient-to-r from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl border-l-4 border-[var(--color-secondary)] p-6 mb-6">
+        <h4 className="text-xl font-semibold text-[var(--color-primary)] mb-4">
+          ¿Qué es WasteZero™?
+        </h4>
+        <p className="text-[var(--color-text)] leading-relaxed">
+          Líderes Lean - WasteZero™ es un programa táctico de implementación LEAN diseñado
+          por LYSPAS &amp; CO para empresas que buscan reducir pérdidas operativas de manera
+          concreta, visible y sostenida. Se centra en identificar y eliminar los 8 desperdicios
+          clásicos de la gestión LEAN, combinando análisis visual, trabajo de campo y proyectos
+          de mejora con impacto real.
+        </p>
+      </div>
+
+      {/* Call‑out Block */}
+      <div className="bg-[var(--color-surface)] rounded-2xl shadow-lg p-6 border border-[var(--color-border)]">
+        <h4 className="text-xl font-semibold text-[var(--color-secondary)] mb-3">
+          Más que un curso…
+        </h4>
+        <p className="text-[var(--color-text)] leading-relaxed">
+          Más que un curso, Líderes Lean - WasteZero™ es una primera experiencia de
+          transformación productiva con foco en resultados, participación y aplicación
+          inmediata.
+        </p>
+      </div>
+    </div>
+  ),
     },
     {
       id: "2",
       icon: Zap,
       title: "Problemas que resuelve",
       subtitle: "Los desperdicios y desafíos operativos",
-      // description:
-      //   "La mayoría de las empresas tienen desperdicios ocultos que consumen tiempo, dinero y energía, pero no saben cómo identificarlos ni tienen un método claro para abordarlos con sus propios equipos.",
-      // subDescription: "WasteZero™ resuelve esto:",
-      // graphic: <ProblemsGraphic />,
-      // details: [
-      //   "Falta de visibilidad sobre las ineficiencias diarias.",
-      //   "Pérdida de recursos por procesos innecesarios, movimientos mal diseñados o tiempos muertos.",
-      //   "Equipos que trabajan duro pero no con enfoque.",
-      //   "Cultura organizacional que no prioriza la mejora constante.",
-      // ],
-      // footer:
-      //   "WasteZero™ resuelve el desorden silencioso que afecta los resultados sin que nadie lo note. Ayuda a transformar la frustración en acción concreta y sostenible",
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
           {[
@@ -501,7 +505,7 @@ const WasteZeroContent: React.FC = () => {
           footer: selectedFeature?.footer,
           children: selectedFeature?.children,
         }}
-        graphic={selectedFeature?.graphic || <div />}
+        graphic={selectedFeature?.graphic}
       />
     </div>
   );

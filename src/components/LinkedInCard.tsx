@@ -70,12 +70,12 @@ const LinkedInCard: React.FC = () => {
         </div>
 
         {/* Call to action text */}
-        <div className="text-center mt-8">
+        {/* <div className="text-center mt-8">
           <p className="text-[var(--color-text)]">
             Síguenos en LinkedIn para contenido exclusivo sobre mejora continua
             y transformación empresarial
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );
