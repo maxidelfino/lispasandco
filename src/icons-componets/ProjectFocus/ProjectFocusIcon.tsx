@@ -71,7 +71,7 @@ const ProjectFocusIcon = () => {
       })}
 
       {/* Connection Lines to Center */}
-      {projectPhases.map((_, index) => {
+      {/* {projectPhases.map((_, index) => {
         const angle = (index * 90) - 45
         const startRadius = 66
         const endRadius = 100
@@ -94,7 +94,7 @@ const ProjectFocusIcon = () => {
             />
           </svg>
         )
-      })}
+      })} */}
 
       {/* Focus rings */}
       <div className="absolute inset-0 flex items-center justify-center">

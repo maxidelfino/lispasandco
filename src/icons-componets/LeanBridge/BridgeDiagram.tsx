@@ -8,7 +8,7 @@ const BridgeDiagram: React.FC = () => {
     const icons = [Link, Users, Target, BarChart3, Repeat];
     const labels = [
       "Conexión",
-      "Empoderamiento",
+      "Empoderamiento0000",
       "Cultura",
       "Resultados",
       "Sostenibilidad",

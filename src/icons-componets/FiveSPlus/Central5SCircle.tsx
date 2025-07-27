@@ -44,7 +44,7 @@ const Central5SCircle = () => {
       })}
 
       {/* Connecting Lines */}
-      {fiveSSteps.map((_, index) => {
+      {/* {fiveSSteps.map((_, index) => {
         const angle = index * 72 - 90;
         const startRadius = 66;
         const endRadius = 80;
@@ -71,7 +71,7 @@ const Central5SCircle = () => {
             />
           </svg>
         );
-      })}
+      })} */}
     </div>
   );
 };

@@ -33,7 +33,7 @@ const DecisionesEstadisticasIcon = () => {
               </div>
 
               {/* Data visualization lines */}
-              {index < 3 && (
+              {/* {index < 3 && (
                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                   <div className="flex space-x-1">
                     {[...Array(5)].map((_, i) => (
@@ -48,7 +48,7 @@ const DecisionesEstadisticasIcon = () => {
                     ))}
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
 
             <div className="text-sm">
@@ -60,12 +60,12 @@ const DecisionesEstadisticasIcon = () => {
       })}
 
       {/* Central connecting element */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div
           className="w-24 h-24 border-2 border-[var(--color-secondary)] border-dashed rounded-full opacity-20 animate-spin"
           style={{ animationDuration: "20s" }}
         ></div>
-      </div>
+      </div> */}
     </div>
   )
 }

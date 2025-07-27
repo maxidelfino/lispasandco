@@ -1,4 +1,4 @@
-import type { Service } from "../types"
+import type { Service } from "../types";
 
 export const servicesData_iniciar: Service[] = [
   {
@@ -7,13 +7,18 @@ export const servicesData_iniciar: Service[] = [
     description:
       "Programa táctico de implementación LEAN para reducir pérdidas operativas de manera concreta, visible y sostenida.",
     longDescription: [
-      "WasteZero™ es un programa táctico de implementación LEAN diseñado para empresas que buscan reducir pérdidas operativas de manera concreta, visible y sostenida. ",
+      "WasteZero™ es un programa práctico diseñado para empresas que buscan reducir pérdidas operativas de manera concreta, visible y ágil, sin grandes inversiones.",
       "Se centra en identificar y eliminar los 8 desperdicios clásicos de la gestión LEAN, combinando análisis visual, trabajo de campo y proyectos de mejora con impacto real.",
     ],
     icon: "Target",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/wastezero",
     isActive: true,
+    benefits: [
+      "Reducción inmediata de desperdicios: menos reprocesos, menos movimientos innecesarios, menos espera.",
+      "Generación rápida de ideas o proyectos con valor agregado y baja inversión.",
+    ],
+    subtitle: "Reducir ineficiencias"
   },
   {
     id: "5s-plus",
@@ -28,42 +33,12 @@ export const servicesData_iniciar: Service[] = [
     color: "from-[var(--color-accent)] to-[var(--color-primary)]",
     route: "/5splus",
     isActive: true,
-  },
-]
-
-export const servicesData_estabilizar: Service[] = [
-  {
-    id: "flowstable",
-    name: "FlowStable™",
-    description:
-      "Programa estructurado para estabilizar procesos industriales y operativos, logrando eficiencia y previsibilidad sin necesidad de activos fijos.",
-    longDescription: [
-      "FlowStable™ es el programa más recomendado por LYSPAS & CO para empresas que desean aumentar su producción o eficiencia sin invertir en activos fijos.",
-      "A través de un enfoque estructurado, cambia el foco de la operación de perseguir récords diarios a construir procesos estables y previsibles, lo que permite alcanzar mejores promedios, mayor control y más productividad.",
-      "Su metodología incluye una secuencia diaria de mejora, seguimiento de desvíos, y aplicación de acciones correctivas en tiempo real, generando resultados rápidos y sostenidos.",
-      "La implementación se realiza en 7 fases durante 7 meses, que van desde diagnóstico inicial hasta la consolidación de equipos y auditorías de gestión.",
+    benefits: [
+      "El programa de 5 S PLUS aporta un beneficio inmediato en el clima laboral y la sensación de pertenencia de la gente.",
+      "Además, el sistema desarrolla un concepto de orden, limpieza y estandarización de espacios lo cual transforma los espacios en donde se aplica.",
+      "Los beneficios se visualizan a los 3-4 meses de estar aplicado el programa",
     ],
-    icon: "ChartNoAxesCombined",
-    color: "from-[var(--color-primary)] to-[var(--color-secondary)]",
-    route: "/flowstable",
-    isActive: true,
-  },
-  {
-    id: "leanbridge",
-    name: "LeanBridge™",
-    description:
-      "Programa integral de transformación LEAN para eliminar desperdicios, mejorar eficiencia y consolidar cultura de mejora continua.",
-    longDescription: [
-      "LeanBridge™ es un programa de transformación diseñado por LYSPAS & CO para implementar técnicas LEAN en empresas que buscan eficiencia, eliminación de desperdicios y una cultura sostenible de mejora continua.",
-      "Funciona como un 'puente' entre el estado actual y el ideal, conectando equipos operativos con objetivos estratégicos y alineando ejecución diaria con visión de largo plazo.",
-      "Redistribuye la toma de decisiones hacia la línea de frente, empoderando a los equipos para resolver problemas en el origen y liberando a la supervisión para enfocarse en iniciativas estratégicas.",
-      "Su propósito es integrar la mejora continua al ADN operativo, posicionando a la empresa en un nivel inicial de madurez según el LYSPAS HIERARCHY INDEX™.",
-      "En los primeros 8 meses se logran mejoras visibles en orden, planificación y cumplimiento de metas; la gestión visual permite detectar y corregir desviaciones en tiempo real.",
-    ],
-    icon: "Binoculars",
-    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
-    route: "/leanbridge",
-    isActive: true,
+    subtitle: "Ordenar sectores"
   },
   {
     id: "kaizen-action",
@@ -82,6 +57,47 @@ export const servicesData_estabilizar: Service[] = [
     color: "from-[var(--color-accent)] to-[var(--color-primary)]",
     route: "/kaizen-action",
     isActive: true,
+    benefits: [
+      "Resuelve problemas complejos y recurrentes que generan pérdida de eficiencia o conflicto entre áreas y que necesita de gran interacción e involucramiento de personas especialistas para su solución",
+      "Activa una cultura de mejora transversal y ágil",
+      "Desarrolla la habilidad interna de liderar KAIZEN con criterios profesionales",
+      "Forma agentes de cambio en plena acción, dentro del contexto real de la empresa",
+    ],
+    subtitle: 'Resolver problemas'
+  },
+  {
+    id: "change-bridge",
+    name: "Change Bridge™",
+    description: "",
+    isActive: false,
+    benefits: [],
+    working: true,
+    subtitle: 'Gestionar cambios'
+  },
+];
+
+export const servicesData_estabilizar: Service[] = [
+  {
+    id: "flowstable",
+    name: "FlowStable™",
+    description:
+      "Programa estructurado para estabilizar procesos industriales y operativos, logrando eficiencia y previsibilidad sin necesidad de activos fijos.",
+    longDescription: [
+      "FlowStable™ es el programa más recomendado por LYSPAS & CO para empresas que desean aumentar su producción o eficiencia sin invertir en activos fijos.",
+      "A través de un enfoque estructurado, cambia el foco de la operación de perseguir récords diarios a construir procesos estables y previsibles, lo que permite alcanzar mejores promedios, mayor control y más productividad.",
+      "Su metodología incluye una secuencia diaria de mejora, seguimiento de desvíos, y aplicación de acciones correctivas en tiempo real, generando resultados rápidos y sostenidos.",
+      "La implementación se realiza en 7 fases durante 7 meses, que van desde diagnóstico inicial hasta la consolidación de equipos y auditorías de gestión.",
+    ],
+    icon: "ChartNoAxesCombined",
+    color: "from-[var(--color-primary)] to-[var(--color-secondary)]",
+    route: "/flowstable",
+    isActive: true,
+    benefits: [
+      "Estabiliza los procesos productivos",
+      "Reduce la variabilidad en la producción",
+      "Mejora la predictibilidad de resultados",
+      "Optimiza el flujo de materiales",
+    ],
   },
   {
     id: "decisiones-estadisticas",
@@ -100,26 +116,157 @@ export const servicesData_estabilizar: Service[] = [
     color: "from-[var(--color-accent)] to-[var(--color-secondary)]",
     route: "/decisiones-estadisticas",
     isActive: false,
+    benefits: [
+      "Mejora la calidad de las decisiones",
+      "Reduce la incertidumbre en la toma de decisiones",
+      "Desarrolla capacidades analíticas",
+      "Optimiza el uso de datos",
+    ],
   },
-]
+  {
+    id: "ops-standard",
+    name: "OPS Standard™",
+    description: "",
+    isActive: false,
+    benefits: [],
+    working: true,
+  },
+  {
+    id: "leanbridge",
+    name: "LeanBridge™",
+    description:
+      "Programa integral de transformación LEAN para eliminar desperdicios, mejorar eficiencia y consolidar cultura de mejora continua.",
+    longDescription: [
+      "LeanBridge™ es un programa de transformación diseñado por LYSPAS & CO para implementar técnicas LEAN en empresas que buscan eficiencia, eliminación de desperdicios y una cultura sostenible de mejora continua.",
+      "Funciona como un 'puente' entre el estado actual y el ideal, conectando equipos operativos con objetivos estratégicos y alineando ejecución diaria con visión de largo plazo.",
+      "Redistribuye la toma de decisiones hacia la línea de frente, empoderando a los equipos para resolver problemas en el origen y liberando a la supervisión para enfocarse en iniciativas estratégicas.",
+      "Su propósito es integrar la mejora continua al ADN operativo, posicionando a la empresa en un nivel inicial de madurez según el LYSPAS HIERARCHY INDEX™.",
+      "En los primeros 8 meses se logran mejoras visibles en orden, planificación y cumplimiento de metas; la gestión visual permite detectar y corregir desviaciones en tiempo real.",
+    ],
+    icon: "Binoculars",
+    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+    route: "/leanbridge",
+    isActive: true,
+    benefits: [
+      "Conecta la estrategia con la operación diaria",
+      "Desarrolla capacidades de liderazgo lean",
+      "Mejora la comunicación organizacional",
+      "Acelera la implementación de mejoras",
+    ],
+  },
+];
 
 export const servicesData_transformar: Service[] = [
+  // {
+  //   id: "lean-enterprise-transformation",
+  //   name: "Lean Enterprise Transformation™",
+  //   description:
+  //     "Programa integral para implementar un sistema de gestión de mejora continua en toda la empresa.",
+  //   longDescription: [
+  //     "Lean Enterprise Transformation™ es un programa diseñado por LYSPAS & CO para instaurar un sistema de gestión basado en mejora continua, abarcando cultura, procesos, personas y resultados.",
+  //     "Está dirigido a empresas que buscan ordenar su operación, eliminar desperdicios, estabilizar procesos e integrar indicadores reales, sin importar su sector o tamaño.",
+  //     "Resuelve problemas comunes como la falta de organización, silos, bajos niveles de planificación, pérdidas ocultas y desconexión entre indicadores y la realidad operativa.",
+  //     "Comprende 7 fases: diagnóstico inicial, alineación directiva, selección de áreas piloto, implementación de herramientas, cultura visual, expansión y consolidación con seguimiento.",
+  //     "La implementación es secuencial, con alta presencia de especialistas y agentes internos, y se completa en 12 meses, finalizando con una auditoría de valor y madurez.",
+  //     "Ofrece resultados como procesos estables y visuales, equipos comprometidos, aumento de productividad sin inversiones en activos, reducción de desperdicios y liderazgo interno de mejora continua.",
+  //   ],
+  //   icon: "Building2",
+  //   color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+  //   route: "/lean-enterprise-transformation",
+  //   isActive: true,
+  //   benefits: [
+  //     "Transformación integral de la organización",
+  //     "Desarrollo de cultura lean sostenible",
+  //     "Mejora continua sistemática",
+  //     "Resultados a largo plazo",
+  //   ],
+  // },
   {
-    id: "lean-enterprise-transformation",
-    name: "Lean Enterprise Transformation™",
-    description: "Programa integral para implementar un sistema de gestión de mejora continua en toda la empresa.",
+    id: "asset-bridge",
+    name: "Asset Bridge™",
+    description: "",
+    isActive: false,
+    benefits: [],
+    working: true,
+  },
+  {
+    id: "autops",
+    name: "AUTOPS™",
+    description: "",
+    isActive: false,
+    benefits: [],
+    working: true,
+  },
+  {
+    id: "projectfocus",
+    name: "ProjectFocus™",
+    description:
+      "Metodología práctica para convertir objetivos estratégicos en decisiones de inversión alineadas y priorizadas.",
     longDescription: [
-      "Lean Enterprise Transformation™ es un programa diseñado por LYSPAS & CO para instaurar un sistema de gestión basado en mejora continua, abarcando cultura, procesos, personas y resultados.",
-      "Está dirigido a empresas que buscan ordenar su operación, eliminar desperdicios, estabilizar procesos e integrar indicadores reales, sin importar su sector o tamaño.",
-      "Resuelve problemas comunes como la falta de organización, silos, bajos niveles de planificación, pérdidas ocultas y desconexión entre indicadores y la realidad operativa.",
-      "Comprende 7 fases: diagnóstico inicial, alineación directiva, selección de áreas piloto, implementación de herramientas, cultura visual, expansión y consolidación con seguimiento.",
-      "La implementación es secuencial, con alta presencia de especialistas y agentes internos, y se completa en 12 meses, finalizando con una auditoría de valor y madurez.",
-      "Ofrece resultados como procesos estables y visuales, equipos comprometidos, aumento de productividad sin inversiones en activos, reducción de desperdicios y liderazgo interno de mejora continua.",
+      "ProjectFocus™ es una metodología diseñada para ayudar a las organizaciones a identificar, analizar y seleccionar proyectos de inversión de forma colaborativa y alineada con el plan estratégico vigente.",
+      "No todos los proyectos tienen el mismo valor, por eso incluye herramientas para mapear beneficios, costos, impactos y riesgos, y tomar decisiones basadas en valor, no en urgencia.",
+      "Funciona como extensión natural de StratBridge™, transformando la planificación estratégica en un portafolio ejecutable de proyectos clave.",
+      "Resuelve problemas como la falta de visibilidad de iniciativas, priorización ineficiente, desalineación con objetivos, tensiones internas y evaluación insuficiente de impacto-beneficio.",
+      "Ideal para empresas industriales, logísticas, comerciales, agroexportadoras o de servicios que realizan planificación anual de inversiones o expansión y desean involucrar a gerentes intermedios en la toma de decisiones.",
+      "Consta de fases claras: exploración de oportunidades, mapeo funcional, análisis de alineación, brainstorming, valoración de proyectos, priorización e identificación de responsables y ejecución.",
+      "Se implementa por medio de un primer encuentro virtual o presencial para alinear ideas, seguido de dos sesiones presenciales de medio día para presentar, discutir y decidir proyectos en grupo.",
+      "Se integra con StratBridge™, llevando la estrategia definida a acciones concretas, seleccionando cuidadosamente los proyectos que alineados a la visión y respaldados por los tomadores de decisión.",
     ],
-    icon: "Building2",
-    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
-    route: "/lean-enterprise-transformation",
+    icon: "Puzzle",
+    color: "from-[var(--color-primary)] to-[var(--color-accent)]",
+    route: "/projectfocus",
     isActive: true,
+    benefits: [
+      "Enfoca los recursos en proyectos críticos",
+      "Mejora la gestión de proyectos",
+      "Acelera la entrega de resultados",
+      "Desarrolla capacidades de gestión",
+    ],
+  },
+  {
+    id: "lab-ci-focus",
+    name: "Lab Ci Focus™",
+    description: "",
+    isActive: false,
+    benefits: [],
+    working: true,
+  },
+];
+
+export const servicesData_aplicaciones: Service[] = [
+  {
+    id: "op-s-excellence",
+    name: "OP S Excellence™",
+    description: "",
+    isActive: false,
+    benefits: [],
+    working: true,
+  },
+  {
+    id: "projectfocus",
+    name: "ProjectFocus™",
+    description:
+      "Metodología práctica para convertir objetivos estratégicos en decisiones de inversión alineadas y priorizadas.",
+    longDescription: [
+      "ProjectFocus™ es una metodología diseñada para ayudar a las organizaciones a identificar, analizar y seleccionar proyectos de inversión de forma colaborativa y alineada con el plan estratégico vigente.",
+      "No todos los proyectos tienen el mismo valor, por eso incluye herramientas para mapear beneficios, costos, impactos y riesgos, y tomar decisiones basadas en valor, no en urgencia.",
+      "Funciona como extensión natural de StratBridge™, transformando la planificación estratégica en un portafolio ejecutable de proyectos clave.",
+      "Resuelve problemas como la falta de visibilidad de iniciativas, priorización ineficiente, desalineación con objetivos, tensiones internas y evaluación insuficiente de impacto-beneficio.",
+      "Ideal para empresas industriales, logísticas, comerciales, agroexportadoras o de servicios que realizan planificación anual de inversiones o expansión y desean involucrar a gerentes intermedios en la toma de decisiones.",
+      "Consta de fases claras: exploración de oportunidades, mapeo funcional, análisis de alineación, brainstorming, valoración de proyectos, priorización e identificación de responsables y ejecución.",
+      "Se implementa por medio de un primer encuentro virtual o presencial para alinear ideas, seguido de dos sesiones presenciales de medio día para presentar, discutir y decidir proyectos en grupo.",
+      "Se integra con StratBridge™, llevando la estrategia definida a acciones concretas, seleccionando cuidadosamente los proyectos que alineados a la visión y respaldados por los tomadores de decisión.",
+    ],
+    icon: "Puzzle",
+    color: "from-[var(--color-primary)] to-[var(--color-accent)]",
+    route: "/projectfocus",
+    isActive: true,
+    benefits: [
+      "Enfoca los recursos en proyectos críticos",
+      "Mejora la gestión de proyectos",
+      "Acelera la entrega de resultados",
+      "Desarrolla capacidades de gestión",
+    ],
   },
   {
     id: "stratbridge",
@@ -138,63 +285,19 @@ export const servicesData_transformar: Service[] = [
     color: "from-[var(--color-primary)] to-[var(--color-accent)]",
     route: "/stratbridge",
     isActive: true,
+    benefits: [
+      "Alinea la estrategia con la ejecución",
+      "Mejora la toma de decisiones estratégicas",
+      "Desarrolla capacidades de planificación",
+      "Acelera el logro de objetivos estratégicos",
+    ],
   },
   {
-    id: "projectfocus",
-    name: "ProjectFocus™ – Selección Estratégica de Proyectos",
-    description:
-      "Metodología práctica para convertir objetivos estratégicos en decisiones de inversión alineadas y priorizadas.",
-    longDescription: [
-      "ProjectFocus™ es una metodología diseñada para ayudar a las organizaciones a identificar, analizar y seleccionar proyectos de inversión de forma colaborativa y alineada con el plan estratégico vigente.",
-      "No todos los proyectos tienen el mismo valor, por eso incluye herramientas para mapear beneficios, costos, impactos y riesgos, y tomar decisiones basadas en valor, no en urgencia.",
-      "Funciona como extensión natural de StratBridge™, transformando la planificación estratégica en un portafolio ejecutable de proyectos clave.",
-      "Resuelve problemas como la falta de visibilidad de iniciativas, priorización ineficiente, desalineación con objetivos, tensiones internas y evaluación insuficiente de impacto-beneficio.",
-      "Ideal para empresas industriales, logísticas, comerciales, agroexportadoras o de servicios que realizan planificación anual de inversiones o expansión y desean involucrar a gerentes intermedios en la toma de decisiones.",
-      "Consta de fases claras: exploración de oportunidades, mapeo funcional, análisis de alineación, brainstorming, valoración de proyectos, priorización e identificación de responsables y ejecución.",
-      "Se implementa por medio de un primer encuentro virtual o presencial para alinear ideas, seguido de dos sesiones presenciales de medio día para presentar, discutir y decidir proyectos en grupo.",
-      "Se integra con StratBridge™, llevando la estrategia definida a acciones concretas, seleccionando cuidadosamente los proyectos que alineados a la visión y respaldados por los tomadores de decisión.",
-    ],
-    icon: "Puzzle",
-    color: "from-[var(--color-primary)] to-[var(--color-accent)]",
-    route: "/projectfocus",
-    isActive: true,
-  },
-]
-
-export const servicesData_aplicaciones: Service[] = [
-  {
-    id: "flowstable",
-    name: "FlowStable™",
-    description:
-      "Programa estructurado para estabilizar procesos industriales y operativos, logrando eficiencia y previsibilidad sin necesidad de activos fijos.",
-    longDescription: [
-      "FlowStable™ es el programa más recomendado por LYSPAS & CO para empresas que desean aumentar su producción o eficiencia sin invertir en activos fijos.",
-      "A través de un enfoque estructurado, cambia el foco de la operación de perseguir récords diarios a construir procesos estables y previsibles, lo que permite alcanzar mejores promedios, mayor control y más productividad.",
-      "Su metodología incluye una secuencia diaria de mejora, seguimiento de desvíos, y aplicación de acciones correctivas en tiempo real, generando resultados rápidos y sostenidos.",
-      "La implementación se realiza en 7 fases durante 7 meses, que van desde diagnóstico inicial hasta la consolidación de equipos y auditorías de gestión.",
-    ],
-    icon: "TrendingUp",
-    color: "from-[var(--color-primary)] to-[var(--color-secondary)]",
-    route: "/flowstable",
+    id: "people-first",
+    name: "People First™",
+    description: "",
     isActive: false,
-    comingSoon: true,
+    benefits: [],
+    working: true,
   },
-  {
-    id: "leanbridge",
-    name: "LeanBridge™",
-    description:
-      "Programa integral de transformación LEAN para eliminar desperdicios, mejorar eficiencia y consolidar cultura de mejora continua.",
-    longDescription: [
-      "LeanBridge™ es un programa de transformación diseñado por LYSPAS & CO para implementar técnicas LEAN en empresas que buscan eficiencia, eliminación de desperdicios y una cultura sostenible de mejora continua.",
-      "Funciona como un 'puente' entre el estado actual y el ideal, conectando equipos operativos con objetivos estratégicos y alineando ejecución diaria con visión de largo plazo.",
-      "Redistribuye la toma de decisiones hacia la línea de frente, empoderando a los equipos para resolver problemas en el origen y liberando a la supervisión para enfocarse en iniciativas estratégicas.",
-      "Su propósito es integrar la mejora continua al ADN operativo, posicionando a la empresa en un nivel inicial de madurez según el LYSPAS HIERARCHY INDEX™.",
-      "En los primeros 8 meses se logran mejoras visibles en orden, planificación y cumplimiento de metas; la gestión visual permite detectar y corregir desviaciones en tiempo real.",
-    ],
-    icon: "Bridge",
-    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
-    route: "/leanbridge",
-    isActive: false,
-    comingSoon: true,
-  },
-]
+];

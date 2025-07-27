@@ -1,20 +1,27 @@
-import React from 'react';
-import { Globe } from 'lucide-react';
+import React from "react";
+import { Globe } from "lucide-react";
 
 const Header: React.FC = () => {
   return (
     <header className="flex justify-between items-center p-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white">
-      <div className="text-2xl font-bold tracking-wide">
-        LYSPAS & CO
-      </div>
+      <div className="text-2xl font-bold tracking-wide">LYSPAS & CO</div>
       <nav className="flex items-center space-x-6">
-        <a href="#" className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity">
+        <a
+          href="#"
+          className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity"
+        >
           Inicio
         </a>
-        <a href="#" className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity">
+        <a
+          href="#"
+          className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity"
+        >
           Sobre Nosotros
         </a>
-        <a href="#" className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity">
+        <a
+          href="#"
+          className="text-sm font-semibold opacity-80 hover:opacity-100 transition-opacity"
+        >
           Contacto
         </a>
         <div className="flex items-center space-x-2">

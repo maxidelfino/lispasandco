@@ -118,25 +118,6 @@ const EvolutionPath: React.FC = () => {
                       )}
                     </div>
                   </div>
-                  {/* {card.programs && (
-                    <div className="border-t border-[var(--color-border)] mb-4 pt-6 flex flex-col md:flex-row items-start">
-                      <h4 className="text-left text-lg font-semibold text-[var(--color-primary)] mb-4 md:mb-0 md:mr-6 whitespace-nowrap">
-                        Programas disponibles:
-                      </h4>
-
-                      <div className="flex flex-col gap-2">
-                        {card.programs.map((program) => (
-                          <span
-                            key={program}
-                            className="inline-block bg-[var(--color-surface)] text-[var(--color-secondary)] font-medium px-4 py-2 rounded-full shadow-md transition-transform hover:scale-105 text-center"
-                          >
-                            {program}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )} */}
-
                   {card.programs && (
                     <div className="border-t border-[var(--color-border)] mb-6 pt-6">
                       {/* Título de sección */}
@@ -178,7 +159,7 @@ const EvolutionPath: React.FC = () => {
         onClose={() => setModalOpen(false)}
         title={modalData.title}
         subtitle={modalData.subtitle}
-        servicesData={modalData.servicesData || []} // Ensure servicesData is passed correctly
+        services={modalData.servicesData}
       />
     </>
   );

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import lyspasIconBlack from "../assets/lyspascoicon-black.png";
+import lyspasIconWhite from "../assets/lyspascoicon-white.png";
 
 const FloatingNavigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -83,6 +85,25 @@ const FloatingNavigation: React.FC = () => {
               }`}
             >
               LYSPAS & CO
+              <div className="w-full h-full pt-3">
+                <svg
+                  className="w-full h-full"
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  role="img"
+                  aria-label="LYSPAS & CO. Logo"
+                >
+                  <image
+                    x="0"
+                    y="0"
+                    width="85%"
+                    height="85%"
+                    preserveAspectRatio="xMidYMid meet"
+                    xlinkHref={isScrolled ? lyspasIconBlack : lyspasIconWhite}
+                  />
+                </svg>
+              </div>
             </button>
 
             {/* Desktop Navigation */}

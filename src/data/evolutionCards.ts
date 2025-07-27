@@ -90,7 +90,7 @@ export const evolutionCards: evolutionCardsType[] = [
     ],
     servicesData: servicesData_aplicaciones,
     programs: [
-      "Optimizar sistema integral de gestion OPS EXCELLENCE™",
+      "Optimizar sistema integral de gestion OP S EXCELLENCE™",
       "Seleccionar proyectos PROJECT FOCUS™",
       "Alinear la estrategia STRAT BRIDGE™",
       "Gestionar recursos humanos PEOPLE FIRST™",
