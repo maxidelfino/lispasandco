@@ -33,7 +33,7 @@ export const evolutionCards: evolutionCardsType[] = [
     programs: [
       "Reducir ineficiencias WASTE ZERO™",
       "Ordenar sectores 5S PLUS™",
-      "Resolver problemas complejos KAIZEN ACTION™",
+      "Resolver problemas KAIZEN ACTION™",
       "Gestionar los cambios CHANGE BRIDGE™",
     ],
   },
