@@ -204,7 +204,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
   };
 
   const showComingSoon = services.some((service) => isComingSoon(service));
-
+  console.log({showComingSoon})
   if (!isOpen || !currentService) return null;
 
   return (
@@ -340,7 +340,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
               Mantente atento a nuestras actualizaciones.
             </div>
 
-            <div className="mt-8 p-6 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]">
+            {/* <div className="mt-8 p-6 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]">
               <div className="text-center">
                 <h4 className="font-bold text-[var(--color-primary)] mb-2">
                   ¿No estás seguro cuál programa es el adecuado?
@@ -356,7 +356,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
                   Solicitar Consulta Gratuita
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         ) : (
           <div className="p-4 sm:p-6 lg:p-8 overflow-y-auto max-h-[calc(95vh-200px)] sm:max-h-[calc(90vh-250px)]">
