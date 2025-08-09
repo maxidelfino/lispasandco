@@ -80,30 +80,16 @@ const FloatingNavigation: React.FC = () => {
             {/* Logo */}
             <button
               onClick={handleLogoClick}
-              className={`text-2xl font-bold tracking-wider transition-colors duration-300 hover:scale-105 ${
+              className={`flex items-center h-16 space-x-3 overflow-hidden transition-colors duration-300 hover:scale-105 ${
                 isScrolled ? "text-[var(--color-primary)]" : "text-white"
               }`}
             >
-              LYSPAS & CO
-              <div className="w-full h-full pt-3">
-                <svg
-                  className="w-full h-full"
-                  viewBox="0 0 100 100"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  role="img"
-                  aria-label="LYSPAS & CO. Logo"
-                >
-                  <image
-                    x="0"
-                    y="0"
-                    width="85%"
-                    height="85%"
-                    preserveAspectRatio="xMidYMid meet"
-                    xlinkHref={isScrolled ? lyspasIconBlack : lyspasIconWhite}
-                  />
-                </svg>
-              </div>
+              <img
+                src={isScrolled ? lyspasIconBlack : lyspasIconWhite}
+                alt="LYSPAS & CO Logo"
+                className="h-20 w-auto"
+                style={{ maxHeight: "100%" }}
+              />
             </button>
 
             {/* Desktop Navigation */}

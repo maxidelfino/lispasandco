@@ -45,7 +45,9 @@ const LinkedInCard: React.FC = () => {
               </div>
               <span className="text-[var(--color-secondary)]">•</span>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/lyspasandco/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[var(--color-secondary)] hover:underline font-medium"
               >
                 Información de contacto
@@ -59,7 +61,15 @@ const LinkedInCard: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <button className="bg-[var(--color-secondary)] text-white px-8 py-3 rounded-full font-semibold hover:bg-[var(--color-primary)] transition-colors">
+              <button
+                className="bg-[var(--color-secondary)] text-white px-8 py-3 rounded-full font-semibold hover:bg-[var(--color-primary)] transition-colors"
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/company/lyspasandco/",
+                    "_blank"
+                  )
+                }
+              >
                 Ver perfil
               </button>
               {/* <button className="border-2 border-[#0A66C2]text-[var(--color-secondary)] px-8 py-3 rounded-full font-semibold hover:bg-[var(--color-secondary)] hover:text-white transition-all">

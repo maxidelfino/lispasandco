@@ -249,21 +249,21 @@ export const ContactFooter: React.FC = () => {
           <div className="mt-16 pt-8 border-t border-white/20 text-center">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-6">
               <a
-                href="mailto:info@lyspas.com"
+                href="mailto:gonzalo_luvani@lyspasandco.com"
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"
               >
                 <Mail className="w-5 h-5" />
-                <span>info@lyspas.com</span>
+                <span>gonzalo_luvani@lyspasandco.com</span>
               </a>
               <a
                 href="tel:+5434112345678"
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"
               >
                 <Phone className="w-5 h-5" />
-                <span>+54 341 123 4567</span>
+                <span>+54 9 3416 40-8758</span>
               </a>
               <a
-                href="https://linkedin.com/company/lyspas"
+                href="https://www.linkedin.com/company/lyspasandco/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"

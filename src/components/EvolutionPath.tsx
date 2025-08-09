@@ -103,14 +103,14 @@ const EvolutionPath: React.FC = () => {
                         detail.startsWith("Ideal") ? (
                           <p
                             key={index}
-                            className="text-sm text-[var(--color-text)] leading-relaxed"
+                            className="font-medium text-[var(--color-text)] leading-relaxed"
                           >
                             <b>{detail}</b>
                           </p>
                         ) : (
                           <p
                             key={index}
-                            className="text-sm text-[var(--color-text)] leading-relaxed"
+                            className="font-medium text-[var(--color-text)] leading-relaxed"
                           >
                             {detail}
                           </p>
