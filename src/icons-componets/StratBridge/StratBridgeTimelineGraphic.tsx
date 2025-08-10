@@ -45,7 +45,7 @@ const StratBridgeTimelineGraphic: React.FC = () => {
   ];
 
   return (
-    <div className="py-8">
+    <div className="pt-8 pb-4">
       <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-8 text-center">
         Modalidad de implementación (7 MESES)
       </h3>
@@ -78,7 +78,7 @@ const StratBridgeTimelineGraphic: React.FC = () => {
           </div>
 
           {/* Phase details */}
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-4 gap-4 pb-6">
             {phases.map((phase, index) => (
               <div
                 key={index}

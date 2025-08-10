@@ -5,6 +5,7 @@ import CircularWasteDiagram from "../components/WasteZero/CircularWasteDiagram";
 import WasteZeroContent from "../components/WasteZero/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const WasteZeroPage: React.FC = () => {
   useScrollToTop();
@@ -13,7 +14,6 @@ const WasteZeroPage: React.FC = () => {
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
       <HeroSection />
-
       {/* Responsive layout: two columns on desktop, stacked on tablet/mobile */}
       <div className="container mx-auto flex flex-col lg:flex-row items-start py-20 px-4 gap-8">
         {/* Left: Content */}
@@ -26,7 +26,6 @@ const WasteZeroPage: React.FC = () => {
           <CircularWasteDiagram />
         </div>
       </div>
-
       {/* Call to Action */}
       <CTASection
         title="¿Listo para eliminar los desperdicios ocultos de tu operación?"
@@ -43,6 +42,8 @@ const WasteZeroPage: React.FC = () => {
         }}
         // className="mb-32"
       />
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

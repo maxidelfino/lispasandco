@@ -5,6 +5,7 @@ import LeanBridgeContent from "../components/LeanBridge/LeanBridgeContent";
 import BridgeDiagram from "../icons-componets/LeanBridge/BridgeDiagram";
 import FloatingNavigation from "../components/FloatingNavigation";
 import CTASection from "../components/CTASection";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const LeanBridgePage: React.FC = () => {
   useScrollToTop();
@@ -46,6 +47,8 @@ const LeanBridgePage: React.FC = () => {
         }}
         // className="mb-32"
       />
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

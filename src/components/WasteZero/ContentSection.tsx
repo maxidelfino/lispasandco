@@ -15,15 +15,17 @@ import {
   Award,
   ArrowRight,
   MapPin,
-  RulerDimensionLine,
   View,
   RefreshCcw,
   Box,
+  HandCoins,
+  RotateCcw,
+  Lightbulb,
+  DollarSign,
+  CircleQuestionMark,
 } from "lucide-react";
-import ResultsGraphic from "../../icons-componets/WasteZero/ResultsGraphic";
 import MethodologyGraphic from "../../icons-componets/WasteZero/MethodologyGraphic";
 import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
-import MeasurementGraphic from "../../icons-componets/WasteZero/MeasurementGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -249,49 +251,67 @@ const WasteZeroContent: React.FC = () => {
   const features = [
     {
       id: "1",
-      icon: Target,
+      icon: CircleQuestionMark,
       title: "¿Qué es y qué no es?",
       subtitle: "Definición clara del programa WasteZero™",
-      // description:
-      //   "Lideres Lean - WasteZero™ es un programa táctico de implementación LEAN diseñado por LYSPAS & CO para empresas que buscan reducir pérdidas operativas de manera concreta, visible y sostenida. Se centra en identificar y eliminar los 8 desperdicios clásicos de la gestión LEAN, combinando análisis visual, trabajo de campo y proyectos de mejora con impacto real.",
-      // details: [
-      //   "✔ Un programa para identificar y eliminar desperdicios según la filosofía Lean",
-      //   "✔ Una formación práctica que prepara facilitadores de mejora (Kaizen / Green Belt)",
-      //   "✔ El punto de partida ideal para organizaciones que inician su camino Lean",
-      //   // "",
-      //   "✘ Una capacitación sin aplicación real",
-      //   "✘ Una solución parcial o desconectada de la estrategia",
-      //   "✘ Un taller genérico sin compromiso de implementación",
-      // ],
       children: (
-    <div className="">
-      {/* Intro Block */}
-      <div className="bg-gradient-to-r from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-2xl border-l-4 border-[var(--color-secondary)] p-6 mb-6">
-        <h4 className="text-xl font-semibold text-[var(--color-primary)] mb-4">
-          ¿Qué es WasteZero™?
-        </h4>
-        <p className="text-[var(--color-text)] leading-relaxed">
-          Líderes Lean - WasteZero™ es un programa táctico de implementación LEAN diseñado
-          por LYSPAS &amp; CO para empresas que buscan reducir pérdidas operativas de manera
-          concreta, visible y sostenida. Se centra en identificar y eliminar los 8 desperdicios
-          clásicos de la gestión LEAN, combinando análisis visual, trabajo de campo y proyectos
-          de mejora con impacto real.
-        </p>
-      </div>
+        <>
+          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+              WasteZero™ es un programa end-to-end de mejora continua que
+              combina formación técnica práctica, aplicación del ciclo DMAIC y
+              desarrollo de proyectos reales, generando disciplina operativa sin
+              reemplazar al equipo interno.
+            </p>
+          </div>
 
-      {/* Call‑out Block */}
-      <div className="bg-[var(--color-surface)] rounded-2xl shadow-lg p-6 border border-[var(--color-border)]">
-        <h4 className="text-xl font-semibold text-[var(--color-secondary)] mb-3">
-          Más que un curso…
-        </h4>
-        <p className="text-[var(--color-text)] leading-relaxed">
-          Más que un curso, Líderes Lean - WasteZero™ es una primera experiencia de
-          transformación productiva con foco en resultados, participación y aplicación
-          inmediata.
-        </p>
-      </div>
-    </div>
-  ),
+          {/* Details */}
+          <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+              ¿Qué es?
+            </p>
+            {[
+              "✔ Un programa para identificar y eliminar desperdicios según la filosofía Lean",
+              "✔ Una formación práctica que prepara facilitadores de mejora (Kaizen / Green Belt)",
+              "✔ El punto de partida ideal para organizaciones que inician su camino Lean",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail.replace(/^[✔✘] /, "")}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+              ¿Qué no es?
+            </p>
+            {[
+              "✘ Una capacitación sin aplicación real",
+              "✘ Una solución parcial o desconectada de la estrategia",
+              "✘ Un taller genérico sin compromiso de implementación",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <XCircle className="w-4 h-4 text-red-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail.replace(/^[✔✘] /, "")}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
+      ),
     },
     {
       id: "2",
@@ -344,35 +364,6 @@ const WasteZeroContent: React.FC = () => {
       ),
     },
     {
-      id: "5",
-      icon: Settings,
-      title: "Con qué otros productos se relaciona",
-      subtitle: "Escalera sólida hacia un sistema Lean integral",
-      description:
-        "WasteZero™ se conecta naturalmente con otros programas como: 5S Plus™, FlowStable™ y Kaizen Action™, formando una escalera sólida hacia un sistema Lean integral",
-      graphic: <ConnectionsGraphic />,
-      details: [],
-      large: true,
-    },
-    {
-      id: "3",
-      icon: TrendingUp,
-      title: "Resultados esperados",
-      subtitle: "Impacto visible desde el primer mes",
-      description:
-        "WasteZero™ deja resultados visibles en procesos y personas. No es solo formación: es acción concreta, con impacto desde el primer mes.",
-      subDescription:
-        "Después de aplicar WasteZero™, la empresa debería experimentar:",
-      graphic: <ResultsGraphic />,
-      details: [
-        "Reducción de desperdicios: menos reprocesos, menos movimientos innecesarios, menos espera.",
-        "Equipos entrenados y motivados: personas que no solo detectan problemas, sino que los resuelven con herramientas concretas.",
-        "Proyectos de mejora ejecutados: cada participante trabaja en un caso real durante el programa.",
-        "Cultura de mejora instalada: una forma diferente de mirar el trabajo diario, con focoen el valor.",
-        "Primeros pasos hacia la certificación Lean (Green Belt o Facilitador Kaizen).",
-      ],
-    },
-    {
       id: "4",
       icon: Clock,
       title: "Metodología & Tiempos",
@@ -392,29 +383,72 @@ const WasteZeroContent: React.FC = () => {
       ],
     },
     {
-      id: "6",
-      icon: RulerDimensionLine,
-      title: "¿Cómo medir los resultados?",
-      subtitle: "WasteZero™ se mide por el valor de las ideas que genera.",
-      description:
-        "El principal indicador de éxito es la cantidad de propuestas de mejora surgidas del propio equipo, muchas de las cuales se implementan rápidamente con impacto visible.",
-      subDescription:
-        "El programa se mantiene vivo gracias a la capacitación continua y al hábito de generar ideas en equipo, impulsando mejoras en:",
-      graphic: <MeasurementGraphic />,
-      details: [
-        "Claridad de roles y procesos",
-        "Costos y tiempos operativos",
-        "Compromiso y autonomía de los equipos",
-        "Resultados concretos a través de proyectos aplicados",
-      ],
-      footer:
-        "La visualización del progreso y la participación transversal son el motor de una mejora continua sostenible.",
-      large: true,
+      id: "8",
+      icon: HandCoins,
+      title: "Beneficios",
+      subtitle: "Beneficios del programa WasteZero™",
+      children: (
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+          {[
+            {
+              icon: RotateCcw,
+              title: "Menos Reprocesos",
+              description:
+                "Reducción inmediata de reprocesos mediante identificación y eliminación de actividades que no agregan valor.",
+            },
+            {
+              icon: ArrowRight,
+              title: "Movimientos Optimizados",
+              description:
+                "Eliminación de movimientos innecesarios y optimización de flujos de trabajo para mayor eficiencia operativa.",
+            },
+            {
+              icon: Clock,
+              title: "Reducción de Tiempos de Espera",
+              description:
+                "Minimización de tiempos muertos y esperas mediante mejora en la sincronización de procesos.",
+            },
+            {
+              icon: Lightbulb,
+              title: "Ideas de Valor Agregado",
+              description:
+                "Generación rápida de proyectos e ideas innovadoras que aportan valor real con baja inversión inicial.",
+            },
+            {
+              icon: DollarSign,
+              title: "ROI Rápido",
+              description:
+                "Proyectos con retorno de inversión acelerado gracias a soluciones de bajo costo y alto impacto.",
+            },
+            {
+              icon: TrendingUp,
+              title: "Mejora Continua",
+              description:
+                "Establecimiento de una cultura de mejora continua con resultados medibles y sostenibles en el tiempo.",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-3 space-x-3">
+                <item.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {item.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      ),
     },
     {
       id: "7",
       icon: Users,
-      title: "En qué punto del camino se recomienda implementarlo",
+      title: "¿Para quién está recomendado el programa?",
       subtitle: "El punto de partida ideal para la transformación Lean",
       description:
         "WasteZero™ es el punto de partida ideal para organizaciones que inician su camino Lean o necesitan ordenar su operación, especialmente cuando hay compromiso directivo y disponibilidad para el acompañamiento.",
@@ -426,8 +460,55 @@ const WasteZeroContent: React.FC = () => {
         "Empresas que necesitan instalar una cultura de mejora continua desde cero",
         "Organizaciones que quieren preparar a su personal para certificaciones Lean",
       ],
-      large: true,
     },
+    {
+      id: "5",
+      icon: Settings,
+      title: "¿Con qué otros productos se relaciona?",
+      subtitle: "Escalera sólida hacia un sistema Lean integral",
+      description:
+        "WasteZero™ se conecta naturalmente con otros programas como: 5S Plus™, FlowStable™ y Kaizen Action™, formando una escalera sólida hacia un sistema Lean integral",
+      graphic: <ConnectionsGraphic title="WasteZero™" />,
+      details: [],
+    },
+    // {
+    //   id: "3",
+    //   icon: TrendingUp,
+    //   title: "Resultados esperados",
+    //   subtitle: "Impacto visible desde el primer mes",
+    //   description:
+    //     "WasteZero™ deja resultados visibles en procesos y personas. No es solo formación: es acción concreta, con impacto desde el primer mes.",
+    //   subDescription:
+    //     "Después de aplicar WasteZero™, la empresa debería experimentar:",
+    //   graphic: <ResultsGraphic />,
+    //   details: [
+    //     "Reducción de desperdicios: menos reprocesos, menos movimientos innecesarios, menos espera.",
+    //     "Equipos entrenados y motivados: personas que no solo detectan problemas, sino que los resuelven con herramientas concretas.",
+    //     "Proyectos de mejora ejecutados: cada participante trabaja en un caso real durante el programa.",
+    //     "Cultura de mejora instalada: una forma diferente de mirar el trabajo diario, con focoen el valor.",
+    //     "Primeros pasos hacia la certificación Lean (Green Belt o Facilitador Kaizen).",
+    //   ],
+    // },
+    // {
+    //   id: "6",
+    //   icon: RulerDimensionLine,
+    //   title: "¿Cómo medir los resultados?",
+    //   subtitle: "WasteZero™ se mide por el valor de las ideas que genera.",
+    //   description:
+    //     "El principal indicador de éxito es la cantidad de propuestas de mejora surgidas del propio equipo, muchas de las cuales se implementan rápidamente con impacto visible.",
+    //   subDescription:
+    //     "El programa se mantiene vivo gracias a la capacitación continua y al hábito de generar ideas en equipo, impulsando mejoras en:",
+    //   graphic: <MeasurementGraphic />,
+    //   details: [
+    //     "Claridad de roles y procesos",
+    //     "Costos y tiempos operativos",
+    //     "Compromiso y autonomía de los equipos",
+    //     "Resultados concretos a través de proyectos aplicados",
+    //   ],
+    //   footer:
+    //     "La visualización del progreso y la participación transversal son el motor de una mejora continua sostenible.",
+    //   // large: true,
+    // },
   ];
 
   const handleCardClick = (feature: any) => {

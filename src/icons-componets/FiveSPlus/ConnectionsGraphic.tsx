@@ -8,7 +8,11 @@ const programs = [
   { name: "LeanBridge™", icon: Network, color: "bg-purple-500" },
 ];
 
-const ConnectionsGraphic: React.FC = () => {
+interface ConnectionsGraphicProps {
+  title: string;
+}
+
+const ConnectionsGraphic: React.FC<ConnectionsGraphicProps> = ({ title }) => {
   const radius = 100;
   const center = 120;
 
@@ -17,7 +21,7 @@ const ConnectionsGraphic: React.FC = () => {
       <div className="relative w-[240px] h-[240px]">
         {/* Center node */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full flex items-center justify-center text-white font-bold text-xs shadow-xl z-20">
-          5S Plus™
+          {title}
         </div>
 
         {programs.map((program, idx) => {

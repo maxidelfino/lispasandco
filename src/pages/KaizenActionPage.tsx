@@ -5,6 +5,7 @@ import KaizenActionContent from "../components/KaizenAction/KaizenActionContent"
 import FloatingNavigation from "../components/FloatingNavigation";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const KaizenActionPage: React.FC = () => {
   useScrollToTop();
@@ -55,6 +56,8 @@ const KaizenActionPage: React.FC = () => {
         }}
         // className="mb-32"
       />
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

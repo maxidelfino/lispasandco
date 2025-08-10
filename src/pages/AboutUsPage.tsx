@@ -16,6 +16,7 @@ import {
 import FloatingNavigation from "../components/FloatingNavigation";
 import { useNavigate } from "react-router-dom";
 import { useScrollToTop } from "../hooks/useScrollToTop";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const AboutUsPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -429,6 +430,8 @@ const AboutUsPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

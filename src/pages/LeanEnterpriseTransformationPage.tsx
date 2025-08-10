@@ -5,6 +5,7 @@ import FloatingNavigation from "../components/FloatingNavigation";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import LeanEnterpriseIcon from "../icons-componets/LeanEnterprise/LeanEnterpriseIcon";
 import CTASection from "../components/CTASection";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const LeanEnterpriseTransformationPage: React.FC = () => {
   useScrollToTop();
@@ -49,6 +50,8 @@ const LeanEnterpriseTransformationPage: React.FC = () => {
         }}
         // className="mb-32"
       />
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

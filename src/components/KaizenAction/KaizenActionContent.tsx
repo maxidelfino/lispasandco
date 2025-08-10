@@ -7,17 +7,21 @@ import {
   XCircle,
   Target,
   X,
-  Users,
   Settings,
   Award,
-  Network,
-  FileQuestionMark,
-  MessageSquareDot,
+  Zap,
+  Globe,
+  ArrowLeftRight,
+  Wrench,
+  Clock,
+  HandCoins,
+  TrendingUp,
+  Users,
+  CircleQuestionMark,
 } from "lucide-react";
-import WhatIsKaizenGraphic from "../../icons-componets/KaizenAction/WhatIsKaizenGraphic";
 import ObjectivesKaizenGraphic from "../../icons-componets/KaizenAction/ObjectivesKaizenGraphic";
 import MethodologyKaizenGraphic from "../../icons-componets/KaizenAction/MethodologyKaizenGraphic";
-import ConnectionsKaizenGraphic from "../../icons-componets/KaizenAction/ConnectionsKaizenGraphic";
+import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -91,7 +95,7 @@ const Modal: React.FC<ModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-[var(--color-border)] p-8 flex justify-between items-start rounded-t-3xl z-20">
+        <div className="sticky top-0 bg-white border-b border-[var(--color-border)] p-8 flex justify-between items-start rounded-t-3xl z-50">
           <div className="flex-1 pr-4">
             <h2
               id="modal-title"
@@ -118,7 +122,7 @@ const Modal: React.FC<ModalProps> = ({
         {content.children ? (
           <div className="p-8">{content.children}</div>
         ) : (
-          <div className="p-8">
+          <div className="p-8 z-0">
             {/* Description */}
             {content.description && (
               <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
@@ -205,166 +209,135 @@ const KaizenActionContent: React.FC = () => {
   const features = [
     {
       id: "1",
-      icon: Target,
-      title: "¿Qué es KAIZEN ACTION™?",
-      subtitle: "Servicio de intervención directa para problemas complejos",
+      icon: CircleQuestionMark,
+      title: "¿Qué es y qué no es?",
+      subtitle: "Definición clara del programa KAIZEN ACTION™",
       children: (
         <>
-          <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
-            <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
-              <strong>KAIZEN ACTION™</strong> es un servicio de intervención
-              directa para resolver problemas reales y complejos, utilizando la
-              metodología <strong>KAIZEN</strong> con foco en acción inmediata,
-              colaboración interdisciplinaria y resultados medibles.
+          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+              KAIZEN ACTION™ es un servicio de intervención directa para
+              resolver problemas reales y complejos, utilizando la metodología
+              KAIZEN con foco en acción inmediata, colaboración
+              interdisciplinaria y resultados medibles.
             </p>
-            <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            <p className="mt-4 text-[var(--color-text)] leading-relaxed text-lg font-medium">
               Está pensado para empresas que necesitan resolver cuellos de
               botella operativos, conflictos entre áreas o problemas End to End
               que afectan la experiencia del cliente, la eficiencia o el
               cumplimiento de objetivos estratégicos.
             </p>
           </div>
-          <div className="my-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
-            <WhatIsKaizenGraphic />
-          </div>
-        </>
-      ),
-      large: true,
-    },
-    {
-      id: "2",
-      icon: FileQuestionMark,
-      title: "¿Qué incluye el programa?",
-      details: [
-        "Planificación y facilitación de eventos KAIZEN reales, en forma presencial o virtuales",
-        "Selección y definición del problema con el equipo líder",
-        "Formación en acción de facilitadores ya entrenados (vinculado con LeanBridgeTM)",
-        "Aplicación del ciclo completo: Definición, Análisis, Generación de soluciones, Implementación rápida",
-        "Seguimiento posterior con documentación y control de sostenibilidad",
-      ],
-    },
-    {
-      id: "3",
-      icon: Award,
-      title: "Objetivos del programa",
-      subtitle: "Transformar problemas en oportunidades de mejora",
-      graphic: <ObjectivesKaizenGraphic />,
-    },
-    {
-      id: "6",
-      icon: Users,
-      title: "Aplicaciones concretas",
-      subtitle: "Casos específicos donde KAIZEN ACTION™ genera mayor impacto",
-      // description:
-      // "El programa está diseñado para abordar tres tipos principales de problemas que requieren intervención colaborativa inmediata y metodología estructurada.",
-      subDescription: "Aplicaciones específicas incluyen:",
-      // graphic: <ApplicationsKaizenGraphic />,
-      details: [
-        // "Problemas técnicos: mantenimiento, calidad, reprocesos, desvíos productivos",
-        // "Problemas transaccionales entre sectores: operaciones-logística, ventas-producción, etc.",
-        // "Problemas End to End: desde el origen del negocio hasta el cliente final, incluso entre unidades geográficamente distantes",
-        // "Conflictos interdepartamentales que afectan la eficiencia operativa",
-        // "Cuellos de botella que requieren rediseño de procesos colaborativo",
-        // "Situaciones que involucran múltiples stakeholders internos y externos",
-
-        "Problemas técnicos (mantenimiento, calidad, reprocesos, desvíos productivos)",
-        "Problemas transaccionales entre sectores (operaciones- logística, ventas-producción, etc.)",
-        "Problemas End to End, desde el origen del negocio hasta el cliente final, incluso entre unidades geográficamente distantes",
-      ],
-      // footer:
-      // "El valor económico de las iniciativas suele triplicarse (x3) cuando participan áreas transaccionales y puede multiplicarse por siete (x7) cuando intervienen áreas vinculadas al cliente final.",
-    },
-    {
-      id: "4",
-      icon: MessageSquareDot,
-      title: "¿Por qué es diferente?",
-      subtitle: "Evolución natural del camino LEAN iniciado con LeanBridge™",
-      children: (
-        <div>
-          {/* Description */}
-          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-              Cuando el agua fría del mar se encuentra con el agua cálida de la
-              costa, nace la mayor cantidad de vida. Así también, en los bordes
-              de los problemas y en la interacción con nuevas áreas y clientes,
-              surgen las soluciones más innovadoras y valiosas
-            </p>
-
-            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mt-4">
-              La mayoría de los problemas no se resuelven dentro de un solo
-              silo. <strong>KAIZEN ACTION™</strong> genera impacto exponencial
-              cuando las sesiones incluyen a personas de múltiples sectores,
-              incluso aquellos más alejados: producción, logística,
-              planificación, finanzas, servicio al cliente, comercial, e incluso
-              representantes del cliente interno o externo.
-            </p>
-          </div>
 
           {/* Details */}
           <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+              ¿Qué es?
+            </p>
             {[
-              "El valor económico de las iniciativas suele triplicarse (x3) cuando participan áreas transaccionales.",
-              "Puede multiplicarse por siete (x7) cuando intervienen áreas vinculadas al cliente final.",
-              "Y todo esto, sin inversión en activos fijos: solo con inteligencia colectiva y metodología estructurada.",
+              "✔ Intervención práctica en el lugar de trabajo con enfoque KAIZEN",
+              "✔ Ciclo completo DMAIC aplicado a casos reales",
+              "✔ Colaboración interdisciplinaria para soluciones sostenibles",
+              "✔ Resultados medibles y seguimiento post-evento",
             ].map((detail, idx) => (
               <div
                 key={idx}
                 className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
               >
-                <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                </div>
                 <span className="text-[var(--color-text)] leading-relaxed flex-1">
-                  {detail}
+                  {detail.replace(/^[✔✘] /, "")}
                 </span>
               </div>
             ))}
           </div>
-        </div>
+          <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+              ¿Qué no es?
+            </p>
+            {[
+              "✘ Una capacitación teórica sin aplicación práctica",
+              "✘ Un taller genérico sin seguimiento ni resultados claros",
+              "✘ Una solución aislada que no involucre al equipo interno",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <XCircle className="w-4 h-4 text-red-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail.replace(/^[✔✘] /, "")}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
       ),
     },
     {
-      id: "7",
-      icon: Network,
-      title: "¿Cómo se vincula con otros programas?",
-      // subtitle: "Evolución natural del camino LEAN iniciado con LeanBridge™",
+      id: "6",
+      icon: Zap,
+      title: "Problemas que resuelve",
+      subtitle: "Casos específicos donde KAIZEN ACTION™ genera mayor impacto",
+      // subDescription: "Aplicaciones específicas incluyen:",
+      // details: [
+      //   "Problemas técnicos (mantenimiento, calidad, reprocesos, desvíos productivos)",
+      //   "Problemas transaccionales entre sectores (operaciones- logística, ventas-producción, etc.)",
+      //   "Problemas End to End, desde el origen del negocio hasta el cliente final, incluso entre unidades geográficamente distantes",
+      // ],
       children: (
-        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
-          <p className="text-lg text-[var(--color-text)] leading-relaxed">
-            <strong>KAIZEN ACTION™</strong> es una evolución natural del camino
-            iniciado con <strong>LeanBridge™</strong>. Una vez que las personas
-            han sido entrenadas en fundamentos LEAN y resolución de desperdicios
-            (<strong>WasteZero™</strong>), pueden actuar como facilitadores de
-            eventos KAIZEN reales, y así consolidar su rol de agentes de cambio
-            dentro de la organización.
-          </p>
-          <div className="mt-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
-            <ConnectionsKaizenGraphic />,
-          </div>
+        <div className="grid grid-cols-2 gap-6">
+          {[
+            {
+              icon: Wrench,
+              title: "Técnico",
+              description:
+                "Problemas técnicos (mantenimiento, calidad, reprocesos, desvíos productivos)",
+            },
+            {
+              icon: ArrowLeftRight,
+              title: "Transaccional",
+              description:
+                "Problemas transaccionales entre sectores (operaciones-logística, ventas-producción, etc.)",
+            },
+            {
+              icon: Globe,
+              title: "End to End",
+              description:
+                "Problemas End to End, desde el origen del negocio hasta el cliente final, incluso entre unidades geográficamente distantes",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className={`
+                bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                hover:shadow-xl transition-all duration-300 hover:scale-105
+                ${idx === 2 ? "col-span-2" : ""}
+              `}
+            >
+              <div className="flex items-center mb-3 space-x-3">
+                <item.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {item.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
       ),
-
-      // large: true,
     },
     {
       id: "5",
-      icon: Settings,
-      title: "Metodología DMAIC",
+      icon: Clock,
+      title: "Metodología & Tiempos",
       subtitle: "Ciclo estructurado de mejora en 3 etapas principales",
-      // description:
-      //   "KAIZEN ACTION™ se basa en el ciclo estructurado de mejora DMAIC (Definir, Medir, Analizar, Mejorar y Controlar), el estándar metodológico de excelencia utilizado en Lean Six Sigma y mejoras de alto impacto.",
-      // subDescription:
-      //   "La modalidad combina preparación, ejecución intensiva y seguimiento:",
-      // graphic: <MethodologyKaizenGraphic />,
-      // details: [
-      //   "Etapa 1 - Definir y Medir (2 semanas): Recolección y validación de información del problema fuera del lugar de trabajo",
-      //   "Etapa 2 - Evento KAIZEN presencial (mínimo 3 días consecutivos): Análisis profundo colaborativo y generación de soluciones",
-      //   "Etapa 3 - Control y sostenibilidad (mínimo 3 meses): Seguimiento con controles visuales y auditorías internas",
-      //   "Herramientas: SIPOC, análisis de causa, brainstorming estructurado, diagrama de Ishikawa, matrices de Impacto-Esfuerzo",
-      //   "Participación obligatoria de todas las áreas involucradas en el evento presencial",
-      //   "Transferencia gradual de la ejecución a los responsables internos",
-      // ],
-      // footer:
-      //   "Esta modalidad garantiza no solo resultados visibles y medibles, sino también la formación progresiva de líderes internos que aprenden a facilitar eventos KAIZEN por sí mismos.",
-      // large:true
       children: (
         <div>
           {/* Description */}
@@ -395,6 +368,167 @@ const KaizenActionContent: React.FC = () => {
         </div>
       ),
     },
+    {
+      id: "3",
+      icon: HandCoins,
+      title: "Beneficios",
+      subtitle: "Transformar problemas en oportunidades de mejora",
+      graphic: <ObjectivesKaizenGraphic />,
+      children: (
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+          {[
+            {
+              icon: Target,
+              title: "Resolver Problemas",
+              description:
+                "Resolver problemas que generan pérdida de eficiencia, conflicto o demoras",
+            },
+            {
+              icon: TrendingUp,
+              title: "Cultura de Mejora",
+              description: "Activar una cultura de mejora transversal y ágil",
+            },
+            {
+              icon: Users,
+              title: "Desarrollar Habilidades",
+              description:
+                "Desarrollar la habilidad interna de liderar KAIZEN con criterios profesionales",
+            },
+            {
+              icon: Award,
+              title: "Formar Agentes",
+              description:
+                "Formar agentes de cambio en plena acción, dentro del contexto real de la empresa",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-3 space-x-3">
+                <item.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {item.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: "7",
+      icon: Users,
+      title: "¿Para quién está recomendado el programa?",
+      subtitle: "Tipos de empresas ideales para KAIZEN ACTION™",
+      description:
+        "Está diseñado para empresas que necesitan resolver cuellos de botella operativos, conflictos entre áreas o problemas End-to-End que afectan la experiencia del cliente, la eficiencia y el cumplimiento de objetivos estratégicos.",
+      details: [
+        "Mandos medios y supervisores responsables de operaciones diarias",
+        "Equipos multifuncionales involucrados en la cadena de valor",
+        "Gerentes de planta y responsables de producción",
+        "Líderes de mejora continua y facilitadores Kaizen",
+        "Áreas de calidad, logística y atención al cliente",
+        "Equipos de proyecto que requieren rápido impacto y resultados medibles",
+      ],
+    },
+    {
+      id: "8",
+      icon: Settings,
+      title: "¿Con qué otros productos se relaciona?",
+      subtitle: "Integración con el ecosistema LYSPAS",
+      description:
+        "KAIZEN ACTION™ es una evolución natural del camino iniciado con LeanBridge™. Una vez que los colaboradores han sido entrenados en los fundamentos Lean y en la identificación de desperdicios (WasteZero™), pueden actuar como facilitadores de eventos KAIZEN reales, consolidando así su rol de agentes de cambio dentro de la organización.",
+      graphic: <ConnectionsGraphic title="Kaizen Action™" />,
+      details: [
+        "LeanBridge™ – Para alinear estrategia y operación antes de pasar a KAIZEN ACTION™",
+        "WasteZero™ – Base en identificación y eliminación de desperdicios previos al evento KAIZEN",
+        "FlowStable™ – Estabiliza procesos que luego se optimizan con KAIZEN ACTION™",
+        "StratBridge™ – Aporta la visión estratégica que guía los proyectos KAIZEN",
+        "Lean Enterprise Transformation™ – Marco de mejora continua donde KAIZEN ACTION™ aporta ejecución táctica",
+      ],
+    },
+    // {
+    //   id: "2",
+    //   icon: FileQuestionMark,
+    //   title: "¿Qué incluye el programa?",
+    //   details: [
+    //     "Planificación y facilitación de eventos KAIZEN reales, en forma presencial o virtuales",
+    //     "Selección y definición del problema con el equipo líder",
+    //     "Formación en acción de facilitadores ya entrenados (vinculado con LeanBridgeTM)",
+    //     "Aplicación del ciclo completo: Definición, Análisis, Generación de soluciones, Implementación rápida",
+    //     "Seguimiento posterior con documentación y control de sostenibilidad",
+    //   ],
+    // },
+    // {
+    //   id: "4",
+    //   icon: MessageSquareDot,
+    //   title: "¿Por qué es diferente?",
+    //   subtitle: "Evolución natural del camino LEAN iniciado con LeanBridge™",
+    //   children: (
+    //     <div>
+    //       <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+    //         <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+    //           Cuando el agua fría del mar se encuentra con el agua cálida de la
+    //           costa, nace la mayor cantidad de vida. Así también, en los bordes
+    //           de los problemas y en la interacción con nuevas áreas y clientes,
+    //           surgen las soluciones más innovadoras y valiosas
+    //         </p>
+
+    //         <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mt-4">
+    //           La mayoría de los problemas no se resuelven dentro de un solo
+    //           silo. <strong>KAIZEN ACTION™</strong> genera impacto exponencial
+    //           cuando las sesiones incluyen a personas de múltiples sectores,
+    //           incluso aquellos más alejados: producción, logística,
+    //           planificación, finanzas, servicio al cliente, comercial, e incluso
+    //           representantes del cliente interno o externo.
+    //         </p>
+    //       </div>
+
+    //       <div>
+    //         {[
+    //           "El valor económico de las iniciativas suele triplicarse (x3) cuando participan áreas transaccionales.",
+    //           "Puede multiplicarse por siete (x7) cuando intervienen áreas vinculadas al cliente final.",
+    //           "Y todo esto, sin inversión en activos fijos: solo con inteligencia colectiva y metodología estructurada.",
+    //         ].map((detail, idx) => (
+    //           <div
+    //             key={idx}
+    //             className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+    //           >
+    //             <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+    //             <span className="text-[var(--color-text)] leading-relaxed flex-1">
+    //               {detail}
+    //             </span>
+    //           </div>
+    //         ))}
+    //       </div>
+    //     </div>
+    //   ),
+    // },
+    // {
+    //   id: "7",
+    //   icon: Network,
+    //   title: "¿Cómo se vincula con otros programas?",
+    //   // subtitle: "Evolución natural del camino LEAN iniciado con LeanBridge™",
+    //   children: (
+    //     <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+    //       <p className="text-lg text-[var(--color-text)] leading-relaxed">
+    //         <strong>KAIZEN ACTION™</strong> es una evolución natural del camino
+    //         iniciado con <strong>LeanBridge™</strong>. Una vez que las personas
+    //         han sido entrenadas en fundamentos LEAN y resolución de desperdicios
+    //         (<strong>WasteZero™</strong>), pueden actuar como facilitadores de
+    //         eventos KAIZEN reales, y así consolidar su rol de agentes de cambio
+    //         dentro de la organización.
+    //       </p>
+    //       <div className="mt-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
+    //         <ConnectionsKaizenGraphic />,
+    //       </div>
+    //     </div>
+    //   ),
+    // },
   ];
 
   const handleCardClick = (feature: any) => {

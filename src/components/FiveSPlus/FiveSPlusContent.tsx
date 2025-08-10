@@ -7,15 +7,12 @@ import {
   XCircle,
   CircleQuestionMark,
   Clock,
-  CircleAlert,
-  TrendingUp,
   X,
   Users,
   Settings,
   Grid,
   Droplet,
   ShieldCheck,
-  Wrench,
   Repeat,
   Building,
   Factory,
@@ -28,6 +25,10 @@ import {
   CheckSquare,
   Shield,
   Truck,
+  Zap,
+  Box,
+  RefreshCcw,
+  HandCoins,
 } from "lucide-react";
 import MethodologyFiveSPlus from "../../icons-componets/FiveSPlus/MethodologyFiveSPlus";
 import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
@@ -262,18 +263,6 @@ const Modal: React.FC<ModalProps> = ({
             )}
           </div>
         )}
-
-        {/* Footer */}
-        {/* <div className="sticky bottom-0 bg-gradient-to-t from-white to-transparent p-8 pt-4">
-          <div className="flex justify-center">
-            <button
-              onClick={onClose}
-              className="bg-[var(--color-secondary)] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[var(--color-primary)] transition-all duration-200 hover:scale-105 shadow-lg"
-            >
-              Entendido
-            </button>
-          </div>
-        </div> */}
       </div>
     </div>
   );
@@ -318,91 +307,130 @@ const FiveSPlusContent: React.FC = () => {
     {
       id: "1",
       icon: CircleQuestionMark,
-      title: "¿Qué es 5S Plus™?",
-      subtitle: "Características del programa",
+      title: "¿Qué es y qué no es?",
+      subtitle: "Características del programa 5S Plus™",
       children: (
-        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
-          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
-            <strong>5S Plus™</strong> es un programa práctico de intervención
-            diseñado por <strong>LYSPAS & CO</strong> para ayudar a las
-            organizaciones a crear espacios de trabajo limpios, ordenados,
-            eficientes y seguros, como base indispensable para cualquier camino
-            de mejora continua.
-          </p>
-          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
-            A través de cinco pasos simples pero poderosos, 5S Plus™ identifica
-            con claridad aquellas cosas que <strong>NO</strong> deberían estar
-            en el lugar y ayuda a ordenar aquellas otras que <strong>SÍ</strong>{" "}
-            lo deberían estar. Instala hábitos y estándares que permiten
-            sostener la disciplina operativa en el tiempo.
-          </p>
+        <>
+          {/* Descripción principal */}
+          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
+              5S Plus™ es un programa práctico de intervención diseñado por
+              LYSPAS & CO para ayudar a las organizaciones a crear espacios de
+              trabajo limpios, ordenados, eficientes y seguros, como base
+              indispensable para cualquier camino de mejora continua.
+            </p>
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+              A través de cinco pasos simples pero poderosos, 5S Plus™
+              identifica con claridad aquellas cosas que <strong>NO</strong>{" "}
+              deberían estar en el lugar y ayuda a ordenar aquellas otras que{" "}
+              <strong>SÍ</strong> lo deberían estar. Instala hábitos y
+              estándares que permiten sostener la disciplina operativa en el
+              tiempo.
+            </p>
+          </div>
 
-          <blockquote className="text-xl font-bold text-[var(--color-secondary)] italic border-l-4 border-[var(--color-accent)] pl-6 mt-8">
-            "5S no es una limpieza profunda. Es un cambio estructurado y
-            sostenido utilizando el orden como forma de trabajo."
+          {/* Cita inspiradora */}
+          <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
+            “5S no es una limpieza profunda. Es un cambio estructurado y
+            sostenido utilizando el orden como forma de trabajo.”
           </blockquote>
-        </div>
+
+          {/* ¿Qué es? */}
+          <div className="mb-6">
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
+              ¿Qué es?
+            </p>
+            {[
+              "Una evolución del modelo clásico de orden y limpieza 5S.",
+              "Una herramienta de base cultural para toda iniciativa de mejora.",
+              "Una práctica clave para instalar hábitos sostenibles de gestión visual y disciplina.",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* ¿Qué no es? */}
+          <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
+              ¿Qué no es?
+            </p>
+            {[
+              "Solo limpieza o estética",
+              "Una acción puntual sin seguimiento",
+              "Una implementación que no involucra a toda la organización",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <XCircle className="w-4 h-4 text-red-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
       ),
     },
     {
       id: "2",
-      icon: CircleAlert,
-      title: "¿Por qué es importante?",
-      subtitle: "",
+      icon: Zap,
+      title: "Problemas que resuelve",
+      subtitle: "Los desafíos operativos",
       children: (
-        <div>
-          {/* Description */}
-          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-            <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
-              Los entornos de trabajo que logran altos estándares de{" "}
-              <strong>calidad, eficiencia y seguridad</strong> tienen una cosa
-              en común: están ordenados, limpios y cuidados. Eso no es
-              casualidad.
-            </p>
-            <p className="text-lg text-[var(--color-text)] leading-relaxed">
-              El orden físico refleja y refuerza una cultura organizada,
-              comprometida y enfocada en el cumplimiento de procesos.
-            </p>
-          </div>
-
-          {/* Graphic */}
-          <div className="bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
-            <div className="relative w-full h-60">
-              {/* Nodo central: 5S estratégico */}
-              <div className="absolute inset-1/2 w-28 h-28 bg-gradient-to-br from-blue-600 to-blue-400 rounded-full flex flex-col items-center justify-center text-white shadow-2xl transform -translate-x-1/2 -translate-y-1/2">
-                <Wrench className="w-8 h-8 mb-1" />
-                <span className="font-bold">5S</span>
+        <div className="grid grid-cols-2 gap-6">
+          {[
+            {
+              icon: Box,
+              title: "Entornos Ordenados",
+              description:
+                "Los entornos de trabajo que logran altos estándares de calidad, eficiencia y seguridad tienen una cosa en común: están ordenados, limpios y cuidados. Eso no es casualidad.",
+            },
+            {
+              icon: Users,
+              title: "Reflejo Cultural",
+              description:
+                "El orden físico refleja y refuerza una cultura organizada, comprometida y enfocada en el cumplimiento de procesos.",
+            },
+            {
+              icon: RefreshCcw,
+              title: "Herramienta Estratégica",
+              description:
+                "Por eso 5S es más que estética: es una herramienta estratégica que facilita el respeto por los procedimientos, reduce riesgos, mejora la productividad y activa el compromiso del equipo.",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className={`
+                bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                hover:shadow-xl transition-all duration-300 hover:scale-105
+                ${idx === 2 ? "col-span-2" : ""}
+              `}
+            >
+              <div className="flex items-center mb-3 space-x-3">
+                <item.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {item.title}
+                </h4>
               </div>
-
-              {/* Nodos periféricos */}
-              {nodes.map((n) => {
-                const rad = (n.angle * Math.PI) / 180;
-                const x = C + R * Math.cos(rad);
-                const y = C + R * Math.sin(rad);
-                const Icon = n.icon;
-                return (
-                  <div
-                    key={n.label}
-                    className="absolute flex flex-col items-center transform -translate-x-1/2 -translate-y-1/2"
-                    style={{ left: n.left ?? x, top: n.top ?? y }}
-                  >
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
-                      <Icon className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <span className="mt-2 text-sm font-medium text-gray-700">
-                      {n.label}
-                    </span>
-                  </div>
-                );
-              })}
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {item.description}
+              </p>
             </div>
-          </div>
-
-          <p className="text-lg text-[var(--color-text)] leading-relaxed">
-            Por eso <strong>5S es más que estética</strong>: es una herramienta
-            estratégica que facilita el respeto por los procedimientos, reduce
-            riesgos, mejora la productividad y activa el compromiso del equipo.
-          </p>
+          ))}
         </div>
       ),
     },
@@ -496,12 +524,11 @@ const FiveSPlusContent: React.FC = () => {
           </p>
         </div>
       ),
-      large: true,
     },
     {
       id: "3",
-      icon: TrendingUp,
-      title: "¿Qué ofrece 5S Plus™?",
+      icon: HandCoins,
+      title: "Beneficios",
       subtitle: "Beneficios del programa 5S Plus™",
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
@@ -560,7 +587,7 @@ const FiveSPlusContent: React.FC = () => {
     {
       id: "6",
       icon: Users,
-      title: "¿Para quién está pensado?",
+      title: "¿Para quién está recomendado el programa?",
       subtitle: "Tipos de empresas ideales para 5S Plus™",
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
@@ -613,13 +640,12 @@ const FiveSPlusContent: React.FC = () => {
     {
       id: "5",
       icon: Settings,
-      title: "¿Cómo se relaciona con otros programas?",
+      title: "¿Con qué otros productos se relaciona?",
       subtitle: "",
       description:
         "5S Plus™ se integra de manera orgánica con el resto de nuestra suite de mejora continua. Por ejemplo, LeanBridge™ aporta la disciplina y el control visual necesarios para gestionar el trabajo directamente en el área, mientras que WasteZero™ complementa esta base al identificar y eliminar los desperdicios ocultos que surgen del desorden",
-      graphic: <ConnectionsGraphic />,
+      graphic: <ConnectionsGraphic title="5S Plus™" />,
       details: [],
-      large: true,
     },
   ];
 

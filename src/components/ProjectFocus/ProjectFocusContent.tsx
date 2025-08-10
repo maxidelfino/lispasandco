@@ -9,22 +9,18 @@ import {
   XCircle,
   Target,
   Clock,
-  TrendingUp,
   X,
   Users,
   Zap,
-  Building2,
-  Calendar,
-  Factory,
-  Link,
   EyeOff,
   SlidersHorizontal,
   BarChart3,
+  Settings,
+  HandCoins,
+  CircleQuestionMark,
 } from "lucide-react";
-import ProblemsProjectFocusGraphic from "../../icons-componets/ProjectFocus/ProblemsProjectFocusGraphic";
 import PhasesProjectFocusGraphic from "../../icons-componets/ProjectFocus/PhasesProjectFocusGraphic";
 import ConnectionProjectFocusGraphic from "../../icons-componets/ProjectFocus/ConnectionProjectFocusGraphic";
-import ProjectFocusMethodologyGraphic from "../../icons-componets/ProjectFocus/ProjectFocusMethodologyGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -212,31 +208,106 @@ const ProjectFocusContent: React.FC = () => {
   const features = [
     {
       id: "1",
-      icon: Target,
-      title: "¿Qué es ProjectFocus™?",
-      subtitle: "Características del programa",
-      children: (
-        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
-          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
-            <strong>ProjectFocus™ – Selección Estratégica de Proyectos</strong>{" "}
-            es una metodología práctica diseñada para ayudar a las
-            organizaciones a identificar, analizar y seleccionar proyectos de
-            inversión, de forma colaborativa y alineada al plan estratégico
-            vigente.
-          </p>
-          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
-            Este programa parte de una premisa clara: no todos los proyectos
-            valen lo mismo. Por eso, ofrece herramientas para mapear beneficios,
-            costos, impactos y riesgos de cada iniciativa, y tomar decisiones
-            basadas en valor, no en urgencias.
-          </p>
+      icon: CircleQuestionMark,
+      title: "¿Qué es y qué no es?",
+      subtitle: "Características del programa ProjectFocus™",
+      // children: (
+      //   <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+      //     <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+      //       <strong>ProjectFocus™ – Selección Estratégica de Proyectos</strong>{" "}
+      //       es una metodología práctica diseñada para ayudar a las
+      //       organizaciones a identificar, analizar y seleccionar proyectos de
+      //       inversión, de forma colaborativa y alineada al plan estratégico
+      //       vigente.
+      //     </p>
+      //     <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+      //       Este programa parte de una premisa clara: no todos los proyectos
+      //       valen lo mismo. Por eso, ofrece herramientas para mapear beneficios,
+      //       costos, impactos y riesgos de cada iniciativa, y tomar decisiones
+      //       basadas en valor, no en urgencias.
+      //     </p>
 
-          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
-            Está especialmente diseñado como extensión práctica de StratBridge™,
-            siendo el paso natural para convertir una planificación estratégica
-            en un portafolio ejecutable de proyectos clave.
-          </p>
-        </div>
+      //     <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+      //       Está especialmente diseñado como extensión práctica de StratBridge™,
+      //       siendo el paso natural para convertir una planificación estratégica
+      //       en un portafolio ejecutable de proyectos clave.
+      //     </p>
+      //   </div>
+      // ),
+      children: (
+        <>
+          {/* Descripción principal */}
+          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
+              <strong>
+                ProjectFocus™ – Selección Estratégica de Proyectos
+              </strong>{" "}
+              es una metodología práctica diseñada para ayudar a las
+              organizaciones a identificar, analizar y seleccionar proyectos de
+              inversión, de forma colaborativa y alineada al plan estratégico
+              vigente.
+            </p>
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+              Este programa parte de una premisa clara: no todos los proyectos
+              valen lo mismo. Por eso, ofrece herramientas para mapear
+              beneficios, costos, impactos y riesgos de cada iniciativa, y tomar
+              decisiones <strong>basadas en valor, no en urgencias</strong>.
+            </p>
+          </div>
+
+          <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
+            Está especialmente diseñado como{" "}
+            <strong>extensión práctica de StratBridge™</strong>, siendo el paso
+            natural para convertir una planificación estratégica en un{" "}
+            <strong>portafolio ejecutable de proyectos clave</strong>.
+          </blockquote>
+
+          <div className="mb-6">
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
+              ¿Qué es?
+            </p>
+            {[
+              "Una metodología práctica para priorizar proyectos según criterios estratégicos.",
+              "Un proceso colaborativo que alinea a las distintas áreas en la toma de decisiones.",
+              "Una herramienta para transformar la planificación en ejecución efectiva.",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
+              ¿Qué no es?
+            </p>
+            {[
+              "Una simple matriz de priorización sin contexto estratégico.",
+              "Un proceso unilateral sin participación de las áreas involucradas.",
+              "Una solución teórica sin foco en la ejecución real de los proyectos.",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <XCircle className="w-4 h-4 text-red-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
       ),
     },
     {
@@ -244,18 +315,6 @@ const ProjectFocusContent: React.FC = () => {
       icon: Zap,
       title: "Problemas que resuelve",
       subtitle: "Principales desafíos organizacionales",
-      // description:
-      //   "ProjectFocus™ aborda los problemas más comunes que enfrentan las organizaciones al momento de seleccionar y priorizar proyectos de inversión. Estos desafíos impactan directamente en la eficiencia de los recursos y en el logro de objetivos estratégicos.",
-      // subDescription: "ProjectFocus™ resuelve esto:",
-      // graphic: <ProblemsProjectFocusGraphic />,
-      // details: [
-      //   "Falta de visibilidad sobre iniciativas",
-      //   "Priorización ineficiente",
-      //   "Falta de alineamiento con objetivos estratégicos",
-      //   "Tensiones internas por asignación de recursos",
-      //   "Evaluación ineficiente de impacto-beneficio",
-      //   "Falta de responsabilidad en la acción",
-      // ],
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
           {[
@@ -309,82 +368,14 @@ const ProjectFocusContent: React.FC = () => {
       ),
     },
     {
-      id: "4",
-      icon: Building2,
-      title: "¿Para qué tipo de empresas?",
-      subtitle: "Perfil de organizaciones objetivo",
-      children: (
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-          {[
-            {
-              icon: Factory,
-              title: "Sectores diversos",
-              description:
-                "Empresas industriales, logísticas, comerciales, agroexportadoras o de servicios",
-            },
-            {
-              icon: Calendar,
-              title: "Planificación anual",
-              description:
-                "Organizaciones que hacen planificación anual de recursos de inversión",
-            },
-            {
-              icon: TrendingUp,
-              title: "Planes de expansión",
-              description:
-                "Equipos que discuten planes de expansión o reorganización",
-            },
-            {
-              icon: Users,
-              title: "Decisión participativa",
-              description:
-                "Empresas que quieren involucrar a sus mandos medios en la toma de decisiones",
-            },
-          ].map((feature, index) => (
-            <div
-              key={index}
-              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <div className="text-4xl mb-4 flex gap-4">
-                <feature.icon className="w-8 h-8" />
-                <h3 className="text-xl font-bold text-[var(--color-primary)] mb-3">
-                  {feature.title}
-                </h3>
-              </div>
-              <p className="text-[var(--color-text)]">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      ),
-      // large: true,
-    },
-    {
       id: "3",
       icon: Clock,
-      title: "Fases del programa",
-      subtitle: "Metodología estructurada en 7 etapas",
-      description:
-        "Proceso completo desde la exploración de oportunidades hasta la matriz de ejecución con responsables.",
-      subDescription: "Modalidad de implementación:",
-      graphic: <PhasesProjectFocusGraphic />,
-      details: [
-        "1. Exploración de oportunidades de inversión",
-        "2. Mapeo sectorial y funcional de propuestas",
-        "3. Análisis de alineamiento con los objetivos estratégicos",
-        "4. Tormenta de ideas con participación interáreas",
-        "5. Presentación y discusión de proyectos",
-        "6. Selección mediante matriz Impacto–Beneficio",
-        "7. Matriz de ejecución con responsables asignados",
-      ],
-    },
-    {
-      id: "5",
-      icon: Calendar,
-      title: "Cronograma de implementación",
-      subtitle: "Proceso ágil y efectivo",
+      title: "Metodología & Tiempos",
+      subtitle: "Metodología estructurada en 7 fases",
       description:
         "El programa ProjectFocus™ – Selección Estratégica de Proyectos presenta una metodología simple de aplicación que consiste en un primer contacto virtual o presencial con el grupo de trabajo a fin de alinear consignas y plantear expectativas para luego terminar con dos sesiones presenciales de medio día cada una en las cuales se presentaran y discutirán cada una de las iniciativas sugeridas por los miembros de la organización para que finalmente se decide en forma grupal respecto a prioridades de ejecución y responsabilidades",
-      graphic: <ProjectFocusMethodologyGraphic />,
+      subDescription: "Modalidad de implementación:",
+      graphic: <PhasesProjectFocusGraphic />,
       details: [
         "Fase Inicial: Presentacion del programa al equipo.",
         "Fase 1: Desarrollo de ideas y proyectos.",
@@ -396,9 +387,54 @@ const ProjectFocusContent: React.FC = () => {
       ],
     },
     {
+      id: "5",
+      icon: HandCoins,
+      title: "Beneficios",
+      subtitle: "Beneficios del programa ProjectFocus™",
+      children: (
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed mb-6">
+            Permite que las organizaciones puedan discutir sus decisiones de
+            inversión de una manera estructurada y siguiendo una metodología de
+            identificación y selección de proyectos.
+          </p>
+
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            Logra un alineamiento entre los problemas u oportunidades que
+            aparecen y las soluciones que se plantean.
+          </p>
+
+          <blockquote className="pl-6 mt-8 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
+            Entrega como{" "}
+            <strong>
+              resultado una planificación profesional de decisiones de inversión
+            </strong>
+            .
+          </blockquote>
+        </div>
+      ),
+    },
+    {
+      id: "4",
+      icon: Users,
+      title: "¿Para quién está recomendado el programa?",
+      subtitle: "Perfil de organizaciones objetivo",
+      children: (
+        <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            El programa esta pensado para cualquier organización que
+            permanentemente necesita invertir en proyectos o iniciativas pero
+            que no encuentra la manera de hacerlo de forma ordenada y siguiendo
+            una coherencia entre inversión y metas empresariales.
+          </p>
+        </div>
+      ),
+    },
+
+    {
       id: "6",
-      icon: Link,
-      title: "¿Cómo se conecta con StratBridge™?",
+      icon: Settings,
+      title: "¿Con qué otros productos se relaciona?",
       subtitle: "Complemento ideal para planificación estratégica",
       children: (
         <div className="bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl p-8 border-l-4 border-[var(--color-secondary)]">
@@ -421,11 +457,6 @@ const ProjectFocusContent: React.FC = () => {
           <div className="bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
             <ConnectionProjectFocusGraphic />
           </div>
-
-          {/* <blockquote className="text-xl font-bold text-[var(--color-secondary)] italic border-l-4 border-[var(--color-accent)] pl-6 mt-8">
-            "5S no es una limpieza profunda. Es un cambio estructurado y
-            sostenido utilizando el orden como forma de trabajo."
-          </blockquote> */}
         </div>
       ),
     },
@@ -452,7 +483,6 @@ const ProjectFocusContent: React.FC = () => {
               <div
                 key={feature.id}
                 className={`
-                  ${feature.large ? "lg:col-span-2" : ""}
                   group relative bg-[var(--color-surface)] rounded-2xl p-8 \
                   border border-[var(--color-border)] transition-all duration-300 cursor-pointer \
                   hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:ring-4 hover:ring-[var(--color-secondary)]/20 \

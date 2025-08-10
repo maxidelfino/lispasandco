@@ -15,6 +15,15 @@ import KaizenActionPage from "./pages/KaizenActionPage";
 import LeanEnterpriseTransformationPage from "./pages/LeanEnterpriseTransformationPage";
 import StratBridgePage from "./pages/StratBridgePage";
 import ProjectFocusPage from "./pages/ProjectFocusPage";
+import ChangeBridgePage from "./pages/ChangeBridgePage";
+import DecisionesEstadisticasPage from "./pages/DecisionesEstadisticasPage";
+import OpsBridgePage from "./pages/OpsBridgePage";
+import PeopleFirstPage from "./pages/PeopleFirstPage";
+
+import AssetControlBridgePage from "./pages/AssetControlBridgePage";
+import AutopsPage from "./pages/AutopsPage";
+import SafeProcessPage from "./pages/SafeProcessPage";
+import LabCiFocusPage from "./pages/LabCiFocusPage";
 
 const titleMap: Record<string, string> = {
   "/": "LYSPAS & CO.",
@@ -28,6 +37,16 @@ const titleMap: Record<string, string> = {
     "Lean Enterprise Transformation™ – LYSPAS & CO.",
   "/stratbridge": "StratBridge™ – LYSPAS & CO.",
   "/projectfocus": "ProjectFocus™ – LYSPAS & CO.",
+  "/change-bridge": "Change Bridge™ – LYSPAS & CO.",
+  "/decisiones-estadisticas":
+    "Decisiones Gerenciales Basadas en Estadísticas™ – LYSPAS & CO.",
+  "/ops-bridge": "OpsBridge™ – LYSPAS & CO.",
+  "/people-first": "People First™ – LYSPAS & CO.",
+
+  "/asset-control-bridge": "Asset Control Bridge™ – LYSPAS & CO.",
+  "/autops": "AUTOPS™ – LYSPAS & CO.",
+  "/safe-process": "Safe Process™ – LYSPAS & CO.",
+  "/lab-ci-focus": "Lab Ci Focus™ – LYSPAS & CO.",
 };
 
 function TitleUpdater() {
@@ -40,7 +59,6 @@ function TitleUpdater() {
 }
 
 function App() {
-
   return (
     <Router>
       {/* title updater runs on every route change */}
@@ -63,6 +81,20 @@ function App() {
           />
           <Route path="/stratbridge" element={<StratBridgePage />} />
           <Route path="/projectfocus" element={<ProjectFocusPage />} />
+          <Route path="/change-bridge" element={<ChangeBridgePage />} />
+          <Route
+            path="/decisiones-estadisticas"
+            element={<DecisionesEstadisticasPage />}
+          />
+          <Route path="/ops-bridge" element={<OpsBridgePage />} />
+          <Route path="/people-first" element={<PeopleFirstPage />} />
+          <Route
+            path="/asset-control-bridge"
+            element={<AssetControlBridgePage />}
+          />
+          <Route path="/autops" element={<AutopsPage />} />
+          <Route path="/safe-process" element={<SafeProcessPage />} />
+          <Route path="/lab-ci-focus" element={<LabCiFocusPage />} />
         </Routes>
       </div>
     </Router>

@@ -21,10 +21,15 @@ import {
   Factory,
   Building,
   ChartCandlestick,
+  Zap,
+  Calendar,
+  HandCoins,
+  CircleQuestionMark,
 } from "lucide-react";
 import FlowStableMethodologyGraphic from "../../icons-componets/FlowStable/flowstablemethodologygraphic";
 import FlowStableTimelineGraphic from "../../icons-componets/FlowStable/flowstabletimelinegraphic";
 import FlowStableMeasurementGraphic from "../../icons-componets/FlowStable/flowstablemeasurementgraphic";
+import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -212,11 +217,162 @@ const FlowStableContent: React.FC = () => {
   const features = [
     {
       id: "1",
-      icon: Target,
-      title: "¿Qué ofrece FlowStable™?",
-      subtitle: "Beneficios y características del programa",
+      icon: CircleQuestionMark,
+      title: "¿Qué es y qué no es?",
+      subtitle: "Definición clara del programa FlowStable™",
       children: (
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+        <>
+          {/* Intro Banner */}
+          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+              FlowStable™ es nuestro programa estrella para empresas que buscan
+              elevar su producción y eficiencia sin necesidad de invertir en
+              nuevos activos. Mediante un enfoque paso a paso, dejamos atrás la
+              persecución de récords diarios y construimos procesos estables y
+              predecibles, logrando mejores promedios, mayor control y un
+              crecimiento sostenible.
+            </p>
+          </div>
+
+          {/* ¿Qué es? */}
+          <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-2">
+              ¿Qué es FlowStable™?
+            </p>
+            {[
+              "✔ Un sistema estructurado que estabiliza la operación antes de optimizarla.",
+              "✔ Un ciclo diario de monitoreo y acción correctiva en tiempo real.",
+              "✔ Un programa de 7 meses, desde diagnóstico hasta auditorías finales.",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail.replace(/^[✔✘] /, "")}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* ¿Qué no es? */}
+          <div className="mt-6">
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-2">
+              ¿Qué no es FlowStable™?
+            </p>
+            {[
+              "✘ Un parche puntual para picos de producción.",
+              "✘ Una simple capacitación teórica sin seguimiento.",
+              "✘ Una solución que ignora la cultura y hábitos del equipo.",
+            ].map((detail, idx) => (
+              <div
+                key={idx}
+                className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+              >
+                <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <XCircle className="w-4 h-4 text-red-600" />
+                </div>
+                <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                  {detail.replace(/^[✔✘] /, "")}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
+      ),
+    },
+    {
+      id: "2",
+      icon: Zap,
+      title: "Problemas que resuelve",
+      subtitle: "Métricas y seguimiento de FlowStable™",
+      children: (
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+          {[
+            {
+              icon: TrendingUp,
+              title: "Mejoras Rápidas",
+              description:
+                "La aplicación de FlowStable™ genera mejoras rápidas y sostenidas, especialmente en la consistencia de la producción o los servicios.",
+            },
+            {
+              icon: Activity,
+              title: "Menos Variabilidad",
+              description:
+                "Reducción de variabilidad operativa y el cumplimiento de los objetivos diarios.",
+            },
+            {
+              icon: Calendar,
+              title: "Monitoreo Diario",
+              description:
+                "Uno de sus pilares es el seguimiento estructurado de desvíos a través de la Secuencia de Mejora Diaria™.",
+            },
+            {
+              icon: AlertTriangle,
+              title: "Acciones Inmediatas",
+              description:
+                "Permite tomar acciones correctivas de forma inmediata, en el lugar donde ocurren.",
+            },
+            {
+              icon: Eye,
+              title: "Visual & Práctico",
+              description:
+                "Este enfoque práctico y visual ayuda a que los equipos comprendan mejor qué se espera de cada rol.",
+            },
+            {
+              icon: Users,
+              title: "Autonomía y Compromiso",
+              description:
+                "Ganando en claridad, autonomía y compromiso con los resultados.",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center mb-3 space-x-3">
+                <item.icon className="w-8 h-8" />
+                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                  {item.title}
+                </h4>
+              </div>
+              <p className="text-[var(--color-text)] leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: "5",
+      icon: Clock,
+      title: "Metodología & Tiempos",
+      subtitle: "7 meses de transformación estructurada",
+      description:
+        "FlowStable™ se implementa a través de 8 fases estructuradas durante 7 meses, combinando trabajo presencial y virtual para garantizar la adopción y sostenibilidad del programa.",
+      graphic: <FlowStableTimelineGraphic />,
+      details: [
+        "Fase Inicial: Diagnóstico (presencial) – 1 semana de trabajo en el lugar",
+        "Fase 2: Diseñar el sistema de medición. Discusión sobre objetivos y planes estratégicos. Entrenamiento y despliegue de herramientas (FlowStable PACK 2)",
+        "Fase 3: Establecer reuniones diarias de discusión y ejecución. Recolección de primeros datos (FlowStable PACK 3)",
+        "Fase 4: Consolidación y autonomía del equipo interno. Retrospectiva y ajustes. Identificación de desvíos",
+        "Fase 5: Inicio de resolución de problemas. Herramientas 5W1H – Herramienta A3 (FlowStable PACK 4)",
+        "Fase 6: Curvas de evolución. Herramientas estadísticas. Auditorías de gestión",
+        "Fase 7: Efectos colaterales. Definición técnica y económica",
+        "Fase 8: Auditorías de gestión. Objetivos y planes estratégicos",
+      ],
+    },
+    {
+      id: "8",
+      icon: HandCoins,
+      title: "Beneficios",
+      subtitle: "Beneficios del programa FlowStable™",
+      children: (
+        <div className="grid grid-cols-2 gap-6">
           {[
             {
               icon: TrendingUp,
@@ -247,20 +403,24 @@ const FlowStableContent: React.FC = () => {
               description: "Visibilidad clara de métricas en todos los niveles",
             },
             {
+              icon: BarChart3,
+              title: "Gestión basada en datos",
+              description: "Gestión operativa basada en hechos y datos",
+            },
+            {
               icon: GitBranch,
               title: "Diferenciación de soluciones",
               description:
                 "Diferenciación entre soluciones de corto plazo y proyectos de mediano alcance",
             },
-            {
-              icon: BarChart3,
-              title: "Gestión basada en datos",
-              description: "Gestión operativa basada en hechos y datos",
-            },
           ].map((feature, index) => (
             <div
               key={index}
-              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className={`
+                bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                hover:shadow-xl transition-all duration-300 hover:scale-105
+                ${index === 6 ? "col-span-2" : ""}
+              `}
             >
               <div className="text-4xl mb-4 flex gap-4">
                 <feature.icon className="w-8 h-8" />
@@ -275,46 +435,9 @@ const FlowStableContent: React.FC = () => {
       ),
     },
     {
-      id: "2",
-      icon: Gauge,
-      title: "¿Cómo medir los resultados?",
-      subtitle: "Métricas y seguimiento de FlowStable™",
-      description:
-        "Esta es una de las preguntas más frecuentes antes de iniciar la implementación de un programa que apunta a estabilizar y optimizar las operaciones.",
-      graphic: <FlowStableMeasurementGraphic />,
-      details: [
-        "La aplicación de FlowStable™ genera mejoras rápidas y sostenidas, especialmente en la consistencia de la producción o los servicios.",
-        "Reducción de variabilidad operativa y el cumplimiento de los objetivos diarios.",
-        "Uno de sus pilares es el seguimiento estructurado de desvíos a través de la Secuencia de Mejora diaria™.",
-        "Permite tomar acciones correctivas de forma inmediata, en el lugar donde ocurren.",
-        "Este enfoque práctico y visual ayuda a que los equipos comprendan mejor qué se espera de cada rol.",
-        "Ganando en claridad, autonomía y compromiso con los resultados.",
-      ],
-      footer:
-        "A los pocos meses de implementación, la empresa empieza a experimentar una nueva estabilidad en sus variables clave, que facilita la planificación, reduce el desgaste operativo y crea una base sólida para escalar mejoras.",
-    },
-
-    {
-      id: "4",
-      icon: Settings,
-      title: "Metodología - ¿Cómo funciona FlowStable™?",
-      subtitle: "Secuencia de Mejora diaria™",
-      description:
-        "Con una metodología llamada Secuencia de Mejora diaria™, se entrena a los equipos para aplicar un proceso estructurado de mejora continua.",
-      // graphic: <FlowStableMethodologyGraphic />,
-      details: [
-        "Encontrar la variable CRÍTICA PARA EL PROCESO y determinar su valor para ser usado como línea de base",
-        "Observar las variaciones del día a día y registrarlas de manera ordenada",
-        "Identificar aquellas anomalías que superan los valores normales y generan inestabilidad",
-        "Estudiar los problemas y eliminarlos de raíz de modo tal que no se repitan",
-        "Continuar con la secuencia diaria mejorando los resultados de la variable crítica y haciéndola estable",
-      ],
-      large: true,
-    },
-    {
       id: "3",
       icon: Users,
-      title: "¿Para quién está pensado?",
+      title: "¿Para quién está recomendado el programa?",
       subtitle: "Tipos de empresas ideales para FlowStable™",
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
@@ -372,24 +495,30 @@ const FlowStableContent: React.FC = () => {
       ),
     },
     {
-      id: "5",
-      icon: Clock,
-      title: "Modalidad de implementación",
-      subtitle: "7 meses de transformación estructurada",
+      id: "9",
+      icon: Settings,
+      title: "¿Con qué otros productos se relaciona?",
+      subtitle: "Escalera sólida hacia un sistema Lean integral",
       description:
-        "FlowStable™ se implementa a través de 8 fases estructuradas durante 7 meses, combinando trabajo presencial y virtual para garantizar la adopción y sostenibilidad del programa.",
-      graphic: <FlowStableTimelineGraphic />,
-      details: [
-        "Fase Inicial: Diagnóstico (presencial) – 1 semana de trabajo en el lugar",
-        "Fase 2: Diseñar el sistema de medición. Discusión sobre objetivos y planes estratégicos. Entrenamiento y despliegue de herramientas (FlowStable PACK 2)",
-        "Fase 3: Establecer reuniones diarias de discusión y ejecución. Recolección de primeros datos (FlowStable PACK 3)",
-        "Fase 4: Consolidación y autonomía del equipo interno. Retrospectiva y ajustes. Identificación de desvíos",
-        "Fase 5: Inicio de resolución de problemas. Herramientas 5W1H – Herramienta A3 (FlowStable PACK 4)",
-        "Fase 6: Curvas de evolución. Herramientas estadísticas. Auditorías de gestión",
-        "Fase 7: Efectos colaterales. Definición técnica y económica",
-        "Fase 8: Auditorías de gestión. Objetivos y planes estratégicos",
-      ],
+        "FlowStable™ se integra con otros programas de LYSPAS & CO como parte de una secuencia lógica de mejora: toma los resultados de WasteZero™ para estabilizarlos, complementa a LeanBridge™ fortaleciendo la disciplina operativa diaria, sostiene en el tiempo las soluciones generadas con Kaizen Action™ y refuerza la ejecución de objetivos definidos en StratBridge™, asegurando la consistencia operativa necesaria para cumplir la estrategia.",
+      graphic: <ConnectionsGraphic title="FlowStable™" />,
+      details: [],
     },
+    // {
+    //   id: "4",
+    //   icon: Settings,
+    //   title: "Metodología - ¿Cómo funciona FlowStable™?",
+    //   subtitle: "Secuencia de Mejora diaria™",
+    //   description:
+    //     "Con una metodología llamada Secuencia de Mejora diaria™, se entrena a los equipos para aplicar un proceso estructurado de mejora continua.",
+    //   details: [
+    //     "Encontrar la variable CRÍTICA PARA EL PROCESO y determinar su valor para ser usado como línea de base",
+    //     "Observar las variaciones del día a día y registrarlas de manera ordenada",
+    //     "Identificar aquellas anomalías que superan los valores normales y generan inestabilidad",
+    //     "Estudiar los problemas y eliminarlos de raíz de modo tal que no se repitan",
+    //     "Continuar con la secuencia diaria mejorando los resultados de la variable crítica y haciéndola estable",
+    //   ],
+    // },
   ];
 
   const handleCardClick = (feature: any) => {
@@ -413,7 +542,6 @@ const FlowStableContent: React.FC = () => {
               <div
                 key={feature.id}
                 className={`
-                  ${feature.large ? "lg:col-span-2" : ""}
                   group relative bg-[var(--color-surface)] rounded-2xl p-8 \
                   border border-[var(--color-border)] transition-all duration-300 cursor-pointer \
                   hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:ring-4 hover:ring-[var(--color-secondary)]/20 \

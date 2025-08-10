@@ -5,6 +5,7 @@ import { useScrollToTop } from "../hooks/useScrollToTop";
 import FiveSCircularDiagram from "../components/FiveSPlus/FiveSCircularDiagram";
 import FiveSPlusContent from "../components/FiveSPlus/FiveSPlusContent";
 import CTASection from "../components/CTASection";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 const FiveSPlusPage: React.FC = () => {
   useScrollToTop();
 
@@ -42,6 +43,8 @@ const FiveSPlusPage: React.FC = () => {
         }}
         // className="mb-32"
       />
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

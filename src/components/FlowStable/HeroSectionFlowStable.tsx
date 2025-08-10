@@ -2,8 +2,8 @@
 
 import type React from "react";
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
 import CTAButtons from "../CTAButtons";
+import ScrollIndicator from "../ScrollIndicator";
 
 const HeroSectionFlowStable: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -93,14 +93,7 @@ const HeroSectionFlowStable: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 inset-x-0 flex justify-center z-10 animate-bounce">
-        <button
-          onClick={scrollToContent}
-          className="text-white/80 hover:text-white transition-all duration-300 hover:scale-110"
-        >
-          <ChevronDown className="w-8 h-8" />
-        </button>
-      </div>
+      <ScrollIndicator scrollToContent={scrollToContent} />
     </section>
   );
 };

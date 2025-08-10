@@ -34,6 +34,7 @@ import BridgeIcon from "../icons-componets/LeanBridge/BridgeIcon";
 import { isComingSoon } from "./ServiceCardList";
 import { useNavigate } from "react-router-dom";
 import { useScreenSize } from "../hooks/useScreenSize";
+import CentralChangeBridgeCircle from "../icons-componets/CentralChangeBridgeCircle";
 
 interface ServicesModalProps {
   isOpen: boolean;
@@ -69,6 +70,7 @@ const ICON_COMPONENTS_MAP = {
   "lean-enterprise-transformation": LeanEnterpriseIcon,
   stratbridge: StratBridgeIcon,
   projectfocus: ProjectFocusIcon,
+  "change-bridge": CentralChangeBridgeCircle,
 };
 
 const ServicesModal: React.FC<ServicesModalProps> = ({
@@ -204,7 +206,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
   };
 
   const showComingSoon = services.some((service) => isComingSoon(service));
-  console.log({showComingSoon})
+
   if (!isOpen || !currentService) return null;
 
   return (
@@ -364,7 +366,10 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
               {/* Service Details - Enhanced Design */}
               <div className="xl:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
                 {/* Service Header with Animation */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 p-4 sm:p-6 bg-gradient-to-r from-white to-blue-50/50 rounded-2xl sm:rounded-3xl border border-blue-100/50 shadow-lg">
+                <div
+                  className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 p-4 sm:p-6 bg-gradient-to-r from-white to-blue-50/50 rounded-2xl sm:rounded-3xl border border-blue-100/50 shadow-lg cursor-pointer"
+                  onClick={() => handleServiceClick(currentService)}
+                >
                   {/* Icon */}
                   <div
                     className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${

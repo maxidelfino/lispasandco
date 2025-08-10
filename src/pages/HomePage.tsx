@@ -14,6 +14,8 @@ import { carouselSlides } from "../data/carouselSlides";
 import ContactFooter from "../components/Footer";
 import LinkedInCard from "../components/LinkedInCard";
 import EvolutionPath from "../components/EvolutionPath";
+import ScrollIndicator from "../components/ScrollIndicator";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const HomePage: React.FC = () => {
   // const [activeCard, setActiveCard] = useState<string | null>(null);
@@ -97,14 +99,18 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 inset-x-0 flex justify-center z-10 animate-bounce">
+        {/* <div className="absolute bottom-8 inset-x-0 flex justify-center z-10 animate-bounce">
           <button
             onClick={scrollToServices}
             className="text-white/80 hover:text-white transition-all duration-300 hover:scale-110"
           >
             <ChevronDown className="w-8 h-8" />
           </button>
-        </div>
+        </div> */}
+        <ScrollIndicator
+          scrollToContent={scrollToServices}
+          label="Desliza hacia abajo o toca aquí para conocer más"
+        />
       </section>
 
       {/* Services Section */}
@@ -186,7 +192,7 @@ const HomePage: React.FC = () => {
       </section> */}
 
       {/* Video Section */}
-      <section
+      {/* <section
         id="sobre-nosotros"
         className="py-20 px-4 bg-[var(--color-surface)]"
       >
@@ -209,7 +215,7 @@ const HomePage: React.FC = () => {
             ></iframe>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* LinkedIn Section */}
       <LinkedInCard />
@@ -361,6 +367,7 @@ const HomePage: React.FC = () => {
         subtitle={modalData.subtitle}
         servicesData={modalData.servicesData || []} // Ensure servicesData is passed correctly
       /> */}
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

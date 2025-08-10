@@ -30,3 +30,18 @@ export interface Service {
   working?: boolean;
   subtitle?: string;
 }
+
+export interface StratBridgeFeature {
+  id: string;
+  icon: React.ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+  >;
+  title: string;
+  subtitle?: string;
+  children: JSX.Element;
+  description?: string;
+  subDescription?: string;
+  details?: string[];
+  footer?: string;
+  graphic?: React.ReactNode;
+}

@@ -5,6 +5,7 @@ import FloatingNavigation from "../components/FloatingNavigation";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
 import CTASection from "../components/CTASection";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const StratBridgePage: React.FC = () => {
   useScrollToTop();
@@ -49,8 +50,9 @@ const StratBridgePage: React.FC = () => {
           link.click();
           document.body.removeChild(link);
         }}
-        // className="mb-32"
       />
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };

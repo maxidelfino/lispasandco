@@ -5,6 +5,7 @@ import HeroSectionProjectFocus from "../components/ProjectFocus/HeroSectionProje
 import ProjectFocusContent from "../components/ProjectFocus/ProjectFocusContent";
 import ProjectFocusDiagram from "../components/ProjectFocus/ProjectFocusDiagram";
 import CTASection from "../components/CTASection";
+import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 
 const ProjectFocusPage: React.FC = () => {
   useScrollToTop();
@@ -52,6 +53,8 @@ const ProjectFocusPage: React.FC = () => {
         }}
         // className="mb-32"
       />
+
+      <FloatingWhatsAppCTA />
     </div>
   );
 };
