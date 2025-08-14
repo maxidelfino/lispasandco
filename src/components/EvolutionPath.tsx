@@ -1,16 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import type React from "react";
+import { useState, useRef } from "react";
 import ServicesModal from "./ServicesModal";
-import { evolutionCards, evolutionCardsType } from "../data/evolutionCards";
-import { Service } from "../types";
+import {
+  evolutionCards,
+  type evolutionCardsType,
+} from "../data/evolutionCards";
+import type { Service } from "../types";
 import { useScreenSize } from "../hooks/useScreenSize";
+import { Sparkles, Target, TrendingUp, Zap, ArrowRight } from "lucide-react";
 
 const EvolutionPath: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [cardId, setCardId] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const isDesktop = useScreenSize() === "desktop";
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const [modalData, setModalData] = useState<{
     title: string;
@@ -21,6 +27,21 @@ const EvolutionPath: React.FC = () => {
     subtitle: "",
     servicesData: [],
   });
+
+  const cardConfig = {
+    iniciar: {
+      icon: Target,
+    },
+    estabilizar: {
+      icon: TrendingUp,
+    },
+    transformar: {
+      icon: Zap,
+    },
+    aplicaciones: {
+      icon: Sparkles,
+    },
+  };
 
   const handleCardClick = (card: evolutionCardsType) => {
     setModalData({
@@ -33,123 +54,193 @@ const EvolutionPath: React.FC = () => {
 
   return (
     <>
-      <section id="services-section" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
-              Ofrecemos soluciones simples y sustentables a los problemas de las
-              empresas
+      <section
+        id="services-section"
+        className="min-h-screen flex items-center justify-center py-8 px-2 sm:py-12 sm:px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden"
+        ref={containerRef}
+      >
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-3 sm:mb-4 leading-tight">
+              Ofrecemos soluciones{" "}
+              <span className="text-[var(--color-secondary)]">
+                simples y sustentables
+              </span>{" "}
+              a los problemas de las empresas
             </h2>
-            <div className="w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-8"></div>
-            <p className="text-xl text-[var(--color-secondary)] italic max-w-2xl mx-auto mb-8">
+            <div className="w-16 sm:w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-6 sm:mb-8"></div>
+            <p className="text-base sm:text-xl text-[var(--color-secondary)] italic max-w-md sm:max-w-2xl mx-auto mb-6 sm:mb-8">
               “Cada empresa conoce su punto de dolor. De la mano de la mejora
               continua nosotros te ayudamos a superarlo.”
             </p>
-            <p className="text-xl text-[var(--color-text)] max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl text-[var(--color-text)] max-w-md sm:max-w-2xl mx-auto">
               Elige la opción que mejor describe tus problemas
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
-            {evolutionCards.map((card) => (
-              <div
-                key={card.id}
-                className={`group relative bg-[var(--color-surface)] rounded-2xl p-8 border border-[var(--color-border)] transition-all duration-500 cursor-pointer ${
-                  activeCard === card.id
-                    ? "shadow-2xl scale-105 border-[var(--color-secondary)]"
-                    : "shadow-lg hover:shadow-xl hover:scale-102"
-                }`}
-                onMouseEnter={() => {
-                  setCardId(card.id);
+          {/* Responsive Cards Layout */}
+          <div className="relative max-w-5xl mx-auto">
+            {/* Cards Container */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 relative">
+              {evolutionCards.map((card) => {
+                const config = cardConfig[card.id as keyof typeof cardConfig];
+                const IconComponent = config.icon;
+                const isActive = activeCard === card.id;
+                console.log({ card });
 
-                  setActiveCard(card.id);
-                }}
-                onMouseLeave={() => setActiveCard(null)}
-                onClick={() => {
-                  if (cardId === card.id) {
-                    if (activeCard) {
-                      handleCardClick(card);
-                    }
-                  }
-                }}
-              >
-                <div className="mb-6 text-center">
-                  <h3 className="text-xl font-bold text-[var(--color-primary)] mb-2">
-                    {card.subtitle}
-                  </h3>
-                  <div className="space-y-2 text-[var(--color-text)]">
-                    {/* <p className="font-medium">{card.subtitle}</p> */}
-                    <p className="font-medium">{card.description}</p>
-                    {/* <p className="text-sm">{card.description}</p> */}
-                  </div>
-                </div>
-
-                {/* Expanded Content */}
-                <div
-                  className={`transition-all duration-500 overflow-hidden ${
-                    activeCard === card.id
-                      ? "max-h-max opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="border-t border-[var(--color-border)] py-6">
-                    {card.quote && (
-                      <blockquote className="text-[var(--color-secondary)] font-medium italic mb-4">
-                        {card.quote}
-                      </blockquote>
-                    )}
-                    <div className="space-y-3">
-                      {card.details.map((detail, index) =>
-                        detail.startsWith("Ideal") ? (
-                          <p
-                            key={index}
-                            className="font-medium text-[var(--color-text)] leading-relaxed"
+                return (
+                  <div key={card.id} className="relative group">
+                    {/* Minimalist Card */}
+                    <div
+                      className={`relative bg-white rounded-2xl border border-gray-200 transition-all duration-500 cursor-pointer overflow-hidden shadow-sm ${
+                        activeCard === card.id
+                          ? "shadow-lg scale-[1.03] z-20 border-gray-300"
+                          : "hover:shadow-md hover:scale-[1.01]"
+                      }`}
+                      onMouseEnter={() => {
+                        setCardId(card.id);
+                        setActiveCard(card.id);
+                      }}
+                      onMouseLeave={() => setActiveCard(null)}
+                      onClick={() => {
+                        if (cardId === card.id) {
+                          if (activeCard) {
+                            handleCardClick(card);
+                          }
+                        }
+                      }}
+                      style={{
+                        background: isActive ? "#fafbfc" : undefined,
+                      }}
+                    >
+                      <div className="p-4 sm:p-6 lg:p-8">
+                        <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                          <div
+                            className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] flex items-center justify-center shadow-sm transition-all duration-300 ${
+                              isActive ? "scale-110" : "group-hover:scale-105"
+                            }`}
                           >
-                            <b>{detail}</b>
+                            <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 leading-tight">
+                              {card.subtitle}
+                            </h3>
+                          </div>
+                        </div>
+
+                        {activeCard !== card.id && (
+                          <p className="text-gray-600 font-normal mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                            {card.description}
                           </p>
-                        ) : (
-                          <p
-                            key={index}
-                            className="font-medium text-[var(--color-text)] leading-relaxed"
-                          >
-                            {detail}
-                          </p>
-                        )
-                      )}
-                    </div>
-                  </div>
-                  {card.programs && (
-                    <div className="border-t border-[var(--color-border)] mb-6 pt-6">
-                      {/* Título de sección */}
-                      <h4 className="text-center text-lg font-semibold text-[var(--color-primary)] mb-3">
-                        Programas incluidos en este camino:
-                      </h4>
+                        )}
 
-                      {/* Badges */}
-                      <div className="flex flex-wrap justify-center gap-4">
-                        {card.programs.map((program) => (
-                          <span
-                            key={program}
-                            className="inline-block bg-[var(--color-surface)] text-[var(--color-secondary)] font-medium px-4 py-2 rounded-full shadow-md transition-transform hover:scale-105"
+                        <div
+                          className={`transition-all duration-500 overflow-hidden ${
+                            activeCard === card.id
+                              ? "max-h-32 opacity-100 mb-3 sm:mb-4"
+                              : "max-h-0 opacity-0"
+                          }`}
+                        >
+                          <blockquote className="text-xs sm:text-sm font-medium italic p-2 sm:p-3 rounded-lg bg-gray-50 text-[var(--color-secondary)] border border-gray-100">
+                            {card.quote}
+                          </blockquote>
+                        </div>
+
+                        {activeCard === card.id &&
+                          card.details.map((detail, index) =>
+                            detail.startsWith("Ideal") ? (
+                              <p
+                                key={index}
+                                className="text-sm text-[var(--color-text)] leading-relaxed my-2"
+                              >
+                                <b>{detail}</b>
+                              </p>
+                            ) : (
+                              <p
+                                key={index}
+                                className="text-sm text-[var(--color-text)] leading-relaxed my-2"
+                              >
+                                {detail}
+                              </p>
+                            )
+                          )}
+
+                        {card.programs && (
+                          <div
+                            className={`transition-all duration-500 overflow-hidden ${
+                              isActive
+                                ? "max-h-40 opacity-100 mb-3 sm:mb-4"
+                                : "max-h-0 opacity-0"
+                            }`}
                           >
-                            {program}
+                            <div className="space-y-1 sm:space-y-2 mt-2">
+                              {card.programs.map((program, idx) => (
+                                <div
+                                  key={idx}
+                                  className="flex items-center space-x-2"
+                                >
+                                  <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]" />
+                                  <span className="text-xs sm:text-sm font-medium text-gray-700">
+                                    {program}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* CTA */}
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-3 sm:pt-4 border-t border-gray-100 gap-2 sm:gap-0">
+                          <span className="text-xs sm:text-sm font-medium text-gray-400">
+                            {isDesktop
+                              ? "Click para ver programas"
+                              : "Toca para ver programas"}
                           </span>
-                        ))}
+                        </div>
+
+                        <div
+                          className={`transition-all duration-500 overflow-hidden ${
+                            isActive
+                              ? "max-h-20 opacity-100 mt-3 sm:mt-4"
+                              : "max-h-0 opacity-0"
+                          }`}
+                        >
+                          <button
+                            onClick={() => handleCardClick(card)}
+                            className="w-full py-2 sm:py-3 px-4 sm:px-6 rounded-xl bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] text-white font-semibold shadow hover:shadow-md transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base"
+                          >
+                            <span>Ver programas detallados</span>
+                            <ArrowRight className="w-5 h-5" />
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  )}
-                </div>
-
-                {/* Click indicator */}
-                <div className="absolute top-4 right-4 text-[var(--color-border)] group-hover:text-[var(--color-secondary)] transition-colors">
-                  <div className="text-xs font-medium">
-                    {isDesktop
-                      ? "Click para ver programas"
-                      : "Tap para ver programas"}
                   </div>
-                </div>
+                );
+              })}
+            </div>
+            {/* Bottom CTA */}
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]">
+              <div className="text-center">
+                <h4 className="font-bold text-[var(--color-primary)] mb-1 sm:mb-2 text-base sm:text-lg">
+                  ¿No estás seguro cuál programa es el adecuado?
+                </h4>
+                <p className="text-[var(--color-text)] mb-3 sm:mb-4 text-sm sm:text-base">
+                  Nuestros expertos pueden ayudarte a identificar la solución
+                  perfecta para tu organización.
+                </p>
+                <button
+                  className="bg-[var(--color-accent)] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold hover:bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] transition-colors text-sm sm:text-base"
+                  onClick={() => {
+                    const element = document.querySelector("footer");
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Solicitar Consulta Gratuita
+                </button>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -161,6 +252,28 @@ const EvolutionPath: React.FC = () => {
         subtitle={modalData.subtitle}
         services={modalData.servicesData}
       />
+
+      <style>{`
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(180deg);
+          }
+        }
+
+        @keyframes pulse {
+          0%,
+          100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.6;
+          }
+        }
+      `}</style>
     </>
   );
 };

@@ -45,3 +45,9 @@ export interface StratBridgeFeature {
   footer?: string;
   graphic?: React.ReactNode;
 }
+
+export enum Language {
+  SPANISH = "es",
+  ENGLISH = "en",
+  PORTUGUESE = "pt",
+}

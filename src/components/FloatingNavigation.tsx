@@ -3,12 +3,15 @@ import { Menu, X, Globe } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import lyspasIconBlack from "../assets/lyspascoicon-black.png";
 import lyspasIconWhite from "../assets/lyspascoicon-white.png";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
 
 const FloatingNavigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { currentLanguage, setLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,7 +105,13 @@ const FloatingNavigation: React.FC = () => {
                     : "text-white/90 hover:text-white"
                 }`}
               >
-                Inicio
+                {currentLanguage === Language.SPANISH
+                  ? "Inicio"
+                  : currentLanguage === Language.ENGLISH
+                  ? "Home"
+                  : currentLanguage === Language.PORTUGUESE
+                  ? "Início"
+                  : "Inicio"}
               </button>
               <button
                 onClick={handleAboutUsClick}
@@ -112,7 +121,13 @@ const FloatingNavigation: React.FC = () => {
                     : "text-white/90 hover:text-white"
                 }`}
               >
-                Sobre Nosotros
+                {currentLanguage === Language.SPANISH
+                  ? "Sobre Nosotros"
+                  : currentLanguage === Language.ENGLISH
+                  ? "About Us"
+                  : currentLanguage === Language.PORTUGUESE
+                  ? "Sobre Nós"
+                  : "Sobre Nosotros"}
               </button>
               <button
                 onClick={handleContactClick}
@@ -122,7 +137,13 @@ const FloatingNavigation: React.FC = () => {
                     : "text-white/90 hover:text-white"
                 }`}
               >
-                Contacto
+                {currentLanguage === Language.SPANISH
+                  ? "Contacto"
+                  : currentLanguage === Language.ENGLISH
+                  ? "Contact"
+                  : currentLanguage === Language.PORTUGUESE
+                  ? "Contato"
+                  : "Contacto"}
               </button>
 
               {/* Language Selector */}
@@ -133,12 +154,15 @@ const FloatingNavigation: React.FC = () => {
                   }`}
                 />
                 <select
+                  value={currentLanguage}
+                  onChange={(e) => setLanguage(e.target.value as Language)}
                   className={`bg-transparent border-none text-sm font-medium cursor-pointer ${
                     isScrolled ? "text-[var(--color-text)]" : "text-white/90"
                   }`}
                 >
-                  <option value="es">ES</option>
-                  <option value="en">EN</option>
+                  <option value={Language.SPANISH}>ES</option>
+                  <option value={Language.ENGLISH}>EN</option>
+                  <option value={Language.PORTUGUESE}>PT</option>
                 </select>
               </div>
             </div>
@@ -172,25 +196,42 @@ const FloatingNavigation: React.FC = () => {
               onClick={() => handleNavigation("inicio")}
               className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
             >
-              Inicio
+              {currentLanguage === Language.SPANISH
+                ? "Inicio"
+                : currentLanguage === Language.ENGLISH
+                ? "Home"
+                : "Início"}
             </button>
             <button
               onClick={handleAboutUsClick}
               className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
             >
-              Sobre Nosotros
+              {currentLanguage === Language.SPANISH
+                ? "Sobre Nosotros"
+                : currentLanguage === Language.ENGLISH
+                ? "About Us"
+                : "Sobre Nós"}
             </button>
             <button
               onClick={handleContactClick}
               className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
             >
-              Contacto
+              {currentLanguage === Language.SPANISH
+                ? "Contacto"
+                : currentLanguage === Language.ENGLISH
+                ? "Contact"
+                : "Contato"}
             </button>
             <div className="flex items-center space-x-2 pt-2 border-t border-[var(--color-border)]">
               <Globe className="w-4 h-4 text-[var(--color-text)]" />
-              <select className="bg-transparent border-none text-sm font-medium text-[var(--color-text)]">
-                <option value="es">ES</option>
-                <option value="en">EN</option>
+              <select
+                value={currentLanguage}
+                onChange={(e) => setLanguage(e.target.value as Language)}
+                className="bg-transparent border-none text-sm font-medium text-[var(--color-text)]"
+              >
+                <option value={Language.SPANISH}>ES</option>
+                <option value={Language.ENGLISH}>EN</option>
+                <option value={Language.PORTUGUESE}>PT</option>
               </select>
             </div>
           </div>

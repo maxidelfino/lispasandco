@@ -5,7 +5,10 @@ import { MapPin } from "lucide-react";
 
 const LinkedInCard: React.FC = () => {
   return (
-    <section id="linkedin" className="py-20 px-4 bg-[var(--color-bg)]">
+    <section
+      id="linkedin"
+      className="py-20 px-4 bg-gradient-to-tr from-slate-50 via-white to-blue-50"
+    >
       <div className="max-w-2xl mx-auto">
         <h2 className="text-4xl font-bold text-[var(--color-primary)] mb-12 text-center">
           Conecta con nosotros

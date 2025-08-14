@@ -62,7 +62,7 @@ export const evolutionCards: evolutionCardsType[] = [
     title: "Perfeccionar la operación",
     subtitle: "Módulo: Perfeccionar la operación",
     description:
-      "Mantenimiento inadecuado – Automatismo deficiente – Problemas de seguridad industrial – Pérdidas en controles analíticos",
+      "Mantenimiento inadecuado – Automatismo deficiente – Pérdidas en controles analíticos",
     quote: "“La mejora se expande y convierte en el ADN del negocio.”",
     details: [
       "Implementación de herramientas avanzadas de automatización de líneas de producción, mantenimiento, seguridad industrial y prácticas de laboratorio.",
