@@ -2,8 +2,45 @@
 
 import type React from "react";
 import { MapPin } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
 
 const LinkedInCard: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+
+  const texts = {
+    title: {
+      [Language.SPANISH]: "Conecta con nosotros",
+      [Language.ENGLISH]: "Connect with us",
+      [Language.PORTUGUESE]: "Conecte-se conosco",
+    },
+    tagline: {
+      [Language.SPANISH]: "No existen soluciones plug and play...",
+      [Language.ENGLISH]: "There are no plug and play solutions...",
+      [Language.PORTUGUESE]: "Não existem soluções plug and play...",
+    },
+    location: {
+      [Language.SPANISH]: "Rosario, Santa Fe, Argentina",
+      [Language.ENGLISH]: "Rosario, Santa Fe, Argentina",
+      [Language.PORTUGUESE]: "Rosário, Santa Fé, Argentina",
+    },
+    contactInfo: {
+      [Language.SPANISH]: "Información de contacto",
+      [Language.ENGLISH]: "Contact information",
+      [Language.PORTUGUESE]: "Informações de contato",
+    },
+    followers: {
+      [Language.SPANISH]: "13,330 seguidores • Más de 500 contactos",
+      [Language.ENGLISH]: "13,330 followers • 500+ connections",
+      [Language.PORTUGUESE]: "13.330 seguidores • Mais de 500 conexões",
+    },
+    viewProfile: {
+      [Language.SPANISH]: "Ver perfil",
+      [Language.ENGLISH]: "View profile",
+      [Language.PORTUGUESE]: "Ver perfil",
+    },
+  };
+
   return (
     <section
       id="linkedin"
@@ -11,7 +48,7 @@ const LinkedInCard: React.FC = () => {
     >
       <div className="max-w-2xl mx-auto">
         <h2 className="text-4xl font-bold text-[var(--color-primary)] mb-12 text-center">
-          Conecta con nosotros
+          {texts.title[currentLanguage]}
         </h2>
 
         <div className="bg-white rounded-lg shadow-lg border border-[var(--color-border)] overflow-hidden">
@@ -37,14 +74,14 @@ const LinkedInCard: React.FC = () => {
 
             {/* Tagline */}
             <p className="text-[var(--color-text)] mb-4 text-lg">
-              No existen soluciones plug and play...
+              {texts.tagline[currentLanguage]}
             </p>
 
             {/* Location and Contact Info */}
             <div className="flex flex-wrap justify-center items-center gap-2 text-sm text-[var(--color-text)] mb-2">
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 mr-1" />
-                <span>Rosario, Santa Fe, Argentina</span>
+                <span>{texts.location[currentLanguage]}</span>
               </div>
               <span className="text-[var(--color-secondary)]">•</span>
               <a
@@ -53,13 +90,13 @@ const LinkedInCard: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-[var(--color-secondary)] hover:underline font-medium"
               >
-                Información de contacto
+                {texts.contactInfo[currentLanguage]}
               </a>
             </div>
 
             {/* Followers and Connections */}
             <p className="text-sm text-[var(--color-text)] mb-8">
-              13,330 seguidores • Más de 500 contactos
+              {texts.followers[currentLanguage]}
             </p>
 
             {/* Action Buttons */}
@@ -73,22 +110,11 @@ const LinkedInCard: React.FC = () => {
                   )
                 }
               >
-                Ver perfil
+                {texts.viewProfile[currentLanguage]}
               </button>
-              {/* <button className="border-2 border-[#0A66C2]text-[var(--color-secondary)] px-8 py-3 rounded-full font-semibold hover:bg-[var(--color-secondary)] hover:text-white transition-all">
-                Mensaje
-              </button> */}
             </div>
           </div>
         </div>
-
-        {/* Call to action text */}
-        {/* <div className="text-center mt-8">
-          <p className="text-[var(--color-text)]">
-            Síguenos en LinkedIn para contenido exclusivo sobre mejora continua
-            y transformación empresarial
-          </p>
-        </div> */}
       </div>
     </section>
   );

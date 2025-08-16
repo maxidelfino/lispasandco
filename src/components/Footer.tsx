@@ -12,39 +12,150 @@ import {
   AlertCircle,
   X,
 } from "lucide-react";
+import emailjs from "emailjs-com";
 
-import emailjs from 'emailjs-com';
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
 
-// Schema Joi con mensajes explícitos
-const schema = Joi.object({
-  name: Joi.string().min(2).max(50).required().messages({
-    "string.empty": "El nombre es requerido",
-    "string.min": "El nombre debe tener al menos {#limit} caracteres",
-    "string.max": "El nombre no puede exceder {#limit} caracteres",
-  }),
-  company: Joi.string().allow("").min(2).max(100).messages({
-    "string.min": "La empresa debe tener al menos {#limit} caracteres",
-    "string.max": "La empresa no puede exceder {#limit} caracteres",
-  }),
-  phone: Joi.string()
-    .pattern(/^[+]?[\d\-() ]+$/)
-    .allow("")
-    .messages({
+// Mensajes de validación multilenguaje
+const validationMessages = {
+  name: {
+    [Language.SPANISH]: {
+      "string.empty": "El nombre es requerido",
+      "string.min": "El nombre debe tener al menos {#limit} caracteres",
+      "string.max": "El nombre no puede exceder {#limit} caracteres",
+    },
+    [Language.ENGLISH]: {
+      "string.empty": "Name is required",
+      "string.min": "Name must be at least {#limit} characters",
+      "string.max": "Name cannot exceed {#limit} characters",
+    },
+    [Language.PORTUGUESE]: {
+      "string.empty": "O nome é obrigatório",
+      "string.min": "O nome deve ter pelo menos {#limit} caracteres",
+      "string.max": "O nome não pode exceder {#limit} caracteres",
+    },
+  },
+  company: {
+    [Language.SPANISH]: {
+      "string.min": "La empresa debe tener al menos {#limit} caracteres",
+      "string.max": "La empresa no puede exceder {#limit} caracteres",
+    },
+    [Language.ENGLISH]: {
+      "string.min": "Company must be at least {#limit} characters",
+      "string.max": "Company cannot exceed {#limit} characters",
+    },
+    [Language.PORTUGUESE]: {
+      "string.min": "A empresa deve ter pelo menos {#limit} caracteres",
+      "string.max": "A empresa não pode exceder {#limit} caracteres",
+    },
+  },
+  phone: {
+    [Language.SPANISH]: {
       "string.pattern.base": "El número de teléfono no es válido",
-    }),
-  email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .required()
-    .messages({
+    },
+    [Language.ENGLISH]: {
+      "string.pattern.base": "Phone number is not valid",
+    },
+    [Language.PORTUGUESE]: {
+      "string.pattern.base": "O número de telefone não é válido",
+    },
+  },
+  email: {
+    [Language.SPANISH]: {
       "string.empty": "El correo electrónico es requerido",
       "string.email": "El correo electrónico debe ser válido",
-    }),
-  message: Joi.string().min(10).max(1000).required().messages({
-    "string.empty": "El mensaje es requerido",
-    "string.min": "El mensaje debe tener al menos {#limit} caracteres",
-    "string.max": "El mensaje no puede exceder {#limit} caracteres",
-  }),
-});
+    },
+    [Language.ENGLISH]: {
+      "string.empty": "Email is required",
+      "string.email": "Email must be valid",
+    },
+    [Language.PORTUGUESE]: {
+      "string.empty": "O e-mail é obrigatório",
+      "string.email": "O e-mail deve ser válido",
+    },
+  },
+  message: {
+    [Language.SPANISH]: {
+      "string.empty": "El mensaje es requerido",
+      "string.min": "El mensaje debe tener al menos {#limit} caracteres",
+      "string.max": "El mensaje no puede exceder {#limit} caracteres",
+    },
+    [Language.ENGLISH]: {
+      "string.empty": "Message is required",
+      "string.min": "Message must be at least {#limit} characters",
+      "string.max": "Message cannot exceed {#limit} characters",
+    },
+    [Language.PORTUGUESE]: {
+      "string.empty": "A mensagem é obrigatória",
+      "string.min": "A mensagem deve ter pelo menos {#limit} caracteres",
+      "string.max": "A mensagem não pode exceder {#limit} caracteres",
+    },
+  },
+};
+
+const uiText = {
+  title: {
+    [Language.SPANISH]: "Contáctanos",
+    [Language.ENGLISH]: "Contact Us",
+    [Language.PORTUGUESE]: "Fale Conosco",
+  },
+  name: {
+    [Language.SPANISH]: "Nombre completo",
+    [Language.ENGLISH]: "Full name",
+    [Language.PORTUGUESE]: "Nome completo",
+  },
+  company: {
+    [Language.SPANISH]: "Empresa (opcional)",
+    [Language.ENGLISH]: "Company (optional)",
+    [Language.PORTUGUESE]: "Empresa (opcional)",
+  },
+  phone: {
+    [Language.SPANISH]: "Teléfono (opcional)",
+    [Language.ENGLISH]: "Phone (optional)",
+    [Language.PORTUGUESE]: "Telefone (opcional)",
+  },
+  email: {
+    [Language.SPANISH]: "Correo electrónico",
+    [Language.ENGLISH]: "Email",
+    [Language.PORTUGUESE]: "E-mail",
+  },
+  message: {
+    [Language.SPANISH]: "Mensaje",
+    [Language.ENGLISH]: "Message",
+    [Language.PORTUGUESE]: "Mensagem",
+  },
+  sending: {
+    [Language.SPANISH]: "Enviando...",
+    [Language.ENGLISH]: "Sending...",
+    [Language.PORTUGUESE]: "Enviando...",
+  },
+  send: {
+    [Language.SPANISH]: "Enviar Mensaje",
+    [Language.ENGLISH]: "Send Message",
+    [Language.PORTUGUESE]: "Enviar Mensagem",
+  },
+  emailSuccess: {
+    [Language.SPANISH]: "¡Mensaje enviado con éxito!",
+    [Language.ENGLISH]: "Message sent successfully!",
+    [Language.PORTUGUESE]: "Mensagem enviada com sucesso!",
+  },
+  emailError: {
+    [Language.SPANISH]: "Fallo al enviar, inténtalo luego.",
+    [Language.ENGLISH]: "Failed to send, please try again later.",
+    [Language.PORTUGUESE]: "Falha ao enviar, tente novamente mais tarde.",
+  },
+  reserved: {
+    [Language.SPANISH]: "Todos los derechos reservados.",
+    [Language.ENGLISH]: "All rights reserved.",
+    [Language.PORTUGUESE]: "Todos os direitos reservados.",
+  },
+  linkedin: {
+    [Language.SPANISH]: "LinkedIn",
+    [Language.ENGLISH]: "LinkedIn",
+    [Language.PORTUGUESE]: "LinkedIn",
+  },
+};
 
 type FormData = {
   name: string;
@@ -75,6 +186,39 @@ const Toast: React.FC<{
 };
 
 export const ContactFooter: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+
+  // Creamos el schema con mensajes según idioma
+  const schema = React.useMemo(
+    () =>
+      Joi.object({
+        name: Joi.string()
+          .min(2)
+          .max(50)
+          .required()
+          .messages(validationMessages.name[currentLanguage]),
+        company: Joi.string()
+          .allow("")
+          .min(2)
+          .max(100)
+          .messages(validationMessages.company[currentLanguage]),
+        phone: Joi.string()
+          .pattern(/^[+]?[\d\-() ]+$/)
+          .allow("")
+          .messages(validationMessages.phone[currentLanguage]),
+        email: Joi.string()
+          .email({ tlds: { allow: false } })
+          .required()
+          .messages(validationMessages.email[currentLanguage]),
+        message: Joi.string()
+          .min(10)
+          .max(1000)
+          .required()
+          .messages(validationMessages.message[currentLanguage]),
+      }),
+    [currentLanguage]
+  );
+
   const {
     register,
     handleSubmit,
@@ -91,36 +235,51 @@ export const ContactFooter: React.FC = () => {
   } | null>(null);
 
   React.useEffect(() => {
-  if (toast) {
-    const timeout = setTimeout(() => {
-      setToast(null);
-    }, 3000);
+    if (toast) {
+      const timeout = setTimeout(() => {
+        setToast(null);
+      }, 3000);
 
-    return () => clearTimeout(timeout); // limpia si cambia antes de tiempo
-  }
-}, [toast]);
+      return () => clearTimeout(timeout);
+    }
+  }, [toast]);
 
   const onSubmit = async (data: FormData) => {
     try {
       const res = await emailjs.send(
-        'service_yn9ib5g',
-        'template_uo6xkvy',
+        "service_yn9ib5g",
+        "template_uo6xkvy",
         {
           name: data.name,
-          company: data.company || "No especificado",
-          phone: data.phone || "No especificado",
+          company:
+            data.company ||
+            (currentLanguage === Language.SPANISH
+              ? "No especificado"
+              : currentLanguage === Language.ENGLISH
+              ? "Not specified"
+              : "Não especificado"),
+          phone:
+            data.phone ||
+            (currentLanguage === Language.SPANISH
+              ? "No especificado"
+              : currentLanguage === Language.ENGLISH
+              ? "Not specified"
+              : "Não especificado"),
           email: data.email,
           message: data.message,
         },
-        'UV6jxCVYKlwvH3GhS'
+        "UV6jxCVYKlwvH3GhS"
       );
 
       if (res.status !== 200) throw new Error("Error en servidor");
-      setToast({ type: "success", message: "¡Mensaje enviado con éxito!" });
+      setToast({
+        type: "success",
+        message: uiText.emailSuccess[currentLanguage],
+      });
       reset();
     } catch (err) {
       console.error(err);
-      setToast({ type: "error", message: "Fallo al enviar, inténtalo luego." });
+      setToast({ type: "error", message: uiText.emailError[currentLanguage] });
     }
   };
 
@@ -140,7 +299,9 @@ export const ContactFooter: React.FC = () => {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Contáctanos</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {uiText.title[currentLanguage]}
+            </h2>
             <div className="w-24 h-1 bg-[var(--color-accent)] mx-auto"></div>
           </div>
 
@@ -152,14 +313,14 @@ export const ContactFooter: React.FC = () => {
             <div>
               <input
                 {...register("name")}
-                placeholder="Nombre completo"
+                placeholder={uiText.name[currentLanguage]}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.name ? "border-red-500" : "border-white/20"
                 } bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-0 transition-all duration-300`}
               />
               {errors.name && (
                 <p className="text-red-400 text-sm mt-1">
-                  {errors.name.message}
+                  {errors.name.message as string}
                 </p>
               )}
             </div>
@@ -168,14 +329,14 @@ export const ContactFooter: React.FC = () => {
             <div>
               <input
                 {...register("company")}
-                placeholder="Empresa (opcional)"
+                placeholder={uiText.company[currentLanguage]}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.company ? "border-red-500" : "border-white/20"
                 } bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-0 transition-all duration-300`}
               />
               {errors.company && (
                 <p className="text-red-400 text-sm mt-1">
-                  {errors.company.message}
+                  {errors.company.message as string}
                 </p>
               )}
             </div>
@@ -184,14 +345,14 @@ export const ContactFooter: React.FC = () => {
             <div>
               <input
                 {...register("phone")}
-                placeholder="Teléfono (opcional)"
+                placeholder={uiText.phone[currentLanguage]}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.phone ? "border-red-500" : "border-white/20"
                 } bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-0 transition-all duration-300`}
               />
               {errors.phone && (
                 <p className="text-red-400 text-sm mt-1">
-                  {errors.phone.message}
+                  {errors.phone.message as string}
                 </p>
               )}
             </div>
@@ -200,14 +361,14 @@ export const ContactFooter: React.FC = () => {
             <div>
               <input
                 {...register("email")}
-                placeholder="Correo electrónico"
+                placeholder={uiText.email[currentLanguage]}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.email ? "border-red-500" : "border-white/20"
                 } bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-0 transition-all duration-300`}
               />
               {errors.email && (
                 <p className="text-red-400 text-sm mt-1">
-                  {errors.email.message}
+                  {errors.email.message as string}
                 </p>
               )}
             </div>
@@ -216,7 +377,7 @@ export const ContactFooter: React.FC = () => {
             <div className="md:col-span-2">
               <textarea
                 {...register("message")}
-                placeholder="Mensaje"
+                placeholder={uiText.message[currentLanguage]}
                 rows={5}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.message ? "border-red-500" : "border-white/20"
@@ -224,7 +385,7 @@ export const ContactFooter: React.FC = () => {
               />
               {errors.message && (
                 <p className="text-red-400 text-sm mt-1">
-                  {errors.message.message}
+                  {errors.message.message as string}
                 </p>
               )}
             </div>
@@ -240,7 +401,9 @@ export const ContactFooter: React.FC = () => {
                     : "bg-[var(--color-accent)] hover:bg-emerald-600 hover:scale-105"
                 } text-white`}
               >
-                {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+                {isSubmitting
+                  ? uiText.sending[currentLanguage]
+                  : uiText.send[currentLanguage]}
               </button>
             </div>
           </form>
@@ -269,12 +432,12 @@ export const ContactFooter: React.FC = () => {
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"
               >
                 <Linkedin className="w-5 h-5" />
-                <span>LinkedIn</span>
+                <span>{uiText.linkedin[currentLanguage]}</span>
               </a>
             </div>
             <p className="text-white/70 text-sm">
-              © {new Date().getFullYear()} LYSPAS & CO. Todos los derechos
-              reservados.
+              © {new Date().getFullYear()} LYSPAS & CO.{" "}
+              {uiText.reserved[currentLanguage]}
             </p>
           </div>
         </div>

@@ -10,6 +10,8 @@ import {
 import type { Service } from "../types";
 import { useScreenSize } from "../hooks/useScreenSize";
 import { Sparkles, Target, TrendingUp, Zap, ArrowRight } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
 
 const EvolutionPath: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
@@ -17,6 +19,7 @@ const EvolutionPath: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const isDesktop = useScreenSize() === "desktop";
   const containerRef = useRef<HTMLDivElement>(null);
+  const { currentLanguage } = useLanguage();
 
   const [modalData, setModalData] = useState<{
     title: string;
@@ -62,19 +65,46 @@ const EvolutionPath: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-3 sm:mb-4 leading-tight">
-              Ofrecemos soluciones{" "}
-              <span className="text-[var(--color-secondary)]">
-                simples y sustentables
-              </span>{" "}
-              a los problemas de las empresas
+              {currentLanguage === Language.SPANISH ? (
+                <>
+                  Ofrecemos soluciones{" "}
+                  <span className="text-[var(--color-secondary)]">
+                    simples y sustentables
+                  </span>{" "}
+                  a los problemas de las empresas
+                </>
+              ) : currentLanguage === Language.ENGLISH ? (
+                <>
+                  We offer{" "}
+                  <span className="text-[var(--color-secondary)]">
+                    simple and sustainable
+                  </span>{" "}
+                  solutions to business problems
+                </>
+              ) : (
+                <>
+                  Oferecemos soluções{" "}
+                  <span className="text-[var(--color-secondary)]">
+                    simples e sustentáveis
+                  </span>{" "}
+                  para os problemas das empresas
+                </>
+              )}
             </h2>
             <div className="w-16 sm:w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-6 sm:mb-8"></div>
             <p className="text-base sm:text-xl text-[var(--color-secondary)] italic max-w-md sm:max-w-2xl mx-auto mb-6 sm:mb-8">
-              “Cada empresa conoce su punto de dolor. De la mano de la mejora
-              continua nosotros te ayudamos a superarlo.”
+              {currentLanguage === Language.SPANISH
+                ? "“Cada empresa conoce su punto de dolor. De la mano de la mejora continua nosotros te ayudamos a superarlo.”"
+                : currentLanguage === Language.ENGLISH
+                ? "“Every company knows its pain point. With continuous improvement, we help you overcome it.”"
+                : "“Cada empresa conhece seu ponto de dor. Com a melhoria contínua, ajudamos você a superá-lo.”"}
             </p>
             <p className="text-base sm:text-xl text-[var(--color-text)] max-w-md sm:max-w-2xl mx-auto">
-              Elige la opción que mejor describe tus problemas
+              {currentLanguage === Language.SPANISH
+                ? "Elige la opción que mejor describe tus problemas"
+                : currentLanguage === Language.ENGLISH
+                ? "Choose the option that best describes your challenges"
+                : "Escolha a opção que melhor descreve seus problemas"}
             </p>
           </div>
 
@@ -82,11 +112,18 @@ const EvolutionPath: React.FC = () => {
           <div className="relative max-w-5xl mx-auto">
             {/* Cards Container */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 relative">
-              {evolutionCards.map((card) => {
+              {(
+                evolutionCards[
+                  currentLanguage === Language.SPANISH
+                    ? "es"
+                    : currentLanguage === Language.ENGLISH
+                    ? "en"
+                    : "pt"
+                ] as evolutionCardsType[]
+              ).map((card) => {
                 const config = cardConfig[card.id as keyof typeof cardConfig];
                 const IconComponent = config.icon;
                 const isActive = activeCard === card.id;
-                console.log({ card });
 
                 return (
                   <div key={card.id} className="relative group">
@@ -148,7 +185,7 @@ const EvolutionPath: React.FC = () => {
                         </div>
 
                         {activeCard === card.id &&
-                          card.details.map((detail, index) =>
+                          card.details.map((detail: string, index: number) =>
                             detail.startsWith("Ideal") ? (
                               <p
                                 key={index}
@@ -175,17 +212,19 @@ const EvolutionPath: React.FC = () => {
                             }`}
                           >
                             <div className="space-y-1 sm:space-y-2 mt-2">
-                              {card.programs.map((program, idx) => (
-                                <div
-                                  key={idx}
-                                  className="flex items-center space-x-2"
-                                >
-                                  <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]" />
-                                  <span className="text-xs sm:text-sm font-medium text-gray-700">
-                                    {program}
-                                  </span>
-                                </div>
-                              ))}
+                              {card.programs.map(
+                                (program: string, idx: number) => (
+                                  <div
+                                    key={idx}
+                                    className="flex items-center space-x-2"
+                                  >
+                                    <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]" />
+                                    <span className="text-xs sm:text-sm font-medium text-gray-700">
+                                      {program}
+                                    </span>
+                                  </div>
+                                )
+                              )}
                             </div>
                           </div>
                         )}
@@ -194,8 +233,16 @@ const EvolutionPath: React.FC = () => {
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-3 sm:pt-4 border-t border-gray-100 gap-2 sm:gap-0">
                           <span className="text-xs sm:text-sm font-medium text-gray-400">
                             {isDesktop
-                              ? "Click para ver programas"
-                              : "Toca para ver programas"}
+                              ? currentLanguage === Language.SPANISH
+                                ? "Click para ver programas"
+                                : currentLanguage === Language.ENGLISH
+                                ? "Click to see programs"
+                                : "Clique para ver programas"
+                              : currentLanguage === Language.SPANISH
+                              ? "Toca para ver programas"
+                              : currentLanguage === Language.ENGLISH
+                              ? "Tap to see programs"
+                              : "Toque para ver programas"}
                           </span>
                         </div>
 
@@ -210,7 +257,13 @@ const EvolutionPath: React.FC = () => {
                             onClick={() => handleCardClick(card)}
                             className="w-full py-2 sm:py-3 px-4 sm:px-6 rounded-xl bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] text-white font-semibold shadow hover:shadow-md transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base"
                           >
-                            <span>Ver programas detallados</span>
+                            <span>
+                              {currentLanguage === Language.SPANISH
+                                ? "Ver programas detallados"
+                                : currentLanguage === Language.ENGLISH
+                                ? "See detailed programs"
+                                : "Ver programas detalhados"}
+                            </span>
                             <ArrowRight className="w-5 h-5" />
                           </button>
                         </div>
@@ -224,11 +277,18 @@ const EvolutionPath: React.FC = () => {
             <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]">
               <div className="text-center">
                 <h4 className="font-bold text-[var(--color-primary)] mb-1 sm:mb-2 text-base sm:text-lg">
-                  ¿No estás seguro cuál programa es el adecuado?
+                  {currentLanguage === Language.SPANISH
+                    ? "¿No estás seguro cuál programa es el adecuado?"
+                    : currentLanguage === Language.ENGLISH
+                    ? "Not sure which program is right for you?"
+                    : "Não tem certeza de qual programa é o mais adequado?"}
                 </h4>
                 <p className="text-[var(--color-text)] mb-3 sm:mb-4 text-sm sm:text-base">
-                  Nuestros expertos pueden ayudarte a identificar la solución
-                  perfecta para tu organización.
+                  {currentLanguage === Language.SPANISH
+                    ? "Nuestros expertos pueden ayudarte a identificar la solución perfecta para tu organización."
+                    : currentLanguage === Language.ENGLISH
+                    ? "Our experts can help you identify the perfect solution for your organization."
+                    : "Nossos especialistas podem ajudá-lo a identificar a solução perfeita para sua organização."}
                 </p>
                 <button
                   className="bg-[var(--color-accent)] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold hover:bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] transition-colors text-sm sm:text-base"
@@ -237,7 +297,11 @@ const EvolutionPath: React.FC = () => {
                     element?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
-                  Solicitar Consulta Gratuita
+                  {currentLanguage === Language.SPANISH
+                    ? "Solicitar Consulta Gratuita"
+                    : currentLanguage === Language.ENGLISH
+                    ? "Request Free Consultation"
+                    : "Solicitar Consulta Gratuita"}
                 </button>
               </div>
             </div>
