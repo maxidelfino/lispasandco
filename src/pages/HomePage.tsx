@@ -10,6 +10,7 @@ import ScrollIndicator from "../components/ScrollIndicator";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import SEOHead from "../components/SEOHead";
 
 const HomePage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,6 +35,11 @@ const HomePage: React.FC = () => {
       className="min-h-screen"
       style={{ backgroundColor: "var(--color-bg)" }}
     >
+      <SEOHead
+        title="LYSPAS & CO - Consultoría Lean y Mejora Continua | Líderes en Argentina"
+        description="Especialistas en consultoría Lean con +13,000 seguidores. Programas WasteZero™, FlowStable™, 5S Plus™, Kaizen Action™. Reducimos desperdicios, optimizamos procesos industriales. Resultados garantizados en Argentina y Latinoamérica."
+        keywords="consultoría lean, mejora continua, reducción desperdicios, optimización procesos, WasteZero, FlowStable, 5S Plus, Kaizen Action, consultor lean Argentina, Rosario Santa Fe, eficiencia industrial, productividad, transformación lean, Six Sigma"
+      />
       <FloatingNavigation />
 
       {/* Hero Section */}

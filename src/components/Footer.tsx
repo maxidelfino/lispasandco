@@ -414,6 +414,7 @@ export const ContactFooter: React.FC = () => {
               <a
                 href="mailto:gonzalo_luvani@lyspasandco.com"
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"
+                itemProp="email"
               >
                 <Mail className="w-5 h-5" />
                 <span>gonzalo_luvani@lyspasandco.com</span>
@@ -421,6 +422,7 @@ export const ContactFooter: React.FC = () => {
               <a
                 href="tel:+5434112345678"
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"
+                itemProp="telephone"
               >
                 <Phone className="w-5 h-5" />
                 <span>+54 9 3416 40-8758</span>
@@ -430,6 +432,7 @@ export const ContactFooter: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"
+                itemProp="sameAs"
               >
                 <Linkedin className="w-5 h-5" />
                 <span>{uiText.linkedin[currentLanguage]}</span>

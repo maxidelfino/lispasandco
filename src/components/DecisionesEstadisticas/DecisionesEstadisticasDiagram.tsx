@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   BarChart2,
   FileText,
-  Search,
   CheckCircle,
   TrendingUp,
   Users,
@@ -110,7 +109,9 @@ const getDiagramConfig = (screen: string) => {
 
 const DecisionesEstadisticasDiagram: React.FC = () => {
   const [active, setActive] = useState<string | null>(null);
-  const [screen, setScreen] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  const [screen, setScreen] = useState<"mobile" | "tablet" | "desktop">(
+    "desktop"
+  );
   const [visible, setVisible] = useState(false);
   const diagramRef = useRef<HTMLDivElement>(null);
 
@@ -139,7 +140,8 @@ const DecisionesEstadisticasDiagram: React.FC = () => {
     return () => obs.disconnect();
   }, []);
 
-  const { size, center, radius, iconSize, centerIconSize, labelWidth } = getDiagramConfig(screen);
+  const { size, center, radius, iconSize, centerIconSize, labelWidth } =
+    getDiagramConfig(screen);
 
   // Calcula la posición de cada paso en el círculo
   const getStepPos = (idx: number, total: number) => {
@@ -270,9 +272,7 @@ const DecisionesEstadisticasDiagram: React.FC = () => {
               >
                 <Icon
                   className={`transition-colors duration-200 ${
-                    isActive
-                      ? "text-white"
-                      : "text-[var(--color-secondary)]"
+                    isActive ? "text-white" : "text-[var(--color-secondary)]"
                   }`}
                   size={iconSize}
                 />

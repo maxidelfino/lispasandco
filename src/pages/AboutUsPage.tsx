@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
+import SEOHead from "../components/SEOHead";
 
 type MisionCard = {
   title: string;
@@ -478,6 +479,11 @@ const AboutUsPage: React.FC = () => {
       className="min-h-screen"
       style={{ backgroundColor: "var(--color-bg)" }}
     >
+      <SEOHead
+        title="Sobre Nosotros - Expertos en Mejora Continua | LYSPAS & CO"
+        description="Conoce LYSPAS & CO - Expertos en mejora continua con sede en Rosario, Argentina. Misión, visión, valores y compromiso con la transformación empresarial Lean. +13,000 seguidores en LinkedIn nos respaldan."
+        keywords="LYSPAS & CO, empresa consultoría, mejora continua Argentina, Rosario Santa Fe, misión visión valores, expertos lean, transformación empresarial, consultoría industrial"
+      />
       <FloatingNavigation />
 
       {/* Hero Section */}
