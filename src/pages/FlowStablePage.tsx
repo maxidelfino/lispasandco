@@ -6,12 +6,18 @@ import FlowStableDiagram from "../components/FlowStable/FlowStableDiagram";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import SEOHead from "../components/SEOHead";
 
 const FlowStablePage: React.FC = () => {
   useScrollToTop();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
+      <SEOHead 
+        title="FlowStable™ - Estabilización de Procesos Industriales | LYSPAS & CO"
+        description="FlowStable™ - Programa para estabilizar procesos industriales sin inversión en activos. Secuencia de Mejora Diaria™, reducción de variabilidad, mayor productividad en 7 meses. Consultoría LYSPAS & CO."
+        keywords="FlowStable, estabilización procesos, secuencia mejora diaria, reducción variabilidad, productividad industrial, control procesos, eficiencia operacional, optimización producción"
+      />
       <FloatingNavigation />
       <HeroSectionFlowStable />
 

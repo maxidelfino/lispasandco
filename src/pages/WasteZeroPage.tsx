@@ -6,12 +6,18 @@ import WasteZeroContent from "../components/WasteZero/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import SEOHead from "../components/SEOHead";
 
 const WasteZeroPage: React.FC = () => {
   useScrollToTop();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
+      <SEOHead 
+        title="WasteZero™ - Eliminación de Desperdicios Lean | LYSPAS & CO"
+        description="WasteZero™ - Programa Lean para identificar y eliminar los 8 desperdicios industriales. Metodología DMAIC, formación práctica, resultados visibles en 6 meses. Consultoría especializada LYSPAS & CO en Argentina."
+        keywords="WasteZero, eliminación desperdicios, 8 desperdicios lean, metodología DMAIC, consultoría lean, reducción costos operativos, eficiencia procesos, mejora continua, desperdicios industriales, optimización procesos"
+      />
       <FloatingNavigation />
       <HeroSection />
       {/* Responsive layout: two columns on desktop, stacked on tablet/mobile */}

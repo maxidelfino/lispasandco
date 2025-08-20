@@ -85,6 +85,8 @@ export default function BackgroundCarousel({
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
+                    role="img"
+                    aria-label={`Imagen de fondo ${imageIndex + 1} de LYSPAS & CO`}
                   >
                     <div className="absolute inset-0 bg-black/40"></div>
                   </div>
@@ -111,6 +113,8 @@ export default function BackgroundCarousel({
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
+                  role="img"
+                  aria-label={`Imagen de fondo ${imageIndex + 1} de LYSPAS & CO`}
                 >
                   <div className="absolute inset-0 bg-black/40"></div>
                 </div>

@@ -86,12 +86,16 @@ const FloatingNavigation: React.FC = () => {
               className={`flex items-center h-16 space-x-3 overflow-hidden transition-colors duration-300 hover:scale-105 ${
                 isScrolled ? "text-[var(--color-primary)]" : "text-white"
               }`}
+              aria-label="LYSPAS & CO - Ir al inicio"
             >
               <img
                 src={isScrolled ? lyspasIconBlack : lyspasIconWhite}
                 alt="LYSPAS & CO Logo"
                 className="h-20 w-auto"
                 style={{ maxHeight: "100%" }}
+                loading="eager"
+                width="80"
+                height="80"
               />
             </button>
 
