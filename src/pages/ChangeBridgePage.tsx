@@ -5,6 +5,7 @@ import ChangeBridgeContent from "../components/ChangeBridge/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import ChangeBridgeDiagram from "../assets/ChangeBridgeDiagram.png";
 
 const ChangeBridgePage: React.FC = () => {
   useScrollToTop();
@@ -21,8 +22,22 @@ const ChangeBridgePage: React.FC = () => {
         </div>
 
         {/* Right: Diagram */}
-        <div className="w-full lg:w-1/2 order-2">
-          {/* <CircularWasteDiagram /> */}
+        <div className="w-full lg:w-1/2 order-2 pt-16">
+          <div className="mb-8 text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)] mb-2">
+              Change Bridge™: Proceso de Gestión del Cambio
+            </h2>
+            <p className="text-base md:text-lg text-[var(--color-text)] mb-8">
+              El modelo Change Bridge™ acompaña proyectos de cambio
+              organizacional a través de un enfoque estructurado en 4 fases
+              clave.
+            </p>
+            <img
+              src={ChangeBridgeDiagram}
+              alt="Diagrama del Proceso Change Bridge"
+              className="w-full h-auto rounded-lg shadow-lg border border-[var(--color-border)]"
+            />
+          </div>
         </div>
       </div>
       {/* Call to Action */}

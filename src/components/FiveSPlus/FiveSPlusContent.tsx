@@ -10,9 +10,6 @@ import {
   X,
   Users,
   Settings,
-  Grid,
-  Droplet,
-  ShieldCheck,
   Repeat,
   Building,
   Factory,
@@ -288,15 +285,6 @@ const ContentSection: React.FC<ContentSectionProps> = ({
     </div>
   </section>
 );
-
-const nodes = [
-  { label: "Orden", icon: Grid, angle: -90, top: 45, left: 410 }, // arriba
-  { label: "Limpieza", icon: Droplet, angle: 30, top: 200, left: 410 }, // abajo derecha
-  { label: "Seguridad", icon: ShieldCheck, angle: 150, top: 125, left: 210 }, // abajo izquierda
-];
-
-const R = 110; // radio
-const C = 170; // centro (px)
 
 const FiveSPlusContent: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
@@ -670,7 +658,6 @@ const FiveSPlusContent: React.FC = () => {
               <div
                 key={feature.id}
                 className={`
-                  ${feature.large ? "lg:col-span-2" : ""}
                   group relative bg-[var(--color-surface)] rounded-2xl p-8 \
                   border border-[var(--color-border)] transition-all duration-300 cursor-pointer \
                   hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:ring-4 hover:ring-[var(--color-secondary)]/20 \

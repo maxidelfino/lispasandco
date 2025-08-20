@@ -521,10 +521,25 @@ export const servicesData_transformar: Service[] = [
   {
     id: "asset-control-bridge",
     name: "Asset Control Bridge™",
-    description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    description:
+      "Sistema integral para la gestión eficiente de activos industriales, enfocado en maximizar la disponibilidad, confiabilidad y vida útil de los equipos productivos.",
+    longDescription: [
+      "Asset Control Bridge™ es un programa especializado en la gestión de activos industriales que permite controlar, monitorear y optimizar el mantenimiento de equipos críticos. A través de metodologías estructuradas, digitalización y análisis de datos, ayuda a reducir paradas no programadas, mejorar la planificación y asegurar la trazabilidad de intervenciones.",
+      "El sistema integra herramientas visuales, indicadores clave y procesos estandarizados para garantizar la disponibilidad y confiabilidad de los activos, alineando la gestión de mantenimiento con los objetivos estratégicos de la organización y facilitando la toma de decisiones basada en información real y oportuna.",
+    ],
+    icon: "Settings", // Icono relacionado a mantenimiento y gestión de activos
+    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+    route: "/asset-control-bridge",
+    isActive: true,
+    benefits: [
+      "Maximiza la disponibilidad y confiabilidad de los equipos productivos.",
+      "Reduce costos y paradas no programadas mediante mantenimiento preventivo y predictivo.",
+      "Facilita la trazabilidad y control de intervenciones en activos críticos.",
+      "Optimiza la planificación y ejecución de tareas de mantenimiento.",
+      "Integra indicadores clave para la toma de decisiones basada en datos.",
+      "Alinea la gestión de activos con los objetivos estratégicos de la empresa.",
+    ],
+    working: false,
     subtitle: "Mantenimiento Industrial",
   },
   {
@@ -546,12 +561,25 @@ export const servicesData_transformar: Service[] = [
     subtitle: "Gestionar la Seguridad industrial",
   },
   {
-    id: "lab-ci-focus",
-    name: "Lab Ci Focus™",
-    description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    id: "measure-bridge",
+    name: "Measure Bridge™",
+    description:
+      "Programa integral para la gestión y control de la medición industrial, asegurando precisión, confiabilidad y cumplimiento normativo en los procesos de medición.",
+    longDescription: [
+      "Measure Bridge™ es un sistema especializado que permite gestionar, controlar y optimizar los procesos de medición industrial, garantizando la trazabilidad y la integridad de los datos obtenidos.",
+      "A través de metodologías estructuradas, digitalización y análisis de información, facilita la toma de decisiones basada en datos confiables, reduce errores y asegura el cumplimiento de estándares de calidad y normativas vigentes.",
+    ],
+    icon: "BarChart", // Icono relacionado a medición y análisis de datos
+    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+    route: "/measure-bridge",
+    isActive: true,
+    benefits: [
+      "Asegura la precisión y confiabilidad de los datos de medición.",
+      "Facilita la trazabilidad y el control de instrumentos y procesos de medición.",
+      "Reduce errores y desviaciones mediante la digitalización y estandarización.",
+      "Cumple con normativas y estándares de calidad en la gestión metrológica.",
+    ],
+    working: false,
     subtitle: "Mejorar precisión analítica",
   },
 ];
@@ -560,10 +588,25 @@ export const servicesData_transformar_en: Service[] = [
   {
     id: "asset-control-bridge",
     name: "Asset Control Bridge™",
-    description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    description:
+      "Comprehensive system for efficient management of industrial assets, focused on maximizing the availability, reliability, and lifespan of production equipment.",
+    longDescription: [
+      "Asset Control Bridge™ is a specialized program for industrial asset management that enables control, monitoring, and optimization of maintenance for critical equipment. Through structured methodologies, digitalization, and data analysis, it helps reduce unplanned downtime, improve planning, and ensure traceability of interventions.",
+      "The system integrates visual tools, key indicators, and standardized processes to guarantee the availability and reliability of assets, aligning maintenance management with the organization's strategic objectives and facilitating decision-making based on real and timely information.",
+    ],
+    icon: "Settings", // Icon related to maintenance and asset management
+    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+    route: "/asset-control-bridge",
+    isActive: true,
+    benefits: [
+      "Maximizes the availability and reliability of production equipment.",
+      "Reduces costs and unplanned downtime through preventive and predictive maintenance.",
+      "Facilitates traceability and control of interventions on critical assets.",
+      "Optimizes planning and execution of maintenance tasks.",
+      "Integrates key indicators for data-driven decision-making.",
+      "Aligns asset management with the company's strategic objectives.",
+    ],
+    working: false,
     subtitle: "Industrial Maintenance",
   },
   {
@@ -585,12 +628,25 @@ export const servicesData_transformar_en: Service[] = [
     subtitle: "Manage industrial safety",
   },
   {
-    id: "lab-ci-focus",
-    name: "Lab Ci Focus™",
-    description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    id: "measure-bridge",
+    name: "Measure Bridge™",
+    description:
+      "Comprehensive program for the management and control of industrial measurement, ensuring accuracy, reliability, and regulatory compliance in measurement processes.",
+    longDescription: [
+      "Measure Bridge™ is a specialized system that enables the management, control, and optimization of industrial measurement processes, guaranteeing traceability and data integrity.",
+      "Through structured methodologies, digitalization, and information analysis, it facilitates data-driven decision-making, reduces errors, and ensures compliance with current quality standards and regulations.",
+    ],
+    icon: "BarChart", // Icon related to measurement and data analysis
+    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+    route: "/measure-bridge",
+    isActive: true,
+    benefits: [
+      "Ensures the accuracy and reliability of measurement data.",
+      "Facilitates traceability and control of measurement instruments and processes.",
+      "Reduces errors and deviations through digitalization and standardization.",
+      "Complies with regulations and quality standards in metrological management.",
+    ],
+    working: false,
     subtitle: "Improve analytical precision",
   },
 ];
@@ -599,10 +655,25 @@ export const servicesData_transformar_pt: Service[] = [
   {
     id: "asset-control-bridge",
     name: "Asset Control Bridge™",
-    description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    description:
+      "Sistema abrangente para a gestão eficiente de ativos industriais, focado em maximizar a disponibilidade, confiabilidade e vida útil dos equipamentos produtivos.",
+    longDescription: [
+      "O Asset Control Bridge™ é um programa especializado em gestão de ativos industriais que permite controlar, monitorar e otimizar a manutenção de equipamentos críticos. Por meio de metodologias estruturadas, digitalização e análise de dados, ajuda a reduzir paradas não programadas, melhorar o planejamento e garantir a rastreabilidade das intervenções.",
+      "O sistema integra ferramentas visuais, indicadores-chave e processos padronizados para garantir a disponibilidade e confiabilidade dos ativos, alinhando a gestão de manutenção com os objetivos estratégicos da organização e facilitando a tomada de decisões baseada em informações reais e oportunas.",
+    ],
+    icon: "Settings", // Ícone relacionado à manutenção e gestão de ativos
+    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+    route: "/asset-control-bridge",
+    isActive: true,
+    benefits: [
+      "Maximiza a disponibilidade e confiabilidade dos equipamentos produtivos.",
+      "Reduz custos e paradas não programadas por meio de manutenção preventiva e preditiva.",
+      "Facilita a rastreabilidade e o controle das intervenções em ativos críticos.",
+      "Otimiza o planejamento e a execução das tarefas de manutenção.",
+      "Integra indicadores-chave para a tomada de decisões baseada em dados.",
+      "Alinha a gestão de ativos com os objetivos estratégicos da empresa.",
+    ],
+    working: false,
     subtitle: "Manutenção Industrial",
   },
   {
@@ -624,12 +695,25 @@ export const servicesData_transformar_pt: Service[] = [
     subtitle: "Gerenciar a segurança industrial",
   },
   {
-    id: "lab-ci-focus",
-    name: "Lab Ci Focus™",
-    description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    id: "measure-bridge",
+    name: "Measure Bridge™",
+    description:
+      "Programa abrangente para a gestão e controle da medição industrial, assegurando precisão, confiabilidade e conformidade normativa nos processos de medição.",
+    longDescription: [
+      "O Measure Bridge™ é um sistema especializado que permite gerenciar, controlar e otimizar os processos de medição industrial, garantindo a rastreabilidade e a integridade dos dados obtidos.",
+      "Por meio de metodologias estruturadas, digitalização e análise de informações, facilita a tomada de decisões baseada em dados confiáveis, reduz erros e assegura o cumprimento de padrões de qualidade e normas vigentes.",
+    ],
+    icon: "BarChart", // Ícone relacionado à medição e análise de dados
+    color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
+    route: "/measure-bridge",
+    isActive: true,
+    benefits: [
+      "Assegura a precisão e confiabilidade dos dados de medição.",
+      "Facilita a rastreabilidade e o controle de instrumentos e processos de medição.",
+      "Reduz erros e desvios por meio da digitalização e padronização.",
+      "Cumpre normas e padrões de qualidade na gestão metrológica.",
+    ],
+    working: false,
     subtitle: "Melhorar a precisão analítica",
   },
 ];
@@ -707,9 +791,20 @@ export const servicesData_aplicaciones: Service[] = [
     name: "People First™",
     description: "",
     route: "/people-first",
-    isActive: false,
-    benefits: [],
-    working: true,
+    isActive: true,
+    longDescription: [
+      "People First™ es un sistema integral para la gestión de personas que conecta el desarrollo individual con los objetivos estratégicos de la organización. A través de procesos estructurados de feedback, definición de objetivos y evaluación de competencias, promueve la alineación entre el crecimiento personal y las necesidades del negocio.",
+      "La metodología permite identificar brechas de habilidades, asignar roles y responsabilidades basados en evidencias y diseñar entrenamientos a medida, asegurando que cada colaborador aporte su máximo potencial en el lugar correcto.",
+      "Además, fomenta un entorno de aprendizaje continuo donde el desarrollo técnico y humano es parte del sistema operativo de la empresa, fortaleciendo la sostenibilidad de los resultados y el compromiso de las personas.",
+    ],
+    benefits: [
+      "Fortalece el compromiso individual a través de objetivos claros y feedback efectivo.",
+      "Mejora la asignación de roles y responsabilidades, basándose en evidencias de habilidades reales.",
+      "Cierra brechas entre necesidades de la operación y el perfil de las personas mediante entrenamientos a medida.",
+      "Genera un entorno de aprendizaje continuo, donde el desarrollo técnico y humano es parte del sistema operativo de la empresa.",
+      "Conecta el crecimiento personal con la mejora continua organizacional, aumentando la sostenibilidad de los resultados",
+    ],
+    working: false,
     subtitle: "Gestionar recursos humanos",
   },
 ];
@@ -783,11 +878,23 @@ export const servicesData_aplicaciones_en: Service[] = [
   {
     id: "people-first",
     name: "People First™",
-    description: "",
+    description:
+      "Comprehensive people management system that connects individual development with the organization's strategic objectives. Through structured feedback, goal setting, and competency assessment, it aligns personal growth with business needs.",
     route: "/people-first",
-    isActive: false,
-    benefits: [],
-    working: true,
+    isActive: true,
+    longDescription: [
+      "People First™ is a comprehensive system for people management that connects individual development with the strategic objectives of the organization. Through structured processes of feedback, goal definition, and competency evaluation, it promotes alignment between personal growth and business needs.",
+      "The methodology allows for the identification of skill gaps, assignment of roles and responsibilities based on evidence, and the design of tailored training, ensuring each team member contributes their full potential in the right place.",
+      "It also fosters a continuous learning environment where technical and human development is part of the company's operating system, strengthening sustainability of results and employee engagement.",
+    ],
+    benefits: [
+      "Strengthens individual commitment through clear objectives and effective feedback.",
+      "Improves the assignment of roles and responsibilities, based on evidence of real skills.",
+      "Closes gaps between operational needs and people’s profiles through tailored training.",
+      "Creates a continuous learning environment, where technical and human development is part of the company’s operating system.",
+      "Connects personal growth with organizational continuous improvement, increasing the sustainability of results.",
+    ],
+    working: false,
     subtitle: "Manage human resources",
   },
 ];
@@ -861,11 +968,23 @@ export const servicesData_aplicaciones_pt: Service[] = [
   {
     id: "people-first",
     name: "People First™",
-    description: "",
+    description:
+      "Sistema integrado para gestão de pessoas que conecta o desenvolvimento individual aos objetivos estratégicos da organização.",
     route: "/people-first",
-    isActive: false,
-    benefits: [],
-    working: true,
+    isActive: true,
+    longDescription: [
+      "People First™ é um sistema completo para gestão de pessoas que conecta o desenvolvimento individual aos objetivos estratégicos da organização. Por meio de processos estruturados de feedback, definição de metas e avaliação de competências, promove o alinhamento entre o crescimento pessoal e as necessidades do negócio.",
+      "A metodologia permite identificar lacunas de habilidades, atribuir papéis e responsabilidades baseados em evidências e desenhar treinamentos sob medida, garantindo que cada colaborador contribua com seu máximo potencial no lugar certo.",
+      "Além disso, fomenta um ambiente de aprendizado contínuo, onde o desenvolvimento técnico e humano faz parte do sistema operacional da empresa, fortalecendo a sustentabilidade dos resultados e o engajamento das pessoas.",
+    ],
+    benefits: [
+      "Fortalece o compromisso individual por meio de metas claras e feedback efetivo.",
+      "Melhora a atribuição de papéis e responsabilidades, com base em evidências reais de habilidades.",
+      "Fecha lacunas entre as necessidades da operação e o perfil das pessoas por meio de treinamentos personalizados.",
+      "Gera um ambiente de aprendizado contínuo, onde o desenvolvimento técnico e humano faz parte do sistema operacional da empresa.",
+      "Conecta o crescimento pessoal à melhoria contínua organizacional, aumentando a sustentabilidade dos resultados.",
+    ],
+    working: false,
     subtitle: "Gerenciar recursos humanos",
   },
 ];

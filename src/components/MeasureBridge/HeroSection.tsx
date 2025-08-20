@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   const scrollToContent = () => {
-    const element = document.getElementById("decisionesEstadisticas-content");
+    const element = document.getElementById("MeasureBridge-content");
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -40,34 +40,42 @@ const HeroSection: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Estabilizar y profesionalizar (Procesos, Métricas, Liderazgo)
+          Perfeccionar la operación
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">
-            Decisiones Gerenciales Basadas en Estadísticas™
-          </span>
+          <span className="block">MeasureBridge™</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Profesionaliza la gestión y mejora continua con datos confiables
+            Medición y gestión de desempeño operacional
           </span>
         </h1>
 
-        {/* Descripción mejorada basada en el procedimiento LYS-P004 */}
+        {/* Subtitle */}
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Programa práctico para tomar decisiones basadas en datos,
-          profesionalizar la gestión y sostener mejoras en los procesos clave de
-          la organización.
+          MeasureBridge es una metodología para la medición, análisis y gestión
+          de indicadores clave de desempeño (KPIs) en procesos operativos,
+          permitiendo identificar brechas, causas raíz y oportunidades de
+          mejora.
+        </p>
+        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          A través de herramientas visuales y trabajo colaborativo, ayuda a
+          equipos a construir puentes entre la situación actual y los objetivos
+          de negocio, facilitando la toma de decisiones basada en datos y la
+          mejora continua.
+        </p>
+        <p className="hidden lg:block text-lg text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Incluye: definición de KPIs, diseño de tableros visuales, rutinas de
+          gestión, análisis de brechas y soporte en la ejecución de acciones
+          correctivas.
         </p>
 
         {/* CTA Buttons */}
         <CTAButtons
           onDownload={() => {
             const link = document.createElement("a");
-            link.href =
-              "assets/pdf/LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf";
-            link.download =
-              "LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf";
+            link.href = "assets/pdf/LYS-P015-MeasureBridge.pdf";
+            link.download = "LYS-P015-MeasureBridge.pdf";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);

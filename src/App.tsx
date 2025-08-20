@@ -23,7 +23,7 @@ import PeopleFirstPage from "./pages/PeopleFirstPage";
 import AssetControlBridgePage from "./pages/AssetControlBridgePage";
 import AutopsPage from "./pages/AutopsPage";
 import SafeProcessPage from "./pages/SafeProcessPage";
-import LabCiFocusPage from "./pages/LabCiFocusPage";
+import MeasureBridgePage from "./pages/MeasureBridgePage";
 
 const titleMap: Record<string, string> = {
   "/": "LYSPAS & CO.",
@@ -46,7 +46,7 @@ const titleMap: Record<string, string> = {
   "/asset-control-bridge": "Asset Control Bridge™ – LYSPAS & CO.",
   "/autops": "AUTOPS™ – LYSPAS & CO.",
   "/safe-process": "Safe Process™ – LYSPAS & CO.",
-  "/lab-ci-focus": "Lab Ci Focus™ – LYSPAS & CO.",
+  "/measure-bridge": "Measure Bridge™ – LYSPAS & CO.",
 };
 
 function TitleUpdater() {
@@ -94,7 +94,7 @@ function App() {
           />
           <Route path="/autops" element={<AutopsPage />} />
           <Route path="/safe-process" element={<SafeProcessPage />} />
-          <Route path="/lab-ci-focus" element={<LabCiFocusPage />} />
+          <Route path="/measure-bridge" element={<MeasureBridgePage />} />
         </Routes>
       </div>
     </Router>

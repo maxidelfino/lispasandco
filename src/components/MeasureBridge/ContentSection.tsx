@@ -5,22 +5,25 @@ import { useState, useEffect } from "react";
 import {
   CheckCircle,
   XCircle,
-  Target,
+  CircleQuestionMark,
   Clock,
-  Zap,
-  TrendingUp,
   X,
   Users,
   Settings,
-  Award,
-  RefreshCcw,
+  GraduationCap,
+  Grid3x3,
+  Sparkles,
+  Zap,
   Box,
+  RefreshCcw,
   HandCoins,
-  Lightbulb,
-  CircleQuestionMark,
+  AlertTriangle,
+  BarChart2,
+  FileWarning,
+  ListChecks,
+  HelpCircle,
+  DivideSquare,
 } from "lucide-react";
-import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
-import MethodologyGraphic from "./MethodologyGraphic";
 
 interface ContentSectionProps {
   id: string;
@@ -200,7 +203,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   </section>
 );
 
-const PeopleFirstContent: React.FC = () => {
+const MeasureBridgeContent: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<any>(null);
@@ -210,33 +213,42 @@ const PeopleFirstContent: React.FC = () => {
       id: "1",
       icon: CircleQuestionMark,
       title: "¿Qué es y qué no es?",
-      subtitle: "Definición clara del programa PeopleFirst™",
+      subtitle: "Características del programa Measure Bridge™",
       children: (
         <>
+          {/* Descripción principal */}
           <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
+              Measure Bridge es una metodología desarrollada por LYSPAS & CO que
+              permite a las organizaciones medir, visualizar y gestionar el
+              avance de sus procesos de mejora continua, integrando indicadores
+              clave y facilitando la toma de decisiones basada en datos.
+            </p>
             <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-              People First™ es un programa de desarrollo organizacional centrado
-              en las personas, diseñado para alinear habilidades,
-              comportamientos y evolución profesional con los desafíos
-              estratégicos y operativos de la empresa. Su enfoque integra
-              herramientas como coaching con propósito, feedback basado en
-              objetivos, matriz de habilidades conectada con planes de formación
-              y acompañamiento en el desarrollo de competencias técnicas y
-              generales.
+              A través de una estructura clara y herramientas visuales, Measure
+              Bridge ayuda a identificar brechas, establecer objetivos
+              alcanzables y monitorear el progreso de manera sistemática,
+              promoviendo la participación de todos los niveles de la
+              organización.
             </p>
           </div>
 
-          {/* Details */}
-          <div>
-            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+          {/* Cita inspiradora */}
+          <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
+            “Lo que no se mide, no se puede mejorar. Measure Bridge es el puente
+            entre la intención de mejorar y la evidencia de la mejora.”
+          </blockquote>
+
+          {/* ¿Qué es? */}
+          <div className="mb-6">
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
               ¿Qué es?
             </p>
             {[
-              "✔ Un programa integral que pone a las personas en el centro de la estrategia organizacional.",
-              "✔ Un sistema que conecta el desarrollo de habilidades y comportamientos con los objetivos de negocio.",
-              "✔ Un proceso que utiliza coaching, feedback y planes de formación personalizados para impulsar la evolución profesional.",
-              "✔ Un acompañamiento estructurado para el desarrollo de competencias técnicas y generales, alineadas a los retos de la empresa.",
-              "✔ Una metodología que promueve la mejora continua de la cultura organizacional y el liderazgo.",
+              "Un sistema integral para medir y visualizar el avance de la mejora continua.",
+              "Una herramienta que conecta los objetivos estratégicos con los resultados operativos.",
+              "Un método que promueve la gestión basada en hechos y datos objetivos.",
+              "Un facilitador para la alineación y el compromiso de los equipos en torno a metas comunes.",
             ].map((detail, idx) => (
               <div
                 key={idx}
@@ -246,21 +258,22 @@ const PeopleFirstContent: React.FC = () => {
                   <CheckCircle className="w-4 h-4 text-green-600" />
                 </div>
                 <span className="text-[var(--color-text)] leading-relaxed flex-1">
-                  {detail.replace(/^[✔✘] /, "")}
+                  {detail}
                 </span>
               </div>
             ))}
           </div>
+
+          {/* ¿Qué no es? */}
           <div>
-            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
               ¿Qué no es?
             </p>
             {[
-              "✘ Un programa genérico de capacitación sin conexión con la estrategia de la empresa.",
-              "✘ Una solución aislada que no involucra a líderes y equipos en el proceso de cambio.",
-              "✘ Un enfoque limitado solo a habilidades técnicas, sin considerar el desarrollo de comportamientos y cultura.",
-              "✘ Un proceso puntual sin seguimiento ni acompañamiento en la evolución profesional.",
-              "✘ Una iniciativa que no mide ni vincula el impacto en los resultados del negocio.",
+              "Solo un tablero de indicadores sin contexto ni seguimiento.",
+              "Una herramienta aislada de la gestión diaria.",
+              "Un sistema rígido que no se adapta a las necesidades de la organización.",
+              "Un reemplazo de la gestión, sino un complemento para potenciarla.",
             ].map((detail, idx) => (
               <div
                 key={idx}
@@ -270,7 +283,7 @@ const PeopleFirstContent: React.FC = () => {
                   <XCircle className="w-4 h-4 text-red-600" />
                 </div>
                 <span className="text-[var(--color-text)] leading-relaxed flex-1">
-                  {detail.replace(/^[✔✘] /, "")}
+                  {detail}
                 </span>
               </div>
             ))}
@@ -282,50 +295,57 @@ const PeopleFirstContent: React.FC = () => {
       id: "2",
       icon: Zap,
       title: "Problemas que resuelve",
-      subtitle: "Los desperdicios y desafíos operativos",
+      subtitle: "Los desafíos operativos",
       children: (
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-6">
           {[
             {
-              icon: Users,
-              title: "Desalineación y bajo compromiso",
+              icon: AlertTriangle,
+              title: "Variación de calidad",
               description:
-                "Bajo compromiso y alineación entre el trabajo diario y los objetivos de largo plazo.",
+                "Variación inexplicable en los resultados de calidad.",
             },
             {
-              icon: Settings,
-              title: "Roles y competencias poco claros",
-              description:
-                "Equipos con roles mal definidos o competencias desactualizadas.",
+              icon: BarChart2,
+              title: "Valores atípicos y picos",
+              description: "Reducción de valores atípicos y picos de proceso.",
             },
             {
-              icon: Lightbulb,
-              title: "Formación desconectada",
-              description:
-                "Planes de formación sin conexión con las verdaderas brechas de habilidades.",
+              icon: FileWarning,
+              title: "Decisiones erróneas",
+              description: "Toma de decisiones basada en datos erróneos.",
             },
             {
-              icon: Award,
-              title: "Gestión de talento limitada",
+              icon: ListChecks,
+              title: "Criterios de muestreo",
+              description: "Falta de criterios en los métodos de muestreo.",
+            },
+            {
+              icon: HelpCircle,
+              title: "Fiabilidad del sistema",
               description:
-                "Dificultades en la gestión del talento técnico o potencial interno.",
+                "Incertidumbre en la fiabilidad del sistema de medición.",
+            },
+            {
+              icon: DivideSquare,
+              title: "Desvíos laboratorio/planta",
+              description:
+                "Diferencias entre los datos de laboratorio y el rendimiento de planta.",
             },
             {
               icon: RefreshCcw,
-              title: "Falta de feedback y acompañamiento",
+              title: "Mantenimiento reactivo",
               description:
-                "Ausencia de procesos sistemáticos de feedback y acompañamiento del desempeño.",
-            },
-            {
-              icon: CircleQuestionMark,
-              title: "Poca preparación para nuevos retos",
-              description:
-                "Falta de preparación para asumir nuevos desafíos o liderazgos.",
+                "Mantenimiento reactivo de equipos de medición en línea.",
             },
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className={`
+                bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                hover:shadow-xl transition-all duration-300 hover:scale-105
+                ${idx === 6 ? "col-span-2" : ""}
+              `}
             >
               <div className="flex items-center mb-3 space-x-3">
                 <item.icon className="w-8 h-8" />
@@ -345,108 +365,151 @@ const PeopleFirstContent: React.FC = () => {
       id: "4",
       icon: Clock,
       title: "Metodología & Tiempos",
-      subtitle: "Plan de implementación sugerido",
-      description:
-        "PeopleFirst™ se implementa como un sistema modular adaptable, con intervenciones específicas según el diagnóstico y las prioridades de la empresa. Las actividades pueden realizarse en ciclos cortos de 2 a 8 semanas.",
-      subDescription: "Enfocadas en:",
-      graphic: <MethodologyGraphic />,
-      details: [
-        "Diagnóstico de capacidades (matriz de habilidades + entrevistas o mapeo de entrenamientos).",
-        "Workshops de liderazgo y feedback con mandos medios y líderes.",
-        "Diseño de planes de desarrollo individual o de equipo, alineados a los objetivos del área.",
-        "Entrenamientos técnicos o de soft skills, en función de brechas detectadas.",
-        "Instalación de rutinas de seguimiento y coaching, con acompañamiento o transferencia de metodología.",
-        "Incorporacion de feedback y coaching dentro de las rutinas standard de los supervisores y gerentes.",
-      ],
+      subtitle: "Metodología y calendario",
+      children: (
+        <div>
+          {/* Description */}
+          <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
+            <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+              El programa <strong>Measure Bridge™</strong> se adapta a cada
+              contexto, con fases de diagnóstico, diseño, implementación y
+              capacitación. Se puede implementar en ciclos de{" "}
+              <strong>3 a 6 meses</strong>, con entregables medibles desde el
+              primer mes.
+            </p>
+          </div>
+
+          {/* Details */}
+          <div>
+            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
+              Fases principales:
+            </p>
+            <div className="flex flex-col space-y-2 mt-2">
+              {[
+                "Diagnóstico: relevamiento y análisis de la situación actual.",
+                "Diseño: definición de objetivos, indicadores y plan de acción.",
+                "Implementación: ejecución de mejoras y herramientas en campo.",
+                "Capacitación: formación práctica y acompañamiento al equipo.",
+                "Seguimiento: medición de avances y ajustes continuos.",
+              ].map((fase, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start space-x-4 p-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
+                >
+                  <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
+                  <span className="text-[var(--color-text)] leading-relaxed flex-1">
+                    {fase}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="text-[var(--color-text)] leading-relaxed text-md mt-4">
+              La duración y el calendario se ajustan a las necesidades de cada
+              organización, permitiendo resultados visibles y medibles desde el
+              primer mes.
+            </p>
+          </div>
+        </div>
+      ),
     },
     {
-      id: "8",
+      id: "3",
       icon: HandCoins,
       title: "Beneficios",
-      subtitle: "Beneficios del programa PeopleFirst™",
+      subtitle: "Beneficios del programa Measure Bridge™",
       children: (
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {[
             {
-              icon: Target,
-              title: "Compromiso y enfoque en objetivos",
+              icon: CheckCircle,
+              title: "Precisión en el análisis",
+              description: "Reducción de errores de análisis.",
+            },
+            {
+              icon: Grid3x3,
+              title: "Trazabilidad de datos",
+              description: "Mejora de la trazabilidad de los datos.",
+            },
+            {
+              icon: XCircle,
+              title: "Eliminación de pérdidas",
+              description: "Reducción de pérdidas ocultas.",
+            },
+            {
+              icon: Users,
+              title: "Alineación de equipos",
               description:
-                "Fortalece el compromiso individual a través de objetivos claros y feedback efectivo.",
+                "Mayor alineación entre laboratorio, producción y mantenimiento.",
+            },
+            {
+              icon: GraduationCap,
+              title: "Independencia técnica",
+              description: "Reducción de la dependencia de expertos externos.",
+            },
+            {
+              icon: Sparkles,
+              title: "Cultura de mejora continua",
+              description: "Cultura de mejora continua basada en datos reales.",
             },
             {
               icon: Box,
-              title: "Roles y responsabilidades claros",
+              title: "Optimización de recursos",
               description:
-                "Mejora la asignación de roles y responsabilidades, basándose en evidencias de habilidades reales.",
+                "Optimización de la gestión de repuestos y recursos técnicos clave.",
             },
-            {
-              icon: Lightbulb,
-              title: "Cierre de brechas de habilidades",
-              description:
-                "Cierra brechas entre necesidades de la operación y el perfil de las personas mediante entrenamientos a medida.",
-            },
-            {
-              icon: RefreshCcw,
-              title: "Aprendizaje y mejora continua",
-              description:
-                "Genera un entorno de aprendizaje continuo, donde el desarrollo técnico y humano es parte del sistema operativo de la empresa.",
-            },
-            {
-              icon: TrendingUp,
-              title: "Crecimiento sostenible",
-              description:
-                "Conecta el crecimiento personal con la mejora continua organizacional, aumentando la sostenibilidad de los resultados.",
-            },
-          ].map((item, idx) => (
+          ].map((feature, index) => (
             <div
-              key={idx}
-              className={`bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105 ${
-                idx === 4 ? "col-span-2" : ""
-              }`}
+              key={index}
+              className={`
+                bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                hover:shadow-xl transition-all duration-300 hover:scale-105
+                ${index === 6 ? "col-span-2" : ""}
+              `}
             >
-              <div className="flex items-center mb-3 space-x-3">
-                <item.icon className="w-8 h-8" />
-                <h4 className="text-lg font-semibold text-[var(--color-primary)]">
-                  {item.title}
-                </h4>
+              <div className="text-4xl mb-4 flex gap-4">
+                <feature.icon className="w-8 h-8" />
+                <h3 className="text-xl font-bold text-[var(--color-primary)] mb-3">
+                  {feature.title}
+                </h3>
               </div>
-              <p className="text-[var(--color-text)] leading-relaxed">
-                {item.description}
-              </p>
+              <p className="text-[var(--color-text)]">{feature.description}</p>
             </div>
           ))}
         </div>
       ),
     },
     {
-      id: "7",
+      id: "6",
       icon: Users,
-      title: "¿Para quién está pensado el programa?",
-      subtitle:
-        "Empresas y líderes que valoran a las personas como motor del cambio",
-      description:
-        "PeopleFirst™ está diseñado para organizaciones que creen en el valor de las personas como motor del cambio y el rendimiento sostenible. Es especialmente útil para empresas que buscan alinear las habilidades de sus equipos con los desafíos técnicos, culturales y estratégicos del negocio.",
-      details: [
-        "Empresas que priorizan el desarrollo humano como base para la transformación y la mejora continua.",
-        "Organizaciones que desean alinear las capacidades de sus equipos con los retos técnicos, culturales y estratégicos.",
-        "Mandos medios, líderes de equipos y responsables de formación que impulsan el cambio organizacional.",
-        "Líderes de transformación cultural enfocados en resultados sostenibles a través de las personas.",
-      ],
+      title: "¿Para quién está recomendado el programa?",
+      subtitle: "Tipos de empresas ideales para Measure Bridge™",
+      children: (
+        <div className="bg-[var(--color-surface)] rounded-2xl p-8 border border-[var(--color-border)] shadow-lg">
+          <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
+            ¿Para quién está diseñado?
+          </h3>
+          <p className="text-[var(--color-text)] text-lg leading-relaxed">
+            Empresas industriales con laboratorios internos o tercerizados,
+            gerentes de calidad, ingenieros de procesos y líderes de mejora
+            continua con el objetivo de reforzar el control analítico como pilar
+            de desempeño y eficiencia.
+          </p>
+        </div>
+      ),
     },
     {
       id: "5",
       icon: Settings,
       title: "¿Con qué otros productos se relaciona?",
-      subtitle:
-        "Integración con herramientas Lean para potenciar la transformación",
+      subtitle: "",
       description:
-        "PeopleFirst™ se integra de manera estratégica con otros programas clave como 5S Plus™, FlowStable™ y Kaizen Action™, permitiendo una sinergia que fortalece la cultura Lean y facilita la adopción de prácticas de mejora continua en toda la organización. Esta conexión asegura que el desarrollo de las personas esté alineado con la excelencia operativa y la transformación sostenible.",
-      graphic: <ConnectionsGraphic title="PeopleFirst™" />,
+        "¿Con qué otros productos se relaciona?\nDecisiones™ de gestión basadas en datos: comparte herramientas estadísticas para la toma de decisiones.\nAcción™ Kaizen: se integra con proyectos de mejora basados en calidad y datos reales.\nSistema™ de Excelencia Operativa: contribuye al pilar de control analítico dentro de la excelencia operativa.",
+      //   graphic: <ConnectionsGraphic title="Measure Bridge™" />,
       details: [],
     },
   ];
 
-  const handleCardClick = (feature: (typeof features)[number]) => {
+  const handleCardClick = (feature: any) => {
     setSelectedFeature(feature);
     setModalOpen(true);
   };
@@ -457,7 +520,7 @@ const PeopleFirstContent: React.FC = () => {
   };
 
   return (
-    <div id="PeopleFirst-content" className="bg-[var(--color-bg)]">
+    <div id="MeasureBridge-content" className="bg-[var(--color-bg)]">
       <ContentSection id="que-es" title="" subtitle="">
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {features.map((feature) => {
@@ -526,4 +589,4 @@ const PeopleFirstContent: React.FC = () => {
   );
 };
 
-export default PeopleFirstContent;
+export default MeasureBridgeContent;

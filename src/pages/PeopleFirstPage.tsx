@@ -5,6 +5,7 @@ import PeopleFirstContent from "../components/PeopleFirst/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import PeopleFirstDiagram from "../components/PeopleFirst/PeopleFirstDiagram";
 
 const PeopleFirstPage: React.FC = () => {
   useScrollToTop();
@@ -22,7 +23,7 @@ const PeopleFirstPage: React.FC = () => {
 
         {/* Right: Diagram */}
         <div className="w-full lg:w-1/2 order-2">
-          {/* <CircularWasteDiagram /> */}
+          <PeopleFirstDiagram />
         </div>
       </div>
       {/* Call to Action */}

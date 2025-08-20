@@ -1,10 +1,11 @@
 import React from "react";
 import FloatingNavigation from "../components/FloatingNavigation";
-import HeroSection from "../components/WasteZero/HeroSection";
-import WasteZeroContent from "../components/WasteZero/ContentSection";
+import HeroSection from "../components/AssetBridge/HeroSection";
+import AssetBridgeContent from "../components/AssetBridge/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import AssetBridgeDiagram from "../components/AssetBridge/AssetBridgeDiagram";
 
 const AssetControlBridgePage: React.FC = () => {
   useScrollToTop();
@@ -17,24 +18,24 @@ const AssetControlBridgePage: React.FC = () => {
       <div className="container mx-auto flex flex-col lg:flex-row items-start py-20 px-4 gap-8">
         {/* Left: Content */}
         <div className="w-full lg:w-1/2 order-1">
-          <WasteZeroContent />
+          <AssetBridgeContent />
         </div>
 
         {/* Right: Diagram */}
         <div className="w-full lg:w-1/2 order-2">
-          {/* <CircularWasteDiagram /> */}
+          <AssetBridgeDiagram />
         </div>
       </div>
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para eliminar los desperdicios ocultos de tu operación?"
-        description="Implementa WasteZero™ y establece la base de disciplina operativa que impulsa mejoras continuas, eficiencia y resultados sostenibles."
+        title="¿Listo para transformar el control de activos en tu operación?"
+        description="Descubre cómo AssetBridge™ conecta y digitaliza la gestión de activos físicos, mejorando la trazabilidad, el control y la eficiencia en toda tu cadena de valor."
         primaryButtonText="Contactar Ahora"
         secondaryButtonText="Descargar Ficha Técnica"
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P003-WASTEZERO.pdf";
-          link.download = "LYS-P003-WASTEZERO.pdf";
+          link.href = "assets/pdf/LYS-P016-AssetBridge.pdf";
+          link.download = "LYS-P016-AssetBridge.pdf";
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

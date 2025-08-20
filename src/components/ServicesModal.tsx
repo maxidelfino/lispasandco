@@ -31,11 +31,15 @@ import LeanEnterpriseIcon from "../icons-componets/LeanEnterprise/LeanEnterprise
 import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
 import ProjectFocusIcon from "../icons-componets/ProjectFocus/ProjectFocusIcon";
 import BridgeIcon from "../icons-componets/LeanBridge/BridgeIcon";
+import OpsBridgeIcon from "./OpsBridge/OpsBridgeIcon";
 import { isComingSoon } from "./ServiceCardList";
 import { useNavigate } from "react-router-dom";
 import { useScreenSize } from "../hooks/useScreenSize";
 import CentralChangeBridgeCircle from "../icons-componets/CentralChangeBridgeCircle";
 import { useLanguage } from "../contexts/LanguageContext";
+import PeopleFirstIcon from "./PeopleFirst/PeopleFirstIcon";
+import AssetBridgeIcon from "./AssetBridge/AssetBridgeIcon";
+import MeasureBridgeIcon from "./MeasureBridge/MeasureBridgeIcon";
 
 interface ServicesModalProps {
   isOpen: boolean;
@@ -72,6 +76,10 @@ const ICON_COMPONENTS_MAP = {
   stratbridge: StratBridgeIcon,
   projectfocus: ProjectFocusIcon,
   "change-bridge": CentralChangeBridgeCircle,
+  "ops-bridge": OpsBridgeIcon,
+  "people-first": PeopleFirstIcon,
+  "asset-control-bridge": AssetBridgeIcon,
+  "measure-bridge": MeasureBridgeIcon,
 };
 
 // Traducciones para textos estáticos

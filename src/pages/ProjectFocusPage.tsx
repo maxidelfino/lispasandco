@@ -22,7 +22,7 @@ const ProjectFocusPage: React.FC = () => {
         </div>
 
         {/* Right: Diagram */}
-        <div className="w-full lg:w-1/2 order-2">
+        <div className="w-full lg:w-1/2 order-2 pt-16">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               ProjectFocus™ en Detalle

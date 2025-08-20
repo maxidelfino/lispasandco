@@ -5,6 +5,7 @@ import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import HeroSection from "../components/DecisionesEstadisticas/HeroSection";
 import DecisionesEstadisticasContent from "../components/DecisionesEstadisticas/DecisionesEstadisticasContent";
+import DecisionesEstadisticasDiagram from "../assets/DecisionesEstadisticasDiagram.png";
 
 const DecisionesEstadisticasPage: React.FC = () => {
   useScrollToTop();
@@ -21,8 +22,22 @@ const DecisionesEstadisticasPage: React.FC = () => {
         </div>
 
         {/* Right: Diagram */}
-        <div className="w-full lg:w-1/2 order-2">
-          {/* <CircularWasteDiagram /> */}
+        {/* <DecisionesEstadisticasDiagram /> */}
+        <div className="w-full lg:w-1/2 order-2 pt-16">
+          <div className="mb-8 text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)] mb-2">
+              Diagrama de Toma de Decisiones Basadas en Estadísticas
+            </h2>
+            <p className="text-base md:text-lg text-[var(--color-text)] mb-14">
+              Proceso para tomar decisiones con datos: identificar, analizar,
+              actuar y mejorar continuamente.
+            </p>
+            <img
+              src={DecisionesEstadisticasDiagram}
+              alt="Diagrama de Toma de Decisiones Basadas en Estadísticas"
+              className="w-full h-auto rounded-lg shadow-lg border border-[var(--color-border)]"
+            />
+          </div>
         </div>
       </div>
       {/* Call to Action */}

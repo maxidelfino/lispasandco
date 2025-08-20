@@ -5,6 +5,7 @@ import OpsBridgeContent from "../components/OpsBridge/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import { OpsBridgeDiagram } from "../components/OpsBridge/OpsBridgeDiagram";
 
 const OpsBridgePage: React.FC = () => {
   useScrollToTop();
@@ -22,7 +23,8 @@ const OpsBridgePage: React.FC = () => {
 
         {/* Right: Diagram */}
         <div className="w-full lg:w-1/2 order-2">
-          {/* <CircularWasteDiagram /> */}
+          <OpsBridgeDiagram />
+          {/* OpsBridge World-Class Systems Diagram */}
         </div>
       </div>
       {/* Call to Action */}
