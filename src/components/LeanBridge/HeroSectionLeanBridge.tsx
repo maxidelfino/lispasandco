@@ -4,9 +4,42 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const translations: Record<
+  Language,
+  {
+    badge: string;
+    subtitle: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    badge: "Estabilizar y profesionalizar (Procesos, métricas, liderazgo)",
+    subtitle: "El puente hacia la excelencia operacional",
+    pdfHref: "assets/pdf/LYS-P005-LeanBridge.pdf",
+    pdfDownload: "LYS-P005-LeanBridge.pdf",
+  },
+  en: {
+    badge: "Stabilize and professionalize (Processes, metrics, leadership)",
+    subtitle: "The bridge to operational excellence",
+    pdfHref: "assets/pdf/LYS-P005-LeanBridge.pdf",
+    pdfDownload: "LYS-P005-LeanBridge-EN.pdf",
+  },
+  pt: {
+    badge: "Estabilizar e profissionalizar (Processos, métricas, liderança)",
+    subtitle: "A ponte para a excelência operacional",
+    pdfHref: "assets/pdf/LYS-P005-LeanBridge.pdf",
+    pdfDownload: "LYS-P005-LeanBridge-PT.pdf",
+  },
+};
 
 const HeroSectionLeanBridge: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   useEffect(() => {
     setIsVisible(true);
@@ -51,20 +84,17 @@ const HeroSectionLeanBridge: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Estabilizar y profesionalizar (Procesos, métricas, liderazgo)
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
           <span className="block">LeanBridge™</span>
-          {/* <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            El puente hacia la excelencia operacional
-          </span> */}
         </h1>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          El puente hacia la excelencia operacional
+          {t.subtitle}
         </p>
 
         {/* CTA Buttons */}

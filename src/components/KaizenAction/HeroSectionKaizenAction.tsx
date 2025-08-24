@@ -4,9 +4,44 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const translations: Record<
+  Language,
+  {
+    badge: string;
+    subtitle: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    badge: "Estabilizar y profesionalizar (Procesos, Métricas, Liderazgo)",
+    subtitle:
+      "Donde los puntos de vista se cruzan, nacen las soluciones que transforman",
+    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action.pdf",
+    pdfDownload: "LYS-P006-Kaizen-Action.pdf",
+  },
+  en: {
+    badge: "Stabilize and professionalize (Processes, Metrics, Leadership)",
+    subtitle: "Where perspectives meet, solutions that transform are born",
+    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action.pdf",
+    pdfDownload: "LYS-P006-Kaizen-Action-EN.pdf",
+  },
+  pt: {
+    badge: "Estabilizar e profissionalizar (Processos, Métricas, Liderança)",
+    subtitle:
+      "Onde os pontos de vista se cruzam, nascem as soluções que transformam",
+    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action.pdf",
+    pdfDownload: "LYS-P006-Kaizen-Action-PT.pdf",
+  },
+};
 
 const HeroSectionKaizenAction: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   useEffect(() => {
     setIsVisible(true);
@@ -43,7 +78,7 @@ const HeroSectionKaizenAction: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Estabilizar y profesionalizar (Procesos, Métricas, Liderazgo)
+          {t.badge}
         </div>
 
         {/* Main Title */}
@@ -57,8 +92,7 @@ const HeroSectionKaizenAction: React.FC = () => {
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium italic">
-          Donde los puntos de vista se cruzan, nacen las soluciones que
-          transforman
+          {t.subtitle}
         </p>
 
         {/* <p className="text-lg md:text-xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -70,8 +104,8 @@ const HeroSectionKaizenAction: React.FC = () => {
         <CTAButtons
           onDownload={() => {
             const link = document.createElement("a");
-            link.href = "assets/pdf/LYS-P006-Kaizen-Action.pdf";
-            link.download = "LYS-P006-Kaizen-Action.pdf";
+            link.href = t.pdfHref;
+            link.download = t.pdfDownload;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);

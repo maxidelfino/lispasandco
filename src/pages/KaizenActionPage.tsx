@@ -6,9 +6,64 @@ import FloatingNavigation from "../components/FloatingNavigation";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const translations: Record<
+  Language,
+  {
+    dmaicTitle: string;
+    dmaicSubtitle: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    dmaicTitle: "Metodología DMAIC",
+    dmaicSubtitle:
+      "Ciclo estructurado de mejora continua para resolver problemas complejos",
+    ctaTitle: "¿Listo para impulsar tu cambio?",
+    ctaDescription:
+      "Transforma tus problemas más complejos en oportunidades de mejora con KAIZEN ACTION™",
+    ctaPrimary: "Contactar Ahora",
+    ctaSecondary: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action.pdf",
+    pdfDownload: "LYS-P006-Kaizen-Action.pdf",
+  },
+  en: {
+    dmaicTitle: "DMAIC Methodology",
+    dmaicSubtitle:
+      "Structured continuous improvement cycle to solve complex problems",
+    ctaTitle: "Ready to drive your change?",
+    ctaDescription:
+      "Turn your most complex problems into improvement opportunities with KAIZEN ACTION™",
+    ctaPrimary: "Contact Now",
+    ctaSecondary: "Download Brochure",
+    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action-EN.pdf",
+    pdfDownload: "LYS-P006-Kaizen-Action-EN.pdf",
+  },
+  pt: {
+    dmaicTitle: "Metodologia DMAIC",
+    dmaicSubtitle:
+      "Ciclo estruturado de melhoria contínua para resolver problemas complexos",
+    ctaTitle: "Pronto para impulsionar sua mudança?",
+    ctaDescription:
+      "Transforme seus problemas mais complexos em oportunidades de melhoria com KAIZEN ACTION™",
+    ctaPrimary: "Entrar em Contato",
+    ctaSecondary: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action-PT.pdf",
+    pdfDownload: "LYS-P006-Kaizen-Action-PT.pdf",
+  },
+};
 
 const KaizenActionPage: React.FC = () => {
   useScrollToTop();
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -28,11 +83,10 @@ const KaizenActionPage: React.FC = () => {
           <div className="max-w-6xl mx-auto px-4 mt-40">
             <div className="text-center">
               <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
-                Metodología DMAIC
+                {t.dmaicTitle}
               </h2>
               <p className="text-xl text-[var(--color-text)] max-w-3xl mx-auto">
-                Ciclo estructurado de mejora continua para resolver problemas
-                complejos
+                {t.dmaicSubtitle}
               </p>
             </div>
             <KaizenActionDiagram />
@@ -42,19 +96,18 @@ const KaizenActionPage: React.FC = () => {
 
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para impulsar tu cambio?"
-        description="Transforma tus problemas más complejos en oportunidades de mejora con KAIZEN ACTION™"
-        primaryButtonText="Contactar Ahora"
-        secondaryButtonText="Descargar Ficha Técnica"
+        title={t.ctaTitle}
+        description={t.ctaDescription}
+        primaryButtonText={t.ctaPrimary}
+        secondaryButtonText={t.ctaSecondary}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P006-Kaizen-Action.pdf";
-          link.download = "LYS-P006-Kaizen-Action.pdf";
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
         }}
-        // className="mb-32"
       />
 
       <FloatingWhatsAppCTA />

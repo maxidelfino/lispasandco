@@ -1,9 +1,36 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const whatsappMessages: Record<Language, string> = {
+  es: "Hola%20LYSPAS%20%26%20CO",
+  en: "Hello%20LYSPAS%20%26%20CO",
+  pt: "Olá%20LYSPAS%20%26%20CO",
+};
+
+const ariaLabels: Record<Language, string> = {
+  es: "Contactar por WhatsApp",
+  en: "Contact via WhatsApp",
+  pt: "Contactar pelo WhatsApp",
+};
+
+const titles: Record<Language, string> = {
+  es: "Contactar por WhatsApp - LYSPAS & CO",
+  en: "Contact via WhatsApp - LYSPAS & CO",
+  pt: "Contactar pelo WhatsApp - LYSPAS & CO",
+};
+
+const tooltips: Record<Language, string> = {
+  es: "Chatea con nosotros",
+  en: "Chat with us",
+  pt: "Converse conosco",
+};
 
 const FloatingWhatsAppCTA: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,9 +41,8 @@ const FloatingWhatsAppCTA: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Replace this URL with your own WhatsApp API link or contact page route
-  const whatsappLink =
-    "https://wa.me/+5493416408758?text=Hola%20LYSPAS%20%26%20CO";
+  // WhatsApp link with language-specific message
+  const whatsappLink = `https://wa.me/+5493416408758?text=${whatsappMessages[currentLanguage]}`;
 
   return (
     <div
@@ -29,8 +55,8 @@ const FloatingWhatsAppCTA: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="group relative w-16 h-16 bg-gradient-to-br from-[#4FCE5D] to-[#25D366] text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
-        aria-label="Contactar por WhatsApp"
-        title="Contactar por WhatsApp - LYSPAS & CO"
+        aria-label={ariaLabels[currentLanguage]}
+        title={titles[currentLanguage]}
       >
         {/* WhatsApp SVG Icon */}
         <svg
@@ -54,7 +80,7 @@ const FloatingWhatsAppCTA: React.FC = () => {
 
       {/* Optional tooltip */}
       <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-        Chatea con nosotros
+        {tooltips[currentLanguage]}
         <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
       </div>
     </div>

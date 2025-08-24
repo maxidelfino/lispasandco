@@ -1,10 +1,185 @@
 import { Compass, Target, Map, Route, Flag, Eye } from "lucide-react";
 import React, { useState } from "react";
 import { useScreenSize } from "../../hooks/useScreenSize";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const STRATBRIDGE_ICON_TRANSLATIONS: Record<
+  Language,
+  {
+    layers: {
+      icon: any;
+      title: string;
+      subtitle: string;
+      level: number;
+      color: string;
+      ring: string;
+      shadow: string;
+    }[];
+    hoshinKanri: string;
+  }
+> = {
+  es: {
+    layers: [
+      {
+        icon: Eye,
+        title: "VISIÓN",
+        subtitle: "¿A dónde vamos?",
+        level: 1,
+        color: "from-purple-500 to-purple-700",
+        ring: "ring-purple-300/40",
+        shadow: "shadow-purple-400/40",
+      },
+      {
+        icon: Target,
+        title: "OBJETIVOS",
+        subtitle: "¿Qué queremos lograr?",
+        level: 2,
+        color: "from-blue-500 to-blue-700",
+        ring: "ring-blue-300/40",
+        shadow: "shadow-blue-400/40",
+      },
+      {
+        icon: Map,
+        title: "ESTRATEGIA",
+        subtitle: "¿Cómo lo lograremos?",
+        level: 3,
+        color: "from-green-500 to-green-700",
+        ring: "ring-green-300/40",
+        shadow: "shadow-green-400/40",
+      },
+      {
+        icon: Route,
+        title: "TÁCTICAS",
+        subtitle: "¿Qué caminos tomamos?",
+        level: 4,
+        color: "from-orange-400 to-orange-600",
+        ring: "ring-orange-300/40",
+        shadow: "shadow-orange-400/40",
+      },
+      {
+        icon: Flag,
+        title: "ACCIONES",
+        subtitle: "¿Qué haremos?",
+        level: 5,
+        color: "from-red-500 to-red-700",
+        ring: "ring-red-300/40",
+        shadow: "shadow-red-400/40",
+      },
+    ],
+    hoshinKanri: "HOSHIN KANRI",
+  },
+  en: {
+    layers: [
+      {
+        icon: Eye,
+        title: "VISION",
+        subtitle: "Where are we going?",
+        level: 1,
+        color: "from-purple-500 to-purple-700",
+        ring: "ring-purple-300/40",
+        shadow: "shadow-purple-400/40",
+      },
+      {
+        icon: Target,
+        title: "OBJECTIVES",
+        subtitle: "What do we want to achieve?",
+        level: 2,
+        color: "from-blue-500 to-blue-700",
+        ring: "ring-blue-300/40",
+        shadow: "shadow-blue-400/40",
+      },
+      {
+        icon: Map,
+        title: "STRATEGY",
+        subtitle: "How will we achieve it?",
+        level: 3,
+        color: "from-green-500 to-green-700",
+        ring: "ring-green-300/40",
+        shadow: "shadow-green-400/40",
+      },
+      {
+        icon: Route,
+        title: "TACTICS",
+        subtitle: "Which paths do we take?",
+        level: 4,
+        color: "from-orange-400 to-orange-600",
+        ring: "ring-orange-300/40",
+        shadow: "shadow-orange-400/40",
+      },
+      {
+        icon: Flag,
+        title: "ACTIONS",
+        subtitle: "What will we do?",
+        level: 5,
+        color: "from-red-500 to-red-700",
+        ring: "ring-red-300/40",
+        shadow: "shadow-red-400/40",
+      },
+    ],
+    hoshinKanri: "HOSHIN KANRI",
+  },
+  pt: {
+    layers: [
+      {
+        icon: Eye,
+        title: "VISÃO",
+        subtitle: "Para onde vamos?",
+        level: 1,
+        color: "from-purple-500 to-purple-700",
+        ring: "ring-purple-300/40",
+        shadow: "shadow-purple-400/40",
+      },
+      {
+        icon: Target,
+        title: "OBJETIVOS",
+        subtitle: "O que queremos alcançar?",
+        level: 2,
+        color: "from-blue-500 to-blue-700",
+        ring: "ring-blue-300/40",
+        shadow: "shadow-blue-400/40",
+      },
+      {
+        icon: Map,
+        title: "ESTRATÉGIA",
+        subtitle: "Como vamos alcançar?",
+        level: 3,
+        color: "from-green-500 to-green-700",
+        ring: "ring-green-300/40",
+        shadow: "shadow-green-400/40",
+      },
+      {
+        icon: Route,
+        title: "TÁTICAS",
+        subtitle: "Quais caminhos tomamos?",
+        level: 4,
+        color: "from-orange-400 to-orange-600",
+        ring: "ring-orange-300/40",
+        shadow: "shadow-orange-400/40",
+      },
+      {
+        icon: Flag,
+        title: "AÇÕES",
+        subtitle: "O que faremos?",
+        level: 5,
+        color: "from-red-500 to-red-700",
+        ring: "ring-red-300/40",
+        shadow: "shadow-red-400/40",
+      },
+    ],
+    hoshinKanri: "HOSHIN KANRI",
+  },
+};
 
 const StratBridgeIcon = () => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
   const isDesktop = useScreenSize() === "desktop";
+
+  // Language hook
+  const { currentLanguage } = useLanguage();
+  // Default to Spanish if not set
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = STRATBRIDGE_ICON_TRANSLATIONS[lang];
 
   const diagramSize = {
     base: 320,
@@ -31,54 +206,6 @@ const StratBridgeIcon = () => {
     md: 130,
     lg: 170,
   };
-
-  const strategyLayers = [
-    {
-      icon: Eye,
-      title: "VISIÓN",
-      subtitle: "¿A dónde vamos?",
-      level: 1,
-      color: "from-purple-500 to-purple-700",
-      ring: "ring-purple-300/40",
-      shadow: "shadow-purple-400/40",
-    },
-    {
-      icon: Target,
-      title: "OBJETIVOS",
-      subtitle: "¿Qué queremos lograr?",
-      level: 2,
-      color: "from-blue-500 to-blue-700",
-      ring: "ring-blue-300/40",
-      shadow: "shadow-blue-400/40",
-    },
-    {
-      icon: Map,
-      title: "ESTRATEGIA",
-      subtitle: "¿Cómo lo lograremos?",
-      level: 3,
-      color: "from-green-500 to-green-700",
-      ring: "ring-green-300/40",
-      shadow: "shadow-green-400/40",
-    },
-    {
-      icon: Route,
-      title: "TÁCTICAS",
-      subtitle: "¿Qué caminos tomamos?",
-      level: 4,
-      color: "from-orange-400 to-orange-600",
-      ring: "ring-orange-300/40",
-      shadow: "shadow-orange-400/40",
-    },
-    {
-      icon: Flag,
-      title: "ACCIONES",
-      subtitle: "¿Qué haremos?",
-      level: 5,
-      color: "from-red-500 to-red-700",
-      ring: "ring-red-300/40",
-      shadow: "shadow-red-400/40",
-    },
-  ];
 
   const getSize = (obj: any, w: number) => {
     if (w >= 1024) return obj.lg;
@@ -129,14 +256,14 @@ const StratBridgeIcon = () => {
 
           {isDesktop && (
             <div className="text-xs text-white font-medium tracking-wide">
-              HOSHIN KANRI
+              {t.hoshinKanri}
             </div>
           )}
         </div>
       </div>
 
-      {strategyLayers.map((layer, index) => {
-        const angle = index * (360 / strategyLayers.length) - 90; // 360/5 = 72 grados, desde arriba
+      {t.layers.map((layer, index) => {
+        const angle = index * (360 / t.layers.length) - 90; // 360/5 = 72 grados, desde arriba
         const x = Math.cos((angle * Math.PI) / 180) * r;
         const y = Math.sin((angle * Math.PI) / 180) * r;
         const Icon = layer.icon;

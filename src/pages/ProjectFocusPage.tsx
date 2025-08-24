@@ -6,9 +6,47 @@ import ProjectFocusContent from "../components/ProjectFocus/ProjectFocusContent"
 import ProjectFocusDiagram from "../components/ProjectFocus/ProjectFocusDiagram";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const TEXTS = {
+  es: {
+    diagramTitle: "ProjectFocus™ en Detalle",
+    diagramDesc:
+      "Descubre cómo nuestra metodología transforma la selección de proyectos en tu organización",
+    ctaTitle: "¿Listo para priorizar tus proyectos estratégicos?",
+    ctaDesc:
+      "Implementa ProjectFocus™ y convierte tu planificación estratégica en un portafolio ejecutable de proyectos clave.",
+    primaryButton: "Contactar Ahora",
+    secondaryButton: "Descargar Ficha Técnica",
+  },
+  en: {
+    diagramTitle: "ProjectFocus™ in Detail",
+    diagramDesc:
+      "Discover how our methodology transforms project selection in your organization",
+    ctaTitle: "Ready to prioritize your strategic projects?",
+    ctaDesc:
+      "Implement ProjectFocus™ and turn your strategic planning into an actionable portfolio of key projects.",
+    primaryButton: "Contact Now",
+    secondaryButton: "Download Data Sheet",
+  },
+  pt: {
+    diagramTitle: "ProjectFocus™ em Detalhe",
+    diagramDesc:
+      "Descubra como nossa metodologia transforma a seleção de projetos em sua organização",
+    ctaTitle: "Pronto para priorizar seus projetos estratégicos?",
+    ctaDesc:
+      "Implemente o ProjectFocus™ e transforme seu planejamento estratégico em um portfólio executável de projetos-chave.",
+    primaryButton: "Entrar em Contato",
+    secondaryButton: "Baixar Ficha Técnica",
+  },
+};
 
 const ProjectFocusPage: React.FC = () => {
   useScrollToTop();
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = TEXTS[lang];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -25,11 +63,10 @@ const ProjectFocusPage: React.FC = () => {
         <div className="w-full lg:w-1/2 order-2 pt-16">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              ProjectFocus™ en Detalle
+              {t.diagramTitle}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Descubre cómo nuestra metodología transforma la selección de
-              proyectos en tu organización
+              {t.diagramDesc}
             </p>
           </div>
           <ProjectFocusDiagram />
@@ -38,11 +75,10 @@ const ProjectFocusPage: React.FC = () => {
 
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para priorizar tus proyectos estratégicos?"
-        description="Implementa ProjectFocus™ y convierte tu planificación estratégica
-              en un portafolio ejecutable de proyectos clave."
-        primaryButtonText="Contactar Ahora"
-        secondaryButtonText="Descargar Ficha Técnica"
+        title={t.ctaTitle}
+        description={t.ctaDesc}
+        primaryButtonText={t.primaryButton}
+        secondaryButtonText={t.secondaryButton}
         onSecondaryClick={() => {
           const link = document.createElement("a");
           link.href = "assets/pdf/LYS-P010-Project-Focus.pdf";
@@ -51,7 +87,6 @@ const ProjectFocusPage: React.FC = () => {
           link.click();
           document.body.removeChild(link);
         }}
-        // className="mb-32"
       />
 
       <FloatingWhatsAppCTA />

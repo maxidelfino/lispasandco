@@ -6,10 +6,40 @@ import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import AssetBridgeDiagram from "../components/AssetBridge/AssetBridgeDiagram";
+import { Language } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const AssetControlBridgePage: React.FC = () => {
   useScrollToTop();
+  const { currentLanguage } = useLanguage();
 
+  const ctaTranslations = {
+    title: {
+      [Language.SPANISH]:
+        "¿Listo para transformar el control de activos en tu operación?",
+      [Language.ENGLISH]: "Ready to transform asset control in your operation?",
+      [Language.PORTUGUESE]:
+        "Pronto para transformar o controle de ativos em sua operação?",
+    },
+    description: {
+      [Language.SPANISH]:
+        "Descubre cómo AssetBridge™ conecta y digitaliza la gestión de activos físicos, mejorando la trazabilidad, el control y la eficiencia en toda tu cadena de valor.",
+      [Language.ENGLISH]:
+        "Discover how AssetBridge™ connects and digitizes the management of physical assets, improving traceability, control, and efficiency across your entire value chain.",
+      [Language.PORTUGUESE]:
+        "Descubra como o AssetBridge™ conecta e digitaliza a gestão de ativos físicos, melhorando a rastreabilidade, o controle e a eficiência em toda a sua cadeia de valor.",
+    },
+    primaryButtonText: {
+      [Language.SPANISH]: "Contactar Ahora",
+      [Language.ENGLISH]: "Contact Now",
+      [Language.PORTUGUESE]: "Contatar Agora",
+    },
+    secondaryButtonText: {
+      [Language.SPANISH]: "Descargar Ficha Técnica",
+      [Language.ENGLISH]: "Download Datasheet",
+      [Language.PORTUGUESE]: "Baixar Ficha Técnica",
+    },
+  };
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -28,10 +58,12 @@ const AssetControlBridgePage: React.FC = () => {
       </div>
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para transformar el control de activos en tu operación?"
-        description="Descubre cómo AssetBridge™ conecta y digitaliza la gestión de activos físicos, mejorando la trazabilidad, el control y la eficiencia en toda tu cadena de valor."
-        primaryButtonText="Contactar Ahora"
-        secondaryButtonText="Descargar Ficha Técnica"
+        title={ctaTranslations.title[currentLanguage]}
+        description={ctaTranslations.description[currentLanguage]}
+        primaryButtonText={ctaTranslations.primaryButtonText[currentLanguage]}
+        secondaryButtonText={
+          ctaTranslations.secondaryButtonText[currentLanguage]
+        }
         onSecondaryClick={() => {
           const link = document.createElement("a");
           link.href = "assets/pdf/LYS-P016-AssetBridge.pdf";
@@ -41,7 +73,6 @@ const AssetControlBridgePage: React.FC = () => {
           document.body.removeChild(link);
         }}
       />
-
       <FloatingWhatsAppCTA />
     </div>
   );

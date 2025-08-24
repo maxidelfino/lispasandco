@@ -1,9 +1,72 @@
 import React, { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const badgeText = (language: Language) => {
+  switch (language) {
+    case Language.ENGLISH:
+      return "Start the improvement (Visible Problems, Team Focus)";
+    case Language.PORTUGUESE:
+      return "Iniciar a melhoria (Problemas Visíveis, Foco na Equipe)";
+    case Language.SPANISH:
+    default:
+      return "Iniciar la mejora (Problemas Visibles, Foco en el Equipo)";
+  }
+};
+
+const mainTitle = (language: Language) => {
+  switch (language) {
+    case Language.ENGLISH:
+      return "Change Bridge™";
+    case Language.PORTUGUESE:
+      return "Change Bridge™";
+    case Language.SPANISH:
+    default:
+      return "Change Bridge™";
+  }
+};
+
+const subtitle = (language: Language) => {
+  switch (language) {
+    case Language.ENGLISH:
+      return "Prepare, align, and sustain organizational transformations";
+    case Language.PORTUGUESE:
+      return "Preparar, alinhar e sustentar transformações organizacionais";
+    case Language.SPANISH:
+    default:
+      return "Preparar, alinear y sostener transformaciones organizacionales";
+  }
+};
+
+const paragraph1 = (language: Language) => {
+  switch (language) {
+    case Language.ENGLISH:
+      return `Change Bridge™ is a practical and structured program that helps companies manage change in an orderly and participative way, ensuring that teams understand, adopt, and sustain the transformations needed for business evolution.`;
+    case Language.PORTUGUESE:
+      return `Change Bridge™ é um programa prático e estruturado que ajuda as empresas a gerenciar mudanças de forma ordenada e participativa, garantindo que as equipes entendam, adotem e sustentem as transformações necessárias para a evolução do negócio.`;
+    case Language.SPANISH:
+    default:
+      return `Change Bridge™ es un programa práctico y estructurado que ayuda a las empresas a gestionar cambios de forma ordenada y participativa, asegurando que los equipos entiendan, adopten y sostengan las transformaciones necesarias para la evolución del negocio.`;
+  }
+};
+
+const paragraph2 = (language: Language) => {
+  switch (language) {
+    case Language.ENGLISH:
+      return `Designed for process projects, organizational changes, or system implementations, it combines workshops, coaching, and structured follow-up to minimize resistance, generate commitment, and achieve sustainable results in 8–12 weeks.`;
+    case Language.PORTUGUESE:
+      return `Projetado para projetos de processos, mudanças organizacionais ou implementação de sistemas, combina workshops, coaching e acompanhamento estruturado para minimizar resistências, gerar compromisso e obter resultados sustentáveis em 8–12 semanas.`;
+    case Language.SPANISH:
+    default:
+      return `Diseñado para proyectos de procesos, cambios organizacionales o implementación de sistemas, combina workshops, coaching y seguimiento estructurado para minimizar resistencias, generar compromiso y obtener resultados sostenibles en 8–12 semanas.`;
+  }
+};
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -40,31 +103,23 @@ const HeroSection: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Iniciar la mejora (Problemas Visibles, Foco en el Equipo)
+          {badgeText(currentLanguage)}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">Change Bridge™</span>
+          <span className="block">{mainTitle(currentLanguage)}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Preparar, alinear y sostener transformaciones organizacionales
+            {subtitle(currentLanguage)}
           </span>
-          {/* <span className="block text-3xl md:text-4xl font-normal text-white/80">
-          </span> */}
         </h1>
 
         {/* Subtitle */}
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Change Bridge™ es un programa práctico y estructurado que ayuda a las
-          empresas a gestionar cambios de forma ordenada y participativa,
-          asegurando que los equipos entiendan, adopten y sostengan las
-          transformaciones necesarias para la evolución del negocio.
+          {paragraph1(currentLanguage)}
         </p>
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Diseñado para proyectos de procesos, cambios organizacionales o
-          implementación de sistemas, combina workshops, coaching y seguimiento
-          estructurado para minimizar resistencias, generar compromiso y obtener
-          resultados sostenibles en 8–12 semanas.
+          {paragraph2(currentLanguage)}
         </p>
 
         {/* CTA Buttons */}

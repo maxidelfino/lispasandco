@@ -4,9 +4,12 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -16,6 +19,91 @@ const HeroSection: React.FC = () => {
     const element = document.getElementById("AssetBridge-content");
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Traducciones
+  const badgeText = (() => {
+    switch (currentLanguage) {
+      case Language.ENGLISH:
+        return "Perfect the operation";
+      case Language.PORTUGUESE:
+        return "Aperfeiçoe a operação";
+      default:
+        return "Perfeccionar la operación";
+    }
+  })();
+
+  const mainTitle = (() => {
+    switch (currentLanguage) {
+      case Language.ENGLISH:
+        return (
+          <>
+            <span className="block">AssetBridge™</span>
+            <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
+              Connects people, assets and processes
+            </span>
+            <span className="block text-3xl md:text-4xl font-normal text-white/80">
+              for efficient and safe operation
+            </span>
+          </>
+        );
+      case Language.PORTUGUESE:
+        return (
+          <>
+            <span className="block">AssetBridge™</span>
+            <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
+              Conecta pessoas, ativos e processos
+            </span>
+            <span className="block text-3xl md:text-4xl font-normal text-white/80">
+              para uma operação eficiente e segura
+            </span>
+          </>
+        );
+      default:
+        return (
+          <>
+            <span className="block">AssetBridge™</span>
+            <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
+              Conecta personas, activos y procesos
+            </span>
+            <span className="block text-3xl md:text-4xl font-normal text-white/80">
+              para una operación eficiente y segura
+            </span>
+          </>
+        );
+    }
+  })();
+
+  const subtitle = (() => {
+    switch (currentLanguage) {
+      case Language.ENGLISH:
+        return (
+          <>
+            AssetBridge is a visual solution that integrates key information
+            about your assets, facilitating management, control, and continuous
+            improvement in your plant. It optimizes decision-making, drives
+            operational discipline, and strengthens the safety culture.
+          </>
+        );
+      case Language.PORTUGUESE:
+        return (
+          <>
+            AssetBridge é uma solução visual que integra as informações-chave
+            dos seus ativos, facilitando a gestão, o controle e a melhoria
+            contínua na planta. Otimiza a tomada de decisões, impulsiona a
+            disciplina operacional e fortalece a cultura de segurança.
+          </>
+        );
+      default:
+        return (
+          <>
+            AssetBridge es una solución visual que integra la información clave
+            de tus activos, facilitando la gestión, el control y la mejora
+            continua en planta. Optimiza la toma de decisiones, impulsa la
+            disciplina operativa y fortalece la cultura de seguridad.
+          </>
+        );
+    }
+  })();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -51,26 +139,17 @@ const HeroSection: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Perfeccionar la operación
+          {badgeText}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">AssetBridge™</span>
-          <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Conecta personas, activos y procesos
-          </span>
-          <span className="block text-3xl md:text-4xl font-normal text-white/80">
-            para una operación eficiente y segura
-          </span>
+          {mainTitle}
         </h1>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          AssetBridge es una solución visual que integra la información clave de
-          tus activos, facilitando la gestión, el control y la mejora continua
-          en planta. Optimiza la toma de decisiones, impulsa la disciplina
-          operativa y fortalece la cultura de seguridad.
+          {subtitle}
         </p>
 
         {/* CTA Buttons */}

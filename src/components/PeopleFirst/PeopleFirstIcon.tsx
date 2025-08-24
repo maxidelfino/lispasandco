@@ -9,44 +9,126 @@ import {
   Star,
   ThumbsUp,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
-// Información tomada y adaptada del PDF LYS-P014-People-First.pdf
-const peopleFirstPrinciples = [
-  {
-    icon: Users,
-    title: "Respeto",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Empatía",
-  },
-  {
-    icon: BookOpen,
-    title: "Desarrollo",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovación",
-  },
-  {
-    icon: Globe,
-    title: "Diversidad e Inclusión",
-  },
-  {
-    icon: Handshake,
-    title: "Colaboración",
-  },
-  {
-    icon: Star,
-    title: "Reconocimiento",
-  },
-  {
-    icon: ThumbsUp,
-    title: "Bienestar",
-  },
-];
+const peopleFirstPrinciplesByLanguage: Record<
+  Language,
+  Array<{
+    icon: React.ElementType;
+    title: string;
+  }>
+> = {
+  es: [
+    {
+      icon: Users,
+      title: "Respeto",
+    },
+    {
+      icon: HeartHandshake,
+      title: "Empatía",
+    },
+    {
+      icon: BookOpen,
+      title: "Desarrollo",
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovación",
+    },
+    {
+      icon: Globe,
+      title: "Diversidad e Inclusión",
+    },
+    {
+      icon: Handshake,
+      title: "Colaboración",
+    },
+    {
+      icon: Star,
+      title: "Reconocimiento",
+    },
+    {
+      icon: ThumbsUp,
+      title: "Bienestar",
+    },
+  ],
+  en: [
+    {
+      icon: Users,
+      title: "Respect",
+    },
+    {
+      icon: HeartHandshake,
+      title: "Empathy",
+    },
+    {
+      icon: BookOpen,
+      title: "Development",
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovation",
+    },
+    {
+      icon: Globe,
+      title: "Diversity & Inclusion",
+    },
+    {
+      icon: Handshake,
+      title: "Collaboration",
+    },
+    {
+      icon: Star,
+      title: "Recognition",
+    },
+    {
+      icon: ThumbsUp,
+      title: "Well-being",
+    },
+  ],
+  pt: [
+    {
+      icon: Users,
+      title: "Respeito",
+    },
+    {
+      icon: HeartHandshake,
+      title: "Empatia",
+    },
+    {
+      icon: BookOpen,
+      title: "Desenvolvimento",
+    },
+    {
+      icon: Lightbulb,
+      title: "Inovação",
+    },
+    {
+      icon: Globe,
+      title: "Diversidade e Inclusão",
+    },
+    {
+      icon: Handshake,
+      title: "Colaboração",
+    },
+    {
+      icon: Star,
+      title: "Reconhecimento",
+    },
+    {
+      icon: ThumbsUp,
+      title: "Bem-estar",
+    },
+  ],
+};
 
 const PeopleFirstIcon: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+  const peopleFirstPrinciples =
+    peopleFirstPrinciplesByLanguage[currentLanguage as Language] ||
+    peopleFirstPrinciplesByLanguage["es"];
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 h-80">
       {peopleFirstPrinciples.map((principle, index) => {

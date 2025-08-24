@@ -9,70 +9,207 @@ import {
   BookOpen,
   Layers,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
-// Pasos extraídos y adaptados del PDF LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf
-const steps = [
-  {
-    id: "identificacion",
-    title: "Identificar la necesidad",
-    description:
-      "Reconocer y definir claramente el problema, oportunidad o situación que requiere una decisión basada en datos.",
-    icon: AlertCircle,
+// Traducciones para los pasos y textos
+const translations = {
+  es: {
+    steps: [
+      {
+        id: "identificacion",
+        title: "Identificar la necesidad",
+        description:
+          "Reconocer y definir claramente el problema, oportunidad o situación que requiere una decisión basada en datos.",
+        icon: AlertCircle,
+      },
+      {
+        id: "recoleccion",
+        title: "Recolección de datos",
+        description:
+          "Obtener datos relevantes, confiables y suficientes para comprender la situación y sustentar la decisión.",
+        icon: FileText,
+      },
+      {
+        id: "analisis",
+        title: "Análisis estadístico",
+        description:
+          "Aplicar herramientas y técnicas estadísticas para interpretar los datos y encontrar patrones, causas o tendencias.",
+        icon: BarChart2,
+      },
+      {
+        id: "evaluacion",
+        title: "Evaluación de alternativas",
+        description:
+          "Generar y comparar diferentes opciones de solución, considerando los resultados del análisis estadístico.",
+        icon: Layers,
+      },
+      {
+        id: "seleccion",
+        title: "Selección de la mejor opción",
+        description:
+          "Elegir la alternativa más adecuada, sustentada en la evidencia estadística y alineada con los objetivos organizacionales.",
+        icon: CheckCircle,
+      },
+      {
+        id: "implementacion",
+        title: "Implementación",
+        description:
+          "Poner en práctica la decisión seleccionada, asegurando la comunicación y el involucramiento de los responsables.",
+        icon: Users,
+      },
+      {
+        id: "seguimiento",
+        title: "Seguimiento y verificación",
+        description:
+          "Monitorear los resultados, verificar el cumplimiento de los objetivos y ajustar la decisión si es necesario.",
+        icon: TrendingUp,
+      },
+      {
+        id: "lecciones",
+        title: "Lecciones aprendidas",
+        description:
+          "Documentar el proceso, los resultados y las lecciones para mejorar futuras tomas de decisiones.",
+        icon: BookOpen,
+      },
+    ],
+    diagramTitle: "Toma de Decisiones Basadas en Estadísticas",
+    diagramSubtitle:
+      "Modelo para la toma de decisiones fundamentadas en datos y análisis estadístico, asegurando objetividad y mejora continua.",
+    mobileHint: "Toca cada paso para ver detalles",
+    desktopHint: "Pasa el mouse sobre cada paso para ver detalles",
   },
-  {
-    id: "recoleccion",
-    title: "Recolección de datos",
-    description:
-      "Obtener datos relevantes, confiables y suficientes para comprender la situación y sustentar la decisión.",
-    icon: FileText,
+  en: {
+    steps: [
+      {
+        id: "identificacion",
+        title: "Identify the need",
+        description:
+          "Recognize and clearly define the problem, opportunity, or situation that requires a data-driven decision.",
+        icon: AlertCircle,
+      },
+      {
+        id: "recoleccion",
+        title: "Data collection",
+        description:
+          "Obtain relevant, reliable, and sufficient data to understand the situation and support the decision.",
+        icon: FileText,
+      },
+      {
+        id: "analisis",
+        title: "Statistical analysis",
+        description:
+          "Apply statistical tools and techniques to interpret the data and find patterns, causes, or trends.",
+        icon: BarChart2,
+      },
+      {
+        id: "evaluacion",
+        title: "Evaluation of alternatives",
+        description:
+          "Generate and compare different solution options, considering the results of the statistical analysis.",
+        icon: Layers,
+      },
+      {
+        id: "seleccion",
+        title: "Selection of the best option",
+        description:
+          "Choose the most suitable alternative, supported by statistical evidence and aligned with organizational objectives.",
+        icon: CheckCircle,
+      },
+      {
+        id: "implementacion",
+        title: "Implementation",
+        description:
+          "Put the selected decision into practice, ensuring communication and involvement of those responsible.",
+        icon: Users,
+      },
+      {
+        id: "seguimiento",
+        title: "Monitoring and verification",
+        description:
+          "Monitor results, verify achievement of objectives, and adjust the decision if necessary.",
+        icon: TrendingUp,
+      },
+      {
+        id: "lecciones",
+        title: "Lessons learned",
+        description:
+          "Document the process, results, and lessons to improve future decision-making.",
+        icon: BookOpen,
+      },
+    ],
+    diagramTitle: "Data-Driven Decision Making",
+    diagramSubtitle:
+      "Model for making decisions based on data and statistical analysis, ensuring objectivity and continuous improvement.",
+    mobileHint: "Tap each step to see details",
+    desktopHint: "Hover over each step to see details",
   },
-  {
-    id: "analisis",
-    title: "Análisis estadístico",
-    description:
-      "Aplicar herramientas y técnicas estadísticas para interpretar los datos y encontrar patrones, causas o tendencias.",
-    icon: BarChart2,
+  pt: {
+    steps: [
+      {
+        id: "identificacion",
+        title: "Identificar a necessidade",
+        description:
+          "Reconhecer e definir claramente o problema, oportunidade ou situação que requer uma decisão baseada em dados.",
+        icon: AlertCircle,
+      },
+      {
+        id: "recoleccion",
+        title: "Coleta de dados",
+        description:
+          "Obter dados relevantes, confiáveis e suficientes para compreender a situação e embasar a decisão.",
+        icon: FileText,
+      },
+      {
+        id: "analisis",
+        title: "Análise estatística",
+        description:
+          "Aplicar ferramentas e técnicas estatísticas para interpretar os dados e encontrar padrões, causas ou tendências.",
+        icon: BarChart2,
+      },
+      {
+        id: "evaluacion",
+        title: "Avaliação de alternativas",
+        description:
+          "Gerar e comparar diferentes opções de solução, considerando os resultados da análise estatística.",
+        icon: Layers,
+      },
+      {
+        id: "seleccion",
+        title: "Seleção da melhor opção",
+        description:
+          "Escolher a alternativa mais adequada, fundamentada em evidências estatísticas e alinhada aos objetivos organizacionais.",
+        icon: CheckCircle,
+      },
+      {
+        id: "implementacion",
+        title: "Implementação",
+        description:
+          "Colocar em prática a decisão selecionada, garantindo a comunicação e o envolvimento dos responsáveis.",
+        icon: Users,
+      },
+      {
+        id: "seguimiento",
+        title: "Acompanhamento e verificação",
+        description:
+          "Monitorar os resultados, verificar o cumprimento dos objetivos e ajustar a decisão se necessário.",
+        icon: TrendingUp,
+      },
+      {
+        id: "lecciones",
+        title: "Lições aprendidas",
+        description:
+          "Documentar o processo, os resultados e as lições para melhorar futuras tomadas de decisão.",
+        icon: BookOpen,
+      },
+    ],
+    diagramTitle: "Tomada de Decisões Baseada em Estatísticas",
+    diagramSubtitle:
+      "Modelo para tomada de decisões fundamentadas em dados e análise estatística, garantindo objetividade e melhoria contínua.",
+    mobileHint: "Toque em cada etapa para ver detalhes",
+    desktopHint: "Passe o mouse sobre cada etapa para ver detalhes",
   },
-  {
-    id: "evaluacion",
-    title: "Evaluación de alternativas",
-    description:
-      "Generar y comparar diferentes opciones de solución, considerando los resultados del análisis estadístico.",
-    icon: Layers,
-  },
-  {
-    id: "seleccion",
-    title: "Selección de la mejor opción",
-    description:
-      "Elegir la alternativa más adecuada, sustentada en la evidencia estadística y alineada con los objetivos organizacionales.",
-    icon: CheckCircle,
-  },
-  {
-    id: "implementacion",
-    title: "Implementación",
-    description:
-      "Poner en práctica la decisión seleccionada, asegurando la comunicación y el involucramiento de los responsables.",
-    icon: Users,
-  },
-  {
-    id: "seguimiento",
-    title: "Seguimiento y verificación",
-    description:
-      "Monitorear los resultados, verificar el cumplimiento de los objetivos y ajustar la decisión si es necesario.",
-    icon: TrendingUp,
-  },
-  {
-    id: "lecciones",
-    title: "Lecciones aprendidas",
-    description:
-      "Documentar el proceso, los resultados y las lecciones para mejorar futuras tomas de decisiones.",
-    icon: BookOpen,
-  },
-];
-
-const diagramTitle = "Toma de Decisiones Basadas en Estadísticas";
-const diagramSubtitle =
-  "Modelo para la toma de decisiones fundamentadas en datos y análisis estadístico, asegurando objetividad y mejora continua.";
+};
 
 // Configuración visual para distintos tamaños de pantalla
 const getDiagramConfig = (screen: string) => {
@@ -114,6 +251,17 @@ const DecisionesEstadisticasDiagram: React.FC = () => {
   );
   const [visible, setVisible] = useState(false);
   const diagramRef = useRef<HTMLDivElement>(null);
+
+  // Idioma actual
+  const { currentLanguage } = useLanguage() as { currentLanguage: Language };
+
+  // Traducciones según idioma
+  const t = translations[currentLanguage] || translations["es"];
+  const steps = t.steps;
+  const diagramTitle = t.diagramTitle;
+  const diagramSubtitle = t.diagramSubtitle;
+  const mobileHint = t.mobileHint;
+  const desktopHint = t.desktopHint;
 
   // Responsive
   useEffect(() => {
@@ -366,9 +514,7 @@ const DecisionesEstadisticasDiagram: React.FC = () => {
       )}
       <div className="mt-8 md:mt-12 text-center">
         <p className="text-[var(--color-text)] text-sm md:text-base">
-          {screen === "mobile"
-            ? "Toca cada paso para ver detalles"
-            : "Pasa el mouse sobre cada paso para ver detalles"}
+          {screen === "mobile" ? mobileHint : desktopHint}
         </p>
       </div>
     </div>

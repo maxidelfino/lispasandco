@@ -4,9 +4,59 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const TEXTS: Record<
+  Language,
+  {
+    badge: string;
+    title: string;
+    subtitle1: string;
+    subtitle2: string;
+    desc1: string;
+    desc2: string;
+  }
+> = {
+  es: {
+    badge:
+      "Áreas desconectadas – Estrategias confusas – Prioridades desconocidas",
+    title: "People First™",
+    subtitle1: "Personas primero, resultados sostenibles.",
+    subtitle2: "Procesos estables, equipos alineados.",
+    desc1:
+      "<strong>People First™</strong> es la metodología de <strong>LYSPAS & CO</strong> que transforma la gestión operativa, alineando personas, procesos y resultados.",
+    desc2:
+      "Logra mayor eficiencia y productividad sin inversiones adicionales, enfocando a tu equipo en la mejora continua y la estabilidad de los procesos.",
+  },
+  en: {
+    badge: "Disconnected areas – Confusing strategies – Unknown priorities",
+    title: "People First™",
+    subtitle1: "People first, sustainable results.",
+    subtitle2: "Stable processes, aligned teams.",
+    desc1:
+      "<strong>People First™</strong> is the <strong>LYSPAS & CO</strong> methodology that transforms operational management, aligning people, processes, and results.",
+    desc2:
+      "Achieve greater efficiency and productivity without additional investments, focusing your team on continuous improvement and process stability.",
+  },
+  pt: {
+    badge:
+      "Áreas desconectadas – Estratégias confusas – Prioridades desconhecidas",
+    title: "People First™",
+    subtitle1: "Pessoas em primeiro lugar, resultados sustentáveis.",
+    subtitle2: "Processos estáveis, equipes alinhadas.",
+    desc1:
+      "<strong>People First™</strong> é a metodologia da <strong>LYSPAS & CO</strong> que transforma a gestão operacional, alinhando pessoas, processos e resultados.",
+    desc2:
+      "Alcance maior eficiência e produtividade sem investimentos adicionais, focando sua equipe na melhoria contínua e na estabilidade dos processos.",
+  },
+};
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = TEXTS[lang];
 
   useEffect(() => {
     setIsVisible(true);
@@ -47,31 +97,29 @@ const HeroSection: React.FC = () => {
       >
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Áreas desconectadas – Estrategias confusas – Prioridades desconocidas
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">People First™</span>
+          <span className="block">{t.title}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Personas primero, resultados sostenibles.
+            {t.subtitle1}
           </span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80">
-            Procesos estables, equipos alineados.
+            {t.subtitle2}
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          <strong>People First™</strong> es la metodología de{" "}
-          <strong>LYSPAS & CO</strong> que transforma la gestión operativa,
-          alineando personas, procesos y resultados.
-        </p>
-        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Logra mayor eficiencia y productividad sin inversiones adicionales,
-          enfocando a tu equipo en la mejora continua y la estabilidad de los
-          procesos.
-        </p>
+        <p
+          className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: t.desc1 }}
+        ></p>
+        <p
+          className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: t.desc2 }}
+        ></p>
 
         {/* CTA Buttons */}
         <CTAButtons

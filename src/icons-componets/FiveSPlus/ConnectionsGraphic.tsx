@@ -1,18 +1,41 @@
 import React from "react";
 import { Settings, BarChart3, Lightbulb, Network } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
-const programs = [
-  { name: "5S Plus™", icon: Settings, color: "bg-blue-500" },
-  { name: "FlowStable™", icon: BarChart3, color: "bg-green-500" },
-  { name: "Kaizen Action™", icon: Lightbulb, color: "bg-yellow-500" },
-  { name: "LeanBridge™", icon: Network, color: "bg-purple-500" },
-];
+const programTranslations: Record<
+  Language,
+  { name: string; icon: React.ElementType; color: string }[]
+> = {
+  es: [
+    { name: "5S Plus™", icon: Settings, color: "bg-blue-500" },
+    { name: "FlowStable™", icon: BarChart3, color: "bg-green-500" },
+    { name: "Kaizen Action™", icon: Lightbulb, color: "bg-yellow-500" },
+    { name: "LeanBridge™", icon: Network, color: "bg-purple-500" },
+  ],
+  en: [
+    { name: "5S Plus™", icon: Settings, color: "bg-blue-500" },
+    { name: "FlowStable™", icon: BarChart3, color: "bg-green-500" },
+    { name: "Kaizen Action™", icon: Lightbulb, color: "bg-yellow-500" },
+    { name: "LeanBridge™", icon: Network, color: "bg-purple-500" },
+  ],
+  pt: [
+    { name: "5S Plus™", icon: Settings, color: "bg-blue-500" },
+    { name: "FlowStable™", icon: BarChart3, color: "bg-green-500" },
+    { name: "Kaizen Action™", icon: Lightbulb, color: "bg-yellow-500" },
+    { name: "LeanBridge™", icon: Network, color: "bg-purple-500" },
+  ],
+};
 
 interface ConnectionsGraphicProps {
   title: string;
 }
 
 const ConnectionsGraphic: React.FC<ConnectionsGraphicProps> = ({ title }) => {
+  const { currentLanguage } = useLanguage();
+  const programs =
+    programTranslations[currentLanguage as Language] ||
+    programTranslations["es"];
   const radius = 100;
   const center = 120;
 
@@ -32,7 +55,7 @@ const ConnectionsGraphic: React.FC<ConnectionsGraphicProps> = ({ title }) => {
 
           return (
             <React.Fragment key={program.name}>
-              {/* {/* Connector line */}
+              {/* Connector line */}
               <div
                 className="absolute w-[2px] bg-blue-200 z-10"
                 style={{

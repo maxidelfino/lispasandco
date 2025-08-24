@@ -6,9 +6,57 @@ import { useScrollToTop } from "../hooks/useScrollToTop";
 import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const TEXTS: Record<
+  Language,
+  {
+    diagramTitle: string;
+    diagramDesc: string;
+    ctaTitle: string;
+    ctaDesc: string;
+    primaryButton: string;
+    secondaryButton: string;
+  }
+> = {
+  es: {
+    diagramTitle: "Planificación Estratégica Integral",
+    diagramDesc:
+      "Transforma tu visión en acciones concretas y resultados medibles",
+    ctaTitle: "¿Listo para alinear tu estrategia?",
+    ctaDesc:
+      "Implementa StratBridge™ y transforma tu visión en resultados concretos y sostenibles.",
+    primaryButton: "Contactar Ahora",
+    secondaryButton: "Descargar Ficha Técnica",
+  },
+  en: {
+    diagramTitle: "Comprehensive Strategic Planning",
+    diagramDesc:
+      "Turn your vision into concrete actions and measurable results",
+    ctaTitle: "Ready to align your strategy?",
+    ctaDesc:
+      "Implement StratBridge™ and turn your vision into concrete and sustainable results.",
+    primaryButton: "Contact Now",
+    secondaryButton: "Download Data Sheet",
+  },
+  pt: {
+    diagramTitle: "Planejamento Estratégico Integral",
+    diagramDesc:
+      "Transforme sua visão em ações concretas e resultados mensuráveis",
+    ctaTitle: "Pronto para alinhar sua estratégia?",
+    ctaDesc:
+      "Implemente o StratBridge™ e transforme sua visão em resultados concretos e sustentáveis.",
+    primaryButton: "Entrar em Contato",
+    secondaryButton: "Baixar Ficha Técnica",
+  },
+};
 
 const StratBridgePage: React.FC = () => {
   useScrollToTop();
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = TEXTS[lang];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -26,11 +74,9 @@ const StratBridgePage: React.FC = () => {
         <div className="w-full lg:w-1/2 order-2 mt-14">
           <div className="text-center lg:text-left mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Planificación Estratégica Integral
+              {t.diagramTitle}
             </h2>
-            <p className="text-xl text-gray-600">
-              Transforma tu visión en acciones concretas y resultados medibles
-            </p>
+            <p className="text-xl text-gray-600">{t.diagramDesc}</p>
           </div>
           <StratBridgeIcon />
         </div>
@@ -38,10 +84,10 @@ const StratBridgePage: React.FC = () => {
 
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para alinear tu estrategia?"
-        description="Implementa StratBridge™ y transforma tu visión en resultados concretos y sostenibles."
-        primaryButtonText="Contactar Ahora"
-        secondaryButtonText="Descargar Ficha Técnica"
+        title={t.ctaTitle}
+        description={t.ctaDesc}
+        primaryButtonText={t.primaryButton}
+        secondaryButtonText={t.secondaryButton}
         onSecondaryClick={() => {
           const link = document.createElement("a");
           link.href = "assets/pdf/LYS-P007-StratBridge.pdf";

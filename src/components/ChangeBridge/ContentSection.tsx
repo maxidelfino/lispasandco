@@ -11,9 +11,6 @@ import {
   X,
   Users,
   Settings,
-  Award,
-  ArrowRight,
-  MapPin,
   HandCoins,
   CircleQuestionMark,
   MessageSquare,
@@ -28,8 +25,498 @@ import {
   Factory,
   Truck,
 } from "lucide-react";
-import ConnectionsGraphic from "../../icons-componets/FiveSPlus/ConnectionsGraphic";
 import MethodologyGraphic from "./MethodologyGraphic";
+import { Language } from "../../types";
+import { useLanguage } from "../../contexts/LanguageContext";
+
+// Traducciones para los textos
+const translations = {
+  es: {
+    clickForDetails: "Click para más detalles",
+    closeModal: "Cerrar modal",
+    whatIs: "¿Qué es?",
+    whatIsNot: "¿Qué no es?",
+    whatIsTitle: "¿Qué es y qué no es?",
+    whatIsSubtitle: "Definición clara del programa Change Bridge™",
+    whatIsDescription:
+      "Es un programa práctico y estructurado para ayudar a las empresas a gestionar de forma ordenada, clara y participativa los procesos de cambio, asegurando que los equipos entiendan, adopten y sostengan las transformaciones necesarias para la evolución del negocio.",
+    whatIsList: [
+      "Prepararse para los cambios.",
+      "Minimizar resistencias y riesgos.",
+      "Generar compromiso en los equipos.",
+      "Lograr resultados sostenibles en cada transformación.",
+    ],
+    whatIsNotList: [
+      "Un proceso improvisado sin estructura clara.",
+      "Un cambio impuesto sin participación de los equipos.",
+      "Una solución puntual sin seguimiento continuo.",
+    ],
+    problemsTitle: "Problemas que resuelve",
+    problemsSubtitle: "Los desperdicios y desafíos operativos",
+    problemsList: [
+      {
+        icon: MessageSquare,
+        title: "Comunicación Deficiente",
+        description: "Falta de claridad y comunicación en proyectos.",
+      },
+      {
+        icon: Users,
+        title: "Alineamiento Fallido",
+        description:
+          "Dificultad para alinear a distintos sectores y actores en torno a un objetivo común.",
+      },
+      {
+        icon: Clock,
+        title: "Disciplina Insuficiente",
+        description:
+          "Cambios implementados que luego se abandonan por falta de disciplina.",
+      },
+      {
+        icon: UserCheck,
+        title: "Gestión Humana Inadecuada",
+        description:
+          "Fracaso de proyectos de mejora por falta de gestión del factor humano.",
+      },
+      {
+        icon: ShieldOff,
+        title: "Resistencia al Cambio",
+        description:
+          "Resistencia de los equipos a adoptar nuevas formas de trabajo.",
+      },
+    ],
+    methodologyTitle: "Metodología & Tiempos",
+    methodologySubtitle:
+      "Metodología de 4 fases con una duración típica de 8 a 12 semanas",
+    methodologyDescription:
+      "Los tiempos se adaptan al tamaño y complejidad del proyecto; la implementación combina workshops presenciales, coaching y seguimiento estructurado.",
+    methodologySubDescription: "Modalidad de implementación:",
+    methodologyDetails: [
+      "Fase 1: Visión y evaluación inicial — definición del proyecto, diagnóstico estado actual vs futuro, equipo y KPIs.",
+      "Fase 2: Análisis estructural — mapeo de impactos, matriz riesgo/contingencias e identificación de actores clave.",
+      "Fase 3: Planes de gestión del cambio — gestión de actores, planes de comunicación y programas de formación.",
+      "Fase 4: Implementación activa y sostenibilidad — ejecución con coaching, seguimiento y transformación de la comunicación en proceso.",
+    ],
+    benefitsTitle: "Beneficios",
+    benefitsSubtitle: "Beneficios del programa Change Bridge™",
+    benefitsList: [
+      {
+        icon: Target,
+        title: "Alineamiento Estratégico",
+        description:
+          "Alineamiento claro entre los objetivos del cambio y las acciones de los equipos.",
+      },
+      {
+        icon: Zap,
+        title: "Implementación Ágil",
+        description:
+          "Mayor velocidad y efectividad en la implementación de proyectos de transformación.",
+      },
+      {
+        icon: Repeat,
+        title: "Cambios Sostenibles",
+        description: "Sostenibilidad de los cambios a largo plazo.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Gestión de Expectativas",
+        description:
+          "Minimización de resistencias internas y gestión adecuada de expectativas.",
+      },
+      {
+        icon: MessageCircle,
+        title: "Comunicación Estructurada",
+        description:
+          "Mejora en la comunicación estructurada y en la disciplina operativa del equipo.",
+      },
+    ],
+    recommendedTitle: "¿Para quién está recomendado el programa?",
+    recommendedSubtitle: "Tipos de empresas ideales para Change Bridge™",
+    recommendedTypes: "Tipos de Empresas",
+    recommendedList: [
+      {
+        icon: Factory,
+        title: "Empresas industriales o de servicios",
+        description:
+          "Organizaciones industriales y de servicios que buscan mejorar su eficiencia y disciplina operativa.",
+      },
+      {
+        icon: Users,
+        title: "Intervención integral en áreas con personas",
+        description:
+          "Áreas de trabajo con alta presencia de personas donde es clave alinear roles, seguridad y procesos.",
+      },
+      {
+        icon: Truck,
+        title: "Sectores de alto tráfico",
+        description:
+          "Zonas con alto tráfico, riesgo o dispersión de materiales que requieren orden, control y reducción de desperdicios.",
+      },
+      {
+        icon: CheckCircle,
+        title: "Organizaciones que buscan cultura de orden",
+        description:
+          "Empresas que desean fortalecer la cultura de orden, seguridad y eficiencia para sostener cambios en el tiempo.",
+      },
+    ],
+    relatedTitle: "¿Con qué otros productos se relaciona?",
+    relatedSubtitle: "",
+    relatedDescription:
+      "Estos productos se complementan: WasteZero™ facilita la aceptación de prácticas Lean en la empresa y prepara al equipo para actuar; Kaizen Action™ asegura la participación activa de los equipos durante eventos de mejora y genera soluciones aplicables; y LeanBridge™ potencia la adopción de la disciplina operativa necesaria para sostener las mejoras. Paralelamente, StratBridge™ alinea los cambios con los objetivos estratégicos, transformando iniciativas en proyectos priorizados, mientras que Lean Enterprise Transformation™ proporciona el marco para sostener y escalar esos cambios durante procesos de transformación profunda.",
+    relatedList: [
+      {
+        icon: Target,
+        title: "WasteZero™",
+        description: "Facilita la aceptación de prácticas Lean en la empresa.",
+      },
+      {
+        icon: Zap,
+        title: "Kaizen Action™",
+        description:
+          "Asegura la participación de equipos durante eventos de mejora.",
+      },
+      {
+        icon: GitBranch,
+        title: "LeanBridge™",
+        description:
+          "Potencia la adopción de la disciplina operativa requerida.",
+      },
+      {
+        icon: Compass,
+        title: "StratBridge™",
+        description: "Ayuda a alinear cambios con los objetivos estratégicos.",
+      },
+      {
+        icon: Building2,
+        title: "Lean Enterprise Transformation™",
+        description:
+          "Esencial para sostener cambios durante procesos de transformación profunda.",
+      },
+    ],
+  },
+  en: {
+    clickForDetails: "Click for more details",
+    closeModal: "Close modal",
+    whatIs: "What is it?",
+    whatIsNot: "What is it not?",
+    whatIsTitle: "What is it and what is it not?",
+    whatIsSubtitle: "Clear definition of the Change Bridge™ program",
+    whatIsDescription:
+      "It is a practical and structured program to help companies manage change processes in an orderly, clear, and participatory way, ensuring that teams understand, adopt, and sustain the necessary transformations for business evolution.",
+    whatIsList: [
+      "Prepare for changes.",
+      "Minimize resistance and risks.",
+      "Generate team commitment.",
+      "Achieve sustainable results in every transformation.",
+    ],
+    whatIsNotList: [
+      "An improvised process without clear structure.",
+      "A change imposed without team participation.",
+      "A one-off solution without continuous follow-up.",
+    ],
+    problemsTitle: "Problems it solves",
+    problemsSubtitle: "Waste and operational challenges",
+    problemsList: [
+      {
+        icon: MessageSquare,
+        title: "Poor Communication",
+        description: "Lack of clarity and communication in projects.",
+      },
+      {
+        icon: Users,
+        title: "Failed Alignment",
+        description:
+          "Difficulty aligning different sectors and actors around a common goal.",
+      },
+      {
+        icon: Clock,
+        title: "Insufficient Discipline",
+        description:
+          "Implemented changes that are later abandoned due to lack of discipline.",
+      },
+      {
+        icon: UserCheck,
+        title: "Inadequate Human Management",
+        description:
+          "Failure of improvement projects due to lack of human factor management.",
+      },
+      {
+        icon: ShieldOff,
+        title: "Resistance to Change",
+        description: "Teams' resistance to adopting new ways of working.",
+      },
+    ],
+    methodologyTitle: "Methodology & Timing",
+    methodologySubtitle:
+      "4-phase methodology with a typical duration of 8 to 12 weeks",
+    methodologyDescription:
+      "Timing adapts to the size and complexity of the project; implementation combines in-person workshops, coaching, and structured follow-up.",
+    methodologySubDescription: "Implementation modality:",
+    methodologyDetails: [
+      "Phase 1: Vision and initial assessment — project definition, current vs. future state diagnosis, team and KPIs.",
+      "Phase 2: Structural analysis — impact mapping, risk/contingency matrix, and identification of key actors.",
+      "Phase 3: Change management plans — stakeholder management, communication plans, and training programs.",
+      "Phase 4: Active implementation and sustainability — execution with coaching, follow-up, and transformation of communication into process.",
+    ],
+    benefitsTitle: "Benefits",
+    benefitsSubtitle: "Benefits of the Change Bridge™ program",
+    benefitsList: [
+      {
+        icon: Target,
+        title: "Strategic Alignment",
+        description:
+          "Clear alignment between change objectives and team actions.",
+      },
+      {
+        icon: Zap,
+        title: "Agile Implementation",
+        description:
+          "Greater speed and effectiveness in implementing transformation projects.",
+      },
+      {
+        icon: Repeat,
+        title: "Sustainable Changes",
+        description: "Sustainability of changes in the long term.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Expectation Management",
+        description:
+          "Minimization of internal resistance and proper expectation management.",
+      },
+      {
+        icon: MessageCircle,
+        title: "Structured Communication",
+        description:
+          "Improvement in structured communication and team operational discipline.",
+      },
+    ],
+    recommendedTitle: "Who is the program recommended for?",
+    recommendedSubtitle: "Ideal types of companies for Change Bridge™",
+    recommendedTypes: "Types of Companies",
+    recommendedList: [
+      {
+        icon: Factory,
+        title: "Industrial or service companies",
+        description:
+          "Industrial and service organizations seeking to improve efficiency and operational discipline.",
+      },
+      {
+        icon: Users,
+        title: "Comprehensive intervention in people areas",
+        description:
+          "Work areas with high people presence where aligning roles, safety, and processes is key.",
+      },
+      {
+        icon: Truck,
+        title: "High-traffic sectors",
+        description:
+          "Areas with high traffic, risk, or material dispersion requiring order, control, and waste reduction.",
+      },
+      {
+        icon: CheckCircle,
+        title: "Organizations seeking order culture",
+        description:
+          "Companies wishing to strengthen a culture of order, safety, and efficiency to sustain changes over time.",
+      },
+    ],
+    relatedTitle: "What other products is it related to?",
+    relatedSubtitle: "",
+    relatedDescription:
+      "These products complement each other: WasteZero™ facilitates the acceptance of Lean practices in the company and prepares the team to act; Kaizen Action™ ensures active team participation during improvement events and generates applicable solutions; and LeanBridge™ enhances the adoption of the operational discipline needed to sustain improvements. Meanwhile, StratBridge™ aligns changes with strategic objectives, turning initiatives into prioritized projects, while Lean Enterprise Transformation™ provides the framework to sustain and scale those changes during deep transformation processes.",
+    relatedList: [
+      {
+        icon: Target,
+        title: "WasteZero™",
+        description:
+          "Facilitates the acceptance of Lean practices in the company.",
+      },
+      {
+        icon: Zap,
+        title: "Kaizen Action™",
+        description: "Ensures team participation during improvement events.",
+      },
+      {
+        icon: GitBranch,
+        title: "LeanBridge™",
+        description:
+          "Enhances the adoption of required operational discipline.",
+      },
+      {
+        icon: Compass,
+        title: "StratBridge™",
+        description: "Helps align changes with strategic objectives.",
+      },
+      {
+        icon: Building2,
+        title: "Lean Enterprise Transformation™",
+        description:
+          "Essential to sustain changes during deep transformation processes.",
+      },
+    ],
+  },
+  pt: {
+    clickForDetails: "Clique para mais detalhes",
+    closeModal: "Fechar modal",
+    whatIs: "O que é?",
+    whatIsNot: "O que não é?",
+    whatIsTitle: "O que é e o que não é?",
+    whatIsSubtitle: "Definição clara do programa Change Bridge™",
+    whatIsDescription:
+      "É um programa prático e estruturado para ajudar as empresas a gerenciar de forma ordenada, clara e participativa os processos de mudança, garantindo que as equipes entendam, adotem e sustentem as transformações necessárias para a evolução do negócio.",
+    whatIsList: [
+      "Preparar-se para as mudanças.",
+      "Minimizar resistências e riscos.",
+      "Gerar comprometimento nas equipes.",
+      "Alcançar resultados sustentáveis em cada transformação.",
+    ],
+    whatIsNotList: [
+      "Um processo improvisado sem estrutura clara.",
+      "Uma mudança imposta sem participação das equipes.",
+      "Uma solução pontual sem acompanhamento contínuo.",
+    ],
+    problemsTitle: "Problemas que resolve",
+    problemsSubtitle: "Desperdícios e desafios operacionais",
+    problemsList: [
+      {
+        icon: MessageSquare,
+        title: "Comunicação Deficiente",
+        description: "Falta de clareza e comunicação em projetos.",
+      },
+      {
+        icon: Users,
+        title: "Alinhamento Falho",
+        description:
+          "Dificuldade para alinhar diferentes setores e atores em torno de um objetivo comum.",
+      },
+      {
+        icon: Clock,
+        title: "Disciplina Insuficiente",
+        description:
+          "Mudanças implementadas que depois são abandonadas por falta de disciplina.",
+      },
+      {
+        icon: UserCheck,
+        title: "Gestão Humana Inadequada",
+        description:
+          "Fracasso de projetos de melhoria por falta de gestão do fator humano.",
+      },
+      {
+        icon: ShieldOff,
+        title: "Resistência à Mudança",
+        description:
+          "Resistência das equipes em adotar novas formas de trabalho.",
+      },
+    ],
+    methodologyTitle: "Metodologia & Tempos",
+    methodologySubtitle:
+      "Metodologia de 4 fases com duração típica de 8 a 12 semanas",
+    methodologyDescription:
+      "Os tempos se adaptam ao tamanho e complexidade do projeto; a implementação combina workshops presenciais, coaching e acompanhamento estruturado.",
+    methodologySubDescription: "Modalidade de implementação:",
+    methodologyDetails: [
+      "Fase 1: Visão e avaliação inicial — definição do projeto, diagnóstico do estado atual vs futuro, equipe e KPIs.",
+      "Fase 2: Análise estrutural — mapeamento de impactos, matriz de risco/contingências e identificação de atores-chave.",
+      "Fase 3: Planos de gestão da mudança — gestão de atores, planos de comunicação e programas de formação.",
+      "Fase 4: Implementação ativa e sustentabilidade — execução com coaching, acompanhamento e transformação da comunicação em processo.",
+    ],
+    benefitsTitle: "Benefícios",
+    benefitsSubtitle: "Benefícios do programa Change Bridge™",
+    benefitsList: [
+      {
+        icon: Target,
+        title: "Alinhamento Estratégico",
+        description:
+          "Alinhamento claro entre os objetivos da mudança e as ações das equipes.",
+      },
+      {
+        icon: Zap,
+        title: "Implementação Ágil",
+        description:
+          "Maior velocidade e efetividade na implementação de projetos de transformação.",
+      },
+      {
+        icon: Repeat,
+        title: "Mudanças Sustentáveis",
+        description: "Sustentabilidade das mudanças a longo prazo.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Gestão de Expectativas",
+        description:
+          "Minimização de resistências internas e gestão adequada de expectativas.",
+      },
+      {
+        icon: MessageCircle,
+        title: "Comunicação Estruturada",
+        description:
+          "Melhoria na comunicação estruturada e na disciplina operacional da equipe.",
+      },
+    ],
+    recommendedTitle: "Para quem o programa é recomendado?",
+    recommendedSubtitle: "Tipos de empresas ideais para Change Bridge™",
+    recommendedTypes: "Tipos de Empresas",
+    recommendedList: [
+      {
+        icon: Factory,
+        title: "Empresas industriais ou de serviços",
+        description:
+          "Organizações industriais e de serviços que buscam melhorar sua eficiência e disciplina operacional.",
+      },
+      {
+        icon: Users,
+        title: "Intervenção integral em áreas com pessoas",
+        description:
+          "Áreas de trabalho com alta presença de pessoas onde é fundamental alinhar papéis, segurança e processos.",
+      },
+      {
+        icon: Truck,
+        title: "Setores de alto tráfego",
+        description:
+          "Áreas com alto tráfego, risco ou dispersão de materiais que requerem ordem, controle e redução de desperdícios.",
+      },
+      {
+        icon: CheckCircle,
+        title: "Organizações que buscam cultura de ordem",
+        description:
+          "Empresas que desejam fortalecer a cultura de ordem, segurança e eficiência para sustentar mudanças ao longo do tempo.",
+      },
+    ],
+    relatedTitle: "Com quais outros produtos se relaciona?",
+    relatedSubtitle: "",
+    relatedDescription:
+      "Estes produtos se complementam: WasteZero™ facilita a aceitação de práticas Lean na empresa e prepara a equipe para agir; Kaizen Action™ assegura a participação ativa das equipes durante eventos de melhoria e gera soluções aplicáveis; e LeanBridge™ potencializa a adoção da disciplina operacional necessária para sustentar as melhorias. Paralelamente, StratBridge™ alinha as mudanças com os objetivos estratégicos, transformando iniciativas em projetos priorizados, enquanto Lean Enterprise Transformation™ fornece o arcabouço para sustentar e escalar essas mudanças durante processos de transformação profunda.",
+    relatedList: [
+      {
+        icon: Target,
+        title: "WasteZero™",
+        description: "Facilita a aceitação de práticas Lean na empresa.",
+      },
+      {
+        icon: Zap,
+        title: "Kaizen Action™",
+        description:
+          "Assegura a participação das equipes durante eventos de melhoria.",
+      },
+      {
+        icon: GitBranch,
+        title: "LeanBridge™",
+        description:
+          "Potencializa a adoção da disciplina operacional requerida.",
+      },
+      {
+        icon: Compass,
+        title: "StratBridge™",
+        description: "Ajuda a alinhar mudanças com os objetivos estratégicos.",
+      },
+      {
+        icon: Building2,
+        title: "Lean Enterprise Transformation™",
+        description:
+          "Essencial para sustentar mudanças durante processos de transformação profunda.",
+      },
+    ],
+  },
+};
 
 interface ContentSectionProps {
   id: string;
@@ -53,51 +540,14 @@ interface ModalProps {
   graphic: React.ReactNode;
 }
 
-const RoadmapGraphic = () => (
-  <div className="flex items-center justify-center py-6">
-    <div className="relative">
-      {/* Camino */}
-      <div className="flex items-center space-x-8">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-red-100 border-2 border-red-300 rounded-full flex items-center justify-center mb-2">
-            <MapPin className="w-8 h-8 text-red-600" />
-          </div>
-          <p className="text-xs text-[var(--color-text)]">Problemas</p>
-          <p className="text-xs text-[var(--color-text)]">Recurrentes</p>
-        </div>
-
-        <ArrowRight className="w-6 h-6 text-[var(--color-secondary)]" />
-
-        <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full flex items-center justify-center mb-2">
-            <Target className="w-8 h-8 text-white" />
-          </div>
-          <p className="text-xs text-[var(--color-text)] font-bold">
-            Change Bridge™
-          </p>
-        </div>
-
-        <ArrowRight className="w-6 h-6 text-[var(--color-secondary)]" />
-
-        <div className="text-center">
-          <div className="w-16 h-16 bg-green-100 border-2 border-green-300 rounded-full flex items-center justify-center mb-2">
-            <Award className="w-8 h-8 text-green-600" />
-          </div>
-          <p className="text-xs text-[var(--color-text)]">Cultura de</p>
-          <p className="text-xs text-[var(--color-text)]">Mejora</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const Modal: React.FC<ModalProps> = ({
+const Modal: React.FC<ModalProps & { lang: Language }> = ({
   isOpen,
   onClose,
   title,
   subtitle,
   content,
   graphic,
+  lang,
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -158,7 +608,7 @@ const Modal: React.FC<ModalProps> = ({
           <button
             onClick={onClose}
             className="p-3 hover:bg-[var(--color-bg)] rounded-full transition-all duration-200 group flex-shrink-0"
-            aria-label="Cerrar modal"
+            aria-label={translations[lang].closeModal}
           >
             <X className="w-6 h-6 text-[var(--color-text)] group-hover:text-[var(--color-primary)] group-hover:scale-110 transition-all" />
           </button>
@@ -248,6 +698,9 @@ const ContentSection: React.FC<ContentSectionProps> = ({
 );
 
 const ChangeBridgeContent: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<any>(null);
@@ -256,88 +709,21 @@ const ChangeBridgeContent: React.FC = () => {
     {
       id: "1",
       icon: CircleQuestionMark,
-      title: "¿Qué es y qué no es?",
-      subtitle: "Definición clara del programa Change Bridge™",
-      // children: (
-      //   <>
-      //     <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-      //       <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-      //         Change Bridge™ es un programa end-to-end de mejora continua que
-      //         combina formación técnica práctica, aplicación del ciclo DMAIC y
-      //         desarrollo de proyectos reales, generando disciplina operativa sin
-      //         reemplazar al equipo interno.
-      //       </p>
-      //     </div>
-
-      //     {/* Details */}
-      //     <div>
-      //       <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
-      //         ¿Qué es?
-      //       </p>
-      //       {[
-      //         "✔ Un programa para identificar y eliminar desperdicios según la filosofía Lean",
-      //         "✔ Una formación práctica que prepara facilitadores de mejora (Kaizen / Green Belt)",
-      //         "✔ El punto de partida ideal para organizaciones que inician su camino Lean",
-      //       ].map((detail, idx) => (
-      //         <div
-      //           key={idx}
-      //           className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
-      //         >
-      //           <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-      //             <CheckCircle className="w-4 h-4 text-green-600" />
-      //           </div>
-      //           <span className="text-[var(--color-text)] leading-relaxed flex-1">
-      //             {detail.replace(/^[✔✘] /, "")}
-      //           </span>
-      //         </div>
-      //       ))}
-      //     </div>
-      //     <div>
-      //       <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
-      //         ¿Qué no es?
-      //       </p>
-      //       {[
-      //         "✘ Una capacitación sin aplicación real",
-      //         "✘ Una solución parcial o desconectada de la estrategia",
-      //         "✘ Un taller genérico sin compromiso de implementación",
-      //       ].map((detail, idx) => (
-      //         <div
-      //           key={idx}
-      //           className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
-      //         >
-      //           <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-      //             <XCircle className="w-4 h-4 text-red-600" />
-      //           </div>
-      //           <span className="text-[var(--color-text)] leading-relaxed flex-1">
-      //             {detail.replace(/^[✔✘] /, "")}
-      //           </span>
-      //         </div>
-      //       ))}
-      //     </div>
-      //   </>
-      // ),
+      title: t.whatIsTitle,
+      subtitle: t.whatIsSubtitle,
       children: (
         <>
           <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
             <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-              Es un programa práctico y estructurado para ayudar a las empresas
-              a gestionar de forma ordenada, clara y participativa los procesos
-              de cambio, asegurando que los equipos entiendan, adopten y
-              sostengan las transformaciones necesarias para la evolución del
-              negocio.
+              {t.whatIsDescription}
             </p>
           </div>
 
           <div className="mb-6">
             <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
-              ¿Qué es?
+              {t.whatIs}
             </p>
-            {[
-              "Prepararse para los cambios.",
-              "Minimizar resistencias y riesgos.",
-              "Generar compromiso en los equipos.",
-              "Lograr resultados sostenibles en cada transformación.",
-            ].map((detail, idx) => (
+            {t.whatIsList.map((detail, idx) => (
               <div
                 key={idx}
                 className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
@@ -354,13 +740,9 @@ const ChangeBridgeContent: React.FC = () => {
 
           <div>
             <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
-              ¿Qué no es?
+              {t.whatIsNot}
             </p>
-            {[
-              "Un proceso improvisado sin estructura clara.",
-              "Un cambio impuesto sin participación de los equipos.",
-              "Una solución puntual sin seguimiento continuo.",
-            ].map((detail, idx) => (
+            {t.whatIsNotList.map((detail, idx) => (
               <div
                 key={idx}
                 className="flex items-start space-x-4 p-2 mb-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
@@ -374,59 +756,17 @@ const ChangeBridgeContent: React.FC = () => {
               </div>
             ))}
           </div>
-
-          {/* <div className="mt-6">
-            <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
-              ¿Para quién?
-            </p>
-            <p className="text-[var(--color-text)] leading-relaxed">
-              Está diseñado para proyectos de cambios en procesos, estructura
-              organizacional, implementación de nuevos sistemas o ajustes
-              estratégicos que requieran alineamiento y acción de toda la
-              organización.
-            </p>
-          </div> */}
         </>
       ),
     },
     {
       id: "2",
       icon: Zap,
-      title: "Problemas que resuelve",
-      subtitle: "Los desperdicios y desafíos operativos",
+      title: t.problemsTitle,
+      subtitle: t.problemsSubtitle,
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
-          {[
-            {
-              icon: MessageSquare,
-              title: "Comunicación Deficiente",
-              description: "Falta de claridad y comunicación en proyectos.",
-            },
-            {
-              icon: Users,
-              title: "Alineamiento Fallido",
-              description:
-                "Dificultad para alinear a distintos sectores y actores en torno a un objetivo común.",
-            },
-            {
-              icon: Clock,
-              title: "Disciplina Insuficiente",
-              description:
-                "Cambios implementados que luego se abandonan por falta de disciplina.",
-            },
-            {
-              icon: UserCheck,
-              title: "Gestión Humana Inadecuada",
-              description:
-                "Fracaso de proyectos de mejora por falta de gestión del factor humano.",
-            },
-            {
-              icon: ShieldOff,
-              title: "Resistencia al Cambio",
-              description:
-                "Resistencia de los equipos a adoptar nuevas formas de trabajo.",
-            },
-          ].map((item, idx) => (
+          {t.problemsList.map((item, idx) => (
             <div
               key={idx}
               className={`bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105 ${
@@ -450,58 +790,21 @@ const ChangeBridgeContent: React.FC = () => {
     {
       id: "4",
       icon: Clock,
-      title: "Metodología & Tiempos",
-      subtitle:
-        "Metodología de 4 fases con una duración típica de 8 a 12 semanas",
-      description:
-        "Los tiempos se adaptan al tamaño y complejidad del proyecto; la implementación combina workshops presenciales, coaching y seguimiento estructurado.",
-      subDescription: "Modalidad de implementación:",
+      title: t.methodologyTitle,
+      subtitle: t.methodologySubtitle,
+      description: t.methodologyDescription,
+      subDescription: t.methodologySubDescription,
       graphic: <MethodologyGraphic />,
-      details: [
-        "Fase 1: Visión y evaluación inicial — definición del proyecto, diagnóstico estado actual vs futuro, equipo y KPIs.",
-        "Fase 2: Análisis estructural — mapeo de impactos, matriz riesgo/contingencias e identificación de actores clave.",
-        "Fase 3: Planes de gestión del cambio — gestión de actores, planes de comunicación y programas de formación.",
-        "Fase 4: Implementación activa y sostenibilidad — ejecución con coaching, seguimiento y transformación de la comunicación en proceso.",
-      ],
+      details: t.methodologyDetails,
     },
     {
       id: "8",
       icon: HandCoins,
-      title: "Beneficios",
-      subtitle: "Beneficios del programa Change Bridge™",
+      title: t.benefitsTitle,
+      subtitle: t.benefitsSubtitle,
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
-          {[
-            {
-              icon: Target,
-              title: "Alineamiento Estratégico",
-              description:
-                "Alineamiento claro entre los objetivos del cambio y las acciones de los equipos.",
-            },
-            {
-              icon: Zap,
-              title: "Implementación Ágil",
-              description:
-                "Mayor velocidad y efectividad en la implementación de proyectos de transformación.",
-            },
-            {
-              icon: Repeat,
-              title: "Cambios Sostenibles",
-              description: "Sostenibilidad de los cambios a largo plazo.",
-            },
-            {
-              icon: ShieldCheck,
-              title: "Gestión de Expectativas",
-              description:
-                "Minimización de resistencias internas y gestión adecuada de expectativas.",
-            },
-            {
-              icon: MessageCircle,
-              title: "Comunicación Estructurada",
-              description:
-                "Mejora en la comunicación estructurada y en la disciplina operativa del equipo.",
-            },
-          ].map((item, idx) => (
+          {t.benefitsList.map((item, idx) => (
             <div
               key={idx}
               className={`bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105 ${
@@ -525,39 +828,14 @@ const ChangeBridgeContent: React.FC = () => {
     {
       id: "7",
       icon: Users,
-      title: "¿Para quién está recomendado el programa?",
-      subtitle: "Tipos de empresas ideales para Change Bridge™",
+      title: t.recommendedTitle,
+      subtitle: t.recommendedSubtitle,
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           <h3 className="col-span-full text-2xl font-bold text-[var(--color-primary)]">
-            Tipos de Empresas
+            {t.recommendedTypes}
           </h3>
-          {[
-            {
-              icon: Factory,
-              title: "Empresas industriales o de servicios",
-              description:
-                "Organizaciones industriales y de servicios que buscan mejorar su eficiencia y disciplina operativa.",
-            },
-            {
-              icon: Users,
-              title: "Intervención integral en áreas con personas",
-              description:
-                "Áreas de trabajo con alta presencia de personas donde es clave alinear roles, seguridad y procesos.",
-            },
-            {
-              icon: Truck,
-              title: "Sectores de alto tráfico",
-              description:
-                "Zonas con alto tráfico, riesgo o dispersión de materiales que requieren orden, control y reducción de desperdicios.",
-            },
-            {
-              icon: CheckCircle,
-              title: "Organizaciones que buscan cultura de orden",
-              description:
-                "Empresas que desean fortalecer la cultura de orden, seguridad y eficiencia para sostener cambios en el tiempo.",
-            },
-          ].map((feature, index) => (
+          {t.recommendedList.map((feature, index) => (
             <div
               key={index}
               className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
@@ -579,46 +857,13 @@ const ChangeBridgeContent: React.FC = () => {
     {
       id: "5",
       icon: Settings,
-      title: "¿Con qué otros productos se relaciona?",
-      subtitle: "",
-      description:
-        "Estos productos se complementan: WasteZero™ facilita la aceptación de prácticas Lean en la empresa y prepara al equipo para actuar; Kaizen Action™ asegura la participación activa de los equipos durante eventos de mejora y genera soluciones aplicables; y LeanBridge™ potencia la adopción de la disciplina operativa necesaria para sostener las mejoras. Paralelamente, StratBridge™ alinea los cambios con los objetivos estratégicos, transformando iniciativas en proyectos priorizados, mientras que Lean Enterprise Transformation™ proporciona el marco para sostener y escalar esos cambios durante procesos de transformación profunda.",
-      graphic: <ConnectionsGraphic title="Change Bridge™" />,
+      title: t.relatedTitle,
+      subtitle: t.relatedSubtitle,
+      description: t.relatedDescription,
       details: [],
       children: (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
-          {[
-            {
-              icon: Target,
-              title: "WasteZero™",
-              description:
-                "Facilita la aceptación de prácticas Lean en la empresa.",
-            },
-            {
-              icon: Zap,
-              title: "Kaizen Action™",
-              description:
-                "Asegura la participación de equipos durante eventos de mejora.",
-            },
-            {
-              icon: GitBranch,
-              title: "LeanBridge™",
-              description:
-                "Potencia la adopción de la disciplina operativa requerida.",
-            },
-            {
-              icon: Compass,
-              title: "StratBridge™",
-              description:
-                "Ayuda a alinear cambios con los objetivos estratégicos.",
-            },
-            {
-              icon: Building2,
-              title: "Lean Enterprise Transformation™",
-              description:
-                "Esencial para sostener cambios durante procesos de transformación profunda.",
-            },
-          ].map((item, idx) => (
+          {t.relatedList.map((item, idx) => (
             <div
               key={idx}
               className={`bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105 ${
@@ -691,7 +936,7 @@ const ChangeBridgeContent: React.FC = () => {
 
                 {/* Click indicator */}
                 <div className="absolute bottom-4 right-4 text-xs text-[var(--color-border)] group-hover:text-[var(--color-secondary)] transition-colors duration-300 font-medium">
-                  Click para más detalles
+                  {t.clickForDetails}
                 </div>
 
                 {/* Hover glow effect */}
@@ -716,6 +961,7 @@ const ChangeBridgeContent: React.FC = () => {
           children: selectedFeature?.children,
         }}
         graphic={selectedFeature?.graphic}
+        lang={currentLanguage}
       />
     </div>
   );

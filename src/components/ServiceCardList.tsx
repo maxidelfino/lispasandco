@@ -31,6 +31,8 @@ import LeanEnterpriseIcon from "../icons-componets/LeanEnterprise/LeanEnterprise
 import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
 import ProjectFocusIcon from "../icons-componets/ProjectFocus/ProjectFocusIcon";
 import BridgeIcon from "../icons-componets/LeanBridge/BridgeIcon";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
 
 interface ServiceCardListProps {
   services: Service[];
@@ -59,6 +61,52 @@ const ICON_COMPONENTS_MAP = {
   projectfocus: ProjectFocusIcon,
 };
 
+// Traducciones para textos estáticos
+const translations = {
+  es: {
+    prevService: "Servicio anterior",
+    nextService: "Siguiente servicio",
+    of: "de",
+    swipeOrArrow: "Desliza o usa las flechas del teclado para navegar",
+    workingForYou: "Estamos trabajando para ti",
+    teamDeveloping:
+      "Nuestro equipo está desarrollando nuevos servicios innovadores para complementar este caminio.",
+    stayTuned: "Mantente atento a nuestras actualizaciones.",
+    clickHere: "Haz clic aquí",
+    learnMore: "para conocer más detalles del programa",
+    programAvailableSoon: "Programa disponible próximamente",
+    goToService: (n: number) => `Ir al servicio ${n}`,
+  },
+  en: {
+    prevService: "Previous service",
+    nextService: "Next service",
+    of: "of",
+    swipeOrArrow: "Swipe or use the keyboard arrows to navigate",
+    workingForYou: "We are working for you",
+    teamDeveloping:
+      "Our team is developing new innovative services to complement this journey.",
+    stayTuned: "Stay tuned for our updates.",
+    clickHere: "Click here",
+    learnMore: "to learn more about the program",
+    programAvailableSoon: "Program available soon",
+    goToService: (n: number) => `Go to service ${n}`,
+  },
+  pt: {
+    prevService: "Serviço anterior",
+    nextService: "Próximo serviço",
+    of: "de",
+    swipeOrArrow: "Deslize ou use as setas do teclado para navegar",
+    workingForYou: "Estamos trabalhando para você",
+    teamDeveloping:
+      "Nossa equipe está desenvolvendo novos serviços inovadores para complementar esta jornada.",
+    stayTuned: "Fique atento às nossas atualizações.",
+    clickHere: "Clique aqui",
+    learnMore: "para saber mais detalhes do programa",
+    programAvailableSoon: "Programa disponível em breve",
+    goToService: (n: number) => `Ir para o serviço ${n}`,
+  },
+};
+
 // Check if service is coming soon (not fully developed)
 export const isComingSoon = (service: Service) => {
   // Check if service has placeholder content or is marked as coming soon
@@ -69,7 +117,13 @@ export const isComingSoon = (service: Service) => {
         (desc) =>
           desc.includes("próximamente") ||
           desc.includes("estamos trabajando") ||
-          desc.includes("disponible próximamente")
+          desc.includes("disponible próximamente") ||
+          desc.includes("coming soon") ||
+          desc.includes("we are working") ||
+          desc.includes("available soon") ||
+          desc.includes("em breve") ||
+          desc.includes("estamos trabalhando") ||
+          desc.includes("disponível em breve")
       ))
   );
 };
@@ -81,6 +135,10 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+
+  // Idioma actual
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage as Language];
 
   const minSwipeDistance = 50;
 
@@ -204,21 +262,19 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] flex items-center justify-center mb-6 shadow-lg">
           <div className="relative">
             <Wrench className="w-10 h-10 text-white" />
-            {/* <Clock className="w-6 h-6 text-white absolute -top-1 -right-1 bg-[var(--color-accent)] rounded-full p-1" /> */}
           </div>
         </div>
 
         <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
-          Estamos trabajando para ti
+          {t.workingForYou}
         </h3>
 
         <p className="text-[var(--color-text)] text-lg leading-relaxed mb-6 max-w-md">
-          Nuestro equipo está desarrollando nuevos servicios innovadores para
-          complementar este caminio.
+          {t.teamDeveloping}
         </p>
 
         <div className="mt-8 text-sm text-[var(--color-text)] opacity-75">
-          Mantente atento a nuestras actualizaciones.
+          {t.stayTuned}
         </div>
       </div>
     );
@@ -241,19 +297,19 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
               onClick={prevService}
               disabled={isAnimating}
               className="p-3 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] hover:bg-[var(--color-secondary)] hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group z-10"
-              aria-label="Servicio anterior"
+              aria-label={t.prevService}
             >
               <ChevronLeft className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </button>
 
             <div className="text-center">
               <h3 className="text-sm font-medium text-[var(--color-text)]">
-                {currentIndex + 1} de {services.length}
+                {currentIndex + 1} {t.of} {services.length}
               </h3>
               {/* Touch/Keyboard Instructions */}
               <div className="text-center mt-4">
                 <p className="text-sm text-[var(--color-text)] opacity-70">
-                  Desliza o usa las flechas del teclado para navegar
+                  {t.swipeOrArrow}
                 </p>
               </div>
             </div>
@@ -262,7 +318,7 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
               onClick={nextService}
               disabled={isAnimating}
               className="p-3 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] hover:bg-[var(--color-secondary)] hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group z-10"
-              aria-label="Siguiente servicio"
+              aria-label={t.nextService}
             >
               <ChevronRight className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </button>
@@ -288,6 +344,9 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
                   iconMap[service.icon as keyof typeof iconMap] || Target;
                 const isActive = index === currentIndex;
                 const showComingSoon = isComingSoon(service);
+
+                let serviceName = service.name;
+                let serviceLongDescription = service.longDescription;
 
                 return (
                   <div
@@ -318,15 +377,15 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
                           </div>
                           <div>
                             <h3 className="text-3xl font-bold text-[var(--color-primary)] mb-2 group-hover:text-[var(--color-secondary)] transition-colors">
-                              {service.name}
+                              {serviceName}
                             </h3>
                           </div>
                         </div>
                       </div>
 
                       {/* Description */}
-                      {service.longDescription &&
-                        service.longDescription.map((desc, descIndex) => (
+                      {serviceLongDescription &&
+                        serviceLongDescription.map((desc, descIndex) => (
                           <p
                             key={descIndex}
                             className="text-[var(--color-text)] mb-4 leading-relaxed text-lg"
@@ -351,16 +410,15 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
                               onClick={() => handleServiceClick(service)}
                             >
                               <span className="font-semibold text-[var(--color-secondary)] group-hover/cta:text-white">
-                                Haz clic aquí
+                                {t.clickHere}
                               </span>{" "}
-                              para conocer más detalles del programa{" "}
-                              {service.name}.
+                              {t.learnMore} {serviceName}.
                             </p>
                           </div>
                         ) : (
                           <div className="mt-6 p-4 bg-[var(--color-bg)] rounded-xl border border-[var(--color-border)]">
                             <p className="text-sm text-[var(--color-text)] text-center">
-                              Programa disponible próximamente
+                              {t.programAvailableSoon}
                             </p>
                           </div>
                         )}
@@ -384,7 +442,7 @@ const ServiceCardList: React.FC<ServiceCardListProps> = ({ services }) => {
                     ? "bg-[var(--color-secondary)] scale-125"
                     : "bg-[var(--color-border)] hover:bg-[var(--color-secondary)]/50"
                 } disabled:cursor-not-allowed`}
-                aria-label={`Ir al servicio ${index + 1}`}
+                aria-label={t.goToService(index + 1)}
               />
             ))}
           </div>

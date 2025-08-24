@@ -7,80 +7,146 @@ import {
   RefreshCw,
   CheckCircle2,
 } from "lucide-react";
-
-/**
- * Componente MeasureBridgeDiagram
- * Basado en los diagramas circulares de FlowStableDiagram y CircularWasteDiagram,
- * y en la información del PDF LYS-P015-MeasureBridge.pdf.
- *
- * El "Measure Bridge" es un modelo de puente de medición para procesos industriales,
- * que conecta la medición confiable con la mejora continua y el control.
- *
- * Elementos principales (según el PDF):
- * 1. Variables Críticas
- * 2. Métodos de Medición
- * 3. Calibración y Verificación
- * 4. Registro y Análisis de Datos
- * 5. Acciones de Mejora
- * 6. Control y Seguimiento
- */
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
 const measureBridgeElements = [
   {
     id: "critical-variables",
     icon: Scale,
-    title: "Variables Críticas",
-    description:
-      "Identificación de las variables clave que impactan la calidad y desempeño del proceso.",
+    title: {
+      es: "Variables Críticas",
+      en: "Critical Variables",
+      pt: "Variáveis Críticas",
+    },
+    description: {
+      es: "Identificación de las variables clave que impactan la calidad y desempeño del proceso.",
+      en: "Identification of key variables that impact process quality and performance.",
+      pt: "Identificação das variáveis-chave que impactam a qualidade e o desempenho do processo.",
+    },
     angle: 0,
     color: "bg-blue-600",
   },
   {
     id: "measurement-methods",
     icon: BarChart2,
-    title: "Métodos de Medición",
-    description:
-      "Selección y estandarización de métodos confiables para medir las variables críticas.",
+    title: {
+      es: "Métodos de Medición",
+      en: "Measurement Methods",
+      pt: "Métodos de Medição",
+    },
+    description: {
+      es: "Selección y estandarización de métodos confiables para medir las variables críticas.",
+      en: "Selection and standardization of reliable methods to measure critical variables.",
+      pt: "Seleção e padronização de métodos confiáveis para medir as variáveis críticas.",
+    },
     angle: 60,
     color: "bg-green-600",
   },
   {
     id: "calibration",
     icon: Settings,
-    title: "Calibración y Verificación",
-    description:
-      "Aseguramiento de la precisión de los instrumentos mediante calibraciones y verificaciones periódicas.",
+    title: {
+      es: "Calibración y Verificación",
+      en: "Calibration and Verification",
+      pt: "Calibração e Verificação",
+    },
+    description: {
+      es: "Aseguramiento de la precisión de los instrumentos mediante calibraciones y verificaciones periódicas.",
+      en: "Ensuring instrument accuracy through periodic calibrations and verifications.",
+      pt: "Garantia da precisão dos instrumentos por meio de calibrações e verificações periódicas.",
+    },
     angle: 120,
     color: "bg-yellow-500",
   },
   {
     id: "data-record",
     icon: RefreshCw,
-    title: "Registro y Análisis de Datos",
-    description:
-      "Documentación sistemática y análisis de los datos obtenidos para detectar tendencias y desviaciones.",
+    title: {
+      es: "Registro y Análisis de Datos",
+      en: "Data Recording and Analysis",
+      pt: "Registro e Análise de Dados",
+    },
+    description: {
+      es: "Documentación sistemática y análisis de los datos obtenidos para detectar tendencias y desviaciones.",
+      en: "Systematic documentation and analysis of obtained data to detect trends and deviations.",
+      pt: "Documentação sistemática e análise dos dados obtidos para detectar tendências e desvios.",
+    },
     angle: 180,
     color: "bg-purple-600",
   },
   {
     id: "improvement-actions",
     icon: ArrowUpRight,
-    title: "Acciones de Mejora",
-    description:
-      "Implementación de acciones correctivas y preventivas basadas en el análisis de datos.",
+    title: {
+      es: "Acciones de Mejora",
+      en: "Improvement Actions",
+      pt: "Ações de Melhoria",
+    },
+    description: {
+      es: "Implementación de acciones correctivas y preventivas basadas en el análisis de datos.",
+      en: "Implementation of corrective and preventive actions based on data analysis.",
+      pt: "Implementação de ações corretivas e preventivas baseadas na análise de dados.",
+    },
     angle: 240,
     color: "bg-pink-600",
   },
   {
     id: "control-followup",
     icon: CheckCircle2,
-    title: "Control y Seguimiento",
-    description:
-      "Monitoreo continuo para asegurar la efectividad de las mejoras y el control del proceso.",
+    title: {
+      es: "Control y Seguimiento",
+      en: "Control and Follow-up",
+      pt: "Controle e Acompanhamento",
+    },
+    description: {
+      es: "Monitoreo continuo para asegurar la efectividad de las mejoras y el control del proceso.",
+      en: "Continuous monitoring to ensure the effectiveness of improvements and process control.",
+      pt: "Monitoramento contínuo para garantir a eficácia das melhorias e o controle do processo.",
+    },
     angle: 300,
     color: "bg-indigo-600",
   },
 ];
+
+const diagramTranslations: Record<
+  Language,
+  {
+    title: string;
+    subtitle: string;
+    center: string;
+    centerSubtitle: string;
+    legend: string;
+    legendMobile: string;
+  }
+> = {
+  es: {
+    title: "Measure Bridge™",
+    subtitle:
+      "Puente de medición confiable para la mejora y control de procesos industriales",
+    center: "Measure Bridge™",
+    centerSubtitle: "Puente de Medición",
+    legend: "Pasa el mouse sobre cada elemento para ver detalles",
+    legendMobile: "Toca cada elemento para ver detalles",
+  },
+  en: {
+    title: "Measure Bridge™",
+    subtitle: "Reliable measurement bridge for process improvement and control",
+    center: "Measure Bridge™",
+    centerSubtitle: "Measurement Bridge",
+    legend: "Hover over each element to see details",
+    legendMobile: "Tap each element to see details",
+  },
+  pt: {
+    title: "Measure Bridge™",
+    subtitle:
+      "Ponte de medição confiável para melhoria e controle de processos industriais",
+    center: "Measure Bridge™",
+    centerSubtitle: "Ponte de Medição",
+    legend: "Passe o mouse sobre cada elemento para ver detalhes",
+    legendMobile: "Toque em cada elemento para ver detalhes",
+  },
+};
 
 const getResponsiveValues = (screenSize: string) => {
   if (screenSize === "mobile") {
@@ -126,6 +192,7 @@ const MeasureBridgeDiagram: React.FC = () => {
   const [activeElement, setActiveElement] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [screenSize, setScreenSize] = useState("desktop");
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -151,6 +218,7 @@ const MeasureBridgeDiagram: React.FC = () => {
 
   const responsive = getResponsiveValues(screenSize);
   const isMobile = screenSize === "mobile";
+  const t = diagramTranslations[currentLanguage];
 
   return (
     <div className="w-full min-h-screen p-4">
@@ -158,11 +226,10 @@ const MeasureBridgeDiagram: React.FC = () => {
         {/* Título */}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-2 md:mb-4">
-            Measure Bridge™
+            {t.title}
           </h2>
           <p className="text-sm md:text-xl text-slate-600 max-w-2xl mx-auto px-4">
-            Puente de medición confiable para la mejora y control de procesos
-            industriales
+            {t.subtitle}
           </p>
         </div>
 
@@ -191,7 +258,7 @@ const MeasureBridgeDiagram: React.FC = () => {
               className="fill-white font-bold"
               fontSize={responsive.fontSize.title}
             >
-              Measure Bridge™
+              {t.center}
             </text>
             <text
               x={responsive.centerX}
@@ -200,7 +267,7 @@ const MeasureBridgeDiagram: React.FC = () => {
               className="fill-white"
               fontSize={responsive.fontSize.subtitle}
             >
-              Puente de Medición
+              {t.centerSubtitle}
             </text>
 
             {/* Líneas de conexión */}
@@ -362,10 +429,10 @@ const MeasureBridgeDiagram: React.FC = () => {
                       }}
                     >
                       <h3 className="font-bold text-[var(--color-primary)] mb-2">
-                        {element.title}
+                        {element.title[currentLanguage]}
                       </h3>
                       <p className="text-sm text-[var(--color-text)]">
-                        {element.description}
+                        {element.description[currentLanguage]}
                       </p>
                     </div>
                   )}
@@ -401,11 +468,11 @@ const MeasureBridgeDiagram: React.FC = () => {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-bold text-slate-800">
-                          {element.title}
+                          {element.title[currentLanguage]}
                         </h3>
                         {isActive && (
                           <p className="text-sm text-slate-600 mt-2">
-                            {element.description}
+                            {element.description[currentLanguage]}
                           </p>
                         )}
                       </div>
@@ -420,9 +487,7 @@ const MeasureBridgeDiagram: React.FC = () => {
         {/* Leyenda */}
         <div className="mt-8 md:mt-12 text-center">
           <p className="text-[var(--color-text)] text-sm md:text-base">
-            {isMobile
-              ? "Toca cada elemento para ver detalles"
-              : "Pasa el mouse sobre cada elemento para ver detalles"}
+            {isMobile ? t.legendMobile : t.legend}
           </p>
         </div>
       </div>

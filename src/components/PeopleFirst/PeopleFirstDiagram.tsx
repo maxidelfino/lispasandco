@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Users,
   Award,
@@ -9,73 +9,215 @@ import {
   Globe,
   ThumbsUp,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
-const peoplePrinciples = [
-  {
-    id: "respect",
-    title: "Respeto",
-    description:
-      "Tratar a todas las personas con dignidad, valorando sus ideas y opiniones.",
-    icon: "Users",
-    angle: 0,
-  },
-  {
-    id: "recognition",
-    title: "Reconocimiento",
-    description:
-      "Reconocer y celebrar los logros y contribuciones de cada persona.",
-    icon: "Award",
-    angle: 45,
-  },
-  {
-    id: "wellbeing",
-    title: "Bienestar",
-    description:
-      "Promover la salud física, mental y emocional de todos los colaboradores.",
-    icon: "Heart",
-    angle: 90,
-  },
-  {
-    id: "development",
-    title: "Desarrollo",
-    description:
-      "Fomentar el crecimiento profesional y personal a través de la capacitación y el aprendizaje continuo.",
-    icon: "Lightbulb",
-    angle: 135,
-  },
-  {
-    id: "collaboration",
-    title: "Colaboración",
-    description:
-      "Impulsar el trabajo en equipo y la cooperación para alcanzar objetivos comunes.",
-    icon: "Handshake",
-    angle: 180,
-  },
-  {
-    id: "empowerment",
-    title: "Empoderamiento",
-    description:
-      "Dar autonomía y confianza para tomar decisiones y asumir responsabilidades.",
-    icon: "Star",
-    angle: 225,
-  },
-  {
-    id: "inclusion",
-    title: "Inclusión",
-    description:
-      "Fomentar un ambiente diverso e inclusivo donde todos se sientan valorados.",
-    icon: "Globe",
-    angle: 270,
-  },
-  {
-    id: "recognition2",
-    title: "Reconocimiento Cotidiano",
-    description:
-      "Agradecer y dar retroalimentación positiva de manera frecuente.",
-    icon: "ThumbsUp",
-    angle: 315,
-  },
-];
+const principlesByLanguage: Record<
+  Language,
+  Array<{
+    id: string;
+    title: string;
+    description: string;
+    icon: keyof typeof iconMap;
+    angle: number;
+  }>
+> = {
+  es: [
+    {
+      id: "respect",
+      title: "Respeto",
+      description:
+        "Tratar a todas las personas con dignidad, valorando sus ideas y opiniones.",
+      icon: "Users",
+      angle: 0,
+    },
+    {
+      id: "recognition",
+      title: "Reconocimiento",
+      description:
+        "Reconocer y celebrar los logros y contribuciones de cada persona.",
+      icon: "Award",
+      angle: 45,
+    },
+    {
+      id: "wellbeing",
+      title: "Bienestar",
+      description:
+        "Promover la salud física, mental y emocional de todos los colaboradores.",
+      icon: "Heart",
+      angle: 90,
+    },
+    {
+      id: "development",
+      title: "Desarrollo",
+      description:
+        "Fomentar el crecimiento profesional y personal a través de la capacitación y el aprendizaje continuo.",
+      icon: "Lightbulb",
+      angle: 135,
+    },
+    {
+      id: "collaboration",
+      title: "Colaboración",
+      description:
+        "Impulsar el trabajo en equipo y la cooperación para alcanzar objetivos comunes.",
+      icon: "Handshake",
+      angle: 180,
+    },
+    {
+      id: "empowerment",
+      title: "Empoderamiento",
+      description:
+        "Dar autonomía y confianza para tomar decisiones y asumir responsabilidades.",
+      icon: "Star",
+      angle: 225,
+    },
+    {
+      id: "inclusion",
+      title: "Inclusión",
+      description:
+        "Fomentar un ambiente diverso e inclusivo donde todos se sientan valorados.",
+      icon: "Globe",
+      angle: 270,
+    },
+    {
+      id: "recognition2",
+      title: "Reconocimiento Cotidiano",
+      description:
+        "Agradecer y dar retroalimentación positiva de manera frecuente.",
+      icon: "ThumbsUp",
+      angle: 315,
+    },
+  ],
+  en: [
+    {
+      id: "respect",
+      title: "Respect",
+      description:
+        "Treat everyone with dignity, valuing their ideas and opinions.",
+      icon: "Users",
+      angle: 0,
+    },
+    {
+      id: "recognition",
+      title: "Recognition",
+      description:
+        "Recognize and celebrate each person's achievements and contributions.",
+      icon: "Award",
+      angle: 45,
+    },
+    {
+      id: "wellbeing",
+      title: "Well-being",
+      description:
+        "Promote the physical, mental, and emotional health of all team members.",
+      icon: "Heart",
+      angle: 90,
+    },
+    {
+      id: "development",
+      title: "Development",
+      description:
+        "Encourage professional and personal growth through training and continuous learning.",
+      icon: "Lightbulb",
+      angle: 135,
+    },
+    {
+      id: "collaboration",
+      title: "Collaboration",
+      description: "Foster teamwork and cooperation to achieve common goals.",
+      icon: "Handshake",
+      angle: 180,
+    },
+    {
+      id: "empowerment",
+      title: "Empowerment",
+      description:
+        "Give autonomy and trust to make decisions and take responsibility.",
+      icon: "Star",
+      angle: 225,
+    },
+    {
+      id: "inclusion",
+      title: "Inclusion",
+      description:
+        "Promote a diverse and inclusive environment where everyone feels valued.",
+      icon: "Globe",
+      angle: 270,
+    },
+    {
+      id: "recognition2",
+      title: "Everyday Recognition",
+      description: "Give thanks and positive feedback frequently.",
+      icon: "ThumbsUp",
+      angle: 315,
+    },
+  ],
+  pt: [
+    {
+      id: "respect",
+      title: "Respeito",
+      description:
+        "Tratar todas as pessoas com dignidade, valorizando suas ideias e opiniões.",
+      icon: "Users",
+      angle: 0,
+    },
+    {
+      id: "recognition",
+      title: "Reconhecimento",
+      description:
+        "Reconhecer e celebrar as conquistas e contribuições de cada pessoa.",
+      icon: "Award",
+      angle: 45,
+    },
+    {
+      id: "wellbeing",
+      title: "Bem-estar",
+      description:
+        "Promover a saúde física, mental e emocional de todos os colaboradores.",
+      icon: "Heart",
+      angle: 90,
+    },
+    {
+      id: "development",
+      title: "Desenvolvimento",
+      description:
+        "Incentivar o crescimento profissional e pessoal por meio de capacitação e aprendizado contínuo.",
+      icon: "Lightbulb",
+      angle: 135,
+    },
+    {
+      id: "collaboration",
+      title: "Colaboração",
+      description:
+        "Impulsionar o trabalho em equipe e a cooperação para alcançar objetivos comuns.",
+      icon: "Handshake",
+      angle: 180,
+    },
+    {
+      id: "empowerment",
+      title: "Empoderamento",
+      description:
+        "Dar autonomia e confiança para tomar decisões e assumir responsabilidades.",
+      icon: "Star",
+      angle: 225,
+    },
+    {
+      id: "inclusion",
+      title: "Inclusão",
+      description:
+        "Promover um ambiente diverso e inclusivo onde todos se sintam valorizados.",
+      icon: "Globe",
+      angle: 270,
+    },
+    {
+      id: "recognition2",
+      title: "Reconhecimento Diário",
+      description: "Agradecer e dar feedback positivo com frequência.",
+      icon: "ThumbsUp",
+      angle: 315,
+    },
+  ],
+};
 
 const iconMap = {
   Users,
@@ -88,14 +230,56 @@ const iconMap = {
   ThumbsUp,
 };
 
-const diagramTitle = "People First: Principios Fundamentales";
-const diagramSubtitle =
-  "Un modelo centrado en las personas para construir equipos de alto desempeño, bienestar y compromiso.";
+const diagramTitles: Record<Language, string> = {
+  es: "People First: Principios Fundamentales",
+  en: "People First: Core Principles",
+  pt: "People First: Princípios Fundamentais",
+};
+
+const diagramSubtitles: Record<Language, string> = {
+  es: "Un modelo centrado en las personas para construir equipos de alto desempeño, bienestar y compromiso.",
+  en: "A people-centered model to build high-performance, well-being, and engagement teams.",
+  pt: "Um modelo centrado nas pessoas para construir equipes de alto desempenho, bem-estar e engajamento.",
+};
+
+const centerTextTop: Record<Language, string> = {
+  es: "People First",
+  en: "People First",
+  pt: "People First",
+};
+
+const centerTextBottom: Record<Language, string> = {
+  es: "Cultura de Personas",
+  en: "People Culture",
+  pt: "Cultura de Pessoas",
+};
+
+const instructionText: Record<Language, { mobile: string; desktop: string }> = {
+  es: {
+    mobile: "Toca cada principio para ver detalles",
+    desktop: "Pasa el mouse sobre cada principio para ver detalles",
+  },
+  en: {
+    mobile: "Tap each principle to see details",
+    desktop: "Hover over each principle to see details",
+  },
+  pt: {
+    mobile: "Toque em cada princípio para ver detalhes",
+    desktop: "Passe o mouse sobre cada princípio para ver detalhes",
+  },
+};
 
 const PeopleFirstDiagram: React.FC = () => {
+  const { currentLanguage } = useLanguage();
   const [activePrinciple, setActivePrinciple] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [screenSize, setScreenSize] = useState("desktop");
+
+  // Memoize principles for current language
+  const peoplePrinciples = useMemo(
+    () => principlesByLanguage[currentLanguage],
+    [currentLanguage]
+  );
 
   useEffect(() => {
     const updateScreenSize = () => {
@@ -167,10 +351,10 @@ const PeopleFirstDiagram: React.FC = () => {
     >
       <div className="text-center mb-8 md:mb-12">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-4">
-          {diagramTitle}
+          {diagramTitles[currentLanguage]}
         </h2>
         <p className="text-sm md:text-lg lg:text-xl text-[var(--color-text)] max-w-2xl mx-auto px-4">
-          {diagramSubtitle}
+          {diagramSubtitles[currentLanguage]}
         </p>
       </div>
 
@@ -200,7 +384,7 @@ const PeopleFirstDiagram: React.FC = () => {
                 screenSize === "mobile" ? 12 : screenSize === "tablet" ? 14 : 16
               }
             >
-              People First
+              {centerTextTop[currentLanguage]}
             </text>
             <text
               x={centerX}
@@ -211,7 +395,7 @@ const PeopleFirstDiagram: React.FC = () => {
                 screenSize === "mobile" ? 8 : screenSize === "tablet" ? 10 : 12
               }
             >
-              Cultura de Personas
+              {centerTextBottom[currentLanguage]}
             </text>
 
             {peoplePrinciples.map((principle, index) => {
@@ -387,8 +571,8 @@ const PeopleFirstDiagram: React.FC = () => {
       <div className="mt-8 md:mt-12 text-center">
         <p className="text-[var(--color-text)] text-sm md:text-base">
           {screenSize === "mobile"
-            ? "Toca cada principio para ver detalles"
-            : "Pasa el mouse sobre cada principio para ver detalles"}
+            ? instructionText[currentLanguage].mobile
+            : instructionText[currentLanguage].desktop}
         </p>
       </div>
     </div>

@@ -4,9 +4,50 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const TEXTS: Record<
+  Language,
+  {
+    badge: string;
+    title1: string;
+    title2: string;
+    title3: string;
+    description: string;
+  }
+> = {
+  es: {
+    badge:
+      "Áreas desconectadas – Estrategias confusas – Prioridades desconocidas",
+    title1: "OpsBridge™ - World Class",
+    title2: "Gestión visual, disciplina y mejora continua",
+    title3: "para equipos operativos de clase mundial",
+    description:
+      "OpsBridge™ es un sistema integral que conecta personas, procesos y resultados a través de herramientas visuales, estándares claros y rutinas de gestión diaria. Facilita la alineación, el enfoque en prioridades y la resolución estructurada de problemas, impulsando una cultura operativa sólida y sostenible.",
+  },
+  en: {
+    badge: "Disconnected areas – Confusing strategies – Unknown priorities",
+    title1: "OpsBridge™ - World Class",
+    title2: "Visual management, discipline and continuous improvement",
+    title3: "for world-class operations teams",
+    description:
+      "OpsBridge™ is a comprehensive system that connects people, processes, and results through visual tools, clear standards, and daily management routines. It facilitates alignment, focus on priorities, and structured problem-solving, driving a strong and sustainable operational culture.",
+  },
+  pt: {
+    badge:
+      "Áreas desconectadas – Estratégias confusas – Prioridades desconhecidas",
+    title1: "OpsBridge™ - World Class",
+    title2: "Gestão visual, disciplina e melhoria contínua",
+    title3: "para equipes operacionais de classe mundial",
+    description:
+      "OpsBridge™ é um sistema integral que conecta pessoas, processos e resultados por meio de ferramentas visuais, padrões claros e rotinas de gestão diária. Facilita o alinhamento, o foco em prioridades e a resolução estruturada de problemas, impulsionando uma cultura operacional sólida e sustentável.",
+  },
+};
 
 const HeroSection5S: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -16,6 +57,8 @@ const HeroSection5S: React.FC = () => {
     const element = document.getElementById("OpsBridge-content");
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const t = TEXTS[currentLanguage];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -51,25 +94,21 @@ const HeroSection5S: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Áreas desconectadas – Estrategias confusas – Prioridades desconocidas
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">OpsBridge™ - World Class</span>
+          <span className="block">{t.title1}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Gestión visual, disciplina y mejora continua
+            {t.title2}
           </span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80">
-            para equipos operativos de clase mundial
+            {t.title3}
           </span>
         </h1>
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          OpsBridge™ es un sistema integral que conecta personas, procesos y
-          resultados a través de herramientas visuales, estándares claros y
-          rutinas de gestión diaria. Facilita la alineación, el enfoque en
-          prioridades y la resolución estructurada de problemas, impulsando una
-          cultura operativa sólida y sostenible.
+          {t.description}
         </p>
 
         {/* CTA Buttons */}

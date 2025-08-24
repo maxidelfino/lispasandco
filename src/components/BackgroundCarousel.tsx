@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
 
 interface BackgroundCarouselProps {
   slides: string[][]; // Array of slides, each slide is an array of 5 images
@@ -9,6 +11,35 @@ interface BackgroundCarouselProps {
   autoPlayInterval?: number;
   className?: string;
 }
+
+const carouselTranslations: Record<
+  Language,
+  {
+    previous: string;
+    next: string;
+    backgroundImage: (n: number) => string;
+    goToSlide: (n: number) => string;
+  }
+> = {
+  es: {
+    previous: "Anterior",
+    next: "Siguiente",
+    backgroundImage: (n) => `Imagen de fondo ${n} de LYSPAS & CO`,
+    goToSlide: (n) => `Ir al slide ${n}`,
+  },
+  en: {
+    previous: "Previous",
+    next: "Next",
+    backgroundImage: (n) => `Background image ${n} of LYSPAS & CO`,
+    goToSlide: (n) => `Go to slide ${n}`,
+  },
+  pt: {
+    previous: "Anterior",
+    next: "Próximo",
+    backgroundImage: (n) => `Imagem de fundo ${n} da LYSPAS & CO`,
+    goToSlide: (n) => `Ir para o slide ${n}`,
+  },
+};
 
 export default function BackgroundCarousel({
   slides,
@@ -18,6 +49,10 @@ export default function BackgroundCarousel({
 }: BackgroundCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Idioma actual
+  const { currentLanguage } = useLanguage();
+  const t = carouselTranslations[currentLanguage];
 
   // Detectar si estamos en mobile
   useEffect(() => {
@@ -46,10 +81,10 @@ export default function BackgroundCarousel({
     return () => clearInterval(interval);
   }, [autoPlay, autoPlayInterval, totalSlides]);
 
-  // Reset currentSlide cuando cambie el modo (mobile/desktop)
+  // Reset currentSlide cuando cambie el modo (mobile/desktop) o el idioma
   useEffect(() => {
     setCurrentSlide(0);
-  }, [isMobile]);
+  }, [isMobile, currentLanguage]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -86,9 +121,7 @@ export default function BackgroundCarousel({
                       backgroundPosition: "center",
                     }}
                     role="img"
-                    aria-label={`Imagen de fondo ${
-                      imageIndex + 1
-                    } de LYSPAS & CO`}
+                    aria-label={t.backgroundImage(imageIndex + 1)}
                   >
                     <div className="absolute inset-0 bg-black/40"></div>
                   </div>
@@ -116,9 +149,7 @@ export default function BackgroundCarousel({
                     backgroundPosition: "center",
                   }}
                   role="img"
-                  aria-label={`Imagen de fondo ${
-                    imageIndex + 1
-                  } de LYSPAS & CO`}
+                  aria-label={t.backgroundImage(imageIndex + 1)}
                 >
                   <div className="absolute inset-0 bg-black/40"></div>
                 </div>
@@ -132,7 +163,7 @@ export default function BackgroundCarousel({
             <button
               onClick={prevSlide}
               className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
-              aria-label="Previous slide"
+              aria-label={t.previous}
             >
               <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
             </button>
@@ -140,7 +171,7 @@ export default function BackgroundCarousel({
             <button
               onClick={nextSlide}
               className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
-              aria-label="Next slide"
+              aria-label={t.next}
             >
               <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
             </button>
@@ -156,7 +187,7 @@ export default function BackgroundCarousel({
               className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide ? "bg-white" : "bg-white/50"
               }`}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={t.goToSlide(index + 1)}
             />
           ))}
         </div>

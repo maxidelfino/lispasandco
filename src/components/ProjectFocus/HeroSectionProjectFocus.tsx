@@ -1,9 +1,38 @@
 import React, { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const TEXTS = {
+  es: {
+    badge: "Transformar la organización (alinear estrategia con ejecución)",
+    mainTitle: "ProjectFocus™",
+    subTitle: "Selección Estratégica de Proyectos",
+    description:
+      "La metodología ideal para convertir objetivos estratégicos en decisiones reales de inversión, priorizadas con criterio y alineadas con el rumbo de la empresa.",
+  },
+  en: {
+    badge: "Transform the organization (align strategy with execution)",
+    mainTitle: "ProjectFocus™",
+    subTitle: "Strategic Project Selection",
+    description:
+      "The ideal methodology to turn strategic objectives into real investment decisions, prioritized with criteria and aligned with the company's direction.",
+  },
+  pt: {
+    badge: "Transformar a organização (alinhar estratégia com execução)",
+    mainTitle: "ProjectFocus™",
+    subTitle: "Seleção Estratégica de Projetos",
+    description:
+      "A metodologia ideal para transformar objetivos estratégicos em decisões reais de investimento, priorizadas com critério e alinhadas com o rumo da empresa.",
+  },
+};
 
 const HeroSectionProjectFocus: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = TEXTS[lang];
 
   useEffect(() => {
     setIsVisible(true);
@@ -40,22 +69,20 @@ const HeroSectionProjectFocus: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Transformar la organización (alinear estrategia con ejecución)
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">ProjectFocus™</span>
+          <span className="block">{t.mainTitle}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Selección Estratégica de Proyectos
+            {t.subTitle}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          La metodología ideal para convertir objetivos estratégicos en
-          decisiones reales de inversión, priorizadas con criterio y alineadas
-          con el rumbo de la empresa.
+          {t.description}
         </p>
 
         {/* CTA Buttons */}
