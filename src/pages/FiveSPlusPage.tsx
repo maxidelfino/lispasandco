@@ -6,8 +6,53 @@ import FiveSCircularDiagram from "../components/FiveSPlus/FiveSCircularDiagram";
 import FiveSPlusContent from "../components/FiveSPlus/FiveSPlusContent";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const translations: Record<
+  Language,
+  {
+    ctaTitle: string;
+    ctaDescription: string;
+    primaryButtonText: string;
+    secondaryButtonText: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    ctaTitle: "¿Listo para transformar tu espacio de trabajo?",
+    ctaDescription:
+      "Implementa 5S Plus™ y construye la base sólida para una cultura operativa de excelencia",
+    primaryButtonText: "Contactar Ahora",
+    secondaryButtonText: "Descargar Ficha Técnica",
+    pdfHref: "/assets/pdf/LYS-P008-5S-PLUS.pdf",
+    pdfDownload: "LYS-P008-5S-PLUS.pdf",
+  },
+  en: {
+    ctaTitle: "Ready to transform your workspace?",
+    ctaDescription:
+      "Implement 5S Plus™ and build the solid foundation for a culture of operational excellence",
+    primaryButtonText: "Contact Now",
+    secondaryButtonText: "Download Data Sheet",
+    pdfHref: "/assets/pdf/LYS-P008-5S-PLUS-EN.pdf",
+    pdfDownload: "LYS-P008-5S-PLUS-EN.pdf",
+  },
+  pt: {
+    ctaTitle: "Pronto para transformar seu espaço de trabalho?",
+    ctaDescription:
+      "Implemente o 5S Plus™ e construa a base sólida para uma cultura operacional de excelência",
+    primaryButtonText: "Contatar Agora",
+    secondaryButtonText: "Baixar Ficha Técnica",
+    pdfHref: "/assets/pdf/LYS-P008-5S-PLUS-PT.pdf",
+    pdfDownload: "LYS-P008-5S-PLUS-PT.pdf",
+  },
+};
+
 const FiveSPlusPage: React.FC = () => {
   useScrollToTop();
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -29,10 +74,10 @@ const FiveSPlusPage: React.FC = () => {
 
       {/* Call to Action */}
       <CTASection
-        title="¿Listo para transformar tu espacio de trabajo?"
-        description="Implementa 5S Plus™ y construye la base sólida para una cultura operativa de excelencia"
-        primaryButtonText="Contactar Ahora"
-        secondaryButtonText="Descargar Ficha Técnica"
+        title={t.ctaTitle}
+        description={t.ctaDescription}
+        primaryButtonText={t.primaryButtonText}
+        secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
           link.href = "/assets/pdf/LYS-P008-5S-PLUS.pdf";
@@ -41,7 +86,6 @@ const FiveSPlusPage: React.FC = () => {
           link.click();
           document.body.removeChild(link);
         }}
-        // className="mb-32"
       />
 
       <FloatingWhatsAppCTA />

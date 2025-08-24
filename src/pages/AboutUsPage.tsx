@@ -71,7 +71,8 @@ const translations: Record<string, Translation> = {
     badge: "Ficha de Identidad Institucional",
     mainTitle: "LYSPAS & CO",
     mainSubtitle: "Continuous Improvement Solutions",
-    heroSubtitle: "Conoce nuestra identidad, valores y compromiso con la mejora continua",
+    heroSubtitle:
+      "Conoce nuestra identidad, valores y compromiso con la mejora continua",
     mision: "Misión",
     misionP1:
       "Implementamos sistemas de gestión basados en prácticas de mejora continua, adaptados a cada cliente. Trabajamos de manera personalizada, desde el inicio hasta el final de la cadena productiva, generando valor a través del orden, la estandarización y la estabilidad operativa.",
@@ -118,7 +119,8 @@ const translations: Record<string, Translation> = {
       ],
     },
     objetivosTitle: "Objetivos Estratégicos",
-    objetivosSubtitle: "Nuestras metas claras para generar impacto real en cada industria",
+    objetivosSubtitle:
+      "Nuestras metas claras para generar impacto real en cada industria",
     objetivos: [
       "Desarrollar programas aplicables, claros y con alto impacto en la operación diaria de las empresas.",
       "Expandir nuestras soluciones a sectores diversos, con foco en la agroindustria, manufactura y servicios.",
@@ -127,7 +129,8 @@ const translations: Record<string, Translation> = {
       "Acompañar procesos de cambio organizacional respetando la cultura de cada empresa.",
     ],
     valoresTitle: "Valores Institucionales",
-    valoresSubtitle: "Los principios que guían cada una de nuestras acciones y decisiones",
+    valoresSubtitle:
+      "Los principios que guían cada una de nuestras acciones y decisiones",
     valores: [
       {
         id: "practicidad",
@@ -196,7 +199,8 @@ const translations: Record<string, Translation> = {
     badge: "Institutional Identity Sheet",
     mainTitle: "LYSPAS & CO",
     mainSubtitle: "Continuous Improvement Solutions",
-    heroSubtitle: "Discover our identity, values, and commitment to continuous improvement",
+    heroSubtitle:
+      "Discover our identity, values, and commitment to continuous improvement",
     mision: "Mission",
     misionP1:
       "We implement management systems based on continuous improvement practices, tailored to each client. We work personally, from the beginning to the end of the production chain, generating value through order, standardization, and operational stability.",
@@ -243,7 +247,8 @@ const translations: Record<string, Translation> = {
       ],
     },
     objetivosTitle: "Strategic Objectives",
-    objetivosSubtitle: "Our clear goals to generate real impact in every industry",
+    objetivosSubtitle:
+      "Our clear goals to generate real impact in every industry",
     objetivos: [
       "Develop applicable, clear programs with high impact on companies' daily operations.",
       "Expand our solutions to diverse sectors, focusing on agribusiness, manufacturing, and services.",
@@ -252,7 +257,8 @@ const translations: Record<string, Translation> = {
       "Support organizational change processes while respecting each company's culture.",
     ],
     valoresTitle: "Institutional Values",
-    valoresSubtitle: "The principles that guide each of our actions and decisions",
+    valoresSubtitle:
+      "The principles that guide each of our actions and decisions",
     valores: [
       {
         id: "practicidad",
@@ -321,7 +327,8 @@ const translations: Record<string, Translation> = {
     badge: "Ficha de Identidade Institucional",
     mainTitle: "LYSPAS & CO",
     mainSubtitle: "Soluções de Melhoria Contínua",
-    heroSubtitle: "Conheça nossa identidade, valores e compromisso com a melhoria contínua",
+    heroSubtitle:
+      "Conheça nossa identidade, valores e compromisso com a melhoria contínua",
     mision: "Missão",
     misionP1:
       "Implementamos sistemas de gestão baseados em práticas de melhoria contínua, adaptados a cada cliente. Trabalhamos de forma personalizada, do início ao fim da cadeia produtiva, gerando valor por meio da ordem, padronização e estabilidade operacional.",
@@ -368,7 +375,8 @@ const translations: Record<string, Translation> = {
       ],
     },
     objetivosTitle: "Objetivos Estratégicos",
-    objetivosSubtitle: "Nossas metas claras para gerar impacto real em cada setor",
+    objetivosSubtitle:
+      "Nossas metas claras para gerar impacto real em cada setor",
     objetivos: [
       "Desenvolver programas aplicáveis, claros e com alto impacto na operação diária das empresas.",
       "Expandir nossas soluções para setores diversos, com foco em agronegócio, manufatura e serviços.",
@@ -377,7 +385,8 @@ const translations: Record<string, Translation> = {
       "Acompanhar processos de mudança organizacional respeitando a cultura de cada empresa.",
     ],
     valoresTitle: "Valores Institucionais",
-    valoresSubtitle: "Os princípios que orientam cada uma de nossas ações e decisões",
+    valoresSubtitle:
+      "Os princípios que orientam cada uma de nossas ações e decisões",
     valores: [
       {
         id: "practicidad",
@@ -517,10 +526,10 @@ const AboutUsPage: React.FC = () => {
 
           {/* Main Title */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">LYSPAS & CO</span>
-          <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-          Continuous Improvement Solutions
-          </span>
+            <span className="block">LYSPAS & CO</span>
+            <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
+              Continuous Improvement Solutions
+            </span>
           </h1>
 
           {/* Subtitle */}
@@ -544,9 +553,7 @@ const AboutUsPage: React.FC = () => {
                 </h2>
               </div>
               <div className="space-y-6 text-lg text-[var(--color-text)] leading-relaxed">
-                <p>
-                  {t.misionP1}
-                </p>
+                <p>{t.misionP1}</p>
                 <p className="font-semibold text-[var(--color-secondary)]">
                   {t.misionP2}
                 </p>
@@ -555,29 +562,24 @@ const AboutUsPage: React.FC = () => {
             <div className="relative">
               <div className="bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-8 shadow-xl border border-[var(--color-border)]">
                 <div className="grid grid-cols-2 gap-6">
-                  {t.misionCards.map(
-                    (
-                      card,
-                      idx
-                    ) => {
-                      const Icon = card.icon;
-                      return (
-                        <div className="text-center" key={idx}>
-                          <div
-                            className={`w-12 h-12 ${card.color} rounded-full flex items-center justify-center mx-auto mb-3`}
-                          >
-                            <Icon className="w-6 h-6 text-white" />
-                          </div>
-                          <h4 className="font-bold text-[var(--color-primary)] mb-2">
-                            {card.title}
-                          </h4>
-                          <p className="text-sm text-[var(--color-text)]">
-                            {card.desc}
-                          </p>
+                  {t.misionCards.map((card, idx) => {
+                    const Icon = card.icon;
+                    return (
+                      <div className="text-center" key={idx}>
+                        <div
+                          className={`w-12 h-12 ${card.color} rounded-full flex items-center justify-center mx-auto mb-3`}
+                        >
+                          <Icon className="w-6 h-6 text-white" />
                         </div>
-                      );
-                    }
-                  )}
+                        <h4 className="font-bold text-[var(--color-primary)] mb-2">
+                          {card.title}
+                        </h4>
+                        <p className="text-sm text-[var(--color-text)]">
+                          {card.desc}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -595,7 +597,9 @@ const AboutUsPage: React.FC = () => {
                   <div className="flex items-center mb-6">
                     <Globe className="w-12 h-12 mr-4" />
                     <div>
-                      <h3 className="text-2xl font-bold">{t.visionCard.title}</h3>
+                      <h3 className="text-2xl font-bold">
+                        {t.visionCard.title}
+                      </h3>
                       <p className="text-white/80">{t.visionCard.subtitle}</p>
                     </div>
                   </div>
@@ -620,9 +624,7 @@ const AboutUsPage: React.FC = () => {
                 </h2>
               </div>
               <div className="space-y-6 text-lg text-[var(--color-text)] leading-relaxed">
-                <p>
-                  {t.visionP1}
-                </p>
+                <p>{t.visionP1}</p>
                 <p className="font-semibold text-[var(--color-secondary)]">
                   {t.visionP2}
                 </p>

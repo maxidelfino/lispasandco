@@ -6,9 +6,54 @@ import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import MeasureBridgeDiagram from "../components/MeasureBridge/MeasureBridgeDiagram";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const CTA_TRANSLATIONS: Record<
+  Language,
+  {
+    title: string;
+    description: string;
+    primaryButtonText: string;
+    secondaryButtonText: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    title: "¿Quieres medir y cerrar las brechas de desempeño en tu operación?",
+    description:
+      "Descubre cómo MeasureBridge™ te permite identificar, cuantificar y eliminar las pérdidas ocultas en tus procesos, facilitando la toma de decisiones basada en datos y el logro de una operación más eficiente y rentable.",
+    primaryButtonText: "Contactar Ahora",
+    secondaryButtonText: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P015-MeasureBridge.pdf",
+    pdfDownload: "LYS-P015-MeasureBridge.pdf",
+  },
+  en: {
+    title:
+      "Do you want to measure and close performance gaps in your operation?",
+    description:
+      "Discover how MeasureBridge™ enables you to identify, quantify, and eliminate hidden losses in your processes, facilitating data-driven decision-making and achieving a more efficient and profitable operation.",
+    primaryButtonText: "Contact Now",
+    secondaryButtonText: "Download Brochure",
+    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-EN.pdf",
+    pdfDownload: "LYS-P015-MeasureBridge-EN.pdf",
+  },
+  pt: {
+    title: "Quer medir e fechar as lacunas de desempenho em sua operação?",
+    description:
+      "Descubra como o MeasureBridge™ permite identificar, quantificar e eliminar perdas ocultas em seus processos, facilitando a tomada de decisões baseada em dados e alcançando uma operação mais eficiente e lucrativa.",
+    primaryButtonText: "Entrar em Contato",
+    secondaryButtonText: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-PT.pdf",
+    pdfDownload: "LYS-P015-MeasureBridge-PT.pdf",
+  },
+};
 
 const MeasureBridgePage: React.FC = () => {
   useScrollToTop();
+  const { currentLanguage } = useLanguage();
+  const t = CTA_TRANSLATIONS[currentLanguage as Language];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -29,10 +74,10 @@ const MeasureBridgePage: React.FC = () => {
       </div>
       {/* Call to Action */}
       <CTASection
-        title="¿Quieres medir y cerrar las brechas de desempeño en tu operación?"
-        description="Descubre cómo MeasureBridge™ te permite identificar, cuantificar y eliminar las pérdidas ocultas en tus procesos, facilitando la toma de decisiones basada en datos y el logro de una operación más eficiente y rentable."
-        primaryButtonText="Contactar Ahora"
-        secondaryButtonText="Descargar Ficha Técnica"
+        title={t.title}
+        description={t.description}
+        primaryButtonText={t.primaryButtonText}
+        secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
           link.href = "assets/pdf/LYS-P015-MeasureBridge.pdf";

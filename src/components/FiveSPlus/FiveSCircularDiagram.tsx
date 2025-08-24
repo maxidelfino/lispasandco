@@ -1,8 +1,36 @@
 "use client";
 
 import type React from "react";
+import { Language } from "../../types";
+import { useLanguage } from "../../contexts/LanguageContext";
+
+const descriptions: Record<Language, React.ReactNode> = {
+  es: (
+    <>
+      Las <strong>5S</strong> forman un ciclo continuo de mejora, donde cada
+      etapa refuerza a las demás para crear un ambiente de trabajo ordenado y
+      eficiente.
+    </>
+  ),
+  en: (
+    <>
+      The <strong>5S</strong> form a continuous improvement cycle, where each
+      stage reinforces the others to create an organized and efficient work
+      environment.
+    </>
+  ),
+  pt: (
+    <>
+      As <strong>5S</strong> formam um ciclo contínuo de melhoria, onde cada
+      etapa reforça as demais para criar um ambiente de trabalho organizado e
+      eficiente.
+    </>
+  ),
+};
 
 const FiveSCircularDiagram: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+
   return (
     <div className="w-full max-w-2xl mx-auto p-8">
       {/* Container with aspect ratio */}
@@ -51,8 +79,7 @@ const FiveSCircularDiagram: React.FC = () => {
       {/* Description */}
       <div className="mt-6 text-center">
         <p className="text-gray-600 text-sm md:text-base">
-          Las <strong>5S</strong> forman un ciclo continuo de mejora, donde cada etapa refuerza a
-          las demás para crear un ambiente de trabajo ordenado y eficiente.
+          {descriptions[currentLanguage]}
         </p>
       </div>
     </div>

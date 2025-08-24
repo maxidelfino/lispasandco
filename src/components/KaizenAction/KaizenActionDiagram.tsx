@@ -1,22 +1,21 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Target, Search, BarChart3, TrendingUp, Shield } from "lucide-react"
+import React, { useState } from "react";
+import { Target, Search, BarChart3, TrendingUp, Shield } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import type { Language } from "../../types";
 
-const KaizenActionDiagram: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(false)
-
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
-
-  const phases = [
+const phaseTranslations: Record<
+  Language,
+  Array<{
+    id: string;
+    name: string;
+    icon: React.ElementType;
+    color: string;
+    description: string;
+  }>
+> = {
+  es: [
     {
       id: "definir",
       name: "Definir",
@@ -52,37 +51,138 @@ const KaizenActionDiagram: React.FC = () => {
       color: "from-purple-500 to-purple-600",
       description: "Seguimiento y sostenibilidad",
     },
-  ]
+  ],
+  en: [
+    {
+      id: "define",
+      name: "Define",
+      icon: Target,
+      color: "from-blue-500 to-blue-600",
+      description: "Identify and define the problem precisely",
+    },
+    {
+      id: "measure",
+      name: "Measure",
+      icon: BarChart3,
+      color: "from-green-500 to-green-600",
+      description: "Collect data and validate information",
+    },
+    {
+      id: "analyze",
+      name: "Analyze",
+      icon: Search,
+      color: "from-yellow-500 to-yellow-600",
+      description: "In-depth collaborative analysis of the problem",
+    },
+    {
+      id: "improve",
+      name: "Improve",
+      icon: TrendingUp,
+      color: "from-orange-500 to-orange-600",
+      description: "Generate and evaluate solutions",
+    },
+    {
+      id: "control",
+      name: "Control",
+      icon: Shield,
+      color: "from-purple-500 to-purple-600",
+      description: "Follow-up and sustainability",
+    },
+  ],
+  pt: [
+    {
+      id: "definir",
+      name: "Definir",
+      icon: Target,
+      color: "from-blue-500 to-blue-600",
+      description: "Identificar e definir o problema com precisão",
+    },
+    {
+      id: "medir",
+      name: "Medir",
+      icon: BarChart3,
+      color: "from-green-500 to-green-600",
+      description: "Coletar dados e validar informações",
+    },
+    {
+      id: "analisar",
+      name: "Analisar",
+      icon: Search,
+      color: "from-yellow-500 to-yellow-600",
+      description: "Análise profunda colaborativa do problema",
+    },
+    {
+      id: "melhorar",
+      name: "Melhorar",
+      icon: TrendingUp,
+      color: "from-orange-500 to-orange-600",
+      description: "Gerar e avaliar soluções",
+    },
+    {
+      id: "controlar",
+      name: "Controlar",
+      icon: Shield,
+      color: "from-purple-500 to-purple-600",
+      description: "Acompanhamento e sustentabilidade",
+    },
+  ],
+};
 
-  const radius = isMobile ? 120 : 160
+const KaizenActionDiagram: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const { currentLanguage } = useLanguage();
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const phases = phaseTranslations[currentLanguage];
+
+  const radius = isMobile ? 120 : 160;
 
   return (
     <div className="flex items-center justify-center">
-      <div className="relative" style={{ width: `${radius * 2 + 160}px`, height: `${radius * 2 + 160}px` }}>
-          <div className="mt-8 grid grid-cols-1 gap-3">
-            {phases.map((phase) => {
-              const Icon = phase.icon
-              return (
+      <div
+        className="relative"
+        style={{
+          width: `${radius * 2 + 160}px`,
+          height: `${radius * 2 + 160}px`,
+        }}
+      >
+        <div className="mt-8 grid grid-cols-1 gap-3">
+          {phases.map((phase) => {
+            const Icon = phase.icon;
+            return (
+              <div
+                key={phase.id}
+                className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-md border border-[var(--color-border)]"
+              >
                 <div
-                  key={phase.id}
-                  className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-md border border-[var(--color-border)]"
+                  className={`w-10 h-10 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center text-white`}
                 >
-                  <div
-                    className={`w-10 h-10 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center text-white`}
-                  >
-                    <Icon className="w-5 h-5" />
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-[var(--color-primary)] text-sm">
+                    {phase.name}
                   </div>
-                  <div>
-                    <div className="font-bold text-[var(--color-primary)] text-sm">{phase.name}</div>
-                    <div className="text-xs text-[var(--color-text)]">{phase.description}</div>
+                  <div className="text-xs text-[var(--color-text)]">
+                    {phase.description}
                   </div>
                 </div>
-              )
-            })}
-          </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default KaizenActionDiagram
+export default KaizenActionDiagram;

@@ -9,72 +9,250 @@ import {
   Settings,
   Factory,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
-// Datos de ejemplo para los desperdicios
-const wastes = [
+const WASTES_TRANSLATIONS: Record<
+  Language,
   {
-    id: "transport",
-    title: "Transporte",
-    description:
-      "Movimiento innecesario de materiales o personas que no agrega valor al proceso.",
-    icon: "Truck",
-    angle: 0,
-  },
+    id: string;
+    title: string;
+    description: string;
+    icon: keyof typeof iconMap;
+    angle: number;
+  }[]
+> = {
+  es: [
+    {
+      id: "transport",
+      title: "Transporte",
+      description:
+        "Movimiento innecesario de materiales o personas que no agrega valor al proceso.",
+      icon: "Truck",
+      angle: 0,
+    },
+    {
+      id: "inventory",
+      title: "Inventario",
+      description:
+        "Exceso de materiales, productos en proceso o terminados almacenados.",
+      icon: "Package",
+      angle: 45,
+    },
+    {
+      id: "motion",
+      title: "Movimiento",
+      description: "Movimientos innecesarios de personas durante el trabajo.",
+      icon: "ArrowLeftRight",
+      angle: 90,
+    },
+    {
+      id: "waiting",
+      title: "Espera",
+      description:
+        "Tiempo perdido esperando información, materiales o equipos.",
+      icon: "Timer",
+      angle: 135,
+    },
+    {
+      id: "overproduction",
+      title: "Sobreproducción",
+      description:
+        "Producir más de lo que el cliente necesita o antes de que lo necesite.",
+      icon: "Factory",
+      angle: 180,
+    },
+    {
+      id: "overprocessing",
+      title: "Sobre-procesamiento",
+      description:
+        "Realizar más trabajo del necesario o agregar características innecesarias.",
+      icon: "Settings",
+      angle: 225,
+    },
+    {
+      id: "defects",
+      title: "Defectos",
+      description:
+        "Productos que no cumplen con los estándares de calidad requeridos.",
+      icon: "XCircle",
+      angle: 270,
+    },
+    {
+      id: "skills",
+      title: "Talento no utilizado",
+      description:
+        "No aprovechar las habilidades, conocimientos y experiencia del personal.",
+      icon: "Users",
+      angle: 315,
+    },
+  ],
+  en: [
+    {
+      id: "transport",
+      title: "Transport",
+      description:
+        "Unnecessary movement of materials or people that does not add value to the process.",
+      icon: "Truck",
+      angle: 0,
+    },
+    {
+      id: "inventory",
+      title: "Inventory",
+      description:
+        "Excess materials, work-in-process, or finished goods stored.",
+      icon: "Package",
+      angle: 45,
+    },
+    {
+      id: "motion",
+      title: "Motion",
+      description: "Unnecessary movements of people during work.",
+      icon: "ArrowLeftRight",
+      angle: 90,
+    },
+    {
+      id: "waiting",
+      title: "Waiting",
+      description:
+        "Lost time waiting for information, materials, or equipment.",
+      icon: "Timer",
+      angle: 135,
+    },
+    {
+      id: "overproduction",
+      title: "Overproduction",
+      description:
+        "Producing more than the customer needs or before it is needed.",
+      icon: "Factory",
+      angle: 180,
+    },
+    {
+      id: "overprocessing",
+      title: "Over-processing",
+      description:
+        "Doing more work than necessary or adding unnecessary features.",
+      icon: "Settings",
+      angle: 225,
+    },
+    {
+      id: "defects",
+      title: "Defects",
+      description: "Products that do not meet the required quality standards.",
+      icon: "XCircle",
+      angle: 270,
+    },
+    {
+      id: "skills",
+      title: "Unused Talent",
+      description:
+        "Not leveraging the skills, knowledge, and experience of personnel.",
+      icon: "Users",
+      angle: 315,
+    },
+  ],
+  pt: [
+    {
+      id: "transport",
+      title: "Transporte",
+      description:
+        "Movimentação desnecessária de materiais ou pessoas que não agrega valor ao processo.",
+      icon: "Truck",
+      angle: 0,
+    },
+    {
+      id: "inventory",
+      title: "Inventário",
+      description:
+        "Excesso de materiais, produtos em processo ou acabados armazenados.",
+      icon: "Package",
+      angle: 45,
+    },
+    {
+      id: "motion",
+      title: "Movimentação",
+      description: "Movimentos desnecessários de pessoas durante o trabalho.",
+      icon: "ArrowLeftRight",
+      angle: 90,
+    },
+    {
+      id: "waiting",
+      title: "Espera",
+      description:
+        "Tempo perdido esperando por informações, materiais ou equipamentos.",
+      icon: "Timer",
+      angle: 135,
+    },
+    {
+      id: "overproduction",
+      title: "Superprodução",
+      description:
+        "Produzir mais do que o cliente precisa ou antes de ser necessário.",
+      icon: "Factory",
+      angle: 180,
+    },
+    {
+      id: "overprocessing",
+      title: "Sobreprocessamento",
+      description:
+        "Realizar mais trabalho do que o necessário ou adicionar características desnecessárias.",
+      icon: "Settings",
+      angle: 225,
+    },
+    {
+      id: "defects",
+      title: "Defeitos",
+      description:
+        "Produtos que não atendem aos padrões de qualidade exigidos.",
+      icon: "XCircle",
+      angle: 270,
+    },
+    {
+      id: "skills",
+      title: "Talento não utilizado",
+      description:
+        "Não aproveitar as habilidades, conhecimentos e experiência do pessoal.",
+      icon: "Users",
+      angle: 315,
+    },
+  ],
+};
+
+const TEXTS: Record<
+  Language,
   {
-    id: "inventory",
-    title: "Inventario",
-    description:
-      "Exceso de materiales, productos en proceso o terminados almacenados.",
-    icon: "Package",
-    angle: 45,
+    title: string;
+    subtitle: string;
+    legend: string;
+    center1: string;
+    center2: string;
+  }
+> = {
+  es: {
+    title: "Los 8 Desperdicios",
+    subtitle:
+      "Identificamos y eliminamos sistemáticamente cada tipo de desperdicio en sus procesos",
+    legend: "Pase el mouse sobre cada icono para ver detalles",
+    center1: "WasteZero™",
+    center2: "Mejora Continua",
   },
-  {
-    id: "motion",
-    title: "Movimiento",
-    description: "Movimientos innecesarios de personas durante el trabajo.",
-    icon: "ArrowLeftRight",
-    angle: 90,
+  en: {
+    title: "The 8 Wastes",
+    subtitle:
+      "We systematically identify and eliminate each type of waste in your processes",
+    legend: "Hover over each icon to see details",
+    center1: "WasteZero™",
+    center2: "Continuous Improvement",
   },
-  {
-    id: "waiting",
-    title: "Espera",
-    description: "Tiempo perdido esperando información, materiales o equipos.",
-    icon: "Timer",
-    angle: 135,
+  pt: {
+    title: "Os 8 Desperdícios",
+    subtitle:
+      "Identificamos e eliminamos sistematicamente cada tipo de desperdício em seus processos",
+    legend: "Passe o mouse sobre cada ícone para ver detalhes",
+    center1: "WasteZero™",
+    center2: "Melhoria Contínua",
   },
-  {
-    id: "overproduction",
-    title: "Sobreproducción",
-    description:
-      "Producir más de lo que el cliente necesita o antes de que lo necesite.",
-    icon: "Factory",
-    angle: 180,
-  },
-  {
-    id: "overprocessing",
-    title: "Sobre-procesamiento",
-    description:
-      "Realizar más trabajo del necesario o agregar características innecesarias.",
-    icon: "Settings",
-    angle: 225,
-  },
-  {
-    id: "defects",
-    title: "Defectos",
-    description:
-      "Productos que no cumplen con los estándares de calidad requeridos.",
-    icon: "XCircle",
-    angle: 270,
-  },
-  {
-    id: "skills",
-    title: "Talento no utilizado",
-    description:
-      "No aprovechar las habilidades, conocimientos y experiencia del personal.",
-    icon: "Users",
-    angle: 315,
-  },
-];
+};
 
 const iconMap = {
   Users,
@@ -88,6 +266,11 @@ const iconMap = {
 };
 
 const CircularWasteDiagram: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const wastes = WASTES_TRANSLATIONS[lang];
+  const t = TEXTS[lang];
+
   const [activeWaste, setActiveWaste] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [screenSize, setScreenSize] = useState("desktop");
@@ -136,11 +319,11 @@ const CircularWasteDiagram: React.FC = () => {
     }
   };
 
-  const { size, radius, iconSize, centerRadius } = getConfig();
+  const { size, radius, centerRadius } = getConfig();
   const centerX = size / 2;
   const centerY = size / 2;
 
-  const getTooltipPosition = (waste) => {
+  const getTooltipPosition = (waste: (typeof wastes)[number]) => {
     const angle = (waste.angle * Math.PI) / 180;
     const x = centerX + radius * Math.cos(angle);
     const y = centerY + radius * Math.sin(angle);
@@ -171,11 +354,10 @@ const CircularWasteDiagram: React.FC = () => {
       {/* Title */}
       <div className="text-center mb-8 md:mb-12">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-4">
-          Los 8 Desperdicios
+          {t.title}
         </h2>
         <p className="text-sm md:text-lg lg:text-xl text-[var(--color-text)] max-w-2xl mx-auto px-4">
-          Identificamos y eliminamos sistemáticamente cada tipo de desperdicio
-          en sus procesos
+          {t.subtitle}
         </p>
       </div>
 
@@ -207,7 +389,7 @@ const CircularWasteDiagram: React.FC = () => {
                 screenSize === "mobile" ? 10 : screenSize === "tablet" ? 12 : 14
               }
             >
-              WasteZero™
+              {t.center1}
             </text>
             <text
               x={centerX}
@@ -218,7 +400,7 @@ const CircularWasteDiagram: React.FC = () => {
                 screenSize === "mobile" ? 8 : screenSize === "tablet" ? 10 : 12
               }
             >
-              Mejora Continua
+              {t.center2}
             </text>
 
             {/* Connecting Lines */}
@@ -280,8 +462,8 @@ const CircularWasteDiagram: React.FC = () => {
                   <div
                     className={`rounded-full flex items-center justify-center transition-all duration-300 ${
                       activeWaste === waste.id
-                      ? "bg-[var(--color-accent)] shadow-lg"
-                      : "bg-[var(--color-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-secondary)]"
+                        ? "bg-[var(--color-accent)] shadow-lg"
+                        : "bg-[var(--color-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-secondary)]"
                     }`}
                     style={{
                       width:
@@ -319,14 +501,14 @@ const CircularWasteDiagram: React.FC = () => {
           })}
 
           {/* Improved Tooltip */}
-          {screenSize !== "mobile" && activeWaste &&
+          {screenSize !== "mobile" &&
+            activeWaste &&
             (() => {
               const waste = wastes.find((w) => w.id === activeWaste);
               if (!waste) return null;
 
               const tooltipPos = getTooltipPosition(waste);
               const Icon = iconMap[waste.icon as keyof typeof iconMap];
-
 
               return (
                 <div
@@ -356,7 +538,7 @@ const CircularWasteDiagram: React.FC = () => {
       {/* Legend */}
       <div className="mt-8 md:mt-12 text-center">
         <p className="text-[var(--color-text)] mb-4 text-sm md:text-base px-4">
-          Pase el mouse sobre cada icono para ver detalles
+          {t.legend}
         </p>
       </div>
     </div>

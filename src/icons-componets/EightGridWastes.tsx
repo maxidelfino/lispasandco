@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Users,
   Package,
@@ -10,23 +9,89 @@ import {
   Settings,
   Factory,
 } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
+import type { Language } from "../types";
+
+const wasteIcons = [
+  {
+    icon: Users,
+    titles: {
+      es: "Talento no utilizado",
+      en: "Unused talent",
+      pt: "Talento não utilizado",
+    },
+  },
+  {
+    icon: Package,
+    titles: {
+      es: "Inventario",
+      en: "Inventory",
+      pt: "Inventário",
+    },
+  },
+  {
+    icon: ArrowLeftRight,
+    titles: {
+      es: "Movimientos",
+      en: "Motion",
+      pt: "Movimentação",
+    },
+  },
+  {
+    icon: Timer,
+    titles: {
+      es: "Espera",
+      en: "Waiting",
+      pt: "Espera",
+    },
+  },
+  {
+    icon: Truck,
+    titles: {
+      es: "Transportación",
+      en: "Transportation",
+      pt: "Transporte",
+    },
+  },
+  {
+    icon: XCircle,
+    titles: {
+      es: "Defectos",
+      en: "Defects",
+      pt: "Defeitos",
+    },
+  },
+  {
+    icon: Settings,
+    titles: {
+      es: "Sobreproducción",
+      en: "Overproduction",
+      pt: "Superprodução",
+    },
+  },
+  {
+    icon: Factory,
+    titles: {
+      es: "Sobre-procesamiento",
+      en: "Overprocessing",
+      pt: "Sobreprocessamento",
+    },
+  },
+];
 
 const EightGridWastes = () => {
-  const wasteIcons = [
-    { icon: Users, title: "Talento no utilizado", description: "" },
-    { icon: Package, title: "Inventario", description: "" },
-    { icon: ArrowLeftRight, title: "Movimientos", description: "" },
-    { icon: Timer, title: "Espera", description: "" },
-    { icon: Truck, title: "Transportación", description: "" },
-    { icon: XCircle, title: "Defectos", description: "" },
-    { icon: Settings, title: "Sobreproducción", description: "" },
-    { icon: Factory, title: "Sobre-procesamiento", description: "" },
-  ];
+  const { currentLanguage } = useLanguage();
 
   return (
     <div className="grid grid-cols-4 gap-6">
       {wasteIcons.map((waste, index) => {
         const Icon = waste.icon;
+        const title =
+          waste.titles[
+            (currentLanguage as Language) in waste.titles
+              ? (currentLanguage as Language)
+              : "es"
+          ];
         return (
           <div key={index} className="text-center group/icon">
             <div className="relative mb-4">
@@ -36,7 +101,7 @@ const EightGridWastes = () => {
             </div>
             <div className="text-sm hidden md:block">
               <div className="font-bold text-[var(--color-primary)] mb-1 leading-tight">
-                {waste.title}
+                {title}
               </div>
             </div>
           </div>

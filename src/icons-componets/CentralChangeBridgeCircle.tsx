@@ -1,25 +1,90 @@
 import React from "react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const fiveSSteps = [
+  {
+    color: "bg-green-500",
+    step: {
+      es: "Generar",
+      en: "Generate",
+      pt: "Gerar",
+    },
+    title: {
+      es: "Vínculos",
+      en: "Bonds",
+      pt: "Vínculos",
+    },
+  },
+  {
+    color: "bg-purple-500",
+    step: {
+      es: "Aumenta la",
+      en: "Enhances",
+      pt: "Aumenta a",
+    },
+    title: {
+      es: "comunicación",
+      en: "communication",
+      pt: "comunicação",
+    },
+  },
+  {
+    color: "bg-blue-600",
+    step: {
+      es: "Fomenta la",
+      en: "Fosters",
+      pt: "Fomenta a",
+    },
+    title: {
+      es: "motivación",
+      en: "motivation",
+      pt: "motivação",
+    },
+  },
+  {
+    color: "bg-orange-500",
+    step: {
+      es: "Desarrolla las",
+      en: "Develops",
+      pt: "Desenvolve as",
+    },
+    title: {
+      es: "capacidades",
+      en: "capabilities",
+      pt: "capacidades",
+    },
+  },
+  {
+    color: "bg-yellow-500",
+    step: {
+      es: "Comparte el",
+      en: "Shares",
+      pt: "Compartilha o",
+    },
+    title: {
+      es: "conocimiento",
+      en: "knowledge",
+      pt: "conhecimento",
+    },
+  },
+];
+
+const centralText: Record<Language, string> = {
+  es: "Change Bridge™",
+  en: "Change Bridge™",
+  pt: "Change Bridge™",
+};
 
 const CentralChangeBridgeCircle = () => {
-  const fiveSSteps = [
-    { step: "Generar", title: "Vínculos", color: "bg-green-500" },
-    {
-      step: "Aumenta la",
-      title: "comunicación",
-      color: "bg-purple-500",
-    },
-    { step: "Fomenta la", title: "motivación", color: "bg-blue-600" },
-    { step: "Desarrolla las", title: "capacidades", color: "bg-orange-500" },
-    { step: "Comparte el", title: "conocimiento", color: "bg-yellow-500" },
-  ];
+  const { currentLanguage } = useLanguage();
+
   return (
     <div className="relative flex items-center justify-center h-80">
-      {/* Central 5S Circle */}
       <div className="w-32 h-32 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full flex items-center justify-center text-white font-bold text-xl z-10 shadow-xl pl-7">
-      Change Bridge™
+        {centralText[currentLanguage]}
       </div>
 
-      {/* Surrounding Steps */}
       {fiveSSteps.map((step, index) => {
         const angle = index * 72 - 90;
         const radius = 120;
@@ -36,8 +101,8 @@ const CentralChangeBridgeCircle = () => {
             }}
           >
             <div className="text-[10px] leading-tight text-center">
-              <div className="font-bold">{step.step}</div>
-              <div className="mt-1">{step.title}</div>
+              <div className="font-bold">{step.step[currentLanguage]}</div>
+              <div className="mt-1">{step.title[currentLanguage]}</div>
             </div>
           </div>
         );

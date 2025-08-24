@@ -7,8 +7,184 @@ import {
   Gauge,
   Zap,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const translations: Record<
+  Language,
+  {
+    centerTitle: string;
+    centerLine1: string;
+    centerLine2: string;
+    legendMobile: string;
+    legendDesktop: string;
+    flowElements: {
+      id: string;
+      title: string;
+      description: string;
+    }[];
+  }
+> = {
+  es: {
+    centerTitle: "FlowStable™",
+    centerLine1: "Secuencia de",
+    centerLine2: "Mejora diaria™",
+    legendMobile: "Toca cada elemento para ver detalles",
+    legendDesktop: "Pase el mouse sobre cada elemento para ver detalles",
+    flowElements: [
+      {
+        id: "stability",
+        title: "Estabilidad",
+        description:
+          "Procesos estables y previsibles para garantizar resultados consistentes",
+      },
+      {
+        id: "measurement",
+        title: "Medición",
+        description:
+          "Variables críticas controladas con métricas precisas y confiables",
+      },
+      {
+        id: "improvement",
+        title: "Mejora",
+        description:
+          "Optimización continua basada en datos y mejores prácticas",
+      },
+      {
+        id: "control",
+        title: "Control",
+        description: "Seguimiento activo de desvíos y corrección inmediata",
+      },
+      {
+        id: "efficiency",
+        title: "Eficiencia",
+        description: "Mayor productividad con menos recursos y tiempo",
+      },
+      {
+        id: "data",
+        title: "Datos",
+        description: "Gestión basada en hechos y análisis cuantitativo",
+      },
+    ],
+  },
+  en: {
+    centerTitle: "FlowStable™",
+    centerLine1: "Daily",
+    centerLine2: "Improvement Sequence™",
+    legendMobile: "Tap each element to see details",
+    legendDesktop: "Hover over each element to see details",
+    flowElements: [
+      {
+        id: "stability",
+        title: "Stability",
+        description:
+          "Stable and predictable processes to ensure consistent results",
+      },
+      {
+        id: "measurement",
+        title: "Measurement",
+        description:
+          "Critical variables controlled with precise and reliable metrics",
+      },
+      {
+        id: "improvement",
+        title: "Improvement",
+        description: "Continuous optimization based on data and best practices",
+      },
+      {
+        id: "control",
+        title: "Control",
+        description: "Active monitoring of deviations and immediate correction",
+      },
+      {
+        id: "efficiency",
+        title: "Efficiency",
+        description: "Higher productivity with fewer resources and less time",
+      },
+      {
+        id: "data",
+        title: "Data",
+        description: "Management based on facts and quantitative analysis",
+      },
+    ],
+  },
+  pt: {
+    centerTitle: "FlowStable™",
+    centerLine1: "Sequência de",
+    centerLine2: "Melhoria diária™",
+    legendMobile: "Toque em cada elemento para ver detalhes",
+    legendDesktop: "Passe o mouse sobre cada elemento para ver detalhes",
+    flowElements: [
+      {
+        id: "stability",
+        title: "Estabilidade",
+        description:
+          "Processos estáveis e previsíveis para garantir resultados consistentes",
+      },
+      {
+        id: "measurement",
+        title: "Medição",
+        description:
+          "Variáveis críticas controladas com métricas precisas e confiáveis",
+      },
+      {
+        id: "improvement",
+        title: "Melhoria",
+        description: "Otimização contínua baseada em dados e melhores práticas",
+      },
+      {
+        id: "control",
+        title: "Controle",
+        description: "Monitoramento ativo de desvios e correção imediata",
+      },
+      {
+        id: "efficiency",
+        title: "Eficiência",
+        description: "Maior produtividade com menos recursos e tempo",
+      },
+      {
+        id: "data",
+        title: "Dados",
+        description: "Gestão baseada em fatos e análise quantitativa",
+      },
+    ],
+  },
+};
+
+const iconMap: Record<
+  string,
+  React.ComponentType<{ className?: string; size?: number | string }>
+> = {
+  stability: Target,
+  measurement: Gauge,
+  improvement: TrendingUp,
+  control: Activity,
+  efficiency: Zap,
+  data: BarChart3,
+};
+
+const colorMap: Record<string, string> = {
+  stability: "bg-blue-500",
+  measurement: "bg-green-500",
+  improvement: "bg-purple-500",
+  control: "bg-orange-500",
+  efficiency: "bg-red-500",
+  data: "bg-indigo-500",
+};
+
+const angleMap: Record<string, number> = {
+  stability: 0,
+  measurement: 60,
+  improvement: 120,
+  control: 180,
+  efficiency: 240,
+  data: 300,
+};
 
 const FlowStableDiagram: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
   const [activeElement, setActiveElement] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [screenSize, setScreenSize] = useState("desktop");
@@ -82,73 +258,17 @@ const FlowStableDiagram: React.FC = () => {
   const responsive = getResponsiveValues();
   const isMobile = screenSize === "mobile";
 
-  const flowElements = [
-    {
-      id: "stability",
-      icon: Target,
-      title: "Estabilidad",
-      description:
-        "Procesos estables y previsibles para garantizar resultados consistentes",
-      angle: 0,
-      color: "bg-blue-500",
-    },
-    {
-      id: "measurement",
-      icon: Gauge,
-      title: "Medición",
-      description:
-        "Variables críticas controladas con métricas precisas y confiables",
-      angle: 60,
-      color: "bg-green-500",
-    },
-    {
-      id: "improvement",
-      icon: TrendingUp,
-      title: "Mejora",
-      description: "Optimización continua basada en datos y mejores prácticas",
-      angle: 120,
-      color: "bg-purple-500",
-    },
-    {
-      id: "control",
-      icon: Activity,
-      title: "Control",
-      description: "Seguimiento activo de desvíos y corrección inmediata",
-      angle: 180,
-      color: "bg-orange-500",
-    },
-    {
-      id: "efficiency",
-      icon: Zap,
-      title: "Eficiencia",
-      description: "Mayor productividad con menos recursos y tiempo",
-      angle: 240,
-      color: "bg-red-500",
-    },
-    {
-      id: "data",
-      icon: BarChart3,
-      title: "Datos",
-      description: "Gestión basada en hechos y análisis cuantitativo",
-      angle: 300,
-      color: "bg-indigo-500",
-    },
-  ];
+  // Compose flowElements with icon, color, angle, and translation
+  const flowElements = t.flowElements.map((el) => ({
+    ...el,
+    icon: iconMap[el.id],
+    color: colorMap[el.id],
+    angle: angleMap[el.id],
+  }));
 
   return (
     <div className="w-full min-h-screen p-4">
       <div className="relative w-full max-w-6xl mx-auto">
-        {/* Title */}
-        {/* <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-2 md:mb-4">
-            FlowStable™ Ecosystem
-          </h2>
-          <p className="text-sm md:text-xl text-slate-600 max-w-2xl mx-auto px-4">
-            Un enfoque integral para dominar tus procesos y mejorar tus
-            resultados
-          </p>
-        </div> */}
-
         {/* Circular Diagram Container */}
         <div className="relative flex justify-center items-center">
           <svg
@@ -174,7 +294,7 @@ const FlowStableDiagram: React.FC = () => {
               className="fill-white font-bold"
               fontSize={responsive.fontSize.title}
             >
-              FlowStable™
+              {t.centerTitle}
             </text>
             <text
               x={responsive.centerX}
@@ -183,7 +303,7 @@ const FlowStableDiagram: React.FC = () => {
               className="fill-white"
               fontSize={responsive.fontSize.subtitle}
             >
-              Secuencia de
+              {t.centerLine1}
             </text>
             <text
               x={responsive.centerX}
@@ -192,7 +312,7 @@ const FlowStableDiagram: React.FC = () => {
               className="fill-white"
               fontSize={responsive.fontSize.subtitle}
             >
-              Mejora diaria™
+              {t.centerLine2}
             </text>
 
             {/* Connecting Lines */}
@@ -411,9 +531,7 @@ const FlowStableDiagram: React.FC = () => {
         {/* Legend */}
         <div className="mt-8 md:mt-12 text-center">
           <p className="text-[var(--color-text)] text-sm md:text-base">
-            {isMobile
-              ? "Toca cada elemento para ver detalles"
-              : "Pase el mouse sobre cada elemento para ver detalles"}
+            {isMobile ? t.legendMobile : t.legendDesktop}
           </p>
         </div>
       </div>

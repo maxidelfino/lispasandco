@@ -1,10 +1,57 @@
 import React, { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const TEXTS: Record<
+  Language,
+  {
+    badge: string;
+    mainTitle: string;
+    subtitle1: string;
+    subtitle2: string;
+    description1: string;
+    description2: string;
+  }
+> = {
+  es: {
+    badge: "Iniciar la mejora (Problemas Visibles, Foco en el Equipo)",
+    mainTitle: "WasteZero™",
+    subtitle1: "Transformamos procesos,",
+    subtitle2: "potenciamos equipos",
+    description1:
+      "Es un programa táctico de implementación LEAN diseñado para empresas que buscan reducir pérdidas operativas de manera concreta, visible y sostenida.",
+    description2:
+      "Se centra en identificar y eliminar los 8 desperdicios clásicos de la gestión LEAN, combinando análisis visual, trabajo de campo y proyectos de mejora con impacto real.",
+  },
+  en: {
+    badge: "Start improvement (Visible Problems, Team Focus)",
+    mainTitle: "WasteZero™",
+    subtitle1: "We transform processes,",
+    subtitle2: "we empower teams",
+    description1:
+      "A tactical LEAN implementation program designed for companies seeking to reduce operational losses in a concrete, visible, and sustainable way.",
+    description2:
+      "Focuses on identifying and eliminating the 8 classic wastes of LEAN management, combining visual analysis, fieldwork, and improvement projects with real impact.",
+  },
+  pt: {
+    badge: "Iniciar a melhoria (Problemas Visíveis, Foco na Equipe)",
+    mainTitle: "WasteZero™",
+    subtitle1: "Transformamos processos,",
+    subtitle2: "potencializamos equipes",
+    description1:
+      "Programa tático de implementação LEAN projetado para empresas que buscam reduzir perdas operacionais de forma concreta, visível e sustentável.",
+    description2:
+      "Foca em identificar e eliminar os 8 desperdícios clássicos da gestão LEAN, combinando análise visual, trabalho de campo e projetos de melhoria com impacto real.",
+  },
+};
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = TEXTS[lang];
 
   useEffect(() => {
     setIsVisible(true);
@@ -41,30 +88,26 @@ const HeroSection: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Iniciar la mejora (Problemas Visibles, Foco en el Equipo)
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">WasteZero™</span>
+          <span className="block">{t.mainTitle}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Transformamos procesos,
+            {t.subtitle1}
           </span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80">
-            potenciamos equipos
+            {t.subtitle2}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Es un programa táctico de implementación LEAN diseñado para empresas
-          que buscan reducir pérdidas operativas de manera concreta, visible y
-          sostenida.
+          {t.description1}
         </p>
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Se centra en identificar y eliminar los 8 desperdicios clásicos de la
-          gestión LEAN, combinando análisis visual, trabajo de campo y proyectos
-          de mejora con impacto real.
+          {t.description2}
         </p>
 
         {/* CTA Buttons */}

@@ -1,75 +1,231 @@
 import React from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const phaseTranslations: Record<
+  Language,
+  {
+    header: string;
+    phases: {
+      phase: string;
+      duration: string;
+      title: string;
+      description: string;
+      color: string;
+    }[];
+  }
+> = {
+  es: {
+    header: "Modalidad de implementación (7 MESES)",
+    phases: [
+      {
+        phase: "Fase Inicial",
+        duration: "Semana 1",
+        title: "Diagnóstico",
+        description: "Quick Scan presencial - 1 semana de trabajo en el lugar",
+        color: "bg-gray-500",
+      },
+      {
+        phase: "Fase 2",
+        duration: "Mes 1",
+        title: "Sistema de medición",
+        description:
+          "Discusión sobre objetivos y planes estratégicos. Entrenamiento y despliegue de herramientas (FlowStable PACK 2)",
+        color: "bg-blue-500",
+      },
+      {
+        phase: "Fase 3",
+        duration: "Mes 2",
+        title: "Reuniones diarias",
+        description:
+          "Establecer reuniones diarias de discusión y ejecución. Recolección de primeros datos (FlowStable PACK 3)",
+        color: "bg-green-500",
+      },
+      {
+        phase: "Fase 4",
+        duration: "Mes 3",
+        title: "Consolidación",
+        description:
+          "Consolidación y autonomía del equipo interno. Retrospectiva y ajustes. Identificación de desvíos",
+        color: "bg-yellow-500",
+      },
+      {
+        phase: "Fase 5",
+        duration: "Mes 4",
+        title: "Resolución de problemas",
+        description:
+          "Inicio de resolución de problemas. Herramientas 5W1H – Herramienta A3 (FlowStable PACK 4)",
+        color: "bg-orange-500",
+      },
+      {
+        phase: "Fase 6",
+        duration: "Mes 5",
+        title: "Curvas de evolución",
+        description:
+          "Curvas de evolución. Herramientas estadísticas. Auditorías de gestión",
+        color: "bg-red-500",
+      },
+      {
+        phase: "Fase 7",
+        duration: "Mes 6",
+        title: "Efectos colaterales",
+        description:
+          "Efectos colaterales. Definición técnica y económica (FlowStable PACK 5)",
+        color: "bg-purple-500",
+      },
+      {
+        phase: "Fase 8",
+        duration: "Mes 7",
+        title: "Auditorías finales",
+        description: "Auditorías de gestión. Objetivos y próxima etapa",
+        color: "bg-indigo-500",
+      },
+    ],
+  },
+  en: {
+    header: "Implementation Modality (7 MONTHS)",
+    phases: [
+      {
+        phase: "Initial Phase",
+        duration: "Week 1",
+        title: "Diagnosis",
+        description: "On-site Quick Scan – 1 week of on-site work",
+        color: "bg-gray-500",
+      },
+      {
+        phase: "Phase 2",
+        duration: "Month 1",
+        title: "Measurement System",
+        description:
+          "Discussion of objectives and strategic plans. Training and deployment of tools (FlowStable PACK 2)",
+        color: "bg-blue-500",
+      },
+      {
+        phase: "Phase 3",
+        duration: "Month 2",
+        title: "Daily Meetings",
+        description:
+          "Establish daily discussion and execution meetings. Collection of first data (FlowStable PACK 3)",
+        color: "bg-green-500",
+      },
+      {
+        phase: "Phase 4",
+        duration: "Month 3",
+        title: "Consolidation",
+        description:
+          "Consolidation and autonomy of the internal team. Retrospective and adjustments. Identification of deviations",
+        color: "bg-yellow-500",
+      },
+      {
+        phase: "Phase 5",
+        duration: "Month 4",
+        title: "Problem Solving",
+        description:
+          "Start of problem solving. 5W1H tools – A3 Tool (FlowStable PACK 4)",
+        color: "bg-orange-500",
+      },
+      {
+        phase: "Phase 6",
+        duration: "Month 5",
+        title: "Evolution Curves",
+        description: "Evolution curves. Statistical tools. Management audits",
+        color: "bg-red-500",
+      },
+      {
+        phase: "Phase 7",
+        duration: "Month 6",
+        title: "Side Effects",
+        description:
+          "Side effects. Technical and economic definition (FlowStable PACK 5)",
+        color: "bg-purple-500",
+      },
+      {
+        phase: "Phase 8",
+        duration: "Month 7",
+        title: "Final Audits",
+        description: "Management audits. Objectives and next stage",
+        color: "bg-indigo-500",
+      },
+    ],
+  },
+  pt: {
+    header: "Modalidade de implementação (7 MESES)",
+    phases: [
+      {
+        phase: "Fase Inicial",
+        duration: "Semana 1",
+        title: "Diagnóstico",
+        description: "Quick Scan presencial – 1 semana de trabalho no local",
+        color: "bg-gray-500",
+      },
+      {
+        phase: "Fase 2",
+        duration: "Mês 1",
+        title: "Sistema de medição",
+        description:
+          "Discussão sobre objetivos e planos estratégicos. Treinamento e implantação de ferramentas (FlowStable PACK 2)",
+        color: "bg-blue-500",
+      },
+      {
+        phase: "Fase 3",
+        duration: "Mês 2",
+        title: "Reuniões diárias",
+        description:
+          "Estabelecer reuniões diárias de discussão e execução. Coleta dos primeiros dados (FlowStable PACK 3)",
+        color: "bg-green-500",
+      },
+      {
+        phase: "Fase 4",
+        duration: "Mês 3",
+        title: "Consolidação",
+        description:
+          "Consolidação e autonomia da equipe interna. Retrospectiva e ajustes. Identificação de desvios",
+        color: "bg-yellow-500",
+      },
+      {
+        phase: "Fase 5",
+        duration: "Mês 4",
+        title: "Resolução de problemas",
+        description:
+          "Início da resolução de problemas. Ferramentas 5W1H – Ferramenta A3 (FlowStable PACK 4)",
+        color: "bg-orange-500",
+      },
+      {
+        phase: "Fase 6",
+        duration: "Mês 5",
+        title: "Curvas de evolução",
+        description:
+          "Curvas de evolução. Ferramentas estatísticas. Auditorias de gestão",
+        color: "bg-red-500",
+      },
+      {
+        phase: "Fase 7",
+        duration: "Mês 6",
+        title: "Efeitos colaterais",
+        description:
+          "Efeitos colaterais. Definição técnica e econômica (FlowStable PACK 5)",
+        color: "bg-purple-500",
+      },
+      {
+        phase: "Fase 8",
+        duration: "Mês 7",
+        title: "Auditorias finais",
+        description: "Auditorias de gestão. Objetivos e próxima etapa",
+        color: "bg-indigo-500",
+      },
+    ],
+  },
+};
 
 const FlowStableTimelineGraphic: React.FC = () => {
-  const phases = [
-    {
-      phase: "Fase Inicial",
-      duration: "Semana 1",
-      title: "Diagnóstico",
-      description: "Quick Scan presencial - 1 semana de trabajo en el lugar",
-      color: "bg-gray-500",
-    },
-    {
-      phase: "Fase 2",
-      duration: "Mes 1",
-      title: "Sistema de medición",
-      description:
-        "Discusión sobre objetivos y planes estratégicos. Entrenamiento y despliegue de herramientas (FlowStable PACK 2)",
-      color: "bg-blue-500",
-    },
-    {
-      phase: "Fase 3",
-      duration: "Mes 2",
-      title: "Reuniones diarias",
-      description:
-        "Establecer reuniones diarias de discusión y ejecución. Recolección de primeros datos (FlowStable PACK 3)",
-      color: "bg-green-500",
-    },
-    {
-      phase: "Fase 4",
-      duration: "Mes 3",
-      title: "Consolidación",
-      description:
-        "Consolidación y autonomía del equipo interno. Retrospectiva y ajustes. Identificación de desvíos",
-      color: "bg-yellow-500",
-    },
-    {
-      phase: "Fase 5",
-      duration: "Mes 4",
-      title: "Resolución de problemas",
-      description:
-        "Inicio de resolución de problemas. Herramientas 5W1H – Herramienta A3 (FlowStable PACK 4)",
-      color: "bg-orange-500",
-    },
-    {
-      phase: "Fase 6",
-      duration: "Mes 5",
-      title: "Curvas de evolución",
-      description:
-        "Curvas de evolución. Herramientas estadísticas. Auditorías de gestión",
-      color: "bg-red-500",
-    },
-    {
-      phase: "Fase 7",
-      duration: "Mes 6",
-      title: "Efectos colaterales",
-      description:
-        "Efectos colaterales. Definición técnica y económica (FlowStable PACK 5)",
-      color: "bg-purple-500",
-    },
-    {
-      phase: "Fase 8",
-      duration: "Mes 7",
-      title: "Auditorías finales",
-      description: "Auditorías de gestión. Objetivos y próxima etapa",
-      color: "bg-indigo-500",
-    },
-  ];
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const { header, phases } = phaseTranslations[lang] || phaseTranslations["es"];
 
   return (
     <div className="py-8">
       <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-8 text-center">
-        Modalidad de implementación (7 MESES)
+        {header}
       </h3>
 
       {/* Desktop Timeline */}

@@ -1,9 +1,67 @@
 import React, { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const translations: Record<
+  Language,
+  {
+    badge: string;
+    title: string;
+    subtitle: string;
+    description1: string;
+    description2: string;
+    description3: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    badge: "Perfeccionar la operación",
+    title: "MeasureBridge™",
+    subtitle: "Medición y gestión de desempeño operacional",
+    description1:
+      "MeasureBridge es una metodología para la medición, análisis y gestión de indicadores clave de desempeño (KPIs) en procesos operativos, permitiendo identificar brechas, causas raíz y oportunidades de mejora.",
+    description2:
+      "A través de herramientas visuales y trabajo colaborativo, ayuda a equipos a construir puentes entre la situación actual y los objetivos de negocio, facilitando la toma de decisiones basada en datos y la mejora continua.",
+    description3:
+      "Incluye: definición de KPIs, diseño de tableros visuales, rutinas de gestión, análisis de brechas y soporte en la ejecución de acciones correctivas.",
+    pdfHref: "assets/pdf/LYS-P015-MeasureBridge.pdf",
+    pdfDownload: "LYS-P015-MeasureBridge.pdf",
+  },
+  en: {
+    badge: "Perfect the operation",
+    title: "MeasureBridge™",
+    subtitle: "Measurement and management of operational performance",
+    description1:
+      "MeasureBridge is a methodology for measuring, analyzing, and managing key performance indicators (KPIs) in operational processes, enabling the identification of gaps, root causes, and improvement opportunities.",
+    description2:
+      "Through visual tools and collaborative work, it helps teams build bridges between the current situation and business objectives, facilitating data-driven decision-making and continuous improvement.",
+    description3:
+      "Includes: KPI definition, visual dashboard design, management routines, gap analysis, and support in the execution of corrective actions.",
+    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-EN.pdf",
+    pdfDownload: "LYS-P015-MeasureBridge-EN.pdf",
+  },
+  pt: {
+    badge: "Aperfeiçoar a operação",
+    title: "MeasureBridge™",
+    subtitle: "Medição e gestão do desempenho operacional",
+    description1:
+      "MeasureBridge é uma metodologia para medição, análise e gestão de indicadores-chave de desempenho (KPIs) em processos operacionais, permitindo identificar lacunas, causas raiz e oportunidades de melhoria.",
+    description2:
+      "Por meio de ferramentas visuais e trabalho colaborativo, ajuda equipes a construir pontes entre a situação atual e os objetivos do negócio, facilitando a tomada de decisões baseada em dados e a melhoria contínua.",
+    description3:
+      "Inclui: definição de KPIs, design de painéis visuais, rotinas de gestão, análise de lacunas e suporte na execução de ações corretivas.",
+    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-PT.pdf",
+    pdfDownload: "LYS-P015-MeasureBridge-PT.pdf",
+  },
+};
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage as Language];
 
   useEffect(() => {
     setIsVisible(true);
@@ -40,34 +98,26 @@ const HeroSection: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Perfeccionar la operación
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">MeasureBridge™</span>
+          <span className="block">{t.title}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Medición y gestión de desempeño operacional
+            {t.subtitle}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          MeasureBridge es una metodología para la medición, análisis y gestión
-          de indicadores clave de desempeño (KPIs) en procesos operativos,
-          permitiendo identificar brechas, causas raíz y oportunidades de
-          mejora.
+          {t.description1}
         </p>
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          A través de herramientas visuales y trabajo colaborativo, ayuda a
-          equipos a construir puentes entre la situación actual y los objetivos
-          de negocio, facilitando la toma de decisiones basada en datos y la
-          mejora continua.
+          {t.description2}
         </p>
         <p className="hidden lg:block text-lg text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Incluye: definición de KPIs, diseño de tableros visuales, rutinas de
-          gestión, análisis de brechas y soporte en la ejecución de acciones
-          correctivas.
+          {t.description3}
         </p>
 
         {/* CTA Buttons */}

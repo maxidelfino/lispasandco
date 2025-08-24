@@ -1,133 +1,232 @@
 import React from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const translations: Record<
+  Language,
+  {
+    title: string;
+    phases: {
+      phase: string;
+      duration: string;
+      title: string;
+      description: string;
+      color: string;
+    }[];
+  }
+> = {
+  es: {
+    title: "Modalidad de implementación (8 MESES)",
+    phases: [
+      {
+        phase: "Fase Inicial",
+        duration: "Mes 0",
+        title: "Diagnóstico y planificación",
+        description: "1 semana presencial",
+        color: "bg-gray-500",
+      },
+      {
+        phase: "Fase 1",
+        duration: "Mes 0",
+        title: "Introducción y PACK 1",
+        description:
+          "Introducción al grupo. Discusión sobre objetivos y planes estratégicos.",
+        color: "bg-blue-500",
+      },
+      {
+        phase: "Fase 2",
+        duration: "Mes 1",
+        title: "Coaching y PACK 2",
+        description:
+          "Coaching interno y seguimiento. Entrenamiento y despliegue de herramientas",
+        color: "bg-green-500",
+      },
+      {
+        phase: "Fase 3",
+        duration: "Mes 2",
+        title: "Performance y PACK 3",
+        description:
+          "Primera Reunión de Performance. Entrenamiento y despliegue de herramientas",
+        color: "bg-purple-500",
+      },
+      {
+        phase: "Fase 4",
+        duration: "Mes 3",
+        title: "Coaching y PACK 4",
+        description:
+          "Coaching interno y seguimiento. Entrenamiento y despliegue de herramientas",
+        color: "bg-orange-500",
+      },
+      {
+        phase: "Fase 5",
+        duration: "Mes 4",
+        title: "Consolidación",
+        description:
+          "Consolidación y autonomía del equipo interno. Retrospectiva y ajustes",
+        color: "bg-indigo-500",
+      },
+      {
+        phase: "Fases 6-9",
+        duration: "Meses 5-8",
+        title: "Auditorías",
+        description:
+          "Corrección de desvíos, customización de herramientas. Auditorías de gestión.",
+        color: "bg-red-500",
+      },
+      {
+        phase: "Fase 10",
+        duration: "Mes 8",
+        title: "Seguimiento de objetivos",
+        description: "Objetivos y próxima etapa",
+        color: "bg-red-500",
+      },
+    ],
+  },
+  en: {
+    title: "Implementation Modality (8 MONTHS)",
+    phases: [
+      {
+        phase: "Initial Phase",
+        duration: "Month 0",
+        title: "Diagnosis and Planning",
+        description: "1 week on-site",
+        color: "bg-gray-500",
+      },
+      {
+        phase: "Phase 1",
+        duration: "Month 0",
+        title: "Introduction & PACK 1",
+        description:
+          "Group introduction. Discussion of objectives and strategic plans.",
+        color: "bg-blue-500",
+      },
+      {
+        phase: "Phase 2",
+        duration: "Month 1",
+        title: "Coaching & PACK 2",
+        description:
+          "Internal coaching and follow-up. Training and deployment of tools",
+        color: "bg-green-500",
+      },
+      {
+        phase: "Phase 3",
+        duration: "Month 2",
+        title: "Performance & PACK 3",
+        description:
+          "First Performance Meeting. Training and deployment of tools",
+        color: "bg-purple-500",
+      },
+      {
+        phase: "Phase 4",
+        duration: "Month 3",
+        title: "Coaching & PACK 4",
+        description:
+          "Internal coaching and follow-up. Training and deployment of tools",
+        color: "bg-orange-500",
+      },
+      {
+        phase: "Phase 5",
+        duration: "Month 4",
+        title: "Consolidation",
+        description:
+          "Consolidation and autonomy of the internal team. Retrospective and adjustments",
+        color: "bg-indigo-500",
+      },
+      {
+        phase: "Phases 6-9",
+        duration: "Months 5-8",
+        title: "Audits",
+        description:
+          "Correction of deviations, customization of tools. Management audits.",
+        color: "bg-red-500",
+      },
+      {
+        phase: "Phase 10",
+        duration: "Month 8",
+        title: "Objectives Follow-up",
+        description: "Objectives and next stage",
+        color: "bg-red-500",
+      },
+    ],
+  },
+  pt: {
+    title: "Modalidade de implementação (8 MESES)",
+    phases: [
+      {
+        phase: "Fase Inicial",
+        duration: "Mês 0",
+        title: "Diagnóstico e planejamento",
+        description: "1 semana presencial",
+        color: "bg-gray-500",
+      },
+      {
+        phase: "Fase 1",
+        duration: "Mês 0",
+        title: "Introdução e PACK 1",
+        description:
+          "Introdução ao grupo. Discussão sobre objetivos e planos estratégicos.",
+        color: "bg-blue-500",
+      },
+      {
+        phase: "Fase 2",
+        duration: "Mês 1",
+        title: "Coaching e PACK 2",
+        description:
+          "Coaching interno e acompanhamento. Treinamento e implantação de ferramentas",
+        color: "bg-green-500",
+      },
+      {
+        phase: "Fase 3",
+        duration: "Mês 2",
+        title: "Performance e PACK 3",
+        description:
+          "Primeira Reunião de Performance. Treinamento e implantação de ferramentas",
+        color: "bg-purple-500",
+      },
+      {
+        phase: "Fase 4",
+        duration: "Mês 3",
+        title: "Coaching e PACK 4",
+        description:
+          "Coaching interno e acompanhamento. Treinamento e implantação de ferramentas",
+        color: "bg-orange-500",
+      },
+      {
+        phase: "Fase 5",
+        duration: "Mês 4",
+        title: "Consolidação",
+        description:
+          "Consolidação e autonomia da equipe interna. Retrospectiva e ajustes",
+        color: "bg-indigo-500",
+      },
+      {
+        phase: "Fases 6-9",
+        duration: "Meses 5-8",
+        title: "Auditorias",
+        description:
+          "Correção de desvios, customização de ferramentas. Auditorias de gestão.",
+        color: "bg-red-500",
+      },
+      {
+        phase: "Fase 10",
+        duration: "Mês 8",
+        title: "Acompanhamento de objetivos",
+        description: "Objetivos e próxima etapa",
+        color: "bg-red-500",
+      },
+    ],
+  },
+};
 
 const LeanBridgeTimelineGraphic: React.FC = () => {
-  const phases = [
-    // {
-    //   phase: "Fase Inicial",
-    //   duration: "Mes 0",
-    //   title: "Diagnóstico",
-    //   description: "Diagnóstico y planificación",
-    //   color: "bg-gray-500",
-    // },
-    // {
-    //   phase: "Fase 1",
-    //   duration: "Mes 1",
-    //   title: "Introducción",
-    //   description: "Introducción al grupo. Discusión sobre objetivos y planes estratégicos.",
-    //   color: "bg-blue-500",
-    // },
-    // {
-    //   phase: "Fase 2",
-    //   duration: "Mes 1",
-    //   title: "Reuniones diarias",
-    //   description: "Coaching interno y seguimiento. Entrenamiento y despliegue herramientas",
-    //   color: "bg-green-500",
-    // },
-    // {
-    //   phase: "Fase 3",
-    //   duration: "Mes 2",
-    //   title: "Consolidación",
-    //   description: "Primera Reunion de Permormance. Entrenamiento y despliegue de herramientas",
-    //   color: "bg-yellow-500",
-    // },
-    // {
-    //   phase: "Fase 4",
-    //   duration: "Mes 3",
-    //   title: "Resolución de problemas",
-    //   description: "Coaching interno y seguimiento. Entrenamiento y despliegue de herramientas",
-    //   color: "bg-orange-500",
-    // },
-    // {
-    //   phase: "Fase 6",
-    //   duration: "Mes 5",
-    //   title: "Curvas de evolución",
-    //   description: "Curvas de evolución. Herramientas estadísticas. Auditorías de gestión",
-    //   color: "bg-red-500",
-    // },
-    // {
-    //   phase: "Fase 7",
-    //   duration: "Mes 6",
-    //   title: "Efectos colaterales",
-    //   description: "Efectos colaterales. Definición técnica y económica (FlowStable PACK 5)",
-    //   color: "bg-purple-500",
-    // },
-    // {
-    //   phase: "Fase 8",
-    //   duration: "Mes 7",
-    //   title: "Auditorías finales",
-    //   description: "Auditorías de gestión. Objetivos y próxima etapa",
-    //   color: "bg-indigo-500",
-    // },
-
-    {
-      phase: "Fase Inicial",
-      duration: "Mes 0",
-      title: "Diagnóstico y planificación",
-      description: "1 semana presencial",
-      color: "bg-gray-500",
-    },
-    {
-      phase: "Fase 1",
-      duration: "Mes 0",
-      title: "Introducción y PACK 1",
-      description:
-        "Introducción al grupo. Discusión sobre objetivos y planes estratégicos.",
-      color: "bg-blue-500",
-    },
-    {
-      phase: "Fase 2",
-      duration: "Mes 1",
-      title: "Coaching y PACK 2",
-      description:
-        "Coaching interno y seguimiento. Entrenamiento y despliegue de herramientas",
-      color: "bg-green-500",
-    },
-    {
-      phase: "Fase 3",
-      duration: "Mes 2",
-      title: "Performance y PACK 3",
-      description:
-        "Primera Reunion de Permormance. Entrenamiento y despliegue de herramientas",
-      color: "bg-purple-500",
-    },
-    {
-      phase: "Fase 4",
-      duration: "Mes 3",
-      title: "Coaching y PACK 4",
-      description:
-        "Coaching interno y seguimiento. Entrenamiento y despliegue de herramientas",
-      color: "bg-orange-500",
-    },
-    {
-      phase: "Fase 5",
-      duration: "Mes 4",
-      title: "Consolidación",
-      description:
-        "Consolidación y autonomía del equipo interno. Retrospectiva y ajustes",
-      color: "bg-indigo-500",
-    },
-    {
-      phase: "Fases 6-9",
-      duration: "Meses 5-8",
-      title: "Auditorías",
-      description:
-        "Corrección de desvíos, customización de herramientas. Auditorias de gestión.",
-      color: "bg-red-500",
-    },
-    {
-      phase: "Fases 10",
-      duration: "Mes 8",
-      title: "Seguimiento de objetivos",
-      description:
-        "Objetivos y proxima etapa",
-      color: "bg-red-500",
-    },
-  ];
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+  const phases = t.phases;
 
   return (
     <div className="py-8">
       <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-8 text-center">
-        Modalidad de implementación (8 MESES)
+        {t.title}
       </h3>
 
       {/* Desktop Timeline */}

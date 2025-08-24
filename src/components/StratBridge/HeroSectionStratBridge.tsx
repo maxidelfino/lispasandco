@@ -4,9 +4,89 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const TEXTS: Record<
+  Language,
+  {
+    badge: string;
+    mainTitle: string;
+    subtitle: string;
+    description1: React.ReactNode;
+    description2: React.ReactNode;
+  }
+> = {
+  es: {
+    badge: "Transformar la organización (alinear estrategia con ejecución)",
+    mainTitle: "Planificación Estratégica en la Empresa",
+    subtitle: "Alinear estrategia, personas y acciones",
+    description1: (
+      <>
+        <strong>StratBridge™</strong> es el programa de{" "}
+        <strong>planificación estratégica estructurada</strong> que ofrece
+        LYSPAS & CO para acompañar a las organizaciones en la alineación real de
+        sus objetivos de largo plazo con el trabajo diario de sus equipos.
+      </>
+    ),
+    description2: (
+      <>
+        Basado en la metodología <strong>Hoshin Kanri</strong>, este sistema
+        permite desplegar la <strong>VISIÓN Y MISIÓN</strong> institucional en
+        acciones concretas, medibles y ejecutables, transformando intenciones
+        estratégicas en resultados sostenibles.
+      </>
+    ),
+  },
+  en: {
+    badge: "Transform the organization (align strategy with execution)",
+    mainTitle: "Strategic Planning in the Company",
+    subtitle: "Align strategy, people, and actions",
+    description1: (
+      <>
+        <strong>StratBridge™</strong> is the{" "}
+        <strong>structured strategic planning</strong> program offered by LYSPAS
+        & CO to help organizations truly align their long-term goals with the
+        daily work of their teams.
+      </>
+    ),
+    description2: (
+      <>
+        Based on the <strong>Hoshin Kanri</strong> methodology, this system
+        enables the deployment of the institutional{" "}
+        <strong>VISION AND MISSION</strong> into concrete, measurable, and
+        actionable steps, turning strategic intentions into sustainable results.
+      </>
+    ),
+  },
+  pt: {
+    badge: "Transformar a organização (alinhar estratégia com execução)",
+    mainTitle: "Planejamento Estratégico na Empresa",
+    subtitle: "Alinhar estratégia, pessoas e ações",
+    description1: (
+      <>
+        O <strong>StratBridge™</strong> é o programa de{" "}
+        <strong>planejamento estratégico estruturado</strong> oferecido pela
+        LYSPAS & CO para apoiar as organizações no alinhamento real de seus
+        objetivos de longo prazo com o trabalho diário de suas equipes.
+      </>
+    ),
+    description2: (
+      <>
+        Baseado na metodologia <strong>Hoshin Kanri</strong>, este sistema
+        permite desdobrar a <strong>VISÃO E MISSÃO</strong> institucionais em
+        ações concretas, mensuráveis e executáveis, transformando intenções
+        estratégicas em resultados sustentáveis.
+      </>
+    ),
+  },
+};
 
 const HeroSectionStratBridge: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = TEXTS[lang];
 
   useEffect(() => {
     setIsVisible(true);
@@ -51,34 +131,28 @@ const HeroSectionStratBridge: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Transformar la organización (alinear estrategia con ejecución)
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
           <span className="block">StratBridge™</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            Planificación Estratégica en la Empresa
+            {t.mainTitle}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Alinear estrategia, personas y acciones
+          {t.subtitle}
         </p>
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          <strong>StratBridge™</strong> es el programa de{" "}
-          <strong>planificación estratégica estructurada</strong> que ofrece
-          LYSPAS & CO para acompañar a las organizaciones en la alineación real
-          de sus objetivos de largo plazo con el trabajo diario de sus equipos.
+          {t.description1}
         </p>
 
         {/* Este párrafo solo en desktop */}
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Basado en la metodología <strong>Hoshin Kanri</strong>, este sistema
-          permite desplegar la <strong>VISIÓN Y MISIÓN</strong> institucional en
-          acciones concretas, medibles y ejecutables, transformando intenciones
-          estratégicas en resultados sostenibles.
+          {t.description2}
         </p>
 
         {/* CTA Buttons */}

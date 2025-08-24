@@ -8,7 +8,6 @@ import {
   Users,
 } from "lucide-react";
 
-// Componente de íconos de métricas para MeasureBridge, inspirado en FlowStableMeasurementGraphic y EightGridWastes
 const measureBridgeMetrics = [
   {
     icon: TrendingUp,

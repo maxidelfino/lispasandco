@@ -1,9 +1,135 @@
 import React from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const translations: Record<
+  Language,
+  {
+    topLeft: React.ReactNode;
+    topRight: React.ReactNode;
+    vennIntersection: [string, string];
+    bottomBox: React.ReactNode;
+    info: React.ReactNode;
+  }
+> = {
+  es: {
+    topLeft: (
+      <>
+        Plan de
+        <br />
+        Mantenimiento
+      </>
+    ),
+    topRight: (
+      <>
+        Entorno
+        <br />
+        Operativo
+      </>
+    ),
+    vennIntersection: ["Confiabilidad", "lograda"],
+    bottomBox: (
+      <>
+        Confiabilidad
+        <br />
+        inherente
+      </>
+    ),
+    info: (
+      <>
+        La{" "}
+        <span className="font-semibold text-green-700">
+          confiabilidad lograda
+        </span>{" "}
+        surge de la intersección entre un plan de mantenimiento efectivo y las
+        condiciones óptimas del entorno operativo, resultando en la{" "}
+        <span className="font-semibold text-green-700">
+          confiabilidad inherente
+        </span>{" "}
+        del sistema.
+      </>
+    ),
+  },
+  en: {
+    topLeft: (
+      <>
+        Maintenance
+        <br />
+        Plan
+      </>
+    ),
+    topRight: (
+      <>
+        Operating
+        <br />
+        Environment
+      </>
+    ),
+    vennIntersection: ["Achieved", "Reliability"],
+    bottomBox: (
+      <>
+        Inherent
+        <br />
+        Reliability
+      </>
+    ),
+    info: (
+      <>
+        <span className="font-semibold text-green-700">
+          Achieved reliability
+        </span>{" "}
+        arises from the intersection between an effective maintenance plan and
+        optimal operating conditions, resulting in the system's{" "}
+        <span className="font-semibold text-green-700">
+          inherent reliability
+        </span>
+        .
+      </>
+    ),
+  },
+  pt: {
+    topLeft: (
+      <>
+        Plano de
+        <br />
+        Manutenção
+      </>
+    ),
+    topRight: (
+      <>
+        Ambiente
+        <br />
+        Operacional
+      </>
+    ),
+    vennIntersection: ["Confiabilidade", "alcançada"],
+    bottomBox: (
+      <>
+        Confiabilidade
+        <br />
+        inerente
+      </>
+    ),
+    info: (
+      <>
+        A{" "}
+        <span className="font-semibold text-green-700">
+          confiabilidade alcançada
+        </span>{" "}
+        surge da interseção entre um plano de manutenção eficaz e as condições
+        ideais do ambiente operacional, resultando na{" "}
+        <span className="font-semibold text-green-700">
+          confiabilidade inerente
+        </span>{" "}
+        do sistema.
+      </>
+    ),
+  },
+};
 
 const AssetBridgeIcon: React.FC = () => {
-  // Dimensiones ideales para el modal horizontal (máx 500-520px de ancho)
-  // El alto debe ser compacto, no más de 320-340px
-  // Todo el contenido debe estar centrado y no usar min-h-screen
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-0 m-0">
@@ -23,14 +149,10 @@ const AssetBridgeIcon: React.FC = () => {
           style={{ maxWidth: 420 }}
         >
           <div className="bg-gradient-to-br from-gray-100 to-gray-200 px-4 py-2 rounded-lg shadow border border-gray-200 text-xs font-bold text-gray-800 text-center leading-tight w-40">
-            Plan de
-            <br />
-            Mantenimiento
+            {t.topLeft}
           </div>
           <div className="bg-gradient-to-br from-gray-100 to-gray-200 px-4 py-2 rounded-lg shadow border border-gray-200 text-xs font-bold text-gray-800 text-center leading-tight w-40">
-            Entorno
-            <br />
-            Operativo
+            {t.topRight}
           </div>
         </div>
 
@@ -111,7 +233,7 @@ const AssetBridgeIcon: React.FC = () => {
               className="fill-gray-900 font-bold"
               style={{ fontSize: "13px", fontFamily: "system-ui" }}
             >
-              Confiabilidad
+              {t.vennIntersection[0]}
             </text>
             <text
               x="140"
@@ -120,7 +242,7 @@ const AssetBridgeIcon: React.FC = () => {
               className="fill-gray-900 font-bold"
               style={{ fontSize: "13px", fontFamily: "system-ui" }}
             >
-              lograda
+              {t.vennIntersection[1]}
             </text>
           </svg>
         </div>
@@ -143,9 +265,7 @@ const AssetBridgeIcon: React.FC = () => {
         {/* Caja final */}
         <div className="flex justify-center w-full">
           <div className="bg-gradient-to-br from-green-700 to-green-800 px-6 py-3 rounded-xl shadow border border-green-600 text-white font-bold text-center text-sm leading-tight w-48">
-            Confiabilidad
-            <br />
-            inherente
+            {t.bottomBox}
           </div>
         </div>
 
@@ -156,18 +276,7 @@ const AssetBridgeIcon: React.FC = () => {
 
       {/* Información adicional opcional, más compacta */}
       <div className="mt-4 max-w-md text-center px-2">
-        <p className="text-xs text-gray-600 leading-relaxed">
-          La{" "}
-          <span className="font-semibold text-green-700">
-            confiabilidad lograda
-          </span>{" "}
-          surge de la intersección entre un plan de mantenimiento efectivo y las
-          condiciones óptimas del entorno operativo, resultando en la{" "}
-          <span className="font-semibold text-green-700">
-            confiabilidad inherente
-          </span>{" "}
-          del sistema.
-        </p>
+        <p className="text-xs text-gray-600 leading-relaxed">{t.info}</p>
       </div>
     </div>
   );

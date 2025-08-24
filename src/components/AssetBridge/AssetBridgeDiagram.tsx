@@ -6,12 +6,109 @@ import {
   ShieldCheck,
   ArrowUpCircle,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
 /**
  * AssetBridgeDiagram
  * Diagrama circular simplificado para AssetBridge.
  */
+const translations = {
+  title: {
+    [Language.SPANISH]: "AssetBridge™",
+    [Language.ENGLISH]: "AssetBridge™",
+    [Language.PORTUGUESE]: "AssetBridge™",
+  },
+  subtitle: {
+    [Language.SPANISH]: "Plataforma para la gestión y medición de activos",
+    [Language.ENGLISH]: "Platform for asset management and measurement",
+    [Language.PORTUGUESE]: "Plataforma para gestão e medição de ativos",
+  },
+  centerText: {
+    [Language.SPANISH]: "Gestión de Activos",
+    [Language.ENGLISH]: "Asset Management",
+    [Language.PORTUGUESE]: "Gestão de Ativos",
+  },
+  legend: {
+    [Language.SPANISH]: {
+      mobile: "Toca cada elemento para ver detalles",
+      desktop: "Pasa el mouse sobre cada elemento para ver detalles",
+    },
+    [Language.ENGLISH]: {
+      mobile: "Tap each element to see details",
+      desktop: "Hover over each element to see details",
+    },
+    [Language.PORTUGUESE]: {
+      mobile: "Toque em cada elemento para ver detalhes",
+      desktop: "Passe o mouse sobre cada elemento para ver detalhes",
+    },
+  },
+  elements: {
+    identificacion: {
+      title: {
+        [Language.SPANISH]: "Identificación",
+        [Language.ENGLISH]: "Identification",
+        [Language.PORTUGUESE]: "Identificação",
+      },
+      description: {
+        [Language.SPANISH]: "Identifica los activos clave.",
+        [Language.ENGLISH]: "Identifies key assets.",
+        [Language.PORTUGUESE]: "Identifica os ativos chave.",
+      },
+    },
+    conexion: {
+      title: {
+        [Language.SPANISH]: "Conexión",
+        [Language.ENGLISH]: "Connection",
+        [Language.PORTUGUESE]: "Conexão",
+      },
+      description: {
+        [Language.SPANISH]: "Conecta datos y procesos.",
+        [Language.ENGLISH]: "Connects data and processes.",
+        [Language.PORTUGUESE]: "Conecta dados e processos.",
+      },
+    },
+    medicion: {
+      title: {
+        [Language.SPANISH]: "Medición",
+        [Language.ENGLISH]: "Measurement",
+        [Language.PORTUGUESE]: "Medição",
+      },
+      description: {
+        [Language.SPANISH]: "Mide el desempeño.",
+        [Language.ENGLISH]: "Measures performance.",
+        [Language.PORTUGUESE]: "Mede o desempenho.",
+      },
+    },
+    integridad: {
+      title: {
+        [Language.SPANISH]: "Integridad",
+        [Language.ENGLISH]: "Integrity",
+        [Language.PORTUGUESE]: "Integridade",
+      },
+      description: {
+        [Language.SPANISH]: "Asegura confiabilidad.",
+        [Language.ENGLISH]: "Ensures reliability.",
+        [Language.PORTUGUESE]: "Garante confiabilidade.",
+      },
+    },
+    valor: {
+      title: {
+        [Language.SPANISH]: "Valor",
+        [Language.ENGLISH]: "Value",
+        [Language.PORTUGUESE]: "Valor",
+      },
+      description: {
+        [Language.SPANISH]: "Maximiza el valor.",
+        [Language.ENGLISH]: "Maximizes value.",
+        [Language.PORTUGUESE]: "Maximiza o valor.",
+      },
+    },
+  },
+};
+
 const AssetBridgeDiagram: React.FC = () => {
+  const { currentLanguage } = useLanguage();
   const [activeElement, setActiveElement] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [screenSize, setScreenSize] = useState("desktop");
@@ -90,40 +187,30 @@ const AssetBridgeDiagram: React.FC = () => {
     {
       id: "identificacion",
       icon: FileText,
-      title: "Identificación",
-      description: "Identifica los activos clave.",
       angle: 0,
       color: "bg-blue-500",
     },
     {
       id: "conexion",
       icon: Link2,
-      title: "Conexión",
-      description: "Conecta datos y procesos.",
       angle: 72,
       color: "bg-cyan-500",
     },
     {
       id: "medicion",
       icon: BarChart3,
-      title: "Medición",
-      description: "Mide el desempeño.",
       angle: 144,
       color: "bg-green-500",
     },
     {
       id: "integridad",
       icon: ShieldCheck,
-      title: "Integridad",
-      description: "Asegura confiabilidad.",
       angle: 216,
       color: "bg-emerald-500",
     },
     {
       id: "valor",
       icon: ArrowUpCircle,
-      title: "Valor",
-      description: "Maximiza el valor.",
       angle: 288,
       color: "bg-orange-500",
     },
@@ -135,10 +222,10 @@ const AssetBridgeDiagram: React.FC = () => {
         {/* Título */}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-2 md:mb-4">
-            AssetBridge™
+            {translations.title[currentLanguage]}
           </h2>
           <p className="text-sm md:text-xl text-slate-600 max-w-xl mx-auto px-4">
-            Plataforma para la gestión y medición de activos
+            {translations.subtitle[currentLanguage]}
           </p>
         </div>
 
@@ -176,7 +263,7 @@ const AssetBridgeDiagram: React.FC = () => {
               className="fill-white"
               fontSize={responsive.fontSize.subtitle}
             >
-              Gestión de Activos
+              {translations.centerText[currentLanguage]}
             </text>
 
             {/* Líneas de conexión */}
@@ -273,6 +360,10 @@ const AssetBridgeDiagram: React.FC = () => {
             const x = responsive.centerX + responsive.radius * Math.cos(angle);
             const y = responsive.centerY + responsive.radius * Math.sin(angle);
             const Icon = element.icon;
+            const elementTrans =
+              translations.elements[
+                element.id as keyof typeof translations.elements
+              ];
 
             return (
               <div
@@ -338,10 +429,10 @@ const AssetBridgeDiagram: React.FC = () => {
                       }}
                     >
                       <h3 className="font-bold text-[var(--color-primary)] mb-1">
-                        {element.title}
+                        {elementTrans.title[currentLanguage]}
                       </h3>
                       <p className="text-sm text-[var(--color-text)]">
-                        {element.description}
+                        {elementTrans.description[currentLanguage]}
                       </p>
                     </div>
                   )}
@@ -357,6 +448,10 @@ const AssetBridgeDiagram: React.FC = () => {
             {bridgeElements.map((element) => {
               const Icon = element.icon;
               const isActive = activeElement === element.id;
+              // Fix type error by using a type-safe lookup
+              type ElementKey = keyof typeof translations.elements;
+              const elementTrans =
+                translations.elements[element.id as ElementKey];
 
               return (
                 <div
@@ -377,11 +472,11 @@ const AssetBridgeDiagram: React.FC = () => {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-bold text-slate-800">
-                          {element.title}
+                          {elementTrans.title[currentLanguage]}
                         </h3>
                         {isActive && (
                           <p className="text-sm text-slate-600 mt-2">
-                            {element.description}
+                            {elementTrans.description[currentLanguage]}
                           </p>
                         )}
                       </div>
@@ -397,8 +492,8 @@ const AssetBridgeDiagram: React.FC = () => {
         <div className="mt-8 md:mt-12 text-center">
           <p className="text-[var(--color-text)] text-sm md:text-base">
             {isMobile
-              ? "Toca cada elemento para ver detalles"
-              : "Pasa el mouse sobre cada elemento para ver detalles"}
+              ? translations.legend[currentLanguage].mobile
+              : translations.legend[currentLanguage].desktop}
           </p>
         </div>
       </div>

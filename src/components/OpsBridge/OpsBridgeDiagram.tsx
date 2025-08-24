@@ -9,6 +9,8 @@ import {
   ShieldCheck as LucideShieldCheck,
   Trophy as LucideTrophy,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
 const iconMap = {
   personas: LucideUsers,
@@ -21,79 +23,249 @@ const iconMap = {
   resultados: LucideTrophy,
 };
 
-const elements = [
+const diagramTranslations: Record<
+  Language,
   {
-    id: "personas",
-    title: "Personas",
-    description:
-      "Desarrollo de talento, liderazgo, cultura de mejora continua y trabajo en equipo.",
-    angle: 0,
-    color: "bg-blue-500",
+    diagramTitle: string;
+    diagramSubtitle: string;
+    elements: {
+      id: string;
+      title: string;
+      description: string;
+      angle: number;
+      color: string;
+    }[];
+    centerTitle: string;
+    centerSubtitle: string;
+  }
+> = {
+  es: {
+    diagramTitle: "OpsBridge™: Sistemas de Clase Mundial",
+    diagramSubtitle:
+      "Un modelo integral para la gestión de operaciones de clase mundial, integrando personas, procesos y tecnología para lograr resultados sostenibles y escalables.",
+    centerTitle: "OpsBridge™",
+    centerSubtitle: "Sistemas de Clase Mundial",
+    elements: [
+      {
+        id: "personas",
+        title: "Personas",
+        description:
+          "Desarrollo de talento, liderazgo, cultura de mejora continua y trabajo en equipo.",
+        angle: 0,
+        color: "bg-blue-500",
+      },
+      {
+        id: "procesos",
+        title: "Procesos",
+        description:
+          "Estandarización, optimización y control de procesos clave para la operación.",
+        angle: 45,
+        color: "bg-green-500",
+      },
+      {
+        id: "tecnologia",
+        title: "Tecnología",
+        description:
+          "Digitalización, automatización y sistemas de información integrados.",
+        angle: 90,
+        color: "bg-yellow-500",
+      },
+      {
+        id: "gestion",
+        title: "Gestión Visual",
+        description:
+          "Tableros, indicadores y rutinas de gestión para toma de decisiones ágil.",
+        angle: 135,
+        color: "bg-purple-500",
+      },
+      {
+        id: "mejora",
+        title: "Mejora Continua",
+        description:
+          "Círculos de mejora, resolución de problemas y cultura Kaizen.",
+        angle: 180,
+        color: "bg-pink-500",
+      },
+      {
+        id: "estandarizacion",
+        title: "Estandarización",
+        description:
+          "Documentación, procedimientos y mejores prácticas compartidas.",
+        angle: 225,
+        color: "bg-teal-500",
+      },
+      {
+        id: "seguridad",
+        title: "Seguridad & Calidad",
+        description:
+          "Sistemas robustos para garantizar seguridad, calidad y cumplimiento.",
+        angle: 270,
+        color: "bg-red-500",
+      },
+      {
+        id: "resultados",
+        title: "Resultados Sostenibles",
+        description:
+          "Enfoque en resultados de negocio, sostenibilidad y escalabilidad.",
+        angle: 315,
+        color: "bg-orange-500",
+      },
+    ],
   },
-  {
-    id: "procesos",
-    title: "Procesos",
-    description:
-      "Estandarización, optimización y control de procesos clave para la operación.",
-    angle: 45,
-    color: "bg-green-500",
+  en: {
+    diagramTitle: "OpsBridge™: World-Class Systems",
+    diagramSubtitle:
+      "A comprehensive model for world-class operations management, integrating people, processes, and technology to achieve sustainable and scalable results.",
+    centerTitle: "OpsBridge™",
+    centerSubtitle: "World-Class Systems",
+    elements: [
+      {
+        id: "personas",
+        title: "People",
+        description:
+          "Talent development, leadership, continuous improvement culture, and teamwork.",
+        angle: 0,
+        color: "bg-blue-500",
+      },
+      {
+        id: "procesos",
+        title: "Processes",
+        description:
+          "Standardization, optimization, and control of key operational processes.",
+        angle: 45,
+        color: "bg-green-500",
+      },
+      {
+        id: "tecnologia",
+        title: "Technology",
+        description:
+          "Digitalization, automation, and integrated information systems.",
+        angle: 90,
+        color: "bg-yellow-500",
+      },
+      {
+        id: "gestion",
+        title: "Visual Management",
+        description:
+          "Dashboards, KPIs, and management routines for agile decision-making.",
+        angle: 135,
+        color: "bg-purple-500",
+      },
+      {
+        id: "mejora",
+        title: "Continuous Improvement",
+        description:
+          "Improvement circles, problem solving, and Kaizen culture.",
+        angle: 180,
+        color: "bg-pink-500",
+      },
+      {
+        id: "estandarizacion",
+        title: "Standardization",
+        description: "Documentation, procedures, and shared best practices.",
+        angle: 225,
+        color: "bg-teal-500",
+      },
+      {
+        id: "seguridad",
+        title: "Safety & Quality",
+        description:
+          "Robust systems to ensure safety, quality, and compliance.",
+        angle: 270,
+        color: "bg-red-500",
+      },
+      {
+        id: "resultados",
+        title: "Sustainable Results",
+        description:
+          "Focus on business results, sustainability, and scalability.",
+        angle: 315,
+        color: "bg-orange-500",
+      },
+    ],
   },
-  {
-    id: "tecnologia",
-    title: "Tecnología",
-    description:
-      "Digitalización, automatización y sistemas de información integrados.",
-    angle: 90,
-    color: "bg-yellow-500",
+  pt: {
+    diagramTitle: "OpsBridge™: Sistemas de Classe Mundial",
+    diagramSubtitle:
+      "Um modelo abrangente para a gestão de operações de classe mundial, integrando pessoas, processos e tecnologia para alcançar resultados sustentáveis e escaláveis.",
+    centerTitle: "OpsBridge™",
+    centerSubtitle: "Sistemas de Classe Mundial",
+    elements: [
+      {
+        id: "personas",
+        title: "Pessoas",
+        description:
+          "Desenvolvimento de talentos, liderança, cultura de melhoria contínua e trabalho em equipe.",
+        angle: 0,
+        color: "bg-blue-500",
+      },
+      {
+        id: "procesos",
+        title: "Processos",
+        description:
+          "Padronização, otimização e controle de processos operacionais chave.",
+        angle: 45,
+        color: "bg-green-500",
+      },
+      {
+        id: "tecnologia",
+        title: "Tecnologia",
+        description:
+          "Digitalização, automação e sistemas de informação integrados.",
+        angle: 90,
+        color: "bg-yellow-500",
+      },
+      {
+        id: "gestion",
+        title: "Gestão Visual",
+        description:
+          "Painéis, indicadores e rotinas de gestão para tomada de decisão ágil.",
+        angle: 135,
+        color: "bg-purple-500",
+      },
+      {
+        id: "mejora",
+        title: "Melhoria Contínua",
+        description:
+          "Círculos de melhoria, resolução de problemas e cultura Kaizen.",
+        angle: 180,
+        color: "bg-pink-500",
+      },
+      {
+        id: "estandarizacion",
+        title: "Padronização",
+        description:
+          "Documentação, procedimentos e melhores práticas compartilhadas.",
+        angle: 225,
+        color: "bg-teal-500",
+      },
+      {
+        id: "seguridad",
+        title: "Segurança & Qualidade",
+        description:
+          "Sistemas robustos para garantir segurança, qualidade e conformidade.",
+        angle: 270,
+        color: "bg-red-500",
+      },
+      {
+        id: "resultados",
+        title: "Resultados Sustentáveis",
+        description:
+          "Foco em resultados de negócios, sustentabilidade e escalabilidade.",
+        angle: 315,
+        color: "bg-orange-500",
+      },
+    ],
   },
-  {
-    id: "gestion",
-    title: "Gestión Visual",
-    description:
-      "Tableros, indicadores y rutinas de gestión para toma de decisiones ágil.",
-    angle: 135,
-    color: "bg-purple-500",
-  },
-  {
-    id: "mejora",
-    title: "Mejora Continua",
-    description:
-      "Círculos de mejora, resolución de problemas y cultura Kaizen.",
-    angle: 180,
-    color: "bg-pink-500",
-  },
-  {
-    id: "estandarizacion",
-    title: "Estandarización",
-    description:
-      "Documentación, procedimientos y mejores prácticas compartidas.",
-    angle: 225,
-    color: "bg-teal-500",
-  },
-  {
-    id: "seguridad",
-    title: "Seguridad & Calidad",
-    description:
-      "Sistemas robustos para garantizar seguridad, calidad y cumplimiento.",
-    angle: 270,
-    color: "bg-red-500",
-  },
-  {
-    id: "resultados",
-    title: "Resultados Sostenibles",
-    description:
-      "Enfoque en resultados de negocio, sostenibilidad y escalabilidad.",
-    angle: 315,
-    color: "bg-orange-500",
-  },
-];
-
-const diagramTitle = "OpsBridge™: World-Class Systems";
-const diagramSubtitle =
-  "Un modelo integral para la gestión de operaciones de clase mundial, integrando personas, procesos y tecnología para lograr resultados sostenibles y escalables.";
+};
 
 export const OpsBridgeDiagram: React.FC = () => {
   const [activeElement, setActiveElement] = useState<string | null>(null);
+  const { currentLanguage } = useLanguage();
+
+  // fallback to 'es' if currentLanguage is not set
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = diagramTranslations[lang];
 
   const size = 500;
   const center = size / 2;
@@ -102,7 +274,7 @@ export const OpsBridgeDiagram: React.FC = () => {
   const iconSize = 28;
   const iconContainerSize = 64;
 
-  const getTooltipPosition = (element: (typeof elements)[0]) => {
+  const getTooltipPosition = (element: (typeof t.elements)[0]) => {
     const angle = (element.angle * Math.PI) / 180;
     const x = center + iconRadius * Math.cos(angle);
     const y = center + iconRadius * Math.sin(angle);
@@ -129,10 +301,10 @@ export const OpsBridgeDiagram: React.FC = () => {
     <div className="w-full flex flex-col items-center pt-16">
       <div className="mb-8 text-center max-w-2xl">
         <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)] mb-2">
-          {diagramTitle}
+          {t.diagramTitle}
         </h2>
         <p className="text-base md:text-lg text-[var(--color-text)]">
-          {diagramSubtitle}
+          {t.diagramSubtitle}
         </p>
       </div>
       <div className="relative" style={{ width: size, height: size }}>
@@ -156,7 +328,7 @@ export const OpsBridgeDiagram: React.FC = () => {
             className="fill-white font-bold"
             fontSize={18}
           >
-            OpsBridge™
+            {t.centerTitle}
           </text>
           <text
             x={center}
@@ -165,9 +337,9 @@ export const OpsBridgeDiagram: React.FC = () => {
             className="fill-white"
             fontSize={13}
           >
-            World-Class Systems
+            {t.centerSubtitle}
           </text>
-          {elements.map((element, idx) => {
+          {t.elements.map((element, idx) => {
             const rad = (element.angle * Math.PI) / 180;
             const x1 = center + centerRadius * Math.cos(rad);
             const y1 = center + centerRadius * Math.sin(rad);
@@ -191,7 +363,7 @@ export const OpsBridgeDiagram: React.FC = () => {
             );
           })}
         </svg>
-        {elements.map((element, idx) => {
+        {t.elements.map((element, idx) => {
           const rad = (element.angle * Math.PI) / 180;
           const x = center + iconRadius * Math.cos(rad);
           const y = center + iconRadius * Math.sin(rad);
@@ -241,7 +413,7 @@ export const OpsBridgeDiagram: React.FC = () => {
 
         {activeElement &&
           (() => {
-            const element = elements.find((e) => e.id === activeElement);
+            const element = t.elements.find((e) => e.id === activeElement);
             if (!element) return null;
             const tooltipPos = getTooltipPosition(element);
             const Icon = iconMap[element.id as keyof typeof iconMap];

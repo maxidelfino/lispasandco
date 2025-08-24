@@ -4,9 +4,46 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import CTAButtons from "../CTAButtons";
 import ScrollIndicator from "../ScrollIndicator";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
+
+const translations: Record<
+  Language,
+  {
+    badge: string;
+    title: string;
+    subtitle: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    badge: "Transformar la organización (Alinear estrategia con ejecución)",
+    title: "Lean Enterprise Transformation™",
+    subtitle: "La mejora continua como sistema de gestión integral",
+    pdfHref: "assets/pdf/LYS-P002-Lean-enterprise-tranformation.pdf",
+    pdfDownload: "LYS-P002-Lean-enterprise-tranformation.pdf",
+  },
+  en: {
+    badge: "Transform the organization (Align strategy with execution)",
+    title: "Lean Enterprise Transformation™",
+    subtitle: "Continuous improvement as a comprehensive management system",
+    pdfHref: "assets/pdf/LYS-P002-Lean-enterprise-tranformation-EN.pdf",
+    pdfDownload: "LYS-P002-Lean-enterprise-tranformation-EN.pdf",
+  },
+  pt: {
+    badge: "Transformar a organização (Alinhar estratégia com execução)",
+    title: "Lean Enterprise Transformation™",
+    subtitle: "A melhoria contínua como sistema de gestão integrado",
+    pdfHref: "assets/pdf/LYS-P002-Lean-enterprise-tranformation-PT.pdf",
+    pdfDownload: "LYS-P002-Lean-enterprise-tranformation-PT.pdf",
+  },
+};
 
 const HeroSectionLeanEnterprise: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   useEffect(() => {
     setIsVisible(true);
@@ -50,17 +87,17 @@ const HeroSectionLeanEnterprise: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
           <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          Transformar la organización (Alinear estrategia con ejecución)
+          {t.badge}
         </div>
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">Lean Enterprise Transformation™</span>
+          <span className="block">{t.title}</span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          La mejora continua como sistema de gestión integral
+          {t.subtitle}
         </p>
 
         {/* CTA Buttons */}

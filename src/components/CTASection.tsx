@@ -47,10 +47,6 @@ const CTASection: React.FC<CTASectionProps> = ({
               </p>
             ))
           ) : null}
-
-          {/* <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            {description}
-          </p> */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-xl"

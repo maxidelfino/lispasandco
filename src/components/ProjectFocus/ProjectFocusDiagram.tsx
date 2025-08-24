@@ -11,11 +11,20 @@ import {
   TrendingUp,
   Award,
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { Language } from "../../types";
 
-const ProjectFocusDiagram: React.FC = () => {
-  const [hoveredPhase, setHoveredPhase] = useState<number | null>(null);
-
-  const phases = [
+const PHASES: Record<
+  Language,
+  Array<{
+    id: number;
+    icon: any;
+    title: string;
+    subtitle: string;
+    color: string;
+  }>
+> = {
+  es: [
     {
       id: 1,
       icon: Search,
@@ -65,7 +74,124 @@ const ProjectFocusDiagram: React.FC = () => {
       subtitle: "Responsables",
       color: "bg-indigo-500",
     },
-  ];
+  ],
+  en: [
+    {
+      id: 1,
+      icon: Search,
+      title: "EXPLORATION",
+      subtitle: "Opportunities",
+      color: "bg-blue-500",
+    },
+    {
+      id: 2,
+      icon: Target,
+      title: "MAPPING",
+      subtitle: "Sectorial",
+      color: "bg-green-500",
+    },
+    {
+      id: 3,
+      icon: TrendingUp,
+      title: "ALIGNMENT",
+      subtitle: "Strategic",
+      color: "bg-purple-500",
+    },
+    {
+      id: 4,
+      icon: Lightbulb,
+      title: "IDEATION",
+      subtitle: "Collaborative",
+      color: "bg-yellow-500",
+    },
+    {
+      id: 5,
+      icon: Users,
+      title: "PRESENTATION",
+      subtitle: "and Discussion",
+      color: "bg-orange-500",
+    },
+    {
+      id: 6,
+      icon: CheckSquare,
+      title: "SELECTION",
+      subtitle: "Impact-Benefit",
+      color: "bg-red-500",
+    },
+    {
+      id: 7,
+      icon: Award,
+      title: "EXECUTION",
+      subtitle: "Responsibles",
+      color: "bg-indigo-500",
+    },
+  ],
+  pt: [
+    {
+      id: 1,
+      icon: Search,
+      title: "EXPLORAÇÃO",
+      subtitle: "Oportunidades",
+      color: "bg-blue-500",
+    },
+    {
+      id: 2,
+      icon: Target,
+      title: "MAPEAMENTO",
+      subtitle: "Setorial",
+      color: "bg-green-500",
+    },
+    {
+      id: 3,
+      icon: TrendingUp,
+      title: "ALINHAMENTO",
+      subtitle: "Estratégico",
+      color: "bg-purple-500",
+    },
+    {
+      id: 4,
+      icon: Lightbulb,
+      title: "IDEAÇÃO",
+      subtitle: "Colaborativa",
+      color: "bg-yellow-500",
+    },
+    {
+      id: 5,
+      icon: Users,
+      title: "APRESENTAÇÃO",
+      subtitle: "e Discussão",
+      color: "bg-orange-500",
+    },
+    {
+      id: 6,
+      icon: CheckSquare,
+      title: "SELEÇÃO",
+      subtitle: "Impacto-Benefício",
+      color: "bg-red-500",
+    },
+    {
+      id: 7,
+      icon: Award,
+      title: "EXECUÇÃO",
+      subtitle: "Responsáveis",
+      color: "bg-indigo-500",
+    },
+  ],
+};
+
+const CENTRAL_LABELS: Record<Language, { line1: string; line2: string }> = {
+  es: { line1: "PROJECT", line2: "FOCUS™" },
+  en: { line1: "PROJECT", line2: "FOCUS™" },
+  pt: { line1: "PROJECT", line2: "FOCUS™" },
+};
+
+const ProjectFocusDiagram: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+  const lang = (currentLanguage as Language) || "es";
+  const [hoveredPhase, setHoveredPhase] = useState<number | null>(null);
+
+  const phases = PHASES[lang];
+  const centralLabel = CENTRAL_LABELS[lang];
 
   // Aumentar el tamaño del diagrama y los nodos
   const diagramSize = 480; // px
@@ -92,9 +218,9 @@ const ProjectFocusDiagram: React.FC = () => {
             style={{ width: iconSize, height: iconSize }}
           />
           <div className="text-base leading-tight">
-            PROJECT
+            {centralLabel.line1}
             <br />
-            FOCUS™
+            {centralLabel.line2}
           </div>
         </div>
       </div>

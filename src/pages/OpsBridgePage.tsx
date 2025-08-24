@@ -6,9 +6,46 @@ import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { OpsBridgeDiagram } from "../components/OpsBridge/OpsBridgeDiagram";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+
+const CTA_TEXTS: Record<
+  Language,
+  {
+    title: string;
+    description: string;
+    primaryButtonText: string;
+    secondaryButtonText: string;
+  }
+> = {
+  es: {
+    title: "Transforma tu operación con sistemas de clase mundial",
+    description:
+      "Descubre cómo OpsBridge™ integra personas, procesos y tecnología para maximizar la eficiencia, reducir variabilidad y garantizar resultados sostenibles en toda tu organización.",
+    primaryButtonText: "Contactar Ahora",
+    secondaryButtonText: "Descargar Ficha Técnica",
+  },
+  en: {
+    title: "Transform your operation with world-class systems",
+    description:
+      "Discover how OpsBridge™ integrates people, processes, and technology to maximize efficiency, reduce variability, and ensure sustainable results across your organization.",
+    primaryButtonText: "Contact Now",
+    secondaryButtonText: "Download Brochure",
+  },
+  pt: {
+    title: "Transforme sua operação com sistemas de classe mundial",
+    description:
+      "Descubra como o OpsBridge™ integra pessoas, processos e tecnologia para maximizar a eficiência, reduzir a variabilidade e garantir resultados sustentáveis em toda a sua organização.",
+    primaryButtonText: "Contatar Agora",
+    secondaryButtonText: "Baixar Ficha Técnica",
+  },
+};
 
 const OpsBridgePage: React.FC = () => {
   useScrollToTop();
+  const { currentLanguage } = useLanguage();
+
+  const cta = CTA_TEXTS[currentLanguage];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -24,15 +61,14 @@ const OpsBridgePage: React.FC = () => {
         {/* Right: Diagram */}
         <div className="w-full lg:w-1/2 order-2">
           <OpsBridgeDiagram />
-          {/* OpsBridge World-Class Systems Diagram */}
         </div>
       </div>
       {/* Call to Action */}
       <CTASection
-        title="Transforma tu operación con sistemas de clase mundial"
-        description="Descubre cómo OpsBridge™ integra personas, procesos y tecnología para maximizar la eficiencia, reducir variabilidad y garantizar resultados sostenibles en toda tu organización."
-        primaryButtonText="Contactar Ahora"
-        secondaryButtonText="Descargar Ficha Técnica"
+        title={cta.title}
+        description={cta.description}
+        primaryButtonText={cta.primaryButtonText}
+        secondaryButtonText={cta.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
           link.href = "assets/pdf/LYS-P009-OpsBridge–World-Class-Systems.pdf";

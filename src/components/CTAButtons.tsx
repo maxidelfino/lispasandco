@@ -1,7 +1,7 @@
-"use client";
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Language } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface CTAButtonsProps {
   contactLabel?: string;
@@ -10,13 +10,42 @@ interface CTAButtonsProps {
   onDownload?: () => void;
 }
 
+ const getContactLabel = (language: Language): string => {
+  switch (language) {
+    case Language.ENGLISH:
+      return "Contact";
+    case Language.PORTUGUESE:
+      return "Contatar";
+    case Language.SPANISH:
+    default:
+      return "Contactar";
+  }
+};
+
+const getDownloadLabel = (language: Language): string => {
+  switch (language) {
+    case Language.ENGLISH:
+      return "Download Technical Sheet";
+    case Language.PORTUGUESE:
+      return "Baixar Ficha Técnica";
+    case Language.SPANISH:
+    default:
+      return "Descargar Ficha Técnica";
+  }
+};
+
 const CTAButtons: React.FC<CTAButtonsProps> = ({
-  contactLabel = "Contactar",
-  downloadLabel = "Descargar Ficha Técnica",
+  contactLabel,
+  downloadLabel,
   onContact,
   onDownload,
 }) => {
   const navigate = useNavigate();
+  const { currentLanguage } = useLanguage();
+
+  const resolvedContactLabel = contactLabel ?? getContactLabel(currentLanguage);
+  const resolvedDownloadLabel =
+    downloadLabel ?? getDownloadLabel(currentLanguage);
 
   const handleContact = () => {
     if (onContact) return onContact();
@@ -45,13 +74,13 @@ const CTAButtons: React.FC<CTAButtonsProps> = ({
         onClick={handleContact}
         className="group bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:scale-105 hover:shadow-2xl flex items-center space-x-2"
       >
-        <span>{contactLabel}</span>
+        <span>{resolvedContactLabel}</span>
       </button>
       <button
         onClick={handleDownload}
         className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105 hover:shadow-2xl"
       >
-        <span>{downloadLabel}</span>
+        <span>{resolvedDownloadLabel}</span>
       </button>
     </div>
   );
