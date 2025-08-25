@@ -67,27 +67,27 @@ const EvolutionPath: React.FC = () => {
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-3 sm:mb-4 leading-tight">
               {currentLanguage === Language.SPANISH ? (
                 <>
-                  Ofrecemos soluciones{" "}
+                  Nuestro Roadmap de Transformación:{" "}
                   <span className="text-[var(--color-secondary)]">
-                    simples y sustentables
+                    4 módulos integrados
                   </span>{" "}
-                  a los problemas de las empresas
+                  para llevar tu empresa al siguiente nivel
                 </>
               ) : currentLanguage === Language.ENGLISH ? (
                 <>
-                  We offer{" "}
+                  Our Transformation Roadmap:{" "}
                   <span className="text-[var(--color-secondary)]">
-                    simple and sustainable
+                    4 integrated modules
                   </span>{" "}
-                  solutions to business problems
+                  to take your company to the next level
                 </>
               ) : (
                 <>
-                  Oferecemos soluções{" "}
+                  Nosso Roadmap de Transformação:{" "}
                   <span className="text-[var(--color-secondary)]">
-                    simples e sustentáveis
+                    4 módulos integrados
                   </span>{" "}
-                  para os problemas das empresas
+                  para levar sua empresa ao próximo nível
                 </>
               )}
             </h2>
@@ -153,23 +153,28 @@ const EvolutionPath: React.FC = () => {
                       <div className="p-4 sm:p-6 lg:p-8">
                         <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
                           <div
-                            className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] flex items-center justify-center shadow-sm transition-all duration-300 ${
-                              isActive ? "scale-110" : "group-hover:scale-105"
+                            className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] flex items-center justify-center shadow-lg transition-all duration-300 ${
+                              isActive
+                                ? "scale-110 rotate-3"
+                                : "group-hover:scale-105 group-hover:rotate-1"
                             }`}
                           >
-                            <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                            <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 leading-tight">
+                            <h3 className="text-lg sm:text-xl font-bold text-[var(--color-primary)] leading-tight mb-1">
                               {card.subtitle}
                             </h3>
+                            <div className="w-12 h-1 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-accent)] rounded-full"></div>
                           </div>
                         </div>
 
                         {activeCard !== card.id && (
-                          <p className="text-gray-600 font-normal mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
-                            {card.description}
-                          </p>
+                          <div className="space-y-3">
+                            <p className="text-gray-600 font-normal leading-relaxed text-sm sm:text-base mb-4">
+                              {card.description}
+                            </p>
+                          </div>
                         )}
 
                         <div
@@ -179,29 +184,36 @@ const EvolutionPath: React.FC = () => {
                               : "max-h-0 opacity-0"
                           }`}
                         >
-                          <blockquote className="text-xs sm:text-sm font-medium italic p-2 sm:p-3 rounded-lg bg-gray-50 text-[var(--color-secondary)] border border-gray-100">
+                          <blockquote className="text-xs sm:text-sm font-medium italic p-3 sm:p-4 rounded-xl bg-gradient-to-r from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 text-[var(--color-secondary)] border border-[var(--color-secondary)]/20">
                             {card.quote}
                           </blockquote>
                         </div>
 
-                        {activeCard === card.id &&
-                          card.details.map((detail: string, index: number) =>
-                            detail.startsWith("Ideal") ? (
-                              <p
-                                key={index}
-                                className="text-sm text-[var(--color-text)] leading-relaxed my-2"
-                              >
-                                <b>{detail}</b>
-                              </p>
-                            ) : (
-                              <p
-                                key={index}
-                                className="text-sm text-[var(--color-text)] leading-relaxed my-2"
-                              >
-                                {detail}
-                              </p>
-                            )
-                          )}
+                        {activeCard === card.id && (
+                          <div className="space-y-3">
+                            {card.details.map((detail: string, index: number) =>
+                              detail.startsWith("Ideal") ? (
+                                <div
+                                  key={index}
+                                  className="flex items-start space-x-2"
+                                >
+                                  <p className="text-sm text-[var(--color-text)] leading-relaxed font-semibold">
+                                    {detail}
+                                  </p>
+                                </div>
+                              ) : (
+                                <div
+                                  key={index}
+                                  className="flex items-start space-x-2"
+                                >
+                                  <p className="text-sm text-[var(--color-text)] leading-relaxed">
+                                    {detail}
+                                  </p>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        )}
 
                         {card.programs && (
                           <div
@@ -211,7 +223,7 @@ const EvolutionPath: React.FC = () => {
                                 : "max-h-0 opacity-0"
                             }`}
                           >
-                            <div className="space-y-1 sm:space-y-2 mt-2">
+                            <div className="space-y-1 sm:space-y-2 mt-4 border-t border-gray-100 pt-4">
                               {card.programs.map(
                                 (program: string, idx: number) => (
                                   <div
@@ -278,17 +290,17 @@ const EvolutionPath: React.FC = () => {
               <div className="text-center">
                 <h4 className="font-bold text-[var(--color-primary)] mb-1 sm:mb-2 text-base sm:text-lg">
                   {currentLanguage === Language.SPANISH
-                    ? "¿No estás seguro cuál programa es el adecuado?"
+                    ? "¿No estás seguro por dónde empezar?"
                     : currentLanguage === Language.ENGLISH
-                    ? "Not sure which program is right for you?"
-                    : "Não tem certeza de qual programa é o mais adequado?"}
+                    ? "Not sure where to start?"
+                    : "Não tem certeza por onde começar?"}
                 </h4>
                 <p className="text-[var(--color-text)] mb-3 sm:mb-4 text-sm sm:text-base">
                   {currentLanguage === Language.SPANISH
-                    ? "Nuestros expertos pueden ayudarte a identificar la solución perfecta para tu organización."
+                    ? "Hablemos de tu situación actual y diseñemos juntos el camino de transformación ideal para tu empresa."
                     : currentLanguage === Language.ENGLISH
-                    ? "Our experts can help you identify the perfect solution for your organization."
-                    : "Nossos especialistas podem ajudá-lo a identificar a solução perfeita para sua organização."}
+                    ? "Let's discuss your current situation and design the ideal transformation path for your company."
+                    : "Vamos conversar sobre sua situação atual e desenhar juntos o caminho de transformação ideal para sua empresa."}
                 </p>
                 <button
                   className="bg-[var(--color-accent)] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold hover:bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] transition-colors text-sm sm:text-base"
@@ -298,10 +310,10 @@ const EvolutionPath: React.FC = () => {
                   }}
                 >
                   {currentLanguage === Language.SPANISH
-                    ? "Solicitar Consulta Gratuita"
+                    ? "Agenda una Reunión Gratuita"
                     : currentLanguage === Language.ENGLISH
-                    ? "Request Free Consultation"
-                    : "Solicitar Consulta Gratuita"}
+                    ? "Schedule a Free Meeting"
+                    : "Agende uma Reunião Gratuita"}
                 </button>
               </div>
             </div>

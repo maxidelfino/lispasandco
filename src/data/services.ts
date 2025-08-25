@@ -524,8 +524,7 @@ export const servicesData_transformar: Service[] = [
     description:
       "Sistema integral para la gestión eficiente de activos industriales, enfocado en maximizar la disponibilidad, confiabilidad y vida útil de los equipos productivos.",
     longDescription: [
-      "Asset Control Bridge™ es un programa especializado en la gestión de activos industriales que permite controlar, monitorear y optimizar el mantenimiento de equipos críticos. A través de metodologías estructuradas, digitalización y análisis de datos, ayuda a reducir paradas no programadas, mejorar la planificación y asegurar la trazabilidad de intervenciones.",
-      "El sistema integra herramientas visuales, indicadores clave y procesos estandarizados para garantizar la disponibilidad y confiabilidad de los activos, alineando la gestión de mantenimiento con los objetivos estratégicos de la organización y facilitando la toma de decisiones basada en información real y oportuna.",
+      "Las organizaciones precisan activos para elaborar productos o proporcionar servicios. En entornos industriales, la gestión de activos es la disciplina que asegura que los equipos e instalaciones mantengan su rendimiento, seguridad y valor durante todo su ciclo de vida. Implica integrar ingeniería, mantenimiento, operaciones y gestión financiera para tomar decisiones informadas sobre adquisición, uso, mantenimiento, renovación y disposición de los activos.",
     ],
     icon: "Settings", // Icono relacionado a mantenimiento y gestión de activos
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",

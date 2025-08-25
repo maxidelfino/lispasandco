@@ -81,18 +81,17 @@ const translations = {
             {/* Descripción principal */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                Measure Bridge es una metodología desarrollada por LYSPAS & CO
-                que permite a las organizaciones medir, visualizar y gestionar
-                el avance de sus procesos de mejora continua, integrando
-                indicadores clave y facilitando la toma de decisiones basada en
-                datos.
+                Es un programa diseñado para mejorar la precisión, la
+                confiabilidad y el valor general (incluido el impacto financiero
+                medible) de los sistemas de control de calidad en entornos
+                industriales.
               </p>
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                A través de una estructura clara y herramientas visuales,
-                Measure Bridge ayuda a identificar brechas, establecer objetivos
-                alcanzables y monitorear el progreso de manera sistemática,
-                promoviendo la participación de todos los niveles de la
-                organización.
+                Integra prácticas estadísticas, metodologías de muestreo,
+                calibración de equipos y resolución estructurada de problemas
+                para transformar los sistemas analíticos en soluciones
+                inteligentes para la gestión de la eficiencia y la mejora
+                continua
               </p>
             </div>
             {/* Cita inspiradora */}
@@ -155,16 +154,15 @@ const translations = {
             {/* Main description */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                Measure Bridge is a methodology developed by LYSPAS & CO that
-                enables organizations to measure, visualize, and manage the
-                progress of their continuous improvement processes, integrating
-                key indicators and facilitating data-driven decision making.
+                It is a program designed to improve the accuracy, reliability,
+                and overall value (including measurable financial impact) of
+                quality control systems in industrial environments.
               </p>
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                Through a clear structure and visual tools, Measure Bridge helps
-                identify gaps, set achievable goals, and monitor progress
-                systematically, promoting participation at all organizational
-                levels.
+                It integrates statistical practices, sampling methodologies,
+                equipment calibration, and structured problem-solving to
+                transform analytical systems into intelligent solutions for
+                efficiency management and continuous improvement.
               </p>
             </div>
             {/* Inspirational quote */}
@@ -228,17 +226,16 @@ const translations = {
             {/* Descrição principal */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                Measure Bridge é uma metodologia desenvolvida pela LYSPAS & CO
-                que permite às organizações medir, visualizar e gerenciar o
-                progresso de seus processos de melhoria contínua, integrando
-                indicadores-chave e facilitando a tomada de decisões baseada em
-                dados.
+                É um programa projetado para melhorar a precisão, a
+                confiabilidade e o valor geral (incluindo o impacto financeiro
+                mensurável) dos sistemas de controle de qualidade em ambientes
+                industriais.
               </p>
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                Por meio de uma estrutura clara e ferramentas visuais, o Measure
-                Bridge ajuda a identificar lacunas, estabelecer objetivos
-                alcançáveis e monitorar o progresso de forma sistemática,
-                promovendo a participação em todos os níveis da organização.
+                Integra práticas estatísticas, metodologias de amostragem,
+                calibração de equipamentos e resolução estruturada de problemas
+                para transformar os sistemas analíticos em soluções inteligentes
+                para a gestão da eficiência e a melhoria contínua.
               </p>
             </div>
             {/* Citação inspiradora */}

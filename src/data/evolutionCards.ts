@@ -36,11 +36,11 @@ export const evolutionCards: {
       title: "Iniciar la mejora",
       subtitle: "Módulo: Iniciar la mejora",
       description:
-        "Ineficiencias visibles – Repetición de problemas – Equipos desalineados",
+        "¿Tu empresa tiene ineficiencias visibles, problemas que se repiten o equipos desalineados?",
       quote: "“El primer paso para dejar de perder valor sin darte cuenta.”",
       details: [
-        "Acá comienza todo. En este camino se identifican desperdicios, se ordenan los espacios y se entrena a los equipos para que vean oportunidades donde antes solo había rutina.",
-        "Ideal para empresas que quieren mejorar pero aún no saben por dónde empezar.",
+        "En este módulo identificamos desperdicios ocultos, ordenamos espacios de trabajo y entrenamos equipos para detectar oportunidades de mejora en la operación diaria.",
+        "Ideal para empresas que saben que pueden mejorar pero necesitan una metodología clara y probada para comenzar su transformación.",
       ],
       servicesData: servicesData_iniciar,
       programs: [
@@ -55,12 +55,13 @@ export const evolutionCards: {
       title: "Estabilizar y profesionalizar",
       subtitle: "Módulo: Estabilizar y profesionalizar",
       description:
-        "No hay métricas definidas - Variables críticas fuera de control — Poca disciplina operativa",
+        "¿Tu operación carece de métricas claras, tiene variables críticas fuera de control o poca disciplina operativa?",
       quote:
         "“Cuando las cosas ya no alcanzan con funcionar: ahora tienen que funcionar siempre bien.”",
+
       details: [
-        "Una vez que eliminaste lo innecesario, llega el momento de poner foco en la estabilidad, el control de procesos y el empoderamiento del liderazgo operativo.",
-        "Ideal para empresas que necesitan hacer un salto en sus volúmenes de producción pero no quieren invertir dinero en activos fijos.",
+        "Después de eliminar desperdicios, enfocamos en estabilidad de procesos, control estadístico y empoderamiento del liderazgo operativo para resultados predecibles.",
+        "Ideal para empresas que necesitan aumentar volúmenes de producción sin invertir en nuevos activos fijos, optimizando lo que ya tienen.",
       ],
       servicesData: servicesData_estabilizar,
       programs: [
@@ -75,12 +76,12 @@ export const evolutionCards: {
       title: "Perfeccionar la operación",
       subtitle: "Módulo: Perfeccionar la operación",
       description:
-        "Mantenimiento inadecuado – Automatismo deficiente – Pérdidas en controles analíticos",
+        "¿Tu empresa sufre de pérdidas en controles de calidad, mantenimiento o automatización deficiente?",
       quote: "“La mejora se expande y convierte en el ADN del negocio.”",
       details: [
-        "Implementación de herramientas avanzadas de automatización de líneas de producción, mantenimiento, seguridad industrial y prácticas de laboratorio.",
-        "Ideal para empresas que quieren incorporar la gestión de activos como parte fundamental de su funcionamiento diario.",
-        "También para empresas cuyo negocio es altamente dependiente de muestreos, calibración de equipos y análisis de laboratorio.",
+        "Implementamos herramientas avanzadas: mantenimiento predictivo, automatización inteligente, seguridad industrial y control analítico de precisión.",
+        "Ideal para empresas que buscan excelencia operacional y quieren que la gestión de activos sea parte integral de su ventaja competitiva.",
+        "Especialmente valioso para operaciones dependientes de análisis de laboratorio, calibración de equipos y control de calidad crítico.",
       ],
       servicesData: servicesData_transformar,
       programs: [
@@ -95,11 +96,11 @@ export const evolutionCards: {
       title: "Gestionar la organización",
       subtitle: "Módulo: Gestionar la organización",
       description:
-        "Áreas desconectadas – estrategias confusas – prioridades desconocidas",
+        "¿Tu organización tiene áreas desconectadas, estrategias confusas o prioridades poco claras?",
       quote: "“De las mejoras puntuales a una cultura que transforma todo.”",
       details: [
-        "El paso más ambicioso. Aquí se alinean la estrategia, los datos, los procesos y los equipos. La mejora continua ya no es un proyecto: es la forma en la que se gestiona la empresa.",
-        "Ideal para empresas que buscan ampliar o escalar el negocio siguiendo una estrategia de crecimiento planificada.",
+        "El nivel más avanzado: alineamos estrategia, datos, procesos y equipos en un sistema integral. La mejora continua se convierte en tu forma de gestionar el negocio.",
+        "Ideal para empresas listas para escalar, expandirse o consolidar su posición de liderazgo con una estrategia de crecimiento sostenible y planificada.",
       ],
       servicesData: servicesData_aplicaciones,
       programs: [

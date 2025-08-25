@@ -63,11 +63,11 @@ const HeroSection: React.FC = () => {
           <>
             <span className="block">AssetBridge™</span>
             <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-              Conecta personas, activos y procesos
+              Sistema integrado de gestión de activos
             </span>
-            <span className="block text-3xl md:text-4xl font-normal text-white/80">
+            {/* <span className="block text-3xl md:text-4xl font-normal text-white/80">
               para una operación eficiente y segura
-            </span>
+            </span> */}
           </>
         );
     }
@@ -78,28 +78,25 @@ const HeroSection: React.FC = () => {
       case Language.ENGLISH:
         return (
           <>
-            AssetBridge is a visual solution that integrates key information
-            about your assets, facilitating management, control, and continuous
-            improvement in your plant. It optimizes decision-making, drives
-            operational discipline, and strengthens the safety culture.
+            Proper maintenance not only improves their technical performance,
+            but also ensures their availability when they are needed and
+            maximizes opportunities to capture value.
           </>
         );
       case Language.PORTUGUESE:
         return (
           <>
-            AssetBridge é uma solução visual que integra as informações-chave
-            dos seus ativos, facilitando a gestão, o controle e a melhoria
-            contínua na planta. Otimiza a tomada de decisões, impulsiona a
-            disciplina operacional e fortalece a cultura de segurança.
+            Uma manutenção adequada não só melhora seu desempenho técnico, como
+            também garante sua disponibilidade quando forem necessários e
+            maximiza as oportunidades de captura de valor.
           </>
         );
       default:
         return (
           <>
-            AssetBridge es una solución visual que integra la información clave
-            de tus activos, facilitando la gestión, el control y la mejora
-            continua en planta. Optimiza la toma de decisiones, impulsa la
-            disciplina operativa y fortalece la cultura de seguridad.
+            Un mantenimiento apropiado no sólo mejora su desempeño técnico, sino
+            que asegura su disponibilidad cuando se los necesite y maximiza las
+            oportunidades de captura de valor.
           </>
         );
     }

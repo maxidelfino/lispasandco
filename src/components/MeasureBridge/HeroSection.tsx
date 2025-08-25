@@ -20,9 +20,9 @@ const translations: Record<
   es: {
     badge: "Perfeccionar la operación",
     title: "MeasureBridge™",
-    subtitle: "Medición y gestión de desempeño operacional",
+    subtitle: "Programa Integral de Gestión Analítica y Control de Calidad",
     description1:
-      "MeasureBridge es una metodología para la medición, análisis y gestión de indicadores clave de desempeño (KPIs) en procesos operativos, permitiendo identificar brechas, causas raíz y oportunidades de mejora.",
+      "Convertimos su control de calidad en una fuente confiable de eficiencia operativa",
     description2:
       "A través de herramientas visuales y trabajo colaborativo, ayuda a equipos a construir puentes entre la situación actual y los objetivos de negocio, facilitando la toma de decisiones basada en datos y la mejora continua.",
     description3:
@@ -33,9 +33,9 @@ const translations: Record<
   en: {
     badge: "Perfect the operation",
     title: "MeasureBridge™",
-    subtitle: "Measurement and management of operational performance",
+    subtitle: "Comprehensive Program for Analytical Management and Quality Control",
     description1:
-      "MeasureBridge is a methodology for measuring, analyzing, and managing key performance indicators (KPIs) in operational processes, enabling the identification of gaps, root causes, and improvement opportunities.",
+      "We turn your quality control into a reliable source of operational efficiency",
     description2:
       "Through visual tools and collaborative work, it helps teams build bridges between the current situation and business objectives, facilitating data-driven decision-making and continuous improvement.",
     description3:
@@ -46,9 +46,9 @@ const translations: Record<
   pt: {
     badge: "Aperfeiçoar a operação",
     title: "MeasureBridge™",
-    subtitle: "Medição e gestão do desempenho operacional",
+    subtitle: "Programa Integral de Gestão Analítica e Controle da Qualidade",
     description1:
-      "MeasureBridge é uma metodologia para medição, análise e gestão de indicadores-chave de desempenho (KPIs) em processos operacionais, permitindo identificar lacunas, causas raiz e oportunidades de melhoria.",
+      "Transformamos seu controle de qualidade em uma fonte confiável de eficiência operacional",
     description2:
       "Por meio de ferramentas visuais e trabalho colaborativo, ajuda equipes a construir pontes entre a situação atual e os objetivos do negócio, facilitando a tomada de decisões baseada em dados e a melhoria contínua.",
     description3:
@@ -113,12 +113,12 @@ const HeroSection: React.FC = () => {
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
           {t.description1}
         </p>
-        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+        {/* <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
           {t.description2}
         </p>
         <p className="hidden lg:block text-lg text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
           {t.description3}
-        </p>
+        </p> */}
 
         {/* CTA Buttons */}
         <CTAButtons
