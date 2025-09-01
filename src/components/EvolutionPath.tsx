@@ -9,7 +9,14 @@ import {
 } from "../data/evolutionCards";
 import type { Service } from "../types";
 import { useScreenSize } from "../hooks/useScreenSize";
-import { Sparkles, Target, TrendingUp, Zap, ArrowRight } from "lucide-react";
+import {
+  Sparkles,
+  Target,
+  TrendingUp,
+  Zap,
+  ArrowRight,
+  Star,
+} from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
 
@@ -17,6 +24,8 @@ const EvolutionPath: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [cardId, setCardId] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState<number | null>(null);
+
   const isDesktop = useScreenSize() === "desktop";
   const containerRef = useRef<HTMLDivElement>(null);
   const { currentLanguage } = useLanguage();
@@ -71,7 +80,7 @@ const EvolutionPath: React.FC = () => {
                   <span className="text-[var(--color-secondary)]">
                     4 módulos integrados
                   </span>{" "}
-                  para llevar tu empresa al siguiente nivel
+                  para llevar tu empresa a un nivel superior
                 </>
               ) : currentLanguage === Language.ENGLISH ? (
                 <>
@@ -79,7 +88,7 @@ const EvolutionPath: React.FC = () => {
                   <span className="text-[var(--color-secondary)]">
                     4 integrated modules
                   </span>{" "}
-                  to take your company to the next level
+                  to take your company to a higher level
                 </>
               ) : (
                 <>
@@ -87,7 +96,7 @@ const EvolutionPath: React.FC = () => {
                   <span className="text-[var(--color-secondary)]">
                     4 módulos integrados
                   </span>{" "}
-                  para levar sua empresa ao próximo nível
+                  para levar sua empresa a um nível superior
                 </>
               )}
             </h2>
@@ -219,20 +228,60 @@ const EvolutionPath: React.FC = () => {
                           <div
                             className={`transition-all duration-500 overflow-hidden ${
                               isActive
-                                ? "max-h-40 opacity-100 mb-3 sm:mb-4"
+                                ? "max-h-45 opacity-100 mb-6 sm:mb-4"
                                 : "max-h-0 opacity-0"
                             }`}
                           >
                             <div className="space-y-1 sm:space-y-2 mt-4 border-t border-gray-100 pt-4">
                               {card.programs.map(
-                                (program: string, idx: number) => (
+                                ({ name, featured }, idx: number) => (
                                   <div
                                     key={idx}
                                     className="flex items-center space-x-2"
                                   >
                                     <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]" />
-                                    <span className="text-xs sm:text-sm font-medium text-gray-700">
-                                      {program}
+                                    <span className="text-xs sm:text-sm font-medium text-gray-700 flex items-center">
+                                      {name}
+                                      {featured && (
+                                        <span
+                                          className="relative ml-1 flex items-center justify-center rounded-full p-0.5 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]"
+                                          title={
+                                            currentLanguage === Language.SPANISH
+                                              ? "Programa destacado"
+                                              : currentLanguage ===
+                                                Language.ENGLISH
+                                              ? "Featured program"
+                                              : "Programa em destaque"
+                                          }
+                                          aria-label={
+                                            currentLanguage === Language.SPANISH
+                                              ? "Programa destacado"
+                                              : currentLanguage ===
+                                                Language.ENGLISH
+                                              ? "Featured program"
+                                              : "Programa em destaque"
+                                          }
+                                          onMouseEnter={() =>
+                                            setShowTooltip(idx)
+                                          }
+                                          onMouseLeave={() =>
+                                            setShowTooltip(null)
+                                          }
+                                        >
+                                          <Star className="w-3.5 h-3.5 text-white" />
+                                          {showTooltip === idx && (
+                                            <span className="absolute left-1/2 -top-8 -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs rounded px-2 py-1 pointer-events-none z-30 shadow-lg">
+                                              {currentLanguage ===
+                                              Language.SPANISH
+                                                ? "Programa destacado"
+                                                : currentLanguage ===
+                                                  Language.ENGLISH
+                                                ? "Featured program"
+                                                : "Programa em destaque"}
+                                            </span>
+                                          )}
+                                        </span>
+                                      )}
                                     </span>
                                   </div>
                                 )

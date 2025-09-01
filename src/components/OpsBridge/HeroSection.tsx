@@ -24,7 +24,7 @@ const TEXTS: Record<
     title2: "Gestión visual, disciplina y mejora continua",
     title3: "para equipos operativos de clase mundial",
     description:
-      "OpsBridge™ es un sistema integral que conecta personas, procesos y resultados a través de herramientas visuales, estándares claros y rutinas de gestión diaria. Facilita la alineación, el enfoque en prioridades y la resolución estructurada de problemas, impulsando una cultura operativa sólida y sostenible.",
+      "Está dirigido a empresas que ya tienen una base de mejora continua (con o sin LeanBridge™) y están listas para avanzar hacia la transformación integral, buscando niveles de clase mundial en eficiencia y cultura operativa.",
   },
   en: {
     badge: "Disconnected areas – Confusing strategies – Unknown priorities",
@@ -32,7 +32,7 @@ const TEXTS: Record<
     title2: "Visual management, discipline and continuous improvement",
     title3: "for world-class operations teams",
     description:
-      "OpsBridge™ is a comprehensive system that connects people, processes, and results through visual tools, clear standards, and daily management routines. It facilitates alignment, focus on priorities, and structured problem-solving, driving a strong and sustainable operational culture.",
+      "It is aimed at companies that already have a foundation in continuous improvement (with or without LeanBridge™) and are ready to move towards comprehensive transformation, seeking world-class levels in efficiency and operational culture.",
   },
   pt: {
     badge:
@@ -41,7 +41,7 @@ const TEXTS: Record<
     title2: "Gestão visual, disciplina e melhoria contínua",
     title3: "para equipes operacionais de classe mundial",
     description:
-      "OpsBridge™ é um sistema integral que conecta pessoas, processos e resultados por meio de ferramentas visuais, padrões claros e rotinas de gestão diária. Facilita o alinhamento, o foco em prioridades e a resolução estruturada de problemas, impulsionando uma cultura operacional sólida e sustentável.",
+      "É direcionado a empresas que já possuem uma base de melhoria contínua (com ou sem LeanBridge™) e estão prontas para avançar para uma transformação integral, buscando níveis de classe mundial em eficiência e cultura operacional.",
   },
 };
 

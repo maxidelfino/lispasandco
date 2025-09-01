@@ -48,12 +48,6 @@ export const servicesData_iniciar: Service[] = [
     description:
       "Intervención directa para resolver cuellos de botella y problemas End-to-End con metodología KAIZEN y resultados inmediatos.",
     longDescription: [
-      // "KAIZEN ACTION™ es un servicio de intervención directa que utiliza la metodología KAIZEN con foco en acción inmediata, colaboración interdisciplinaria y resultados medibles.",
-      // "Está diseñado para empresas que enfrentan cuellos de botella operativos, conflictos entre áreas o problemas End-to-End que impactan la experiencia del cliente o la eficiencia estratégica.",
-      // "Incluye planificación y facilitación de eventos KAIZEN (presenciales o virtuales), definición conjunta del problema, formación de facilitadores, ejecución del ciclo completo y seguimiento post-evento.",
-      // "Se aplican herramientas específicas (SIPOC, Ishikawa, matrices impacto-esfuerzo), y se configuran controles visuales y auditorías para garantizar sostenibilidad.",
-      // "KAIZEN ACTION™ se basa en el ciclo DMAIC (Definir, Medir, Analizar, Mejorar y Controlar) e integra preparación, ejecución presencial de al menos 3 días y hasta 3 meses de seguimiento.",
-      // "Es una evolución de LeanBridge™, orientada a la acción real y al empoderamiento de agentes internos, con impacto exponencial cuando participan áreas transversales.",
       "KAIZEN ACTION™ es una intervención intensiva que aplica la metodología KAIZEN con foco en acción inmediata, colaboración entre áreas y resultados medibles para resolver cuellos de botella o problemas End-to-End.",
       "Incluye eventos presenciales o virtuales con herramientas Lean (SIPOC, Ishikawa, DMAIC, etc.), formación de facilitadores y seguimiento post-evento de hasta 3 meses para garantizar sostenibilidad y transformación real.",
     ],
@@ -75,7 +69,6 @@ export const servicesData_iniciar: Service[] = [
     description: "",
     route: "/change-bridge",
     longDescription: [
-      // "Change Bridge es la Gestión del Cambio.",
       "Es un programa práctico y estructurado para ayudar a las empresas a gestionar de forma ordenada, clara y participativa los procesos de cambio, asegurando que los equipos entiendan, adopten y sostengan las transformaciones necesarias para la evolución del negocio.",
     ],
     isActive: true,
@@ -85,8 +78,28 @@ export const servicesData_iniciar: Service[] = [
       "Aumenta el  compromiso en los equipos por el solo hecho de sentirse participados.",
       "Se logran resultados sostenibles en cada transformación.",
     ],
-    // working: true,
     subtitle: "Gestionar cambios",
+  },
+  {
+    id: "process-design-bridge",
+    name: "PROCESS DESIGN BRIDGE™",
+    description: "",
+    longDescription: [
+      "PROCESS DESIGN BRIDGE™ es una intervención estructurada para diseñar o rediseñar procesos de negocio, integrando metodologías Lean y la participación activa de los equipos involucrados. El objetivo es lograr procesos simples, eficientes, estandarizados y alineados a los objetivos estratégicos de la organización.",
+      "El programa incluye diagnóstico de la situación actual, mapeo de procesos (AS-IS y TO-BE), identificación y eliminación de desperdicios, definición de roles y responsabilidades, y establecimiento de indicadores de gestión. Se trabaja con herramientas visuales y dinámicas colaborativas para asegurar la apropiación y sostenibilidad de los cambios.",
+      "Al finalizar, la organización cuenta con procesos claros, documentados y con un plan de implementación concreto, facilitando la mejora continua y la adaptación a nuevas necesidades del negocio.",
+    ],
+    route: "/process-design-bridge",
+    isActive: true,
+    benefits: [
+      "Procesos más simples, eficientes y alineados a los objetivos del negocio.",
+      "Reducción de desperdicios, tiempos y costos operativos.",
+      "Mayor claridad en roles, responsabilidades y puntos de control.",
+      "Facilita la digitalización y automatización de procesos.",
+      "Equipos involucrados y comprometidos con la mejora continua.",
+      "Documentación clara y estándar para facilitar la capacitación y el cumplimiento.",
+    ],
+    subtitle: "Ingeniería de procesos",
   },
 ];
 
@@ -168,6 +181,27 @@ export const servicesData_iniciar_en: Service[] = [
     ],
     subtitle: "Manage change",
   },
+  {
+    id: "process-design-bridge",
+    name: "PROCESS DESIGN BRIDGE™",
+    description: "",
+    longDescription: [
+      "PROCESS DESIGN BRIDGE™ is a structured intervention to design or redesign business processes, integrating Lean methodologies and the active participation of the involved teams. The goal is to achieve simple, efficient, standardized processes aligned with the organization's strategic objectives.",
+      "The program includes diagnosis of the current situation, process mapping (AS-IS and TO-BE), identification and elimination of waste, definition of roles and responsibilities, and establishment of management indicators. Visual tools and collaborative dynamics are used to ensure ownership and sustainability of the changes.",
+      "At the end, the organization has clear, documented processes and a concrete implementation plan, facilitating continuous improvement and adaptation to new business needs.",
+    ],
+    route: "/process-design-bridge",
+    isActive: true,
+    benefits: [
+      "Simpler, more efficient processes aligned with business objectives.",
+      "Reduction of waste, time, and operating costs.",
+      "Greater clarity in roles, responsibilities, and control points.",
+      "Facilitates process digitalization and automation.",
+      "Teams involved and committed to continuous improvement.",
+      "Clear, standard documentation to facilitate training and compliance.",
+    ],
+    subtitle: "Process engineering",
+  },
 ];
 
 export const servicesData_iniciar_pt: Service[] = [
@@ -247,6 +281,27 @@ export const servicesData_iniciar_pt: Service[] = [
       "Resultados sustentáveis são alcançados em cada transformação.",
     ],
     subtitle: "Gerenciar mudanças",
+  },
+  {
+    id: "process-design-bridge",
+    name: "PROCESS DESIGN BRIDGE™",
+    description: "",
+    longDescription: [
+      "PROCESS DESIGN BRIDGE™ é uma intervenção estruturada para desenhar ou redesenhar processos de negócio, integrando metodologias Lean e a participação ativa das equipes envolvidas. O objetivo é alcançar processos simples, eficientes, padronizados e alinhados aos objetivos estratégicos da organização.",
+      "O programa inclui diagnóstico da situação atual, mapeamento de processos (AS-IS e TO-BE), identificação e eliminação de desperdícios, definição de papéis e responsabilidades, e estabelecimento de indicadores de gestão. Utiliza ferramentas visuais e dinâmicas colaborativas para garantir a apropriação e sustentabilidade das mudanças.",
+      "Ao final, a organização conta com processos claros, documentados e com um plano de implementação concreto, facilitando a melhoria contínua e a adaptação a novas necessidades do negócio.",
+    ],
+    route: "/process-design-bridge",
+    isActive: true,
+    benefits: [
+      "Processos mais simples, eficientes e alinhados aos objetivos do negócio.",
+      "Redução de desperdícios, tempos e custos operacionais.",
+      "Maior clareza em papéis, responsabilidades e pontos de controle.",
+      "Facilita a digitalização e automação de processos.",
+      "Equipes envolvidas e comprometidas com a melhoria contínua.",
+      "Documentação clara e padronizada para facilitar o treinamento e o cumprimento.",
+    ],
+    subtitle: "Engenharia de processos",
   },
 ];
 
@@ -406,10 +461,6 @@ export const servicesData_estabilizar: Service[] = [
     description:
       "Programa estructurado para estabilizar procesos industriales y operativos, logrando eficiencia y previsibilidad sin necesidad de activos fijos.",
     longDescription: [
-      // "FlowStable™ es el programa más recomendado por LYSPAS & CO para empresas que desean aumentar su producción o eficiencia sin invertir en activos fijos.",
-      // "A través de un enfoque estructurado, cambia el foco de la operación de perseguir récords diarios a construir procesos estables y previsibles, lo que permite alcanzar mejores promedios, mayor control y más productividad.",
-      // "Su metodología incluye una secuencia diaria de mejora, seguimiento de desvíos, y aplicación de acciones correctivas en tiempo real, generando resultados rápidos y sostenidos.",
-      // "La implementación se realiza en 7 fases durante 7 meses, que van desde diagnóstico inicial hasta la consolidación de equipos y auditorías de gestión.",
       "FlowStable™ optimiza la producción y eficiencia sin grandes inversiones, pasando de perseguir récords diarios a establecer procesos estables y previsibles para mejorar promedios y control.",
       "Su implementación en 7 fases a lo largo de 7 meses combina diagnóstico, secuencia diaria de mejora, seguimiento de desvíos y acciones correctivas en tiempo real para generar resultados rápidos y sostenidos.",
     ],
@@ -418,11 +469,6 @@ export const servicesData_estabilizar: Service[] = [
     route: "/flowstable",
     isActive: true,
     benefits: [
-      // "Estabiliza los procesos productivos",
-      // "Reduce la variabilidad en la producción",
-      // "Mejora la predictibilidad de resultados",
-      // "Optimiza el flujo de materiales",
-
       "Genera mejoras rápidas y sostenidas, especialmente en la consistencia de la producción o los servicios, la reducción de variabilidad operativa y el cumplimiento de los objetivos diarios.",
       "Sin invertir en activos fijos.",
     ],
@@ -434,12 +480,6 @@ export const servicesData_estabilizar: Service[] = [
     description:
       "Capacitación práctica para tomar decisiones empresariales con respaldo estadístico, reduciendo incertidumbre y mejorando resultados.",
     longDescription: [
-      // "Este programa capacita a profesionales para interpretar datos, analizar variaciones y fundamentar decisiones con evidencia, usando herramientas como Excel y Minitab.",
-      // "El diseño incluye 5 módulos teórico-prácticos que cubren desde modelado de datos y estadística descriptiva hasta inferencia, regresión y diseño de experimentos.",
-      // "Los participantes desarrollan un proyecto real en cada módulo (TP1–TP4), aplicando lo aprendido en su propio entorno o en ejemplos proporcionados.",
-      // "Disponibles dos modalidades: académica (12 clases de 2 h) o empresarial (6 clases intensivas de 4 h), con 70 % de tiempo dedicado a la práctica.",
-      // "El curso es ideal para quienes necesitan decisiones basadas en datos (mandos medios, calidad, finanzas, etc.) y es un complemento clave para mejorar programas como WasteZero™, FlowStable™ y LeanBridge™.",
-      // "Al completar el curso los participantes reciben certificación en análisis estadístico aplicado, orientado a estándares Green Belt.",
       "Formación práctica en análisis de datos para fundamentar decisiones con herramientas como Excel y Minitab, mediante 5 módulos que abarcan desde estadística descriptiva e inferencia hasta regresión y diseño de experimentos, con proyectos reales en cada etapa.",
       "Ofrece modalidad académica (12×2 h) o intensiva empresarial (6×4 h) con 70 % de práctica, y al finalizar otorga certificación en análisis estadístico aplicado (estándar Green Belt), ideal para mandos medios y áreas de calidad, finanzas y mejora continua.",
     ],
@@ -469,11 +509,6 @@ export const servicesData_estabilizar: Service[] = [
     description:
       "Programa integral de transformación LEAN para eliminar desperdicios, mejorar eficiencia y consolidar cultura de mejora continua.",
     longDescription: [
-      // "LeanBridge™ es un programa de transformación diseñado por LYSPAS & CO para implementar técnicas LEAN en empresas que buscan eficiencia, eliminación de desperdicios y una cultura sostenible de mejora continua.",
-      // "Funciona como un 'puente' entre el estado actual y el ideal, conectando equipos operativos con objetivos estratégicos y alineando ejecución diaria con visión de largo plazo.",
-      // "Redistribuye la toma de decisiones hacia la línea de frente, empoderando a los equipos para resolver problemas en el origen y liberando a la supervisión para enfocarse en iniciativas estratégicas.",
-      // "Su propósito es integrar la mejora continua al ADN operativo, posicionando a la empresa en un nivel inicial de madurez según el LYSPAS HIERARCHY INDEX™.",
-      // "En los primeros 8 meses se logran mejoras visibles en orden, planificación y cumplimiento de metas; la gestión visual permite detectar y corregir desviaciones en tiempo real.",
       "Programa de transformación Lean que actúa como puente entre la operación diaria y la estrategia, empoderando a los equipos de primera línea para eliminar desperdicios y resolver problemas en el origen, mientras alinea objetivos tácticos con la visión a largo plazo.",
       "Implementación de un sistema sostenible de mejora continua integrada al ADN operativo, con resultados visibles en 8 meses (orden, planificación, cumplimiento de metas) y control visual en tiempo real según el LYSPAS HIERARCHY INDEX™.",
     ],
@@ -526,7 +561,7 @@ export const servicesData_transformar: Service[] = [
     longDescription: [
       "Las organizaciones precisan activos para elaborar productos o proporcionar servicios. En entornos industriales, la gestión de activos es la disciplina que asegura que los equipos e instalaciones mantengan su rendimiento, seguridad y valor durante todo su ciclo de vida. Implica integrar ingeniería, mantenimiento, operaciones y gestión financiera para tomar decisiones informadas sobre adquisición, uso, mantenimiento, renovación y disposición de los activos.",
     ],
-    icon: "Settings", // Icono relacionado a mantenimiento y gestión de activos
+    icon: "Settings",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/asset-control-bridge",
     isActive: true,
@@ -545,9 +580,20 @@ export const servicesData_transformar: Service[] = [
     id: "autops",
     name: "AUTOPS™",
     description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    longDescription: [
+      "AUTOPS™ es un sistema diseñado para incorporar la operación automática de procesos industriales, integrando tecnologías digitales, monitoreo en tiempo real y control avanzado para maximizar la eficiencia, seguridad y trazabilidad en planta.",
+      "Permite reducir la intervención manual, minimizar errores, asegurar la consistencia operativa y facilitar la toma de decisiones basada en datos, alineando la operación con los objetivos estratégicos de la organización.",
+    ],
+    icon: "Cpu",
+    isActive: true,
+    benefits: [
+      "Automatiza y estandariza la operación de procesos industriales.",
+      "Reduce errores y riesgos asociados a la intervención manual.",
+      "Mejora la trazabilidad y el monitoreo en tiempo real.",
+      "Facilita la toma de decisiones basada en datos operativos.",
+    ],
+    working: false,
+    route: "/autops",
     subtitle: "Incorporar operación automática de procesos",
   },
   {
@@ -568,7 +614,7 @@ export const servicesData_transformar: Service[] = [
       "Measure Bridge™ es un sistema especializado que permite gestionar, controlar y optimizar los procesos de medición industrial, garantizando la trazabilidad y la integridad de los datos obtenidos.",
       "A través de metodologías estructuradas, digitalización y análisis de información, facilita la toma de decisiones basada en datos confiables, reduce errores y asegura el cumplimiento de estándares de calidad y normativas vigentes.",
     ],
-    icon: "BarChart", // Icono relacionado a medición y análisis de datos
+    icon: "BarChart",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/measure-bridge",
     isActive: true,
@@ -593,7 +639,7 @@ export const servicesData_transformar_en: Service[] = [
       "Asset Control Bridge™ is a specialized program for industrial asset management that enables control, monitoring, and optimization of maintenance for critical equipment. Through structured methodologies, digitalization, and data analysis, it helps reduce unplanned downtime, improve planning, and ensure traceability of interventions.",
       "The system integrates visual tools, key indicators, and standardized processes to guarantee the availability and reliability of assets, aligning maintenance management with the organization's strategic objectives and facilitating decision-making based on real and timely information.",
     ],
-    icon: "Settings", // Icon related to maintenance and asset management
+    icon: "Settings",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/asset-control-bridge",
     isActive: true,
@@ -611,11 +657,23 @@ export const servicesData_transformar_en: Service[] = [
   {
     id: "autops",
     name: "AUTOPS™",
-    description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
-    subtitle: "Implement automatic process operation",
+    description:
+      "System for automating industrial process operations, integrating digital technologies, real-time monitoring, and advanced control to maximize efficiency, safety, and traceability.",
+    longDescription: [
+      "AUTOPS™ is a system designed to incorporate automatic operation of industrial processes, integrating digital technologies, real-time monitoring, and advanced control to maximize efficiency, safety, and traceability in the plant.",
+      "It reduces manual intervention, minimizes errors, ensures operational consistency, and facilitates data-driven decision-making, aligning operations with the organization's strategic objectives.",
+    ],
+    icon: "Cpu",
+    isActive: true,
+    benefits: [
+      "Automates and standardizes the operation of industrial processes.",
+      "Reduces errors and risks associated with manual intervention.",
+      "Improves traceability and real-time monitoring.",
+      "Facilitates decision-making based on operational data.",
+    ],
+    working: false,
+    route: "/autops",
+    subtitle: "Incorporate automatic process operation",
   },
   {
     id: "safe-process",
@@ -635,7 +693,7 @@ export const servicesData_transformar_en: Service[] = [
       "Measure Bridge™ is a specialized system that enables the management, control, and optimization of industrial measurement processes, guaranteeing traceability and data integrity.",
       "Through structured methodologies, digitalization, and information analysis, it facilitates data-driven decision-making, reduces errors, and ensures compliance with current quality standards and regulations.",
     ],
-    icon: "BarChart", // Icon related to measurement and data analysis
+    icon: "BarChart",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/measure-bridge",
     isActive: true,
@@ -660,7 +718,7 @@ export const servicesData_transformar_pt: Service[] = [
       "O Asset Control Bridge™ é um programa especializado em gestão de ativos industriais que permite controlar, monitorar e otimizar a manutenção de equipamentos críticos. Por meio de metodologias estruturadas, digitalização e análise de dados, ajuda a reduzir paradas não programadas, melhorar o planejamento e garantir a rastreabilidade das intervenções.",
       "O sistema integra ferramentas visuais, indicadores-chave e processos padronizados para garantir a disponibilidade e confiabilidade dos ativos, alinhando a gestão de manutenção com os objetivos estratégicos da organização e facilitando a tomada de decisões baseada em informações reais e oportunas.",
     ],
-    icon: "Settings", // Ícone relacionado à manutenção e gestão de ativos
+    icon: "Settings",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/asset-control-bridge",
     isActive: true,
@@ -679,9 +737,20 @@ export const servicesData_transformar_pt: Service[] = [
     id: "autops",
     name: "AUTOPS™",
     description: "",
-    isActive: false,
-    benefits: [],
-    working: true,
+    longDescription: [
+      "AUTOPS™ é um sistema projetado para incorporar a operação automática de processos industriais, integrando tecnologias digitais, monitoramento em tempo real e controle avançado para maximizar a eficiência, segurança e rastreabilidade na planta.",
+      "Permite reduzir a intervenção manual, minimizar erros, assegurar a consistência operacional e facilitar a tomada de decisões baseada em dados, alinhando a operação com os objetivos estratégicos da organização.",
+    ],
+    icon: "Cpu",
+    isActive: true,
+    benefits: [
+      "Automatiza e padroniza a operação de processos industriais.",
+      "Reduz erros e riscos associados à intervenção manual.",
+      "Melhora a rastreabilidade e o monitoramento em tempo real.",
+      "Facilita a tomada de decisões baseada em dados operacionais.",
+    ],
+    working: false,
+    route: "/autops",
     subtitle: "Incorporar operação automática de processos",
   },
   {
@@ -702,7 +771,7 @@ export const servicesData_transformar_pt: Service[] = [
       "O Measure Bridge™ é um sistema especializado que permite gerenciar, controlar e otimizar os processos de medição industrial, garantindo a rastreabilidade e a integridade dos dados obtidos.",
       "Por meio de metodologias estruturadas, digitalização e análise de informações, facilita a tomada de decisões baseada em dados confiáveis, reduz erros e assegura o cumprimento de padrões de qualidade e normas vigentes.",
     ],
-    icon: "BarChart", // Ícone relacionado à medição e análise de dados
+    icon: "BarChart",
     color: "from-[var(--color-secondary)] to-[var(--color-accent)]",
     route: "/measure-bridge",
     isActive: true,
@@ -792,16 +861,14 @@ export const servicesData_aplicaciones: Service[] = [
     route: "/people-first",
     isActive: true,
     longDescription: [
-      "People First™ es un sistema integral para la gestión de personas que conecta el desarrollo individual con los objetivos estratégicos de la organización. A través de procesos estructurados de feedback, definición de objetivos y evaluación de competencias, promueve la alineación entre el crecimiento personal y las necesidades del negocio.",
-      "La metodología permite identificar brechas de habilidades, asignar roles y responsabilidades basados en evidencias y diseñar entrenamientos a medida, asegurando que cada colaborador aporte su máximo potencial en el lugar correcto.",
-      "Además, fomenta un entorno de aprendizaje continuo donde el desarrollo técnico y humano es parte del sistema operativo de la empresa, fortaleciendo la sostenibilidad de los resultados y el compromiso de las personas.",
+      "People First™ es un programa de desarrollo organizacional centrado en las personas, diseñado para alinear habilidades, comportamientos y evolución profesional con los desafíos estratégicos y operativos de la empresa.",
+      "Su enfoque combina herramientas como coaching con propósito, feedback basado en objetivos, matriz de habilidades conectada con planes de formación, y acompañamiento en el desarrollo de competencias técnicas y generales.",
     ],
     benefits: [
-      "Fortalece el compromiso individual a través de objetivos claros y feedback efectivo.",
-      "Mejora la asignación de roles y responsabilidades, basándose en evidencias de habilidades reales.",
-      "Cierra brechas entre necesidades de la operación y el perfil de las personas mediante entrenamientos a medida.",
-      "Genera un entorno de aprendizaje continuo, donde el desarrollo técnico y humano es parte del sistema operativo de la empresa.",
-      "Conecta el crecimiento personal con la mejora continua organizacional, aumentando la sostenibilidad de los resultados",
+      "Fortalece el compromiso individual",
+      "Mejora la asignación de roles",
+      "Cierra brechas entre necesidades y perfiles",
+      "Genera un entorno de aprendizaje",
     ],
     working: false,
     subtitle: "Gestionar recursos humanos",

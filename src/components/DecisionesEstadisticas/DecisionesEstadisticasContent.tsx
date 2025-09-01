@@ -56,9 +56,6 @@ const translations = {
                 interpretar datos, analizar variaciones y tomar decisiones
                 fundamentadas en evidencia cuantitativa, utilizando herramientas
                 estadísticas accesibles y aplicadas a la realidad de la empresa.
-                Este programa es el puente entre la intuición y el análisis
-                profundo, preparando a los participantes para liderar con
-                claridad, evidencia y confianza en contextos de mejora continua.
               </p>
             </div>
             <div className="mb-6">
@@ -390,10 +387,7 @@ const translations = {
                 Statistics-Based Managerial Decisions™ is a training designed to
                 develop professionals capable of interpreting data, analyzing
                 variation, and making evidence-based decisions using accessible
-                statistical tools applied to the company's reality. This program
-                bridges intuition and deep analysis, preparing participants to
-                lead with clarity, evidence, and confidence in continuous
-                improvement contexts.
+                statistical tools applied to the company's reality.
               </p>
             </div>
             <div className="mb-6">
@@ -725,10 +719,7 @@ const translations = {
                 projetado para formar profissionais capazes de interpretar
                 dados, analisar variações e tomar decisões fundamentadas em
                 evidências quantitativas, utilizando ferramentas estatísticas
-                acessíveis e aplicadas à realidade da empresa. Este programa é a
-                ponte entre a intuição e a análise profunda, preparando os
-                participantes para liderar com clareza, evidência e confiança em
-                contextos de melhoria contínua.
+                acessíveis e aplicadas à realidade da empresa.
               </p>
             </div>
             <div className="mb-6">
@@ -1232,7 +1223,7 @@ const DecisionesEstadisticasContent: React.FC = () => {
   };
 
   return (
-    <div id="changeBridge-content" className="bg-[var(--color-bg)]">
+    <div id="decisionesEstadisticas-content" className="bg-[var(--color-bg)]">
       <ContentSection id="que-es" title="" subtitle="">
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {features.map((feature) => {

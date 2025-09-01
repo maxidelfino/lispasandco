@@ -25,6 +25,7 @@ import AssetControlBridgePage from "./pages/AssetControlBridgePage";
 import AutopsPage from "./pages/AutopsPage";
 import SafeProcessPage from "./pages/SafeProcessPage";
 import MeasureBridgePage from "./pages/MeasureBridgePage";
+import ProcessDesignBridgePage from "./pages/ProcessDesignBridgePage";
 
 import { useLanguage } from "./contexts/LanguageContext";
 import { Language } from "./types";
@@ -121,6 +122,11 @@ const titleMap: Record<string, Record<Language, string>> = {
     en: "Measure Bridge™ - Laboratory Improvement | LYSPAS & CO",
     pt: "Measure Bridge™ - Melhoria em Laboratórios | LYSPAS & CO",
   },
+  "/process-design-bridge": {
+    es: "PROCESS DESIGN BRIDGE™ | LYSPAS & CO",
+    en: "PROCESS DESIGN BRIDGE™ | LYSPAS & CO",
+    pt: "PROCESS DESIGN BRIDGE™ | LYSPAS & CO",
+  },
 };
 
 const descriptionMap: Record<string, Record<Language, string>> = {
@@ -214,6 +220,11 @@ const descriptionMap: Record<string, Record<Language, string>> = {
     en: "Measure Bridge™ - Continuous improvement in laboratories. Analytical precision, equipment calibration, quality control in laboratory analysis.",
     pt: "Measure Bridge™ - Melhoria contínua em laboratórios. Precisão analítica, calibração de equipamentos, controle de qualidade em análises laboratoriais.",
   },
+  "/process-design-bridge": {
+    es: "PROCESS DESIGN BRIDGE™ - Diseño y optimización de procesos industriales. Consultoría especializada en ingeniería de procesos y mejora continua.",
+    en: "PROCESS DESIGN BRIDGE™ - Design and optimization of industrial processes. Specialized consulting in process engineering and continuous improvement.",
+    pt: "PROCESS DESIGN BRIDGE™ - Design e otimização de processos industriais. Consultoria especializada em engenharia de processos e melhoria contínua.",
+  },
 };
 
 const keywordsMap: Record<string, Record<Language, string>> = {
@@ -286,6 +297,11 @@ const keywordsMap: Record<string, Record<Language, string>> = {
     es: "People First, desarrollo organizacional, coaching empresarial, gestión talento, formación equipos, desarrollo competencias",
     en: "People First, organizational development, business coaching, talent management, team training, competency development",
     pt: "People First, desenvolvimento organizacional, coaching empresarial, gestão de talentos, treinamento de equipes, desenvolvimento de competências",
+  },
+  "/process-design-bridge": {
+    es: "Process Design Bridge, diseño de procesos, optimización industrial, ingeniería de procesos, consultoría, mejora continua",
+    en: "Process Design Bridge, process design, industrial optimization, process engineering, consulting, continuous improvement",
+    pt: "Process Design Bridge, design de processos, otimização industrial, engenharia de processos, consultoria, melhoria contínua",
   },
 };
 
@@ -363,6 +379,10 @@ function App() {
           <Route path="/autops" element={<AutopsPage />} />
           <Route path="/safe-process" element={<SafeProcessPage />} />
           <Route path="/measure-bridge" element={<MeasureBridgePage />} />
+          <Route
+            path="/process-design-bridge"
+            element={<ProcessDesignBridgePage />}
+          />
         </Routes>
       </div>
     </Router>

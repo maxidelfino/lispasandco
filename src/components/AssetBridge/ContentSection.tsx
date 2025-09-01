@@ -19,6 +19,10 @@ import {
   BarChart2,
   FileWarning,
   Compass,
+  Droplet,
+  Wheat,
+  Package,
+  Thermometer,
 } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
@@ -72,36 +76,21 @@ const translations = {
           <>
             {/* Introducción a la gestión de activos */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                En entornos industriales, la gestión de activos es la disciplina
-                que asegura que los equipos e instalaciones mantengan su
-                rendimiento, seguridad y valor durante todo su ciclo de vida.
-                Implica integrar ingeniería, mantenimiento, operaciones y
-                gestión financiera para tomar decisiones informadas sobre
-                adquisición, uso, mantenimiento, renovación y disposición de los
-                activos.
-              </p>
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                El objetivo de realizar un mantenimiento correcto y gestionar
-                adecuadamente los activos no solo mejora su desempeño técnico,
-                sino que asegura su disponibilidad cuando se los necesite, y de
-                forma rentable.
-              </p>
-            </div>
-            {/* ¿Qué es el programa Asset Bridge? */}
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-accent)]/5 to-[var(--color-secondary)]/5 rounded-2xl border-l-4 border-[var(--color-accent)]">
-              <h3 className="text-[var(--color-primary)] font-bold text-lg mb-2">
-                ¿Qué es el programa Asset Bridge?
-              </h3>
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
                 <span className="font-semibold">Asset Bridge™</span> de LYSPAS &
-                CO es un programa estructurado que conecta las mejores prácticas
-                de Asset Management con la realidad operativa de cada planta.
-                Combina metodologías como Asset Integrity Management,
-                Reliability Centered Maintenance (RCM), Operator Driven
-                Reliability (ODR) y sistemas de monitoreo de condición para
-                optimizar disponibilidad y confiabilidad, al tiempo que reduce
-                costos y riesgos.
+                CO es un programa estructurado que cuenta con un conjunto de
+                elementos que permiten el abordaje a las dificultades que posee
+                cada planta para la Captura de Valor Óptima de sus activos.
+              </p>
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                Es un programa que combina estándares internacionales, buenas
+                prácticas y herramientas de mejora continua, con la realidad
+                operativa y de madurez de cada planta.
+              </p>
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                Genera vínculos entre las áreas de Mantenimiento, Operaciones,
+                Ingeniería y Gestión para maximizar el retorno de valor de su
+                inversión a través de la disponibilidad y confiabilidad.
               </p>
             </div>
             {/* ¿Qué es? */}
@@ -158,33 +147,21 @@ const translations = {
           <>
             {/* Asset management introduction */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                In industrial environments, asset management is the discipline
-                that ensures equipment and facilities maintain their
-                performance, safety, and value throughout their lifecycle. It
-                involves integrating engineering, maintenance, operations, and
-                financial management to make informed decisions about
-                acquisition, use, maintenance, renewal, and disposal of assets.
-              </p>
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                The goal of proper maintenance and asset management is not only
-                to improve technical performance, but also to ensure
-                availability when needed, and in a cost-effective way.
-              </p>
-            </div>
-            {/* What is the Asset Bridge program? */}
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-accent)]/5 to-[var(--color-secondary)]/5 rounded-2xl border-l-4 border-[var(--color-accent)]">
-              <h3 className="text-[var(--color-primary)] font-bold text-lg mb-2">
-                What is the Asset Bridge program?
-              </h3>
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
                 <span className="font-semibold">Asset Bridge™</span> by LYSPAS &
-                CO is a structured program that connects best practices in Asset
-                Management with the operational reality of each plant. It
-                combines methodologies such as Asset Integrity Management,
-                Reliability Centered Maintenance (RCM), Operator Driven
-                Reliability (ODR), and condition monitoring systems to optimize
-                availability and reliability, while reducing costs and risks.
+                CO is a structured program that provides a set of elements to
+                address the challenges each plant faces in achieving optimal
+                value capture from its assets.
+              </p>
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                It is a program that combines international standards, best
+                practices, and continuous improvement tools with the operational
+                reality and maturity of each plant.
+              </p>
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                It creates links between Maintenance, Operations, Engineering,
+                and Management areas to maximize the return on investment
+                through availability and reliability.
               </p>
             </div>
             {/* What is it? */}
@@ -241,35 +218,21 @@ const translations = {
           <>
             {/* Introdução à gestão de ativos */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                Em ambientes industriais, a gestão de ativos é a disciplina que
-                garante que os equipamentos e instalações mantenham seu
-                desempenho, segurança e valor durante todo o ciclo de vida.
-                Envolve integrar engenharia, manutenção, operações e gestão
-                financeira para tomar decisões informadas sobre aquisição, uso,
-                manutenção, renovação e descarte dos ativos.
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                <span className="font-semibold">Asset Bridge™</span> da LYSPAS
+                &amp; CO é um programa estruturado que conta com um conjunto de
+                elementos que permitem abordar as dificuldades que cada planta
+                possui para a Captura Ótima de Valor de seus ativos.
               </p>
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                O objetivo de realizar uma manutenção correta e gerenciar
-                adequadamente os ativos não só melhora seu desempenho técnico,
-                mas também garante sua disponibilidade quando necessário, de
-                forma rentável.
+                É um programa que combina padrões internacionais, boas práticas
+                e ferramentas de melhoria contínua com a realidade operacional e
+                o nível de maturidade de cada planta.
               </p>
-            </div>
-            {/* O que é o programa Asset Bridge? */}
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-accent)]/5 to-[var(--color-secondary)]/5 rounded-2xl border-l-4 border-[var(--color-accent)]">
-              <h3 className="text-[var(--color-primary)] font-bold text-lg mb-2">
-                O que é o programa Asset Bridge?
-              </h3>
               <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                <span className="font-semibold">Asset Bridge™</span> da LYSPAS &
-                CO é um programa estruturado que conecta as melhores práticas de
-                Asset Management com a realidade operacional de cada planta.
-                Combina metodologias como Asset Integrity Management,
-                Reliability Centered Maintenance (RCM), Operator Driven
-                Reliability (ODR) e sistemas de monitoramento de condição para
-                otimizar disponibilidade e confiabilidade, ao mesmo tempo que
-                reduz custos e riscos.
+                Gera vínculos entre as áreas de Manutenção, Operações,
+                Engenharia e Gestão para maximizar o retorno do investimento por
+                meio da disponibilidade e confiabilidade dos ativos.
               </p>
             </div>
             {/* O que é? */}
@@ -584,91 +547,93 @@ const translations = {
       },
       items: [
         {
-          icon: Box,
+          icon: Droplet,
           title: {
-            [Language.SPANISH]: "Empresas industriales de sectores críticos",
-            [Language.ENGLISH]: "Industrial companies in critical sectors",
-            [Language.PORTUGUESE]: "Empresas industriais de setores críticos",
+            [Language.SPANISH]: "Industria aceitera",
+            [Language.ENGLISH]: "Oilseed Industry",
+            [Language.PORTUGUESE]: "Indústria de óleos vegetais",
           },
           description: {
             [Language.SPANISH]:
-              "Empresas industriales de sectores como manufactura, alimentos y bebidas, farmacéutica, minería, energía, química, papel y celulosa, entre otros, que gestionan activos físicos críticos.",
+              "Laminadores y quebradores, equipos cuya confiabilidad impacta directamente en la capacidad productiva y el rendimiento de extracción.",
             [Language.ENGLISH]:
-              "Industrial companies in sectors such as manufacturing, food and beverage, pharmaceutical, mining, energy, chemical, paper and pulp, among others, that manage critical physical assets.",
+              "Rollers and crushers, equipment whose reliability directly impacts productive capacity and extraction yield.",
             [Language.PORTUGUESE]:
-              "Empresas industriais de setores como manufatura, alimentos e bebidas, farmacêutica, mineração, energia, química, papel e celulose, entre outros, que gerenciam ativos físicos críticos.",
+              "Laminadores e quebradores, equipamentos cuja confiabilidade impacta diretamente a capacidade produtiva e o rendimento de extração.",
           },
         },
         {
-          icon: Settings,
+          icon: Wheat,
           title: {
-            [Language.SPANISH]:
-              "Organizaciones enfocadas en mantenimiento y confiabilidad",
-            [Language.ENGLISH]:
-              "Organizations focused on maintenance and reliability",
-            [Language.PORTUGUESE]:
-              "Organizações focadas em manutenção e confiabilidade",
+            [Language.SPANISH]: "Molinería y otros procesos mecánicos",
+            [Language.ENGLISH]: "Milling and Other Mechanical Processes",
+            [Language.PORTUGUESE]: "Moagem e outros processos mecânicos",
           },
           description: {
             [Language.SPANISH]:
-              "Organizaciones que buscan optimizar la gestión de mantenimiento, confiabilidad y disponibilidad de sus equipos e instalaciones.",
+              "Molinos, zarandas, quebradores, descascaradores, minimizando desgaste y asegurando un producto final consistente.",
             [Language.ENGLISH]:
-              "Organizations seeking to optimize maintenance management, reliability, and availability of their equipment and facilities.",
+              "Mills, sieves, crushers, hullers, minimizing wear and ensuring a consistent final product.",
             [Language.PORTUGUESE]:
-              "Organizações que buscam otimizar a gestão de manutenção, confiabilidade e disponibilidade de seus equipamentos e instalações.",
+              "Moinhos, peneiras, quebradores, descascadores, minimizando o desgaste e garantindo um produto final consistente.",
           },
         },
         {
-          icon: Grid3x3,
+          icon: Package,
           title: {
-            [Language.SPANISH]:
-              "Empresas con integración de áreas técnicas y de gestión",
-            [Language.ENGLISH]:
-              "Companies with integration of technical and management areas",
-            [Language.PORTUGUESE]:
-              "Empresas com integração de áreas técnicas e de gestão",
+            [Language.SPANISH]: "Movimiento de granos",
+            [Language.ENGLISH]: "Grain Handling",
+            [Language.PORTUGUESE]: "Movimentação de grãos",
           },
           description: {
             [Language.SPANISH]:
-              "Empresas con necesidades de integración entre áreas técnicas, operativas y de gestión, para alinear la estrategia de activos con los objetivos corporativos.",
+              "Plataformas de descarga, transportadores, secadoras, donde la continuidad operativa evita pérdidas de calidad y tiempos de parada.",
             [Language.ENGLISH]:
-              "Companies needing integration between technical, operational, and management areas to align asset strategy with corporate objectives.",
+              "Unloading platforms, conveyors, dryers, where operational continuity prevents quality losses and downtime.",
             [Language.PORTUGUESE]:
-              "Empresas com necessidades de integração entre áreas técnicas, operacionais e de gestão, para alinhar a estratégia de ativos com os objetivos corporativos.",
+              "Plataformas de descarga, transportadores, secadores, onde a continuidade operacional evita perdas de qualidade e paradas.",
           },
         },
         {
-          icon: Users,
+          icon: Thermometer,
           title: {
-            [Language.SPANISH]: "Líderes y equipos de gestión de activos",
-            [Language.ENGLISH]: "Asset management leaders and teams",
-            [Language.PORTUGUESE]: "Líderes e equipes de gestão de ativos",
+            [Language.SPANISH]: "Sistemas de refrigeración industrial",
+            [Language.ENGLISH]: "Industrial Refrigeration Systems",
+            [Language.PORTUGUESE]: "Sistemas de refrigeração industrial",
           },
           description: {
-            [Language.SPANISH]:
-              "Líderes de mantenimiento, operaciones, ingeniería, producción, calidad y gestión de activos que desean fortalecer la cultura de mejora continua y cumplimiento normativo.",
-            [Language.ENGLISH]:
-              "Leaders in maintenance, operations, engineering, production, quality, and asset management who want to strengthen a culture of continuous improvement and regulatory compliance.",
+            [Language.SPANISH]: "(compresores, evaporadores, condensadores)",
+            [Language.ENGLISH]: "(compressors, evaporators, condensers)",
             [Language.PORTUGUESE]:
-              "Líderes de manutenção, operações, engenharia, produção, qualidade e gestão de ativos que desejam fortalecer a cultura de melhoria contínua e conformidade regulatória.",
+              "(compressores, evaporadores, condensadores)",
           },
         },
         {
-          icon: RefreshCcw,
+          icon: "Layers", // Usamos "Layers" para representar líneas y procesos de empaque
           title: {
-            [Language.SPANISH]:
-              "Compañías en transformación digital de activos",
-            [Language.ENGLISH]: "Companies in digital asset transformation",
-            [Language.PORTUGUESE]:
-              "Empresas em transformação digital de ativos",
+            [Language.SPANISH]: "Líneas de desposte y empaque",
+            [Language.ENGLISH]: "Deboning and Packaging Lines",
+            [Language.PORTUGUESE]: "Linhas de desossa e embalagem",
           },
           description: {
             [Language.SPANISH]:
-              "Compañías en procesos de transformación digital, implementación de sistemas de gestión de activos (EAM/CMMS) o que buscan elevar su nivel de madurez en gestión de activos.",
-            [Language.ENGLISH]:
-              "Companies undergoing digital transformation, implementing asset management systems (EAM/CMMS), or seeking to raise their asset management maturity level.",
+              "(cintas transportadoras, sierras, clasificadoras)",
+            [Language.ENGLISH]: "(conveyor belts, saws, sorters)",
             [Language.PORTUGUESE]:
-              "Empresas em processos de transformação digital, implementação de sistemas de gestão de ativos (EAM/CMMS) ou que buscam elevar seu nível de maturidade em gestão de ativos.",
+              "(esteiras transportadoras, serras, classificadoras)",
+          },
+        },
+        {
+          icon: "FlaskConical", // Usamos "FlaskConical" para representar bombas y sistemas de transferencia de fluidos
+          title: {
+            [Language.SPANISH]: "Bombas y sistemas de transferencia",
+            [Language.ENGLISH]: "Pumps and Transfer Systems",
+            [Language.PORTUGUESE]: "Bombas e sistemas de transferência",
+          },
+          description: {
+            [Language.SPANISH]: "Fluidos críticos.",
+            [Language.ENGLISH]: "Critical fluids.",
+            [Language.PORTUGUESE]: "Fluidos críticos.",
           },
         },
       ],
@@ -1013,48 +978,6 @@ const AssetBridgeContent: React.FC = () => {
                 </ul>
               </div>
             ),
-            aplicaciones: (
-              <div className="mb-8">
-                <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-2">
-                  Aplicaciones por industria y enfoque específico:
-                </p>
-                <ul className="list-disc pl-6 text-[var(--color-text)] leading-relaxed text-md space-y-1">
-                  <li>
-                    <strong>Industria aceitera:</strong> Laminadores y
-                    quebradores, equipos cuya confiabilidad impacta directamente
-                    en la capacidad productiva y el rendimiento de extracción.
-                  </li>
-                  <li>
-                    <strong>Movimiento de granos:</strong> Plataformas de
-                    descarga, transportadores, secadoras, donde la continuidad
-                    operativa evita pérdidas de calidad y tiempos de parada.
-                  </li>
-                  <li>
-                    <strong>Molinería y otros procesos mecánicos:</strong>{" "}
-                    Molinos, zarandas, quebradores, descascaradores, minimizando
-                    desgaste y asegurando un producto final consistente.
-                  </li>
-                  <li>
-                    <strong>Sistemas de refrigeración industrial:</strong>{" "}
-                    Compresores, evaporadores, condensadores.
-                  </li>
-                  <li>
-                    <strong>Líneas de desposte y empaque:</strong> Cintas
-                    transportadoras, sierras, clasificadoras.
-                  </li>
-                  <li>
-                    <strong>
-                      Bombas y sistemas de transferencia de fluidos críticos.
-                    </strong>
-                  </li>
-                </ul>
-                <p className="text-[var(--color-text)] leading-relaxed text-md mt-2">
-                  En cada industria, los beneficios se traducen en mayor
-                  disponibilidad operativa, reducción de costos por fallas y
-                  extensión de la vida útil, con métricas claras de impacto.
-                </p>
-              </div>
-            ),
             duracion: (
               <div>
                 <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
@@ -1105,46 +1028,6 @@ const AssetBridgeContent: React.FC = () => {
                   <li>Work recording and traceability</li>
                   <li>Management of critical tools and spare parts</li>
                 </ul>
-              </div>
-            ),
-            aplicaciones: (
-              <div className="mb-8">
-                <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-2">
-                  Industry applications and specific focus:
-                </p>
-                <ul className="list-disc pl-6 text-[var(--color-text)] leading-relaxed text-md space-y-1">
-                  <li>
-                    <strong>Oilseed industry:</strong> Rollers and crushers,
-                    equipment whose reliability directly impacts productive
-                    capacity and extraction yield.
-                  </li>
-                  <li>
-                    <strong>Grain handling:</strong> Unloading platforms,
-                    conveyors, dryers, where operational continuity prevents
-                    quality losses and downtime.
-                  </li>
-                  <li>
-                    <strong>Milling and other mechanical processes:</strong>{" "}
-                    Mills, screens, crushers, hullers, minimizing wear and
-                    ensuring a consistent final product.
-                  </li>
-                  <li>
-                    <strong>Industrial refrigeration systems:</strong>{" "}
-                    Compressors, evaporators, condensers.
-                  </li>
-                  <li>
-                    <strong>Deboning and packaging lines:</strong> Conveyor
-                    belts, saws, sorters.
-                  </li>
-                  <li>
-                    <strong>Pumps and critical fluid transfer systems.</strong>
-                  </li>
-                </ul>
-                <p className="text-[var(--color-text)] leading-relaxed text-md mt-2">
-                  In each industry, the benefits translate into greater
-                  operational availability, reduced failure costs, and extended
-                  useful life, with clear impact metrics.
-                </p>
               </div>
             ),
             duracion: (
@@ -1201,49 +1084,6 @@ const AssetBridgeContent: React.FC = () => {
                 </ul>
               </div>
             ),
-            aplicaciones: (
-              <div className="mb-8">
-                <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-2">
-                  Aplicações por indústria e foco específico:
-                </p>
-                <ul className="list-disc pl-6 text-[var(--color-text)] leading-relaxed text-md space-y-1">
-                  <li>
-                    <strong>Indústria de óleos vegetais:</strong> Laminadores e
-                    quebradores, equipamentos cuja confiabilidade impacta
-                    diretamente na capacidade produtiva e no rendimento de
-                    extração.
-                  </li>
-                  <li>
-                    <strong>Movimentação de grãos:</strong> Plataformas de
-                    descarga, transportadores, secadores, onde a continuidade
-                    operacional evita perdas de qualidade e tempos de parada.
-                  </li>
-                  <li>
-                    <strong>Moagem e outros processos mecânicos:</strong>{" "}
-                    Moinhos, peneiras, quebradores, descascadores, minimizando
-                    desgaste e garantindo um produto final consistente.
-                  </li>
-                  <li>
-                    <strong>Sistemas de refrigeração industrial:</strong>{" "}
-                    Compressores, evaporadores, condensadores.
-                  </li>
-                  <li>
-                    <strong>Linhas de desossa e embalagem:</strong> Esteiras
-                    transportadoras, serras, classificadoras.
-                  </li>
-                  <li>
-                    <strong>
-                      Bombas e sistemas críticos de transferência de fluidos.
-                    </strong>
-                  </li>
-                </ul>
-                <p className="text-[var(--color-text)] leading-relaxed text-md mt-2">
-                  Em cada indústria, os benefícios se traduzem em maior
-                  disponibilidade operacional, redução de custos por falhas e
-                  extensão da vida útil, com métricas claras de impacto.
-                </p>
-              </div>
-            ),
             duracion: (
               <div>
                 <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
@@ -1263,7 +1103,6 @@ const AssetBridgeContent: React.FC = () => {
         return (
           <div>
             {b.metodologia}
-            {b.aplicaciones}
             {b.duracion}
           </div>
         );

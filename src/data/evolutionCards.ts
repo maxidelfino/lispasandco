@@ -22,7 +22,10 @@ export type evolutionCardsType = {
   quote: string;
   details: string[];
   servicesData: Service[];
-  programs?: string[];
+  programs?: {
+    name: string;
+    featured: boolean;
+  }[];
 };
 
 export const evolutionCards: {
@@ -44,10 +47,11 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_iniciar,
       programs: [
-        "Reducir ineficiencias WASTE ZERO™",
-        "Ordenar sectores 5S PLUS™",
-        "Resolver problemas KAIZEN ACTION™",
-        "Gestionar los cambios CHANGE BRIDGE™",
+        { name: "Reducir ineficiencias WASTE ZERO™", featured: true },
+        { name: "Ordenar sectores 5S PLUS™", featured: false },
+        { name: "Resolver problemas KAIZEN ACTION™", featured: true },
+        { name: "Gestionar los cambios CHANGE BRIDGE™", featured: false },
+        { name: "Ingeniería de procesos PROCESS DESIGN BRIDGE™", featured: true },
       ],
     },
     {
@@ -65,10 +69,10 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_estabilizar,
       programs: [
-        "Estabilizar procesos FLOW STABLE™",
-        "Gestionar datos DECISIONES ESTADISTICAS™",
-        "Estandarizar la operación OPS STANDARD™",
-        "Difundir la mejora continua LEAN BRIDGE™",
+        { name: "Estabilizar procesos FLOW STABLE™", featured: true },
+        { name: "Gestionar datos DECISIONES ESTADISTICAS™", featured: false },
+        { name: "Estandarizar la operación OPS STANDARD™", featured: false },
+        { name: "Difundir la mejora continua LEAN BRIDGE™", featured: true },
       ],
     },
     {
@@ -85,10 +89,16 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_transformar,
       programs: [
-        "Mantenimiento Industrial - ASSET BRIDGE™",
-        "Incorporar operación automática de procesos AUTOPS™",
-        "Gestionar la Seguridad industrial PROJECT FOCUS™",
-        "Mejorar precision analítica LAB CI FOCUS™",
+        { name: "Mantenimiento Industrial - ASSET BRIDGE™", featured: true },
+        {
+          name: "Incorporar operación automática de procesos AUTOPS™",
+          featured: false,
+        },
+        {
+          name: "Gestionar la Seguridad industrial SAFE PROCESS™",
+          featured: false,
+        },
+        { name: "Mejorar precision analítica MEASURE BRIDGE™", featured: true },
       ],
     },
     {
@@ -104,10 +114,13 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_aplicaciones,
       programs: [
-        "Optimizar sistema integral de gestion - OPS EXCELLENCE™",
-        "Seleccionar proyectos - PROJECT FOCUS™",
-        "Alinear la estrategia - STRAT BRIDGE™",
-        "Gestionar recursos humanos - PEOPLE FIRST™",
+        {
+          name: "Optimizar sistema integral de gestion - OPS EXCELLENCE™",
+          featured: false,
+        },
+        { name: "Seleccionar proyectos - PROJECT FOCUS™", featured: true },
+        { name: "Alinear la estrategia - STRAT BRIDGE™", featured: false },
+        { name: "Gestionar recursos humanos - PEOPLE FIRST™", featured: false },
       ],
     },
   ],
@@ -125,10 +138,11 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_iniciar_en,
       programs: [
-        "Reduce inefficiencies WASTE ZERO™",
-        "Organize areas 5S PLUS™",
-        "Solve problems KAIZEN ACTION™",
-        "Manage change CHANGE BRIDGE™",
+        { name: "Reduce inefficiencies WASTE ZERO™", featured: true },
+        { name: "Organize areas 5S PLUS™", featured: false },
+        { name: "Solve problems KAIZEN ACTION™", featured: true },
+        { name: "Manage change CHANGE BRIDGE™", featured: false },
+        { name: "Process Engineering PROCESS DESIGN BRIDGE™", featured: true },
       ],
     },
     {
@@ -145,10 +159,10 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_estabilizar_en,
       programs: [
-        "Stabilize processes FLOW STABLE™",
-        "Manage data MANAGERIAL DECISIONS™",
-        "Standardize operation OPS STANDARD™",
-        "Spread continuous improvement LEAN BRIDGE™",
+        { name: "Stabilize processes FLOW STABLE™", featured: true },
+        { name: "Manage data MANAGERIAL DECISIONS™", featured: false },
+        { name: "Standardize operation OPS STANDARD™", featured: false },
+        { name: "Spread continuous improvement LEAN BRIDGE™", featured: true },
       ],
     },
     {
@@ -165,10 +179,16 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_transformar_en,
       programs: [
-        "Industrial Maintenance - ASSET BRIDGE™",
-        "Incorporate automatic process operation AUTOPS™",
-        "Manage industrial safety PROJECT FOCUS™",
-        "Improve analytical precision LAB CI FOCUS™",
+        { name: "Industrial Maintenance - ASSET BRIDGE™", featured: true },
+        {
+          name: "Incorporate automatic process operation AUTOPS™",
+          featured: false,
+        },
+        { name: "Manage industrial safety SAFE PROCESS™", featured: false },
+        {
+          name: "Improve analytical precision MEASURE BRIDGE™",
+          featured: true,
+        },
       ],
     },
     {
@@ -185,10 +205,13 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_aplicaciones_en,
       programs: [
-        "Optimize management system - OPS EXCELLENCE™",
-        "Select projects - PROJECT FOCUS™",
-        "Align strategy - STRAT BRIDGE™",
-        "Manage human resources - PEOPLE FIRST™",
+        {
+          name: "Optimize management system - OPS EXCELLENCE™",
+          featured: false,
+        },
+        { name: "Select projects - PROJECT FOCUS™", featured: true },
+        { name: "Align strategy - STRAT BRIDGE™", featured: false },
+        { name: "Manage human resources - PEOPLE FIRST™", featured: false },
       ],
     },
   ],
@@ -206,10 +229,11 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_iniciar_pt,
       programs: [
-        "Reduzir ineficiências WASTE ZERO™",
-        "Organizar setores 5S PLUS™",
-        "Resolver problemas KAIZEN ACTION™",
-        "Gerenciar mudanças CHANGE BRIDGE™",
+        { name: "Reduzir ineficiências WASTE ZERO™", featured: true },
+        { name: "Organizar setores 5S PLUS™", featured: false },
+        { name: "Resolver problemas KAIZEN ACTION™", featured: true },
+        { name: "Gerenciar mudanças CHANGE BRIDGE™", featured: false },
+        { name: "Engenharia de processos PROCESS DESIGN BRIDGE™", featured: true },
       ],
     },
     {
@@ -226,10 +250,13 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_estabilizar_pt,
       programs: [
-        "Estabilizar processos FLOW STABLE™",
-        "Gerenciar dados DECISÕES ESTATÍSTICAS™",
-        "Padronizar a operação OPS STANDARD™",
-        "Disseminar a melhoria contínua LEAN BRIDGE™",
+        { name: "Estabilizar processos FLOW STABLE™", featured: true },
+        { name: "Gerenciar dados DECISÕES ESTATÍSTICAS™", featured: false },
+        { name: "Padronizar a operação OPS STANDARD™", featured: false },
+        {
+          name: "Disseminar a melhoria contínua LEAN BRIDGE™",
+          featured: false,
+        },
       ],
     },
     {
@@ -246,10 +273,19 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_transformar_pt,
       programs: [
-        "Manutenção Industrial - ASSET BRIDGE™",
-        "Incorporar operação automática de processos AUTOPS™",
-        "Gerenciar Segurança Industrial PROJECT FOCUS™",
-        "Melhorar precisão analítica LAB CI FOCUS™",
+        { name: "Manutenção Industrial - ASSET BRIDGE™", featured: true },
+        {
+          name: "Incorporar operação automática de processos AUTOPS™",
+          featured: false,
+        },
+        {
+          name: "Gerenciar Segurança Industrial SAFE PROCESS™",
+          featured: false,
+        },
+        {
+          name: "Melhorar precisão analítica MEASURE BRIDGE™",
+          featured: true,
+        },
       ],
     },
     {
@@ -265,10 +301,13 @@ export const evolutionCards: {
       ],
       servicesData: servicesData_aplicaciones_pt,
       programs: [
-        "Otimizar sistema de gestão - OPS EXCELLENCE™",
-        "Selecionar projetos - PROJECT FOCUS™",
-        "Alinhar a estratégia - STRAT BRIDGE™",
-        "Gerenciar recursos humanos - PEOPLE FIRST™",
+        {
+          name: "Otimizar sistema de gestão - OPS EXCELLENCE™",
+          featured: false,
+        },
+        { name: "Selecionar projetos - PROJECT FOCUS™", featured: true },
+        { name: "Alinhar a estratégia - STRAT BRIDGE™", featured: false },
+        { name: "Gerenciar recursos humanos - PEOPLE FIRST™", featured: false },
       ],
     },
   ],

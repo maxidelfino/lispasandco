@@ -114,17 +114,17 @@ const HomePage: React.FC = () => {
           </h1>
           <p className="text-2xl md:text-3xl text-white/90 mb-4 leading-relaxed">
             {currentLanguage === Language.SPANISH
-              ? "Transformamos empresas medianas en organizaciones de clase mundial"
+              ? "Acompañamos a las empresas en su camino de transformación y mejora continua"
               : currentLanguage === Language.ENGLISH
-              ? "We transform medium-sized companies into world-class organizations"
-              : "Transformamos empresas médias em organizações de classe mundial"}
+              ? "We accompany companies on their journey of transformation and continuous improvement"
+              : "Acompanhamos as empresas em sua jornada de transformação e melhoria contínua"}
           </p>
           <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
             {currentLanguage === Language.SPANISH
-              ? "Expertos en llevar la mejora continua a la mediana empresa"
+              ? "“Desde lo técnico hasta lo estratégico, diseñamos soluciones reales y sostenibles para cualquier industria y tamaño de organización”"
               : currentLanguage === Language.ENGLISH
-              ? "Experts in bringing continuous improvement to medium-sized businesses"
-              : "Especialistas em levar a melhoria contínua à empresa média"}
+              ? "“From technical to strategic, we design real, sustainable solutions for any industry and organization size.”"
+              : "“Do aspecto técnico ao estratégico, projetamos soluções reais e sustentáveis para qualquer indústria e tamanho de organização.”"}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -169,6 +169,48 @@ const HomePage: React.FC = () => {
 
       {/* Services Section */}
       <EvolutionPath />
+
+      {/* Video Section */}
+      <section
+        id="sobre-nosotros"
+        className="py-20 px-4 bg-[var(--color-surface)]"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-[var(--color-primary)] mb-4">
+            {currentLanguage === Language.SPANISH
+              ? "Te contamos un poco más sobre nosotros"
+              : currentLanguage === Language.ENGLISH
+              ? "Let us tell you a bit more about us"
+              : "Contamos um pouco mais sobre nós"}
+          </h2>
+          <div className="w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-12"></div>
+
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-2xl w-full"
+            style={{ maxWidth: "100%" }}
+          >
+            <div
+              className="w-full"
+              style={{
+                position: "relative",
+                paddingBottom: "56.25%",
+                height: 0,
+              }}
+            >
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/1iDuC3GHfls?controls=1&modestbranding=1&rel=0&showinfo=0&fs=0&disablekb=1&iv_load_policy=3&enablejsapi=1&showinfo=0&rel=0&autohide=1&user=0"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{ width: "100%", height: "100%" }}
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Casos de Éxito / Impacto Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -755,32 +797,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Video Section */}
-      {/* <section
-        id="sobre-nosotros"
-        className="py-20 px-4 bg-[var(--color-surface)]"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-[var(--color-primary)] mb-4">
-            Te contamos un poco más sobre nosotros
-          </h2>
-          <div className="w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-12"></div>
-
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-            <iframe
-              width="100%"
-              height="500"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="LYSPAS & CO - Continuous Improvement Solutions"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full"
-            ></iframe>
-          </div>
-        </div>
-      </section> */}
 
       {/* LinkedIn Section */}
       <LinkedInCard />

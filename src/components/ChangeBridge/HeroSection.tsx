@@ -31,36 +31,36 @@ const mainTitle = (language: Language) => {
 const subtitle = (language: Language) => {
   switch (language) {
     case Language.ENGLISH:
-      return "Prepare, align, and sustain organizational transformations";
+      return "Leading the transition";
     case Language.PORTUGUESE:
-      return "Preparar, alinhar e sustentar transformações organizacionais";
+      return "Liderando a transição";
     case Language.SPANISH:
     default:
-      return "Preparar, alinear y sostener transformaciones organizacionales";
+      return "Liderando la transición";
   }
 };
 
-const paragraph1 = (language: Language) => {
-  switch (language) {
-    case Language.ENGLISH:
-      return `Change Bridge™ is a practical and structured program that helps companies manage change in an orderly and participative way, ensuring that teams understand, adopt, and sustain the transformations needed for business evolution.`;
-    case Language.PORTUGUESE:
-      return `Change Bridge™ é um programa prático e estruturado que ajuda as empresas a gerenciar mudanças de forma ordenada e participativa, garantindo que as equipes entendam, adotem e sustentem as transformações necessárias para a evolução do negócio.`;
-    case Language.SPANISH:
-    default:
-      return `Change Bridge™ es un programa práctico y estructurado que ayuda a las empresas a gestionar cambios de forma ordenada y participativa, asegurando que los equipos entiendan, adopten y sostengan las transformaciones necesarias para la evolución del negocio.`;
-  }
-};
+// const paragraph1 = (language: Language) => {
+//   switch (language) {
+//     case Language.ENGLISH:
+//       return `Change Bridge™ is a practical and structured program that helps companies manage change in an orderly and participative way, ensuring that teams understand, adopt, and sustain the transformations needed for business evolution.`;
+//     case Language.PORTUGUESE:
+//       return `Change Bridge™ é um programa prático e estruturado que ajuda as empresas a gerenciar mudanças de forma ordenada e participativa, garantindo que as equipes entendam, adotem e sustentem as transformações necessárias para a evolução do negócio.`;
+//     case Language.SPANISH:
+//     default:
+//       return `Change Bridge™ es un programa práctico y estructurado que ayuda a las empresas a gestionar cambios de forma ordenada y participativa, asegurando que los equipos entiendan, adopten y sostengan las transformaciones necesarias para la evolución del negocio.`;
+//   }
+// };
 
 const paragraph2 = (language: Language) => {
   switch (language) {
     case Language.ENGLISH:
-      return `Designed for process projects, organizational changes, or system implementations, it combines workshops, coaching, and structured follow-up to minimize resistance, generate commitment, and achieve sustainable results in 8–12 weeks.`;
+      return "It is designed for projects involving process changes, organizational structure, implementation of new systems, or strategic adjustments that require alignment and action across the entire organization.";
     case Language.PORTUGUESE:
-      return `Projetado para projetos de processos, mudanças organizacionais ou implementação de sistemas, combina workshops, coaching e acompanhamento estruturado para minimizar resistências, gerar compromisso e obter resultados sustentáveis em 8–12 semanas.`;
+      return "É projetado para projetos de mudanças em processos, estrutura organizacional, implementação de novos sistemas ou ajustes estratégicos que exijam alinhamento e ação de toda a organização.";
     case Language.SPANISH:
     default:
-      return `Diseñado para proyectos de procesos, cambios organizacionales o implementación de sistemas, combina workshops, coaching y seguimiento estructurado para minimizar resistencias, generar compromiso y obtener resultados sostenibles en 8–12 semanas.`;
+      return "Está diseñado para proyectos de cambios en procesos, estructura organizacional, implementación de nuevos sistemas o ajustes estratégicos que requieran alineamiento y acción de toda la organización.";
   }
 };
 
@@ -116,7 +116,7 @@ const HeroSection: React.FC = () => {
 
         {/* Subtitle */}
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          {paragraph1(currentLanguage)}
+          {/* {paragraph1(currentLanguage)} */}
         </p>
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
           {paragraph2(currentLanguage)}

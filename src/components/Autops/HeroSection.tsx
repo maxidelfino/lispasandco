@@ -4,64 +4,50 @@ import ScrollIndicator from "../ScrollIndicator";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
 
-const translations: Record<
+const TEXTS: Record<
   Language,
   {
     badge: string;
-    title: string;
-    subtitle: string;
-    subtitle2: string;
-    description: string;
-    pdfHref: string;
-    pdfDownload: string;
+    mainTitle: string;
+    subtitle1: string;
+    description1: string;
   }
 > = {
   es: {
-    badge: "Estabilizar y profesionalizar (Procesos, Métricas, Liderazgo)",
-    title: "Decisiones Gerenciales Basadas en Estadísticas™",
-    subtitle: "Transforma datos en decisiones.",
-    subtitle2: "Respalda tus acciones con evidencia.",
-    description:
-      "Este programa es el puente entre la intuición y el análisis profundo, y prepara a los participantes para liderar con claridad, evidencia y confianza en contextos de mejora continua",
-    pdfHref:
-      "assets/pdf/LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf",
-    pdfDownload: "LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf",
+    badge: "Perfeccionar la operación",
+    mainTitle: "Auto Ops™",
+    subtitle1: "Operación Automática de Procesos",
+    description1:
+      "Combinamos instrumentación de última generación, software de control avanzado y metodologías de mejora continua para lograr procesos estables y sostenibles, reduciendo la dependencia del criterio humano y asegurando resultados repetibles",
   },
   en: {
-    badge: "Stabilize and professionalize (Processes, Metrics, Leadership)",
-    title: "Management Decisions Based on Statistics™",
-    subtitle: "Turn data into decisions.",
-    subtitle2: "Support your actions with evidence.",
-    description:
-      "This program is the bridge between intuition and deep analysis, preparing participants to lead with clarity, evidence, and confidence in continuous improvement contexts.",
-    pdfHref:
-      "assets/pdf/LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf",
-    pdfDownload: "LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf",
+    badge: "Perfect the operation",
+    mainTitle: "Auto Ops™",
+    subtitle1: "Automatic Process Operation",
+    description1:
+      "We combine state-of-the-art instrumentation, advanced control software, and continuous improvement methodologies to achieve stable and sustainable processes, reducing reliance on human judgment and ensuring repeatable results.",
   },
   pt: {
-    badge: "Estabilizar e profissionalizar (Processos, Métricas, Liderança)",
-    title: "Decisões Gerenciais Baseadas em Estatísticas™",
-    subtitle: "Transforme dados em decisões.",
-    subtitle2: "Apoie suas ações com evidências.",
-    description:
-      "Este programa é a ponte entre a intuição e a análise profunda, preparando os participantes para liderar com clareza, evidências e confiança em contextos de melhoria contínua.",
-    pdfHref:
-      "assets/pdf/LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf",
-    pdfDownload: "LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf",
+    badge: "Aperfeiçoar a operação",
+    mainTitle: "Auto Ops™",
+    subtitle1: "Operação Automática de Processos",
+    description1:
+      "Combinamos instrumentação de última geração, software de controle avançado e metodologias de melhoria contínua para alcançar processos estáveis e sustentáveis, reduzindo a dependência do critério humano e garantindo resultados repetíveis.",
   },
 };
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { currentLanguage } = useLanguage();
-  const t = translations[currentLanguage];
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = TEXTS[lang];
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   const scrollToContent = () => {
-    const element = document.getElementById("decisionesEstadisticas-content");
+    const element = document.getElementById("autoops-content");
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -96,28 +82,23 @@ const HeroSection: React.FC = () => {
 
         {/* Main Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="block">{t.title}</span>
+          <span className="block">{t.mainTitle}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            {t.subtitle}
-          </span>
-          <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-            {t.subtitle2}
+            {t.subtitle1}
           </span>
         </h1>
 
-        {/* Descripción mejorada basada en el procedimiento LYS-P004 */}
+        {/* Subtitle */}
         <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          {t.description}
+          {t.description1}
         </p>
 
         {/* CTA Buttons */}
         <CTAButtons
           onDownload={() => {
             const link = document.createElement("a");
-            link.href =
-              "assets/pdf/LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf";
-            link.download =
-              "LYS-P004-Toma-de-decisiones-basadas-en-estadisticas.pdf";
+            link.href = "assets/pdf/LYS-P017-AutoOps.pdf";
+            link.download = "LYS-P017-AutoOps.pdf";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);

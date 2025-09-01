@@ -23,6 +23,7 @@ import {
   ListChecks,
   HelpCircle,
   DivideSquare,
+  BarChart3,
 } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
@@ -91,14 +92,9 @@ const translations = {
                 calibración de equipos y resolución estructurada de problemas
                 para transformar los sistemas analíticos en soluciones
                 inteligentes para la gestión de la eficiencia y la mejora
-                continua
+                continua.
               </p>
             </div>
-            {/* Cita inspiradora */}
-            <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
-              “Lo que no se mide, no se puede mejorar. Measure Bridge es el
-              puente entre la intención de mejorar y la evidencia de la mejora.”
-            </blockquote>
             {/* ¿Qué es? */}
             <div className="mb-6">
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
@@ -165,12 +161,6 @@ const translations = {
                 efficiency management and continuous improvement.
               </p>
             </div>
-            {/* Inspirational quote */}
-            <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
-              “What is not measured cannot be improved. Measure Bridge is the
-              bridge between the intention to improve and the evidence of
-              improvement.”
-            </blockquote>
             {/* What is it? */}
             <div className="mb-6">
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
@@ -238,11 +228,6 @@ const translations = {
                 para a gestão da eficiência e a melhoria contínua.
               </p>
             </div>
-            {/* Citação inspiradora */}
-            <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
-              “O que não é medido não pode ser melhorado. Measure Bridge é a
-              ponte entre a intenção de melhorar e a evidência da melhoria.”
-            </blockquote>
             {/* O que é? */}
             <div className="mb-6">
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
@@ -873,43 +858,28 @@ const translations = {
       },
       children: {
         es: (
-          <div className="bg-[var(--color-surface)] rounded-2xl p-8 border border-[var(--color-border)] shadow-lg">
-            <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
-              ¿Para quién está diseñado?
-            </h3>
-            <p className="text-[var(--color-text)] text-lg leading-relaxed">
-              Empresas industriales con laboratorios internos o tercerizados,
-              gerentes de calidad, ingenieros de procesos y líderes de mejora
-              continua con el objetivo de reforzar el control analítico como
-              pilar de desempeño y eficiencia.
-            </p>
-          </div>
+          <p className="text-[var(--color-text)] text-lg leading-relaxed">
+            Empresas industriales con laboratorios internos o tercerizados,
+            gerentes de calidad, ingenieros de procesos y líderes de mejora
+            continua con el objetivo de reforzar el control analítico como pilar
+            de desempeño y eficiencia.
+          </p>
         ),
         en: (
-          <div className="bg-[var(--color-surface)] rounded-2xl p-8 border border-[var(--color-border)] shadow-lg">
-            <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
-              Who is it designed for?
-            </h3>
-            <p className="text-[var(--color-text)] text-lg leading-relaxed">
-              Industrial companies with internal or outsourced laboratories,
-              quality managers, process engineers, and continuous improvement
-              leaders aiming to strengthen analytical control as a pillar of
-              performance and efficiency.
-            </p>
-          </div>
+          <p className="text-[var(--color-text)] text-lg leading-relaxed">
+            Industrial companies with internal or outsourced laboratories,
+            quality managers, process engineers, and continuous improvement
+            leaders aiming to strengthen analytical control as a pillar of
+            performance and efficiency.
+          </p>
         ),
         pt: (
-          <div className="bg-[var(--color-surface)] rounded-2xl p-8 border border-[var(--color-border)] shadow-lg">
-            <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
-              Para quem é projetado?
-            </h3>
-            <p className="text-[var(--color-text)] text-lg leading-relaxed">
-              Empresas industriais com laboratórios internos ou terceirizados,
-              gerentes de qualidade, engenheiros de processos e líderes de
-              melhoria contínua com o objetivo de reforçar o controle analítico
-              como pilar de desempenho e eficiência.
-            </p>
-          </div>
+          <p className="text-[var(--color-text)] text-lg leading-relaxed">
+            Empresas industriais com laboratórios internos ou terceirizados,
+            gerentes de qualidade, engenheiros de processos e líderes de
+            melhoria contínua com o objetivo de reforçar o controle analítico
+            como pilar de desempenho e eficiência.
+          </p>
         ),
       },
     },
@@ -926,12 +896,136 @@ const translations = {
         en: "",
         pt: "",
       },
-      description: {
-        es: "¿Con qué otros productos se relaciona?\nDecisiones™ de gestión basadas en datos: comparte herramientas estadísticas para la toma de decisiones.\nAcción™ Kaizen: se integra con proyectos de mejora basados en calidad y datos reales.\nSistema™ de Excelencia Operativa: contribuye al pilar de control analítico dentro de la excelencia operativa.",
-        en: "Which other products is it related to?\nDecisiones™ data-driven management: shares statistical tools for decision making.\nAcción™ Kaizen: integrates with improvement projects based on quality and real data.\nSistema™ of Operational Excellence: contributes to the analytical control pillar within operational excellence.",
-        pt: "Com quais outros produtos se relaciona?\nDecisiones™ de gestão baseada em dados: compartilha ferramentas estatísticas para a tomada de decisões.\nAcción™ Kaizen: integra-se com projetos de melhoria baseados em qualidade e dados reais.\nSistema™ de Excelência Operacional: contribui para o pilar de controle analítico dentro da excelência operacional.",
+      children: {
+        es: (
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            {[
+              {
+                icon: BarChart3,
+                title: "Decisiones™ de gestión basadas en datos",
+                description:
+                  "Comparte herramientas estadísticas para la toma de decisiones.",
+              },
+              {
+                icon: Sparkles,
+                title: "Acción™ Kaizen",
+                description:
+                  "Se integra con proyectos de mejora basados en calidad y datos reales.",
+              },
+              {
+                icon: Settings,
+                title: "Sistema™ de Excelencia Operativa",
+                description:
+                  "Contribuye al pilar de control analítico dentro de la excelencia operativa",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className={`
+                  bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                  hover:shadow-xl transition-all duration-300 hover:scale-105
+                  ${index === 2 ? "col-span-2" : ""}
+                `}
+              >
+                <div className="text-4xl mb-4 flex gap-4">
+                  <feature.icon className="w-8 h-8" />
+                  <h3 className="text-xl font-bold text-[var(--color-primary)] mb-3">
+                    {feature.title}
+                  </h3>
+                </div>
+                <p className="text-[var(--color-text)]">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        ),
+        en: (
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            {[
+              {
+                icon: BarChart3,
+                title: "Decisiones™ data-driven management",
+                description: "Shares statistical tools for decision making.",
+              },
+              {
+                icon: Sparkles,
+                title: "Acción™ Kaizen",
+                description:
+                  "Integrates with improvement projects based on quality and real data.",
+              },
+              {
+                icon: Settings,
+                title: "Sistema™ of Operational Excellence",
+                description:
+                  "Contributes to the analytical control pillar within operational excellence.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className={`
+                  bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                  hover:shadow-xl transition-all duration-300 hover:scale-105
+                  ${index === 2 ? "col-span-2" : ""}
+                `}
+              >
+                <div className="text-4xl mb-4 flex gap-4">
+                  <feature.icon className="w-8 h-8" />
+                  <h3 className="text-xl font-bold text-[var(--color-primary)] mb-3">
+                    {feature.title}
+                  </h3>
+                </div>
+                <p className="text-[var(--color-text)]">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        ),
+        pt: (
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            {[
+              {
+                icon: BarChart3,
+                title: "Decisiones™ de gestão baseada em dados",
+                description:
+                  "Compartilha ferramentas estatísticas para a tomada de decisões.",
+              },
+              {
+                icon: Sparkles,
+                title: "Acción™ Kaizen",
+                description:
+                  "Integra-se com projetos de melhoria baseados em qualidade e dados reais.",
+              },
+              {
+                icon: Settings,
+                title: "Sistema™ de Excelência Operacional",
+                description:
+                  "Contribui para o pilar de controle analítico dentro da excelência operacional.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className={`
+                  bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)]
+                  hover:shadow-xl transition-all duration-300 hover:scale-105
+                  ${index === 2 ? "col-span-2" : ""}
+                `}
+              >
+                <div className="text-4xl mb-4 flex gap-4">
+                  <feature.icon className="w-8 h-8" />
+                  <h3 className="text-xl font-bold text-[var(--color-primary)] mb-3">
+                    {feature.title}
+                  </h3>
+                </div>
+                <p className="text-[var(--color-text)]">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        ),
       },
-      details: [],
     },
   ],
 };
@@ -1102,17 +1196,6 @@ const MeasureBridgeContent: React.FC = () => {
   const lang = currentLanguage as Language;
 
   const features = translations.features.map((feature) => {
-    if (feature.id === "5") {
-      return {
-        ...feature,
-        title: feature.title[lang],
-        subtitle: feature.subtitle[lang],
-        description: feature.description
-          ? feature.description[lang]
-          : undefined,
-        details: feature.details,
-      };
-    }
     return {
       ...feature,
       title: feature.title[lang],
