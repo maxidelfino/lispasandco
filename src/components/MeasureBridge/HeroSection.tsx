@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import CTAButtons from "../CTAButtons";
-import ScrollIndicator from "../ScrollIndicator";
+import React from "react";
+import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
 
@@ -33,15 +32,16 @@ const translations: Record<
   en: {
     badge: "Perfect the operation",
     title: "MeasureBridge™",
-    subtitle: "Comprehensive Program for Analytical Management and Quality Control",
+    subtitle:
+      "Comprehensive Program for Analytical Management and Quality Control",
     description1:
       "We turn your quality control into a reliable source of operational efficiency",
     description2:
       "Through visual tools and collaborative work, it helps teams build bridges between the current situation and business objectives, facilitating data-driven decision-making and continuous improvement.",
     description3:
       "Includes: KPI definition, visual dashboard design, management routines, gap analysis, and support in the execution of corrective actions.",
-    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-EN.pdf",
-    pdfDownload: "LYS-P015-MeasureBridge-EN.pdf",
+    pdfHref: "assets/pdf/LYS-P115-MeasureBridge.pdf",
+    pdfDownload: "LYS-P115-MeasureBridge.pdf",
   },
   pt: {
     badge: "Aperfeiçoar a operação",
@@ -53,89 +53,40 @@ const translations: Record<
       "Por meio de ferramentas visuais e trabalho colaborativo, ajuda equipes a construir pontes entre a situação atual e os objetivos do negócio, facilitando a tomada de decisões baseada em dados e a melhoria contínua.",
     description3:
       "Inclui: definição de KPIs, design de painéis visuais, rotinas de gestão, análise de lacunas e suporte na execução de ações corretivas.",
-    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-PT.pdf",
-    pdfDownload: "LYS-P015-MeasureBridge-PT.pdf",
+    pdfHref: "assets/pdf/LYS-P215-MeasureBridge.pdf",
+    pdfDownload: "LYS-P215-MeasureBridge.pdf",
   },
 };
 
 const HeroSection: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const { currentLanguage } = useLanguage();
-  const t = translations[currentLanguage as Language];
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const scrollToContent = () => {
-    const element = document.getElementById("MeasureBridge-content");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = translations[lang];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)]">
-        <div className="absolute inset-0 bg-black/20"></div>
-        {/* Animated geometric shapes */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full animate-pulse"></div>
-        <div
-          className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white/10 rounded-full animate-bounce"
-          style={{ animationDuration: "3s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 right-1/3 w-32 h-32 bg-white/5 transform rotate-45 animate-spin"
-          style={{ animationDuration: "20s" }}
-        ></div>
-      </div>
-
-      {/* Content */}
-      <div
-        className={`relative z-10 text-center px-4 max-w-5xl mx-auto transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
-          <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          {t.badge}
-        </div>
-
-        {/* Main Title */}
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+    <HeroBase
+      badge={t.badge}
+      title={
+        <>
           <span className="block">{t.title}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
             {t.subtitle}
           </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          {t.description1}
-        </p>
-        {/* <p className="hidden lg:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          {t.description2}
-        </p>
-        <p className="hidden lg:block text-lg text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-          {t.description3}
-        </p> */}
-
-        {/* CTA Buttons */}
-        <CTAButtons
-          onDownload={() => {
-            const link = document.createElement("a");
-            link.href = "assets/pdf/LYS-P015-MeasureBridge.pdf";
-            link.download = "LYS-P015-MeasureBridge.pdf";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-        />
-      </div>
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator scrollToContent={scrollToContent} />
-    </section>
+        </>
+      }
+      descriptions={[t.description1]}
+      scrollTargetId="MeasureBridge-content"
+      onDownload={() => {
+        const link = document.createElement("a");
+        link.href = t.pdfHref;
+        link.download = t.pdfDownload;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }}
+      backgroundVariant="mixed"
+      hideDescriptionsOnMobile={false}
+    />
   );
 };
 

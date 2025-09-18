@@ -16,6 +16,8 @@ const CTA_TEXTS: Record<
     description: string;
     primaryButtonText: string;
     secondaryButtonText: string;
+    pdfHref: string;
+    pdfDownload: string;
   }
 > = {
   es: {
@@ -24,6 +26,8 @@ const CTA_TEXTS: Record<
       "Descubre cómo PeopleFirst™ transforma la cultura operativa, impulsa la disciplina y genera resultados sostenibles a través del compromiso y desarrollo de tu equipo.",
     primaryButtonText: "Contactar Ahora",
     secondaryButtonText: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P014-People-First.pdf",
+    pdfDownload: "LYS-P014-People-First.pdf",
   },
   en: {
     title: "PeopleFirst™: People, Processes and Results",
@@ -31,6 +35,8 @@ const CTA_TEXTS: Record<
       "Discover how PeopleFirst™ transforms operational culture, drives discipline, and generates sustainable results through team engagement and development.",
     primaryButtonText: "Contact Now",
     secondaryButtonText: "Download Brochure",
+    pdfHref: "assets/pdf/LYS-P114-People-First.pdf",
+    pdfDownload: "LYS-P114-People-First.pdf",
   },
   pt: {
     title: "PeopleFirst™: Pessoas, Processos e Resultados",
@@ -38,6 +44,8 @@ const CTA_TEXTS: Record<
       "Descubra como o PeopleFirst™ transforma a cultura operacional, impulsiona a disciplina e gera resultados sustentáveis através do engajamento e desenvolvimento da sua equipe.",
     primaryButtonText: "Entrar em Contato",
     secondaryButtonText: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P214-People-First.pdf",
+    pdfDownload: "LYS-P214-People-First.pdf",
   },
 };
 
@@ -71,8 +79,8 @@ const PeopleFirstPage: React.FC = () => {
         secondaryButtonText={cta.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P014-People-First.pdf";
-          link.download = "LYS-P014-People-First.pdf";
+          link.href = cta.pdfHref;
+          link.download = cta.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

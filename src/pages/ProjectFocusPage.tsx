@@ -19,6 +19,8 @@ const TEXTS = {
       "Implementa ProjectFocus™ y convierte tu planificación estratégica en un portafolio ejecutable de proyectos clave.",
     primaryButton: "Contactar Ahora",
     secondaryButton: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P010-Project-Focus.pdf",
+    pdfDownload: "LYS-P010-Project-Focus.pdf",
   },
   en: {
     diagramTitle: "ProjectFocus™ in Detail",
@@ -29,6 +31,8 @@ const TEXTS = {
       "Implement ProjectFocus™ and turn your strategic planning into an actionable portfolio of key projects.",
     primaryButton: "Contact Now",
     secondaryButton: "Download Data Sheet",
+    pdfHref: "assets/pdf/LYS-P110-Project-Focus.pdf",
+    pdfDownload: "LYS-P110-Project-Focus.pdf",
   },
   pt: {
     diagramTitle: "ProjectFocus™ em Detalhe",
@@ -39,6 +43,8 @@ const TEXTS = {
       "Implemente o ProjectFocus™ e transforme seu planejamento estratégico em um portfólio executável de projetos-chave.",
     primaryButton: "Entrar em Contato",
     secondaryButton: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P210-Project-Focus.pdf",
+    pdfDownload: "LYS-P210-Project-Focus.pdf",
   },
 };
 
@@ -81,8 +87,8 @@ const ProjectFocusPage: React.FC = () => {
         secondaryButtonText={t.secondaryButton}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P010-Project-Focus.pdf";
-          link.download = "LYS-P010-Project-Focus.pdf";
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

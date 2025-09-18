@@ -247,8 +247,12 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
     const activeBtn = container?.querySelectorAll("button")[
       currentServiceIndex
     ] as HTMLElement;
-    activeBtn?.scrollIntoView({ behavior: "smooth", inline: "center" });
-  }, [currentServiceIndex]);
+    if (!activeBtn || !container) return;
+
+    const inlineBehavior = isDesktop ? "center" : "start";
+    // Scroll into view sólo si existe (y con comportamiento responsivo)
+    activeBtn.scrollIntoView({ behavior: "smooth", inline: inlineBehavior });
+  }, [currentServiceIndex, isDesktop]);
 
   if (!isOpen || !currentService) return null;
 
@@ -361,10 +365,11 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
 
                 {/* Swipeable Tabs */}
                 <div
-                  className="flex-1 mx-2 overflow-x-auto lg:overflow-visible scrollbar-hide snap-x snap-mandatory scroll-smooth"
+                  className="flex-1 mx-2 overflow-x-auto lg:overflow-visible scrollbar-hide snap-x snap-mandatory scroll-smooth px-3"
                   ref={tabsContainerRef}
                 >
-                  <div className="flex space-x-3 lg:space-x-4 justify-center">
+                  {/* justify-start on small screens, center on lg+ */}
+                  <div className="flex space-x-3 lg:space-x-4 justify-start lg:justify-center">
                     {services.map((service, index) => {
                       const isActive = index === currentServiceIndex;
                       const tabName = getServiceField(service.name) || "";
@@ -374,7 +379,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
                         <button
                           key={service.id}
                           onClick={() => goToService(index)}
-                          className={`snap-start flex-shrink-0 min-w-[6rem] lg:min-w-0 px-3 sm:px-4 py-2 mb-2 rounded-2xl border-2 transition-all duration-300 backdrop-blur-sm transform hover:scale-105 ${
+                          className={`snap-start flex-shrink-0 min-w-[6rem] lg:min-w-0 px-3 sm:px-4 py-2 mb-2 rounded-2xl border-2 transition-all duration-300 backdrop-blur-sm transform hover:scale-105 first:ml-1 last:mr-4 ${
                             isActive
                               ? "bg-white text-blue-700 border-white"
                               : "bg-white/10 text-white border-white/30 hover:bg-white/20 hover:border-white/50"

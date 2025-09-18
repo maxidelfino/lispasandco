@@ -36,8 +36,8 @@ const CTA_TRANSLATIONS: Record<
       "Discover how MeasureBridge™ enables you to identify, quantify, and eliminate hidden losses in your processes, facilitating data-driven decision-making and achieving a more efficient and profitable operation.",
     primaryButtonText: "Contact Now",
     secondaryButtonText: "Download Brochure",
-    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-EN.pdf",
-    pdfDownload: "LYS-P015-MeasureBridge-EN.pdf",
+    pdfHref: "assets/pdf/LYS-P115-MeasureBridge.pdf",
+    pdfDownload: "LYS-P115-MeasureBridge.pdf",
   },
   pt: {
     title: "Quer medir e fechar as lacunas de desempenho em sua operação?",
@@ -45,15 +45,16 @@ const CTA_TRANSLATIONS: Record<
       "Descubra como o MeasureBridge™ permite identificar, quantificar e eliminar perdas ocultas em seus processos, facilitando a tomada de decisões baseada em dados e alcançando uma operação mais eficiente e lucrativa.",
     primaryButtonText: "Entrar em Contato",
     secondaryButtonText: "Baixar Ficha Técnica",
-    pdfHref: "assets/pdf/LYS-P015-MeasureBridge-PT.pdf",
-    pdfDownload: "LYS-P015-MeasureBridge-PT.pdf",
+    pdfHref: "assets/pdf/LYS-P215-MeasureBridge.pdf",
+    pdfDownload: "LYS-P215-MeasureBridge.pdf",
   },
 };
 
 const MeasureBridgePage: React.FC = () => {
   useScrollToTop();
   const { currentLanguage } = useLanguage();
-  const t = CTA_TRANSLATIONS[currentLanguage as Language];
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = CTA_TRANSLATIONS[lang];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -80,8 +81,8 @@ const MeasureBridgePage: React.FC = () => {
         secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P015-MeasureBridge.pdf";
-          link.download = "LYS-P015-MeasureBridge.pdf";
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

@@ -38,6 +38,16 @@ const ProcessDesignBridgePage: React.FC = () => {
       [Language.ENGLISH]: "Download Datasheet",
       [Language.PORTUGUESE]: "Baixar Ficha Técnica",
     },
+    pdfHref: {
+      [Language.SPANISH]: "assets/pdf/LYS-P019-Process-Design-Bridge.pdf",
+      [Language.ENGLISH]: "assets/pdf/LYS-P119-Process-Design-Bridge.pdf",
+      [Language.PORTUGUESE]: "assets/pdf/LYS-P219-Process-Design-Bridge.pdf",
+    },
+    pdfDownload: {
+      [Language.SPANISH]: "LYS-P019-Process-Design-Bridge.pdf",
+      [Language.ENGLISH]: "LYS-P119-Process-Design-Bridge.pdf",
+      [Language.PORTUGUESE]: "LYS-P219-Process-Design-Bridge.pdf",
+    },
   };
 
   return (
@@ -65,8 +75,8 @@ const ProcessDesignBridgePage: React.FC = () => {
         }
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P019-Process-Design-Bridge.pdf";
-          link.download = "LYS-P019-Process-Design-Bridge.pdf";
+          link.href = ctaTranslations.pdfHref[currentLanguage];
+          link.download = ctaTranslations.pdfDownload[currentLanguage];
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

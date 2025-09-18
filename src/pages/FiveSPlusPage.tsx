@@ -35,8 +35,8 @@ const translations: Record<
       "Implement 5S Plus™ and build the solid foundation for a culture of operational excellence",
     primaryButtonText: "Contact Now",
     secondaryButtonText: "Download Data Sheet",
-    pdfHref: "/assets/pdf/LYS-P008-5S-PLUS-EN.pdf",
-    pdfDownload: "LYS-P008-5S-PLUS-EN.pdf",
+    pdfHref: "/assets/pdf/LYS-P108-5S-PLUS.pdf",
+    pdfDownload: "LYS-P108-5S-PLUS.pdf",
   },
   pt: {
     ctaTitle: "Pronto para transformar seu espaço de trabalho?",
@@ -44,8 +44,8 @@ const translations: Record<
       "Implemente o 5S Plus™ e construa a base sólida para uma cultura operacional de excelência",
     primaryButtonText: "Contatar Agora",
     secondaryButtonText: "Baixar Ficha Técnica",
-    pdfHref: "/assets/pdf/LYS-P008-5S-PLUS-PT.pdf",
-    pdfDownload: "LYS-P008-5S-PLUS-PT.pdf",
+    pdfHref: "/assets/pdf/LYS-P208-5S-PLUS.pdf",
+    pdfDownload: "LYS-P208-5S-PLUS.pdf",
   },
 };
 
@@ -80,8 +80,8 @@ const FiveSPlusPage: React.FC = () => {
         secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "/assets/pdf/LYS-P008-5S-PLUS.pdf";
-          link.download = "LYS-P008-5S-PLUS.pdf";
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

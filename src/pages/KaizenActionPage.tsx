@@ -43,8 +43,8 @@ const translations: Record<
       "Turn your most complex problems into improvement opportunities with KAIZEN ACTION™",
     ctaPrimary: "Contact Now",
     ctaSecondary: "Download Brochure",
-    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action-EN.pdf",
-    pdfDownload: "LYS-P006-Kaizen-Action-EN.pdf",
+    pdfHref: "assets/pdf/LYS-P106-Kaizen-Action.pdf",
+    pdfDownload: "LYS-P106-Kaizen-Action.pdf",
   },
   pt: {
     dmaicTitle: "Metodologia DMAIC",
@@ -55,8 +55,8 @@ const translations: Record<
       "Transforme seus problemas mais complexos em oportunidades de melhoria com KAIZEN ACTION™",
     ctaPrimary: "Entrar em Contato",
     ctaSecondary: "Baixar Ficha Técnica",
-    pdfHref: "assets/pdf/LYS-P006-Kaizen-Action-PT.pdf",
-    pdfDownload: "LYS-P006-Kaizen-Action-PT.pdf",
+    pdfHref: "assets/pdf/LYS-P206-Kaizen-Action.pdf",
+    pdfDownload: "LYS-P206-Kaizen-Action.pdf",
   },
 };
 

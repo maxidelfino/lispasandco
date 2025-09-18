@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from "react";
-import CTAButtons from "../CTAButtons";
-import ScrollIndicator from "../ScrollIndicator";
+import React from "react";
+import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
 
-const TEXTS = {
+const TEXTS: Record<
+  Language,
+  {
+    badge: string;
+    mainTitle: string;
+    subTitle: string;
+    description: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
   es: {
     badge: "Transformar la organización (alinear estrategia con ejecución)",
     mainTitle: "ProjectFocus™",
     subTitle: "Selección Estratégica de Proyectos",
     description:
       "La metodología ideal para convertir objetivos estratégicos en decisiones reales de inversión, priorizadas con criterio y alineadas con el rumbo de la empresa.",
+    pdfHref: "assets/pdf/LYS-P010-Project-Focus.pdf",
+    pdfDownload: "LYS-P010-Project-Focus.pdf",
   },
   en: {
     badge: "Transform the organization (align strategy with execution)",
@@ -18,6 +29,8 @@ const TEXTS = {
     subTitle: "Strategic Project Selection",
     description:
       "The ideal methodology to turn strategic objectives into real investment decisions, prioritized with criteria and aligned with the company's direction.",
+    pdfHref: "assets/pdf/LYS-P110-Project-Focus.pdf",
+    pdfDownload: "LYS-P110-Project-Focus.pdf",
   },
   pt: {
     badge: "Transformar a organização (alinhar estratégia com execução)",
@@ -25,82 +38,41 @@ const TEXTS = {
     subTitle: "Seleção Estratégica de Projetos",
     description:
       "A metodologia ideal para transformar objetivos estratégicos em decisões reais de investimento, priorizadas com critério e alinhadas com o rumo da empresa.",
+    pdfHref: "assets/pdf/LYS-P110-Project-Focus.pdf",
+    pdfDownload: "LYS-P210-Project-Focus.pdf",
   },
 };
 
 const HeroSectionProjectFocus: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const { currentLanguage } = useLanguage();
   const lang: Language = (currentLanguage as Language) || "es";
   const t = TEXTS[lang];
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const scrollToContent = () => {
-    const element = document.getElementById("ProjectFocus-content");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)]">
-        <div className="absolute inset-0 bg-black/20"></div>
-        {/* Animated geometric shapes */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full animate-pulse"></div>
-        <div
-          className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white/10 rounded-full animate-bounce"
-          style={{ animationDuration: "3s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 right-1/3 w-32 h-32 bg-white/5 transform rotate-45 animate-spin"
-          style={{ animationDuration: "20s" }}
-        ></div>
-      </div>
-
-      {/* Content */}
-      <div
-        className={`relative z-10 text-center px-4 max-w-5xl mx-auto transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
-          <div className="w-2 h-2 bg-[var(--color-accent)] rounded-full mr-2 animate-pulse"></div>
-          {t.badge}
-        </div>
-
-        {/* Main Title */}
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+    <HeroBase
+      badge={t.badge}
+      title={
+        <>
           <span className="block">{t.mainTitle}</span>
           <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
             {t.subTitle}
           </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          {t.description}
-        </p>
-
-        {/* CTA Buttons */}
-        <CTAButtons
-          onDownload={() => {
-            const link = document.createElement("a");
-            link.href = "assets/pdf/LYS-P010-Project-Focus.pdf";
-            link.download = "LYS-P010-Project-Focus.pdf";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-        />
-      </div>
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator scrollToContent={scrollToContent} />
-    </section>
+        </>
+      }
+      descriptions={[t.description]}
+      scrollTargetId="ProjectFocus-content"
+      onDownload={() => {
+        const link = document.createElement("a");
+        link.href = t.pdfHref;
+        link.download = t.pdfDownload;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }}
+      backgroundVariant="mixed"
+      hideSubtitlesOnMobile={false}
+      hideDescriptionsOnMobile={false}
+    />
   );
 };
 

@@ -50,8 +50,8 @@ const translations: Record<
       "Implement FlowStable™ and build stable, predictable processes that deliver better averages, more control, and higher productivity.",
     primaryButtonText: "Contact Now",
     secondaryButtonText: "Download Data Sheet",
-    pdfHref: "/assets/pdf/LYS-P001-FlowStable-EN.pdf",
-    pdfDownload: "LYS-P001-FlowStable-EN.pdf",
+    pdfHref: "/assets/pdf/LYS-P101-FlowStable-EN.pdf",
+    pdfDownload: "LYS-P101-FlowStable-EN.pdf",
   },
   pt: {
     seoTitle:
@@ -65,8 +65,8 @@ const translations: Record<
       "Implemente o FlowStable™ e construa processos estáveis e previsíveis que gerem melhores médias, mais controle e maior produtividade.",
     primaryButtonText: "Contatar Agora",
     secondaryButtonText: "Baixar Ficha Técnica",
-    pdfHref: "/assets/pdf/LYS-P001-FlowStable-PT.pdf",
-    pdfDownload: "LYS-P001-FlowStable-PT.pdf",
+    pdfHref: "/assets/pdf/LYS-P201-FlowStable-PT.pdf",
+    pdfDownload: "LYS-P201-FlowStable-PT.pdf",
   },
 };
 

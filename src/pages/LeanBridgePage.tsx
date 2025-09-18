@@ -39,8 +39,8 @@ const ctaTranslations: Record<
     ],
     primaryButtonText: "Contact Now",
     secondaryButtonText: "Download Brochure",
-    pdfHref: "assets/pdf/LYS-P005-LeanBridge-EN.pdf",
-    pdfDownload: "LYS-P005-LeanBridge-EN.pdf",
+    pdfHref: "assets/pdf/LYS-P105-LeanBridge.pdf",
+    pdfDownload: "LYS-P105-LeanBridge.pdf",
   },
   pt: {
     title: "Pronto para levar sua operação ao próximo nível?",
@@ -50,8 +50,8 @@ const ctaTranslations: Record<
     ],
     primaryButtonText: "Entrar em Contato",
     secondaryButtonText: "Baixar Ficha Técnica",
-    pdfHref: "assets/pdf/LYS-P005-LeanBridge-PT.pdf",
-    pdfDownload: "LYS-P005-LeanBridge-PT.pdf",
+    pdfHref: "assets/pdf/LYS-P205-LeanBridge.pdf",
+    pdfDownload: "LYS-P205-LeanBridge.pdf",
   },
 };
 
@@ -86,8 +86,8 @@ const LeanBridgePage: React.FC = () => {
         secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P005-LeanBridge.pdf";
-          link.download = "LYS-P005-LeanBridge.pdf";
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

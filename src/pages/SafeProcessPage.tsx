@@ -33,8 +33,8 @@ const SafeProcessPage: React.FC = () => {
         secondaryButtonText="Descargar Ficha Técnica"
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P003-WASTEZERO.pdf";
-          link.download = "LYS-P003-WASTEZERO.pdf";
+          link.href = "assets/pdf/LYS-P00";
+          link.download = "LYS-P00";
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

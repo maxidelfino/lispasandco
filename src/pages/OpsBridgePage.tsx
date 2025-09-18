@@ -16,6 +16,8 @@ const CTA_TEXTS: Record<
     description: string;
     primaryButtonText: string;
     secondaryButtonText: string;
+    pdfHref: string;
+    pdfDownload: string;
   }
 > = {
   es: {
@@ -24,6 +26,8 @@ const CTA_TEXTS: Record<
       "Descubre cómo OpsBridge™ integra personas, procesos y tecnología para maximizar la eficiencia, reducir variabilidad y garantizar resultados sostenibles en toda tu organización.",
     primaryButtonText: "Contactar Ahora",
     secondaryButtonText: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P009-OpsBridge–World-Class-Systems.pdf",
+    pdfDownload: "LYS-P009-OpsBridge–World-Class-Systems.pdf",
   },
   en: {
     title: "Transform your operation with world-class systems",
@@ -31,6 +35,8 @@ const CTA_TEXTS: Record<
       "Discover how OpsBridge™ integrates people, processes, and technology to maximize efficiency, reduce variability, and ensure sustainable results across your organization.",
     primaryButtonText: "Contact Now",
     secondaryButtonText: "Download Brochure",
+    pdfHref: "assets/pdf/LYS-P109-OpsBridge–World-Class-Systems.pdf",
+    pdfDownload: "LYS-P109-OpsBridge–World-Class-Systems.pdf",
   },
   pt: {
     title: "Transforme sua operação com sistemas de classe mundial",
@@ -38,6 +44,8 @@ const CTA_TEXTS: Record<
       "Descubra como o OpsBridge™ integra pessoas, processos e tecnologia para maximizar a eficiência, reduzir a variabilidade e garantir resultados sustentáveis em toda a sua organização.",
     primaryButtonText: "Contatar Agora",
     secondaryButtonText: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P209-OpsBridge–World-Class-Systems.pdf",
+    pdfDownload: "LYS-P209-OpsBridge–World-Class-Systems.pdf",
   },
 };
 
@@ -71,8 +79,8 @@ const OpsBridgePage: React.FC = () => {
         secondaryButtonText={cta.secondaryButtonText}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P009-OpsBridge–World-Class-Systems.pdf";
-          link.download = "LYS-P009-OpsBridge–World-Class-Systems.pdf";
+          link.href = cta.pdfHref;
+          link.download = cta.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

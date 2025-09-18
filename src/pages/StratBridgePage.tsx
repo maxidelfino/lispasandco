@@ -18,6 +18,8 @@ const TEXTS: Record<
     ctaDesc: string;
     primaryButton: string;
     secondaryButton: string;
+    pdfHref: string;
+    pdfDownload: string;
   }
 > = {
   es: {
@@ -29,6 +31,8 @@ const TEXTS: Record<
       "Implementa StratBridge™ y transforma tu visión en resultados concretos y sostenibles.",
     primaryButton: "Contactar Ahora",
     secondaryButton: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P007-StratBridge.pdf",
+    pdfDownload: "LYS-P007-StratBridge.pdf",
   },
   en: {
     diagramTitle: "Comprehensive Strategic Planning",
@@ -39,6 +43,8 @@ const TEXTS: Record<
       "Implement StratBridge™ and turn your vision into concrete and sustainable results.",
     primaryButton: "Contact Now",
     secondaryButton: "Download Data Sheet",
+    pdfHref: "assets/pdf/LYS-P107-StratBridge.pdf",
+    pdfDownload: "LYS-P107-StratBridge.pdf",
   },
   pt: {
     diagramTitle: "Planejamento Estratégico Integral",
@@ -49,6 +55,8 @@ const TEXTS: Record<
       "Implemente o StratBridge™ e transforme sua visão em resultados concretos e sustentáveis.",
     primaryButton: "Entrar em Contato",
     secondaryButton: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P207-StratBridge.pdf",
+    pdfDownload: "LYS-P207-StratBridge.pdf",
   },
 };
 
@@ -90,8 +98,8 @@ const StratBridgePage: React.FC = () => {
         secondaryButtonText={t.secondaryButton}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P007-StratBridge.pdf";
-          link.download = "LYS-P007-StratBridge.pdf";
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

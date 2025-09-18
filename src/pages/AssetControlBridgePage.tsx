@@ -39,7 +39,18 @@ const AssetControlBridgePage: React.FC = () => {
       [Language.ENGLISH]: "Download Datasheet",
       [Language.PORTUGUESE]: "Baixar Ficha Técnica",
     },
+    pdfHref: {
+      [Language.SPANISH]: "assets/pdf/LYS-P016-AssetBridge.pdf",
+      [Language.ENGLISH]: "assets/pdf/LYS-P116-AssetBridge.pdf",
+      [Language.PORTUGUESE]: "assets/pdf/LYS-P216-AssetBridge.pdf",
+    },
+    pdfDownload: {
+      [Language.SPANISH]: "LYS-P016-AssetBridge.pdf",
+      [Language.ENGLISH]: "LYS-P116-AssetBridge.pdf",
+      [Language.PORTUGUESE]: "LYS-P216-AssetBridge.pdf",
+    },
   };
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -66,8 +77,8 @@ const AssetControlBridgePage: React.FC = () => {
         }
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P016-AssetBridge.pdf";
-          link.download = "LYS-P016-AssetBridge.pdf";
+          link.href = ctaTranslations.pdfHref[currentLanguage];
+          link.download = ctaTranslations.pdfDownload[currentLanguage];
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

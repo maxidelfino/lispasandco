@@ -9,81 +9,66 @@ import ChangeBridgeDiagram from "../assets/ChangeBridgeDiagram.png";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
 
-const getDiagramTitle = (language: Language): string => {
-  switch (language) {
-    case Language.ENGLISH:
-      return "Change Bridge™: Change Management Process";
-    case Language.PORTUGUESE:
-      return "Change Bridge™: Processo de Gestão da Mudança";
-    case Language.SPANISH:
-    default:
-      return "Change Bridge™: Proceso de Gestión del Cambio";
+const TEXTS: Record<
+  Language,
+  {
+    diagramTitle: string;
+    diagramDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    primaryButton: string;
+    secondaryButton: string;
+    pdfHref: string;
+    pdfDownload: string;
+    diagramAlt: string;
   }
-};
-
-const getDiagramDescription = (language: Language): string => {
-  switch (language) {
-    case Language.ENGLISH:
-      return "The Change Bridge™ model supports organizational change projects through a structured approach in 4 key phases.";
-    case Language.PORTUGUESE:
-      return "O modelo Change Bridge™ acompanha projetos de mudança organizacional por meio de uma abordagem estruturada em 4 fases-chave.";
-    case Language.SPANISH:
-    default:
-      return "El modelo Change Bridge™ acompaña proyectos de cambio organizacional a través de un enfoque estructurado en 4 fases clave.";
-  }
-};
-
-const getCTATitle = (language: Language): string => {
-  switch (language) {
-    case Language.ENGLISH:
-      return "Change Bridge™";
-    case Language.PORTUGUESE:
-      return "Change Bridge™";
-    case Language.SPANISH:
-    default:
-      return "Change Bridge™";
-  }
-};
-
-const getCTADescription = (language: Language): string => {
-  switch (language) {
-    case Language.ENGLISH:
-      return "We support change projects (processes, structure, and systems) with a practical 8–12 week approach that combines workshops, coaching, and structured follow-up to reduce resistance, align teams, and ensure adoption and sustainability of transformations.";
-    case Language.PORTUGUESE:
-      return "Apoiamos projetos de mudança (processos, estrutura e sistemas) com uma abordagem prática de 8–12 semanas que combina workshops, coaching e acompanhamento estruturado para reduzir resistências, alinhar equipes e garantir a adoção e sustentabilidade das transformações.";
-    case Language.SPANISH:
-    default:
-      return "Acompañamos proyectos de cambio (procesos, estructura y sistemas) con un enfoque práctico de 8–12 semanas que combina workshops, coaching y seguimiento estructurado para reducir resistencias, alinear equipos y garantizar la adopción y sostenibilidad de las transformaciones.";
-  }
-};
-
-const getPrimaryButtonText = (language: Language): string => {
-  switch (language) {
-    case Language.ENGLISH:
-      return "Contact Now";
-    case Language.PORTUGUESE:
-      return "Contactar Agora";
-    case Language.SPANISH:
-    default:
-      return "Contactar Ahora";
-  }
-};
-
-const getSecondaryButtonText = (language: Language): string => {
-  switch (language) {
-    case Language.ENGLISH:
-      return "Download Technical Sheet";
-    case Language.PORTUGUESE:
-      return "Baixar Ficha Técnica";
-    case Language.SPANISH:
-    default:
-      return "Descargar Ficha Técnica";
-  }
+> = {
+  [Language.SPANISH]: {
+    diagramTitle: "Change Bridge™: Proceso de Gestión del Cambio",
+    diagramDescription:
+      "El modelo Change Bridge™ acompaña proyectos de cambio organizacional a través de un enfoque estructurado en 4 fases clave.",
+    ctaTitle: "Change Bridge™",
+    ctaDescription:
+      "Acompañamos proyectos de cambio (procesos, estructura y sistemas) con un enfoque práctico de 8–12 semanas que combina workshops, coaching y seguimiento estructurado para reducir resistencias, alinear equipos y garantizar la adopción y sostenibilidad de las transformaciones.",
+    primaryButton: "Contactar Ahora",
+    secondaryButton: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P013-ChangeBridge.pdf",
+    pdfDownload: "LYS-P013-ChangeBridge.pdf",
+    diagramAlt: "Diagrama del Proceso Change Bridge",
+  },
+  [Language.ENGLISH]: {
+    diagramTitle: "Change Bridge™: Change Management Process",
+    diagramDescription:
+      "The Change Bridge™ model supports organizational change projects through a structured approach in 4 key phases.",
+    ctaTitle: "Change Bridge™",
+    ctaDescription:
+      "We support change projects (processes, structure, and systems) with a practical 8–12 week approach that combines workshops, coaching, and structured follow-up to reduce resistance, align teams, and ensure adoption and sustainability of transformations.",
+    primaryButton: "Contact Now",
+    secondaryButton: "Download Technical Sheet",
+    pdfHref: "assets/pdf/LYS-P113-ChangeBridge.pdf",
+    pdfDownload: "LYS-P113-ChangeBridge.pdf",
+    diagramAlt: "Change Bridge Process Diagram",
+  },
+  [Language.PORTUGUESE]: {
+    diagramTitle: "Change Bridge™: Processo de Gestão da Mudança",
+    diagramDescription:
+      "O modelo Change Bridge™ acompanha projetos de mudança organizacional por meio de uma abordagem estruturada em 4 fases-chave.",
+    ctaTitle: "Change Bridge™",
+    ctaDescription:
+      "Apoiamos projetos de mudança (processos, estrutura e sistemas) com uma abordagem prática de 8–12 semanas que combina workshops, coaching e acompanhamento estruturado para reduzir resistências, alinhar equipes e garantir a adoção e sustentabilidade das transformações.",
+    primaryButton: "Contactar Agora",
+    secondaryButton: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P213-ChangeBridge.pdf",
+    pdfDownload: "LYS-P213-ChangeBridge.pdf",
+    diagramAlt: "Diagrama do Processo Change Bridge",
+  },
 };
 
 const ChangeBridgePage: React.FC = () => {
   useScrollToTop();
   const { currentLanguage } = useLanguage();
+  const lang: Language = (currentLanguage as Language) || Language.SPANISH;
+  const t = TEXTS[lang];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -100,20 +85,14 @@ const ChangeBridgePage: React.FC = () => {
         <div className="w-full lg:w-1/2 order-2 pt-16">
           <div className="mb-8 text-center max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)] mb-2">
-              {getDiagramTitle(currentLanguage)}
+              {t.diagramTitle}
             </h2>
             <p className="text-base md:text-lg text-[var(--color-text)] mb-8">
-              {getDiagramDescription(currentLanguage)}
+              {t.diagramDescription}
             </p>
             <img
               src={ChangeBridgeDiagram}
-              alt={
-                currentLanguage === Language.ENGLISH
-                  ? "Change Bridge Process Diagram"
-                  : currentLanguage === Language.PORTUGUESE
-                  ? "Diagrama do Processo Change Bridge"
-                  : "Diagrama del Proceso Change Bridge"
-              }
+              alt={t.diagramAlt}
               className="w-full h-auto rounded-lg shadow-lg border border-[var(--color-border)]"
             />
           </div>
@@ -121,14 +100,14 @@ const ChangeBridgePage: React.FC = () => {
       </div>
       {/* Call to Action */}
       <CTASection
-        title={getCTATitle(currentLanguage)}
-        description={getCTADescription(currentLanguage)}
-        primaryButtonText={getPrimaryButtonText(currentLanguage)}
-        secondaryButtonText={getSecondaryButtonText(currentLanguage)}
+        title={t.ctaTitle}
+        description={t.ctaDescription}
+        primaryButtonText={t.primaryButton}
+        secondaryButtonText={t.secondaryButton}
         onSecondaryClick={() => {
           const link = document.createElement("a");
-          link.href = "assets/pdf/LYS-P013-ChangeBridge.pdf";
-          link.download = "LYS-P013-ChangeBridge.pdf";
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
