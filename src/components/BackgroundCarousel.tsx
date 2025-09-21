@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import RandG from "../assets/RandG.png";
+import { useScreenSize } from "../hooks/useScreenSize";
 
 interface BackgroundCarouselProps {
   slides: string[][]; // Array of slides, each slide is an array of 5 images
@@ -19,6 +21,8 @@ const carouselTranslations: Record<
     next: string;
     backgroundImage: (n: number) => string;
     goToSlide: (n: number) => string;
+    inPartnership: string;
+    forLicense: string;
   }
 > = {
   es: {
@@ -26,18 +30,24 @@ const carouselTranslations: Record<
     next: "Siguiente",
     backgroundImage: (n) => `Imagen de fondo ${n} de LYSPAS & CO`,
     goToSlide: (n) => `Ir al slide ${n}`,
+    inPartnership: "En asociación con",
+    forLicense: "para la licencia",
   },
   en: {
     previous: "Previous",
     next: "Next",
     backgroundImage: (n) => `Background image ${n} of LYSPAS & CO`,
     goToSlide: (n) => `Go to slide ${n}`,
+    inPartnership: "In partnership with",
+    forLicense: "for license",
   },
   pt: {
     previous: "Anterior",
     next: "Próximo",
     backgroundImage: (n) => `Imagem de fundo ${n} da LYSPAS & CO`,
     goToSlide: (n) => `Ir para o slide ${n}`,
+    inPartnership: "Em associação com",
+    forLicense: "para a licença",
   },
 };
 
@@ -49,6 +59,7 @@ export default function BackgroundCarousel({
 }: BackgroundCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const isDesktop = useScreenSize() === "desktop";
 
   // Idioma actual
   const { currentLanguage } = useLanguage();
@@ -162,7 +173,7 @@ export default function BackgroundCarousel({
           <>
             <button
               onClick={prevSlide}
-              className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
+              className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-20"
               aria-label={t.previous}
             >
               <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
@@ -170,7 +181,7 @@ export default function BackgroundCarousel({
 
             <button
               onClick={nextSlide}
-              className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
+              className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-20"
               aria-label={t.next}
             >
               <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
@@ -179,7 +190,7 @@ export default function BackgroundCarousel({
         )}
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+        <div className="absolute bottom-16 sm:bottom-20 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
@@ -191,6 +202,45 @@ export default function BackgroundCarousel({
             />
           ))}
         </div>
+
+        {/* Integrated Association Badge */}
+        {isDesktop && (
+        <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 max-w-[200px] sm:max-w-[250px]">
+          <div className="bg-white/95 backdrop-blur-md shadow-xl rounded-lg sm:rounded-xl border border-white/20 overflow-hidden">
+            {/* Content container */}
+            <div className="p-2 sm:p-4 space-y-2 sm:space-y-3">
+              {/* First row: "En asociación con" + R&G Logo */}
+              <div className="flex items-center justify-between gap-2 sm:gap-3">
+                <div className="flex-1">
+                  <p className="text-xs text-gray-700 font-medium leading-tight">
+                    {t.inPartnership}
+                  </p>
+                  <p className="text-xs text-gray-600 font-medium leading-tight">
+                    {t.forLicense}
+                  </p>
+                </div>
+                <img
+                  src={RandG}
+                  alt="R&G"
+                  className="h-8 sm:h-12 w-auto object-contain flex-shrink-0"
+                />
+              </div>
+
+              {/* Stable Ops™ */}
+              <div className="flex items-center justify-center">
+                <div className="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg w-full">
+                  <div className="text-center">
+                    <span className="font-light text-sm sm:text-xl tracking-wide">
+                      Stable Ops
+                    </span>
+                    <sup className="text-xs ml-0.5 font-normal">™</sup>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        )}
       </div>
     </div>
   );

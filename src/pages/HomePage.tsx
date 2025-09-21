@@ -27,6 +27,7 @@ import {
   Building2,
   Award,
 } from "lucide-react";
+import HomePageHero from "../components/HomePageHero";
 
 const SectionCTA: React.FC<{ scrollToServices?: () => void }> = ({
   scrollToServices,
@@ -92,80 +93,7 @@ const HomePage: React.FC = () => {
       <FloatingNavigation />
 
       {/* Hero Section */}
-      <section
-        id="inicio"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      >
-        <BackgroundCarousel
-          slides={carouselSlides}
-          autoPlay={true}
-          autoPlayInterval={5000}
-          className="z-0"
-        />
-
-        {/* Hero Content */}
-        <div
-          className={`relative z-10 text-center px-4 max-w-4xl mx-auto transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
-            LYSPAS & CO.
-          </h1>
-          <p className="text-2xl md:text-3xl text-white/90 mb-4 leading-relaxed">
-            {currentLanguage === Language.SPANISH
-              ? "Acompañamos a las empresas en su camino de transformación y mejora continua"
-              : currentLanguage === Language.ENGLISH
-              ? "We accompany companies on their journey of transformation and continuous improvement"
-              : "Acompanhamos as empresas em sua jornada de transformação e melhoria contínua"}
-          </p>
-          <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
-            {currentLanguage === Language.SPANISH
-              ? "“Desde lo técnico hasta lo estratégico, diseñamos soluciones reales y sostenibles para cualquier industria y tamaño de organización”"
-              : currentLanguage === Language.ENGLISH
-              ? "“From technical to strategic, we design real, sustainable solutions for any industry and organization size.”"
-              : "“Do aspecto técnico ao estratégico, projetamos soluções reais e sustentáveis para qualquer indústria e tamanho de organização.”"}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button
-              onClick={scrollToServices}
-              className="group bg-[var(--color-secondary)] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-[var(--color-primary)] hover:scale-105 hover:shadow-2xl"
-            >
-              {currentLanguage === Language.SPANISH
-                ? "Conocé Nuestros Programas"
-                : currentLanguage === Language.ENGLISH
-                ? "Discover Our Programs"
-                : "Conheça Nossos Programas"}
-            </button>
-            <button
-              onClick={() => {
-                const element = document.querySelector("footer");
-                element?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="group bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105"
-            >
-              {currentLanguage === Language.SPANISH
-                ? "Hablemos de tu Empresa"
-                : currentLanguage === Language.ENGLISH
-                ? "Let's Talk About Your Company"
-                : "Vamos Falar da Sua Empresa"}
-            </button>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <ScrollIndicator
-          scrollToContent={scrollToServices}
-          label={
-            currentLanguage === Language.SPANISH
-              ? "Desliza hacia abajo o toca aquí para conocer más"
-              : currentLanguage === Language.ENGLISH
-              ? "Scroll down or tap here to learn more"
-              : "Deslize para baixo ou toque aqui para saber mais"
-          }
-        />
-      </section>
+      <HomePageHero carouselSlides={carouselSlides} />
 
       {/* Services Section */}
       <EvolutionPath />

@@ -1,0 +1,151 @@
+import React, { useState, useEffect } from "react";
+import BackgroundCarousel from "./BackgroundCarousel";
+import { useLanguage } from "../contexts/LanguageContext";
+import { Language } from "../types";
+import ScrollIndicator from "./ScrollIndicator";
+import RandG from "../assets/RandG.png";
+import { useScreenSize } from "../hooks/useScreenSize";
+
+interface HomePageHeroProps {
+  carouselSlides: string[][];
+}
+
+const HomePageHero: React.FC<HomePageHeroProps> = ({ carouselSlides }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const isDesktop = useScreenSize() === "desktop";
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const scrollToServices = () => {
+    const element = document.getElementById("services-section");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section
+      id="inicio"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <BackgroundCarousel
+        slides={carouselSlides}
+        autoPlay={true}
+        autoPlayInterval={5000}
+        className="z-0"
+      />
+
+      <div
+        className={`relative z-10 text-center px-4 max-w-4xl mx-auto transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+          LYSPAS & CO.
+        </h1>
+        <p className="text-2xl md:text-3xl text-white/90 mb-4 leading-relaxed">
+          {currentLanguage === Language.SPANISH
+            ? "Acompañamos a las empresas en su camino de transformación y mejora continua"
+            : currentLanguage === Language.ENGLISH
+            ? "We accompany companies on their journey of transformation and continuous improvement"
+            : "Acompanhamos as empresas em sua jornada de transformação e melhoria contínua"}
+        </p>
+        {isDesktop && (
+          <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
+            {currentLanguage === Language.SPANISH
+              ? "“Desde lo técnico hasta lo estratégico, diseñamos soluciones reales y sostenibles para cualquier industria y tamaño de organización”"
+              : currentLanguage === Language.ENGLISH
+              ? "“From technical to strategic, we design real, sustainable solutions for any industry and organization size.”"
+              : "“Do aspecto técnico ao estratégico, projetamos soluções reais e sustentáveis para qualquer indústria e tamanho de organização.”"}
+          </p>
+        )}
+        {!isDesktop && (
+          <div className="z-10 max-w-[200px] sm:max-w-[250px] mx-auto flex justify-center mb-12">
+            <div className="bg-white/95 backdrop-blur-md shadow-xl rounded-lg sm:rounded-xl border border-white/20 overflow-hidden w-full">
+              {/* Content container */}
+              <div className="p-2 sm:p-4 space-y-2 sm:space-y-3">
+                {/* First row: "En asociación con" + R&G Logo */}
+                <div className="flex items-center justify-between gap-2 sm:gap-3">
+                  <div className="flex flex-col flex-1 items-start">
+                    <p className="text-xs text-gray-700 font-medium leading-tight">
+                      {currentLanguage === Language.SPANISH
+                        ? "En asociación con"
+                        : currentLanguage === Language.ENGLISH
+                        ? "In partnership with"
+                        : "Em associação com"}
+                    </p>
+                    <p className="text-xs text-gray-600 font-medium leading-tight">
+                      {currentLanguage === Language.SPANISH
+                        ? "para la licencia"
+                        : currentLanguage === Language.ENGLISH
+                        ? "for license"
+                        : "para a licença"}
+                    </p>
+                  </div>
+                  <img
+                    src={RandG}
+                    alt="R&G"
+                    className="h-8 sm:h-12 w-auto object-contain flex-shrink-0"
+                  />
+                </div>
+
+                {/* Stable Ops™ */}
+                <div className="flex items-center justify-center">
+                  <div className="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg w-full">
+                    <div className="text-center">
+                      <span className="font-light text-sm sm:text-xl tracking-wide">
+                        Stable Ops
+                      </span>
+                      <sup className="text-xs ml-0.5 font-normal">™</sup>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <button
+            onClick={scrollToServices}
+            className="group bg-[var(--color-secondary)] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-[var(--color-primary)] hover:scale-105 hover:shadow-2xl"
+          >
+            {currentLanguage === Language.SPANISH
+              ? "Conocé Nuestros Programas"
+              : currentLanguage === Language.ENGLISH
+              ? "Discover Our Programs"
+              : "Conheça Nossos Programas"}
+          </button>
+          <button
+            onClick={() => {
+              const element = document.querySelector("footer");
+              element?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="group bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105"
+          >
+            {currentLanguage === Language.SPANISH
+              ? "Hablemos de tu Empresa"
+              : currentLanguage === Language.ENGLISH
+              ? "Let's Talk About Your Company"
+              : "Vamos Falar da Sua Empresa"}
+          </button>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator
+        scrollToContent={scrollToServices}
+        label={
+          currentLanguage === Language.SPANISH
+            ? "Desliza hacia abajo o toca aquí para conocer más"
+            : currentLanguage === Language.ENGLISH
+            ? "Scroll down or tap here to learn more"
+            : "Deslize para baixo ou toque aqui para saber mais"
+        }
+      />
+    </section>
+  );
+};
+
+export default HomePageHero;

@@ -20,6 +20,7 @@ import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import SEOHead from "../components/SEOHead";
 import imgGonzalo from "../assets/gonzalo-luvani.png";
+import ScrollIndicator from "../components/ScrollIndicator";
 
 type MisionCard = {
   title: string;
@@ -65,6 +66,8 @@ type Translation = {
   ctaSubtitle: string;
   ctaBtn1: string;
   ctaBtn2: string;
+  bioHeader: string[];
+  bioDetails: string[];
 };
 
 const translations: Record<string, Translation> = {
@@ -195,6 +198,16 @@ const translations: Record<string, Translation> = {
       "Descubre cómo nuestros valores y metodología pueden impulsar el crecimiento sostenible de tu empresa",
     ctaBtn1: "Conocer Nuestros Programas",
     ctaBtn2: "Contactar Ahora",
+    bioHeader: [
+      "Gonzalo J. Luvani",
+      "Ingeniero Industrial / MBA / MBB",
+      "Funes, Argentina.",
+      "30+ años de experiencia global en excelencia operativa",
+      "Fundador de LYSPAS & CO Solutions, Soluciones de Mejora Continua",
+    ],
+    bioDetails: [
+      "<span class='font-semibold text-[var(--color-primary)]'>Gonzalo J. Luvani – MBA | Ingeniero Industrial | Especialista en Mejora Continua</span><br />Gonzalo Luvani es Ingeniero Industrial y MBA de Argentina con más de 30 años de experiencia en el sector agroindustrial global. Trabajó para Cargill Inc. en funciones operativas y de liderazgo en plantas de molienda y refinería de soja, puertos y elevadores del país, liderando programas de mejora continua en más de 50 instalaciones en todo el mundo.<br /><br />Hoy, como fundador de LYSPAS & CO Solutions, diseña e implementa sistemas de excelencia operativa a medida, combinando herramientas de mejora continua con un fuerte enfoque en el desarrollo de las personas. Su trabajo abarca países de América Latina y América del Norte, Europa y países asiáticos. Gonzalo también es colaborador de ASAGA (Asociación Argentina de Grasas y Aceites) y conferencista internacional. Actualmente está explorando asociaciones para adaptar las mejores prácticas en la molienda de soja para muchos otros países.",
+    ],
   },
   en: {
     badge: "Institutional Identity Sheet",
@@ -323,6 +336,16 @@ const translations: Record<string, Translation> = {
       "Discover how our values and methodology can drive your company's sustainable growth",
     ctaBtn1: "See Our Programs",
     ctaBtn2: "Contact Now",
+    bioHeader: [
+      "Gonzalo J. Luvani",
+      "Industrial Engineer / MBA / MBB",
+      "Funes, Argentina.",
+      "30+ years of global experience in operational excellence",
+      "Founder of LYSPAS & CO Solutions, Continuous Improvement Solutions",
+    ],
+    bioDetails: [
+      "<span class='font-semibold text-[var(--color-primary)]'>Gonzalo J. Luvani – MBA | Industrial Engineer | Continuous Improvement Specialist</span><br />Gonzalo Luvani is an Industrial Engineer and MBA from Argentina with over 30 years of experience in the global agribusiness sector. He worked for Cargill Inc. in operational and leadership roles in soybean crushing and refining plants, ports, and elevators in the country, leading continuous improvement programs in more than 50 facilities worldwide.<br /><br />Today, as founder of LYSPAS & CO Solutions, he designs and implements tailored operational excellence systems, combining continuous improvement tools with a strong focus on people development. His work spans countries in Latin and North America, Europe, and Asian countries. Gonzalo is also a contributor to ASAGA (Argentine Association of Fats and Oils) and an international speaker. He is currently exploring partnerships to adapt best practices in soybean crushing for many other countries.",
+    ],
   },
   pt: {
     badge: "Ficha de Identidade Institucional",
@@ -451,6 +474,16 @@ const translations: Record<string, Translation> = {
       "Descubra como nossos valores e metodologia podem impulsionar o crescimento sustentável da sua empresa",
     ctaBtn1: "Conheça Nossos Programas",
     ctaBtn2: "Contatar Agora",
+    bioHeader: [
+      "Gonzalo J. Luvani",
+      "Engenheiro Industrial / MBA / MBB",
+      "Funes, Argentina.",
+      "Mais de 30 anos de experiência global em excelência operacional",
+      "Fundador da LYSPAS & CO Solutions, Soluções de Melhoria Contínua",
+    ],
+    bioDetails: [
+      "<span class='font-semibold text-[var(--color-primary)]'>Gonzalo J. Luvani – MBA | Engenheiro Industrial | Especialista em Melhoria Contínua</span><br />Gonzalo Luvani é Engenheiro Industrial e MBA da Argentina com mais de 30 anos de experiência no setor agroindustrial global. Trabalhou para a Cargill Inc. em funções operacionais e de liderança em plantas de esmagamento e refino de soja, portos e elevadores do país, liderando programas de melhoria contínua em mais de 50 instalações ao redor do mundo.<br /><br />Hoje, como fundador da LYSPAS & CO Solutions, projeta e implementa sistemas de excelência operacional sob medida, combinando ferramentas de melhoria contínua com forte foco no desenvolvimento de pessoas. Seu trabalho abrange países da América Latina e do Norte, Europa e países asiáticos. Gonzalo também é colaborador da ASAGA (Associação Argentina de Gorduras e Óleos) e palestrante internacional. Atualmente, explora parcerias para adaptar as melhores práticas em esmagamento de soja para muitos outros países.",
+    ],
   },
 };
 
@@ -478,11 +511,23 @@ const AboutUsPage: React.FC = () => {
     }, 100);
   };
 
+  const handleBiographyClick = () => {
+    setTimeout(() => {
+      const element = document.getElementById("biography");
+      element?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
+
   useScrollToTop();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // Helper for rendering HTML safely
+  const renderHTML = (html: string) => (
+    <span dangerouslySetInnerHTML={{ __html: html }} />
+  );
 
   return (
     <div
@@ -527,9 +572,9 @@ const AboutUsPage: React.FC = () => {
 
           {/* Main Title */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            <span className="block">LYSPAS & CO</span>
+            <span className="block">{t.mainTitle}</span>
             <span className="block text-3xl md:text-4xl font-normal text-white/80 mt-2">
-              Continuous Improvement Solutions
+              {t.mainSubtitle}
             </span>
           </h1>
 
@@ -541,7 +586,7 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Biography Section */}
-      <section className="py-20 px-4 bg-[var(--color-surface)]">
+      <section className="py-20 px-4 bg-[var(--color-surface)]" id="biography">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-[auto_1fr] gap-10 bg-white rounded-2xl shadow-xl border border-[var(--color-border)] p-0 md:p-0 overflow-hidden">
             <div className="flex items-center justify-center bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] p-8 md:p-12">
@@ -554,170 +599,32 @@ const AboutUsPage: React.FC = () => {
             </div>
             <div className="flex flex-col justify-center px-6 py-8 md:px-10 md:py-12">
               <div className="space-y-2 text-center md:text-left mb-6">
-                {(() => {
-                  switch (currentLanguage) {
-                    case "en":
-                      return (
-                        <>
-                          <h3 className="text-2xl font-bold text-[var(--color-primary)]">
-                            Gonzalo J. Luvani
-                          </h3>
-                          <div className="text-[var(--color-secondary)] font-medium">
-                            Industrial Engineer / MBA / MBB
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            Funes, Argentina.
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            30+ years of global experience in operational
-                            excellence
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            Founder of LYSPAS & CO Solutions, Continuous
-                            Improvement Solutions
-                          </div>
-                        </>
-                      );
-                    case "pt":
-                      return (
-                        <>
-                          <h3 className="text-2xl font-bold text-[var(--color-primary)]">
-                            Gonzalo J. Luvani
-                          </h3>
-                          <div className="text-[var(--color-secondary)] font-medium">
-                            Engenheiro Industrial / MBA / MBB
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            Funes, Argentina.
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            Mais de 30 anos de experiência global em excelência
-                            operacional
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            Fundador da LYSPAS & CO Solutions, Soluções de
-                            Melhoria Contínua
-                          </div>
-                        </>
-                      );
-                    default:
-                      return (
-                        <>
-                          <h3 className="text-2xl font-bold text-[var(--color-primary)]">
-                            Gonzalo J. Luvani
-                          </h3>
-                          <div className="text-[var(--color-secondary)] font-medium">
-                            Ingeniero Industrial / MBA / MBB
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            Funes, Argentina.
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            30+ años de experiencia global en excelencia
-                            operativa
-                          </div>
-                          <div className="text-[var(--color-text)]">
-                            Fundador de LYSPAS & CO Solutions, Soluciones de
-                            Mejora Continua
-                          </div>
-                        </>
-                      );
-                  }
-                })()}
+                {t.bioHeader.map((line, idx) =>
+                  idx === 0 ? (
+                    <h3
+                      key={idx}
+                      className="text-2xl font-bold text-[var(--color-primary)]"
+                    >
+                      {line}
+                    </h3>
+                  ) : (
+                    <div
+                      key={idx}
+                      className={
+                        idx === 1
+                          ? "text-[var(--color-secondary)] font-medium"
+                          : "text-[var(--color-text)]"
+                      }
+                    >
+                      {line}
+                    </div>
+                  )
+                )}
               </div>
               <div className="text-[var(--color-text)] text-sm md:text-base leading-relaxed">
-                {(() => {
-                  switch (currentLanguage) {
-                    case "en":
-                      return (
-                        <>
-                          <span className="font-semibold text-[var(--color-primary)]">
-                            Gonzalo J. Luvani – MBA | Industrial Engineer |
-                            Continuous Improvement Specialist
-                          </span>
-                          <br />
-                          Gonzalo Luvani is an Industrial Engineer and MBA from
-                          Argentina with over 30 years of experience in the
-                          global agribusiness sector. He worked for Cargill Inc.
-                          in operational and leadership roles in soybean
-                          crushing and refining plants, ports, and elevators in
-                          the country, leading continuous improvement programs
-                          in more than 50 facilities worldwide.
-                          <br />
-                          <br />
-                          Today, as founder of LYSPAS & CO Solutions, he designs
-                          and implements tailored operational excellence
-                          systems, combining continuous improvement tools with a
-                          strong focus on people development. His work spans
-                          countries in Latin and North America, Europe, and
-                          Asian countries. Gonzalo is also a contributor to
-                          ASAGA (Argentine Association of Fats and Oils) and an
-                          international speaker. He is currently exploring
-                          partnerships to adapt best practices in soybean
-                          crushing for many other countries.
-                        </>
-                      );
-                    case "pt":
-                      return (
-                        <>
-                          <span className="font-semibold text-[var(--color-primary)]">
-                            Gonzalo J. Luvani – MBA | Engenheiro Industrial |
-                            Especialista em Melhoria Contínua
-                          </span>
-                          <br />
-                          Gonzalo Luvani é Engenheiro Industrial e MBA da
-                          Argentina com mais de 30 anos de experiência no setor
-                          agroindustrial global. Trabalhou para a Cargill Inc.
-                          em funções operacionais e de liderança em plantas de
-                          esmagamento e refino de soja, portos e elevadores do
-                          país, liderando programas de melhoria contínua em mais
-                          de 50 instalações ao redor do mundo.
-                          <br />
-                          <br />
-                          Hoje, como fundador da LYSPAS & CO Solutions, projeta
-                          e implementa sistemas de excelência operacional sob
-                          medida, combinando ferramentas de melhoria contínua
-                          com forte foco no desenvolvimento de pessoas. Seu
-                          trabalho abrange países da América Latina e do Norte,
-                          Europa e países asiáticos. Gonzalo também é
-                          colaborador da ASAGA (Associação Argentina de Gorduras
-                          e Óleos) e palestrante internacional. Atualmente,
-                          explora parcerias para adaptar as melhores práticas em
-                          esmagamento de soja para muitos outros países.
-                        </>
-                      );
-                    default:
-                      return (
-                        <>
-                          <span className="font-semibold text-[var(--color-primary)]">
-                            Gonzalo J. Luvani – MBA | Ingeniero Industrial |
-                            Especialista en Mejora Continua
-                          </span>
-                          <br />
-                          Gonzalo Luvani es Ingeniero Industrial y MBA de
-                          Argentina con más de 30 años de experiencia en el
-                          sector agroindustrial global. Trabajó para Cargill
-                          Inc. en funciones operativas y de liderazgo en plantas
-                          de molienda y refinería de soja, puertos y elevadores
-                          del país, liderando programas de mejora continua en
-                          más de 50 instalaciones en todo el mundo.
-                          <br />
-                          <br />
-                          Hoy, como fundador de LYSPAS & CO Solutions, diseña e
-                          implementa sistemas de excelencia operativa a medida,
-                          combinando herramientas de mejora continua con un
-                          fuerte enfoque en el desarrollo de las personas. Su
-                          trabajo abarca países de América Latina y América del
-                          Norte, Europa y países asiáticos. Gonzalo também es
-                          colaborador de ASAGA (Asociación Argentina de Grasas y
-                          Aceites) y conferencista internacional. Actualmente
-                          está explorando asociaciones para adaptar las mejores
-                          prácticas en la molienda de soja para muchos otros
-                          países.
-                        </>
-                      );
-                  }
-                })()}
+                {t.bioDetails.map((html, idx) => (
+                  <React.Fragment key={idx}>{renderHTML(html)}</React.Fragment>
+                ))}
               </div>
             </div>
           </div>
@@ -725,7 +632,7 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Misión Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4" id="ourMission">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -945,6 +852,17 @@ const AboutUsPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <ScrollIndicator
+        scrollToContent={handleBiographyClick}
+        label={
+          currentLanguage === "es"
+            ? "Desliza hacia abajo o toca aquí para conocer más"
+            : currentLanguage === "en"
+            ? "Scroll down or tap here to learn more"
+            : "Deslize para baixo ou toque aqui para saber mais"
+        }
+      />
 
       <FloatingWhatsAppCTA />
     </div>
