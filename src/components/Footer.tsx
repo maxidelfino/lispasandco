@@ -155,6 +155,11 @@ const uiText = {
     [Language.ENGLISH]: "LinkedIn",
     [Language.PORTUGUESE]: "LinkedIn",
   },
+  developedBy: {
+    [Language.SPANISH]: "Web desarrollada por",
+    [Language.ENGLISH]: "Website developed by",
+    [Language.PORTUGUESE]: "Site desenvolvido por",
+  },
 };
 
 type FormData = {
@@ -441,6 +446,17 @@ export const ContactFooter: React.FC = () => {
             <p className="text-white/70 text-sm">
               © {new Date().getFullYear()} LYSPAS & CO.{" "}
               {uiText.reserved[currentLanguage]}
+            </p>
+            <p className="text-white/50 text-xs mt-10">
+              {uiText.developedBy[currentLanguage]}{" "}
+              <a
+                href="https://maxidelfino.github.io/MyPortfolio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[var(--color-accent)]"
+              >
+                Maximiliano Delfino - MaxDesign
+              </a>
             </p>
           </div>
         </div>
