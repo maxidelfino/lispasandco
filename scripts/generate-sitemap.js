@@ -23,6 +23,11 @@ const routes = [
   },
   { path: "/ops-bridge", priority: "0.8", changefreq: "monthly" },
   { path: "/people-first", priority: "0.8", changefreq: "monthly" },
+  { path: "/asset-control-bridge", priority: "0.8", changefreq: "monthly" },
+  { path: "/autops", priority: "0.8", changefreq: "monthly" },
+  { path: "/safe-process", priority: "0.8", changefreq: "monthly" },
+  { path: "/measure-bridge", priority: "0.8", changefreq: "monthly" },
+  { path: "/process-design-bridge", priority: "0.8", changefreq: "monthly" },
 ];
 
 const generateSitemap = () => {
