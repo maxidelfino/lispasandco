@@ -48,7 +48,7 @@ const HomePageHero: React.FC<HomePageHeroProps> = ({ carouselSlides }) => {
           {currentLanguage === Language.SPANISH
             ? "Acompañamos a las empresas en su camino de transformación y mejora continua"
             : currentLanguage === Language.ENGLISH
-            ? "We accompany companies on their journey of transformation and continuous improvement"
+            ? "We help companies grow through transformation and continuous improvement."
             : "Acompanhamos as empresas em sua jornada de transformação e melhoria contínua"}
         </p>
         {isDesktop && (
@@ -56,7 +56,7 @@ const HomePageHero: React.FC<HomePageHeroProps> = ({ carouselSlides }) => {
             {currentLanguage === Language.SPANISH
               ? "“Desde lo técnico hasta lo estratégico, diseñamos soluciones reales y sostenibles para cualquier industria y tamaño de organización”"
               : currentLanguage === Language.ENGLISH
-              ? "“From technical to strategic, we design real, sustainable solutions for any industry and organization size.”"
+              ? "“From hands-on to big-picture, we create practical, lasting solutions for any business, in any industry.”"
               : "“Do aspecto técnico ao estratégico, projetamos soluções reais e sustentáveis para qualquer indústria e tamanho de organização.”"}
           </p>
         )}

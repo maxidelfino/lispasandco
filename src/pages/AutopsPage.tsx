@@ -6,6 +6,7 @@ import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
+import AutopsContentDiagram from "../components/Autops/AutopsContentDiagram";
 
 const AutopsPage: React.FC = () => {
   useScrollToTop();
@@ -23,12 +24,11 @@ const AutopsPage: React.FC = () => {
 
         {/* Right: Diagram */}
         <div className="w-full lg:w-1/2 order-2">
-          {/* <CircularWasteDiagram /> */}
+          <AutopsContentDiagram />
         </div>
       </div>
       {/* Call to Action */}
       {(() => {
-        // Traducciones para ES, EN, PT
         const translations = {
           es: {
             title: "¿Quieres transformar tu operación con AutoOps™?",
@@ -53,9 +53,7 @@ const AutopsPage: React.FC = () => {
           },
         };
 
-        // Hook para idioma
         const { currentLanguage } = useLanguage();
-        // Mapeo de idioma
         const langKey =
           currentLanguage === "es"
             ? "es"

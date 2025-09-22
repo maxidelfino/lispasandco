@@ -21,7 +21,7 @@ import {
   Compass,
   Puzzle,
 } from "lucide-react";
-import type { Service, Language } from "../types";
+import { Service, Language } from "../types";
 import EightGridWastes from "../icons-componets/EightGridWastes";
 import Central5SCircle from "../icons-componets/FiveSPlus/Central5SCircle";
 import FlowStableIcon from "../icons-componets/FlowStable/FlowStableIcon";
@@ -40,6 +40,8 @@ import { useLanguage } from "../contexts/LanguageContext";
 import PeopleFirstIcon from "./PeopleFirst/PeopleFirstIcon";
 import AssetBridgeIcon from "./AssetBridge/AssetBridgeIcon";
 import MeasureBridgeIcon from "./MeasureBridge/MeasureBridgeIcon";
+import RandG from "../assets/RandG.png";
+import ProcessDesignBridgeIcon from "./ProcessDesignBridge/ProcessDesignBridgeIcon";
 
 interface ServicesModalProps {
   isOpen: boolean;
@@ -80,6 +82,7 @@ const ICON_COMPONENTS_MAP = {
   "people-first": PeopleFirstIcon,
   "asset-control-bridge": AssetBridgeIcon,
   "measure-bridge": MeasureBridgeIcon,
+  "process-design-bridge": ProcessDesignBridgeIcon,
 };
 
 // Traducciones para textos estáticos
@@ -460,7 +463,7 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
               <div className="xl:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
                 {/* Service Header with Animation */}
                 <div
-                  className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 p-4 sm:p-6 bg-gradient-to-r from-white to-blue-50/50 rounded-2xl sm:rounded-3xl border border-blue-100/50 shadow-lg cursor-pointer"
+                  className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 p-4 sm:p-6 bg-gradient-to-r from-white to-white rounded-2xl sm:rounded-3xl border border-blue-100/50 shadow-lg cursor-pointer"
                   onClick={() => handleServiceClick(currentService)}
                 >
                   {/* Icon */}
@@ -479,6 +482,52 @@ const ServicesModal: React.FC<ServicesModalProps> = ({
                       {serviceName}
                     </h3>
                   </div>
+
+                  {serviceName.includes("FlowStable") && (
+                    <div className="z-10 max-w-[350px] sm:max-w-[350px] mx-auto flex justify-start mb-12">
+                      <div className="bg-gradient-to-r from-white to-white shadow-xl rounded-lg sm:rounded-xl border border-white/20 overflow-hidden w-full">
+                        {/* Content container */}
+                        <div className="p-2 sm:p-4 space-y-2 sm:space-y-3">
+                          {/* First row: "En asociación con" + R&G Logo */}
+                          <div className="flex items-start justify-between gap-2 sm:gap-3">
+                            <div className="flex flex-col flex-1 items-start">
+                              <p className="text-xs text-gray-700 font-medium leading-tight">
+                                {currentLanguage === Language.SPANISH
+                                  ? "En asociación con"
+                                  : currentLanguage === Language.ENGLISH
+                                  ? "In partnership with"
+                                  : "Em associação com"}
+                              </p>
+                              <p className="text-xs text-gray-600 font-medium leading-tight">
+                                {currentLanguage === Language.SPANISH
+                                  ? "para la licencia"
+                                  : currentLanguage === Language.ENGLISH
+                                  ? "for license"
+                                  : "para a licença"}
+                              </p>
+                              <div className="flex items-center justify-center mt-2">
+                                <div className="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg w-full">
+                                  <div className="text-center">
+                                    <span className="font-light text-sm sm:text-sm tracking-wide">
+                                      Stable Ops
+                                    </span>
+                                    <sup className="text-xs ml-0.5 font-normal">
+                                      ™
+                                    </sup>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <img
+                              src={RandG}
+                              alt="R&G"
+                              className="h-8 sm:h-12 w-auto object-contain flex-shrink-0"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Service Description with Enhanced Typography */}

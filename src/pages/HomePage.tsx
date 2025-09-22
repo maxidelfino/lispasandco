@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FloatingNavigation from "../components/FloatingNavigation";
-import BackgroundCarousel from "../components/BackgroundCarousel";
 import { carouselSlides } from "../data/carouselSlides";
 import ContactFooter from "../components/Footer";
 import LinkedInCard from "../components/LinkedInCard";
 import EvolutionPath from "../components/EvolutionPath";
-import ScrollIndicator from "../components/ScrollIndicator";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
@@ -127,7 +125,11 @@ const HomePage: React.FC = () => {
             >
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/9HuTx3R0u8g?si=27QZjKVXT9Pv5I1d?controls=1&modestbranding=1&rel=0&showinfo=0&fs=0&disablekb=1&iv_load_policy=3&enablejsapi=1&showinfo=0&rel=0&autohide=1&user=0"
+                src={
+                  currentLanguage === Language.ENGLISH
+                    ? "https://www.youtube.com/embed/N24hOqaGfVc?si=35-_DK9H8oUaXiFJ"
+                    : "https://www.youtube.com/embed/9HuTx3R0u8g?si=27QZjKVXT9Pv5I1d?controls=1&modestbranding=1&rel=0&showinfo=0&fs=0&disablekb=1&iv_load_policy=3&enablejsapi=1&showinfo=0&rel=0&autohide=1&user=0"
+                }
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

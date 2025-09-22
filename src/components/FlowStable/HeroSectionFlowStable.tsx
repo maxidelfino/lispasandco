@@ -1,9 +1,11 @@
 "use client";
 
-import type React from "react";
+import React, { useState } from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
+import RandG from "../../assets/RandG.png";
+import { useScreenSize } from "../../hooks/useScreenSize";
 
 const translations: Record<
   Language,
@@ -107,24 +109,136 @@ const translations: Record<
 const HeroSectionFlowStable: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
+  const isDesktop = useScreenSize() === "desktop";
+
+  const [active, setActive] = useState(false);
 
   return (
-    <HeroBase
-      badge={t.badge}
-      title={t.mainTitle}
-      descriptions={t.subtitles}
-      scrollTargetId="flowstable-content"
-      onDownload={() => {
-        const link = document.createElement("a");
-        link.href = t.pdfHref;
-        link.download = t.pdfDownload;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}
-      backgroundVariant="bars"
-      hideDescriptionsOnMobile={false}
-    />
+    <>
+      <HeroBase
+        badge={t.badge}
+        title={t.mainTitle}
+        descriptions={t.subtitles}
+        scrollTargetId="flowstable-content"
+        onDownload={() => {
+          const link = document.createElement("a");
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
+        backgroundVariant="bars"
+        hideDescriptionsOnMobile={false}
+      />
+      {isDesktop && (
+        <div
+          className={`absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 max-w-[200px] sm:max-w-[250px] group`}
+          onMouseEnter={() => setActive(true)}
+          onMouseLeave={() => setActive(false)}
+        >
+          <style>
+            {`
+              .stable-ops-card {
+                transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+                will-change: transform, box-shadow;
+              }
+              .stable-ops-card.active {
+                transform: scale(1.07) translateY(-6px);
+                box-shadow: 0 12px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,0,0,0.10);
+              }
+              .stable-ops-download-btn {
+                opacity: 0;
+                max-height: 0;
+                overflow: hidden;
+                padding-top: 0;
+                padding-bottom: 0;
+                pointer-events: none;
+                transform: translateY(8px) scale(0.98);
+                transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), transform 0.25s cubic-bezier(0.4,0,0.2,1), max-height 0.25s ease-out, padding 0.25s ease-out;
+              }
+              .stable-ops-download-btn.active {
+                opacity: 1;
+                max-height: 100px; /* Suficientemente grande para el botón */
+                padding-top: 0.5rem; /* Ajusta a tu necesidad */
+                padding-bottom: 0.5rem; /* Ajusta a tu necesidad */
+                pointer-events: auto;
+                transform: translateY(0) scale(1);
+              }
+            `}
+          </style>
+          <div
+            className={`stable-ops-card bg-white/95 backdrop-blur-md shadow-xl rounded-lg sm:rounded-xl border border-white/20 overflow-hidden${
+              active ? " active" : ""
+            }`}
+          >
+            {/* Content container */}
+            <div className="p-2 sm:p-4 space-y-2 sm:space-y-3">
+              {/* First row: "En asociación con" + R&G Logo */}
+              <div className="flex items-center justify-between gap-2 sm:gap-3">
+                <div className="flex-1">
+                  <p className="text-xs text-gray-700 font-medium leading-tight">
+                    {currentLanguage === Language.SPANISH
+                      ? "En asociación con"
+                      : currentLanguage === Language.ENGLISH
+                      ? "In partnership with"
+                      : "Em associação com"}
+                  </p>
+                  <p className="text-xs text-gray-600 font-medium leading-tight">
+                    {currentLanguage === Language.SPANISH
+                      ? "para la licencia"
+                      : currentLanguage === Language.ENGLISH
+                      ? "for license"
+                      : "para a licença"}
+                  </p>
+                </div>
+                <img
+                  src={RandG}
+                  alt="R&G"
+                  className="h-8 sm:h-12 w-auto object-contain flex-shrink-0"
+                />
+              </div>
+
+              {/* Stable Ops™ */}
+              <div className="flex items-center justify-center">
+                <div className="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg w-full">
+                  <div className="text-center">
+                    <span className="font-light text-sm sm:text-xl tracking-wide">
+                      Stable Ops
+                    </span>
+                    <sup className="text-xs ml-0.5 font-normal">™</sup>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onMouseEnter={() => setActive(true)}
+                onMouseLeave={() => setActive(true)}
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/assets/pdf/R&G-StableOps.pdf";
+                  link.download = "R&G-StableOps.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className={`stable-ops-download-btn w-full bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white text-xs sm:text-sm font-semibold rounded transition-all duration-200 shadow mt-2${
+                  active ? " active" : ""
+                }`}
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                {currentLanguage === Language.SPANISH
+                  ? "¿Quieres conocer más? Descarga la ficha técnica de Stable Ops™"
+                  : currentLanguage === Language.ENGLISH
+                  ? "Want to know more? Download the Stable Ops™ technical sheet"
+                  : "Quer saber mais? Baixe a ficha técnica do Stable Ops™"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

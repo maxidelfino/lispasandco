@@ -86,9 +86,9 @@ const EvolutionPath: React.FC = () => {
                 <>
                   Our Transformation Roadmap:{" "}
                   <span className="text-[var(--color-secondary)]">
-                    4 integrated modules
+                    4 connected modules
                   </span>{" "}
-                  to take your company to a higher level
+                  to take your business further.
                 </>
               ) : (
                 <>
@@ -105,14 +105,14 @@ const EvolutionPath: React.FC = () => {
               {currentLanguage === Language.SPANISH
                 ? "“Cada empresa conoce su punto de dolor. De la mano de la mejora continua nosotros te ayudamos a superarlo.”"
                 : currentLanguage === Language.ENGLISH
-                ? "“Every company knows its pain point. With continuous improvement, we help you overcome it.”"
+                ? "“Every company has its challenges. We work with you to face them—and turn them into opportunities—through continuous improvement that lasts.”"
                 : "“Cada empresa conhece seu ponto de dor. Com a melhoria contínua, ajudamos você a superá-lo.”"}
             </p>
             <p className="text-base sm:text-xl text-[var(--color-text)] max-w-md sm:max-w-2xl mx-auto">
               {currentLanguage === Language.SPANISH
                 ? "Elige la opción que mejor describe tus problemas"
                 : currentLanguage === Language.ENGLISH
-                ? "Choose the option that best describes your challenges"
+                ? "Choose the option that best fits your challenges."
                 : "Escolha a opção que melhor descreve seus problemas"}
             </p>
           </div>
@@ -246,7 +246,16 @@ const EvolutionPath: React.FC = () => {
                                         <span
                                           className="relative ml-1 flex items-center justify-center rounded-full p-0.5 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]"
                                           title={
-                                            currentLanguage === Language.SPANISH
+                                            name.includes("FLOW STABLE")
+                                              ? currentLanguage ===
+                                                Language.SPANISH
+                                                ? "Licencia STABLE OPERATIONS por R&G"
+                                                : currentLanguage ===
+                                                  Language.ENGLISH
+                                                ? "Licence STABLE OPERATIONS by R&G"
+                                                : "Licença STABLE OPERATIONS por R&G"
+                                              : currentLanguage ===
+                                                Language.SPANISH
                                               ? "Programa destacado"
                                               : currentLanguage ===
                                                 Language.ENGLISH
@@ -254,7 +263,16 @@ const EvolutionPath: React.FC = () => {
                                               : "Programa em destaque"
                                           }
                                           aria-label={
-                                            currentLanguage === Language.SPANISH
+                                            name.includes("FLOW STABLE")
+                                              ? currentLanguage ===
+                                                Language.SPANISH
+                                                ? "Licencia STABLE OPERATIONS por R&G"
+                                                : currentLanguage ===
+                                                  Language.ENGLISH
+                                                ? "Licence STABLE OPERATIONS by R&G"
+                                                : "Licença STABLE OPERATIONS por R&G"
+                                              : currentLanguage ===
+                                                Language.SPANISH
                                               ? "Programa destacado"
                                               : currentLanguage ===
                                                 Language.ENGLISH
@@ -271,8 +289,16 @@ const EvolutionPath: React.FC = () => {
                                           <Star className="w-3.5 h-3.5 text-white" />
                                           {showTooltip === idx && (
                                             <span className="absolute left-1/2 -top-8 -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs rounded px-2 py-1 pointer-events-none z-30 shadow-lg">
-                                              {currentLanguage ===
-                                              Language.SPANISH
+                                              {name.includes("FLOW STABLE")
+                                                ? currentLanguage ===
+                                                  Language.SPANISH
+                                                  ? "Licencia STABLE OPERATIONS por R&G"
+                                                  : currentLanguage ===
+                                                    Language.ENGLISH
+                                                  ? "Licence STABLE OPERATIONS by R&G"
+                                                  : "Licença STABLE OPERATIONS por R&G"
+                                                : currentLanguage ===
+                                                  Language.SPANISH
                                                 ? "Programa destacado"
                                                 : currentLanguage ===
                                                   Language.ENGLISH

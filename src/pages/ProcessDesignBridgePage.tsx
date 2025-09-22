@@ -7,6 +7,7 @@ import { Language } from "../types";
 import { useLanguage } from "../contexts/LanguageContext";
 import ProcessDesignBridgeHero from "../components/ProcessDesignBridge/ProcessDesignBridgeHero";
 import ProcessDesignBridgeContent from "../components/ProcessDesignBridge/ProcessDesignBridgeContent";
+import ProcessDesignBridgeDiagram from "../components/ProcessDesignBridge/ProcessDesignBridgeDiagram";
 
 const ProcessDesignBridgePage: React.FC = () => {
   useScrollToTop();
@@ -62,7 +63,7 @@ const ProcessDesignBridgePage: React.FC = () => {
         </div>
         {/* Right: Diagram */}
         <div className="w-full lg:w-1/2 order-2">
-          {/* <ProcessDesignBridgeDiagram /> */}
+          <ProcessDesignBridgeDiagram />
         </div>
       </div>
       {/* Call to Action */}
