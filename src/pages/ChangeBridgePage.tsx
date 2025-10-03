@@ -6,7 +6,7 @@ import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import ChangeBridgeDiagramES from "../assets/ChangeBridgeDiagram.png";
-import ChangeBridgeDiagramEN from "../assets/ChangeBridgeDiagram-EN.png";
+import ChangeBridgeDiagramEN from "../assets/ChangeBridgeDiagramEN.png";
 import ChangeBridgeDiagramPT from "../assets/ChangeBridgeDiagram-PT.png";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
