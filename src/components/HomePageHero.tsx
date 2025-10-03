@@ -4,6 +4,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
 import ScrollIndicator from "./ScrollIndicator";
 import RandG from "../assets/RandG.png";
+import IndiaPresentationQR from "../assets/QR-india-presentation.jpeg";
 import { useScreenSize } from "../hooks/useScreenSize";
 
 interface HomePageHeroProps {
@@ -61,45 +62,79 @@ const HomePageHero: React.FC<HomePageHeroProps> = ({ carouselSlides }) => {
           </p>
         )}
         {!isDesktop && (
-          <div className="z-10 max-w-[200px] sm:max-w-[250px] mx-auto flex justify-center mb-12">
-            <div className="bg-white/95 backdrop-blur-md shadow-xl rounded-lg sm:rounded-xl border border-white/20 overflow-hidden w-full">
-              {/* Content container */}
-              <div className="p-2 sm:p-4 space-y-2 sm:space-y-3">
-                {/* First row: "En asociación con" + R&G Logo */}
-                <div className="flex items-center justify-between gap-2 sm:gap-3">
-                  <div className="flex flex-col flex-1 items-start">
-                    <p className="text-xs text-gray-700 font-medium leading-tight">
-                      {currentLanguage === Language.SPANISH
-                        ? "En asociación con"
-                        : currentLanguage === Language.ENGLISH
-                        ? "In partnership with"
-                        : "Em associação com"}
-                    </p>
-                    <p className="text-xs text-gray-600 font-medium leading-tight">
-                      {currentLanguage === Language.SPANISH
-                        ? "para la licencia"
-                        : currentLanguage === Language.ENGLISH
-                        ? "for license"
-                        : "para a licença"}
-                    </p>
+          <div className="z-10 flex flex-row justify-center items-stretch gap-4 max-w-[480px] mx-auto mb-12">
+            <div className="flex-1 flex justify-center">
+              <div className="bg-white/95 backdrop-blur-md shadow-xl rounded-lg sm:rounded-xl border border-white/20 overflow-hidden w-full max-w-[200px] sm:max-w-[250px]">
+                {/* Content container */}
+                <div className="p-2 sm:p-4 space-y-2 sm:space-y-3">
+                  {/* First row: "En asociación con" + R&G Logo */}
+                  <div className="flex items-center justify-between gap-2 sm:gap-3">
+                    <div className="flex flex-col flex-1 items-start">
+                      <p className="text-xs text-gray-700 font-medium leading-tight">
+                        {currentLanguage === Language.SPANISH
+                          ? "En asociación con"
+                          : currentLanguage === Language.ENGLISH
+                          ? "In partnership with"
+                          : "Em associação com"}
+                      </p>
+                      <p className="text-xs text-gray-600 font-medium leading-tight">
+                        {currentLanguage === Language.SPANISH
+                          ? "para la licencia"
+                          : currentLanguage === Language.ENGLISH
+                          ? "for license"
+                          : "para a licença"}
+                      </p>
+                    </div>
+                    <img
+                      src={RandG}
+                      alt="R&G"
+                      className="h-8 sm:h-12 w-auto object-contain flex-shrink-0"
+                    />
                   </div>
-                  <img
-                    src={RandG}
-                    alt="R&G"
-                    className="h-8 sm:h-12 w-auto object-contain flex-shrink-0"
-                  />
-                </div>
 
-                {/* Stable Ops™ */}
-                <div className="flex items-center justify-center">
-                  <div className="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg w-full">
-                    <div className="text-center">
-                      <span className="font-light text-sm sm:text-xl tracking-wide">
-                        Stable Ops
-                      </span>
-                      <sup className="text-xs ml-0.5 font-normal">™</sup>
+                  {/* Stable Ops™ */}
+                  <div className="flex items-center justify-center">
+                    <div className="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg w-full">
+                      <div className="text-center">
+                        <span className="font-light text-sm sm:text-xl tracking-wide">
+                          Stable Ops
+                        </span>
+                        <sup className="text-xs ml-0.5 font-normal">™</sup>
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 flex justify-center">
+              <div className="bg-gradient-to-br from-[var(--color-primary)]/90 to-[var(--color-accent)]/80 p-1 rounded-2xl shadow-xl w-full max-w-[220px] sm:max-w-[270px] flex flex-col items-center">
+                <div className="bg-white/90 rounded-xl px-4 py-3 flex flex-col items-center">
+                  <p className="text-xs sm:text-sm text-[var(--color-primary)] font-semibold text-center mb-2 tracking-wide drop-shadow-sm">
+                    {currentLanguage === Language.SPANISH
+                      ? "Escaneá el QR para seguir la presentación en India"
+                      : currentLanguage === Language.ENGLISH
+                      ? "Scan the QR to follow the presentation in India"
+                      : "Escaneie o QR para acompanhar a apresentação na Índia"}
+                  </p>
+                  <div className="flex items-center justify-center">
+                    <div className="p-2 bg-white rounded-lg shadow-lg border border-[var(--color-border)]">
+                      <img
+                        src={IndiaPresentationQR}
+                        alt="India Presentation QR"
+                        className="h-16 sm:h-20 w-auto object-contain flex-shrink-0 transition-transform duration-300 hover:scale-110"
+                        style={{
+                          filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.10))",
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <span className="mt-2 text-[10px] text-gray-500 text-center italic">
+                    {currentLanguage === Language.SPANISH
+                      ? "¡Acceso instantáneo desde tu móvil!"
+                      : currentLanguage === Language.ENGLISH
+                      ? "Instant access from your phone!"
+                      : "Acesso instantâneo pelo celular!"}
+                  </span>
                 </div>
               </div>
             </div>
