@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import RandG from "../assets/RandG.png";
 
 const EvolutionPath: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
@@ -244,7 +245,11 @@ const EvolutionPath: React.FC = () => {
                                       {name}
                                       {featured && (
                                         <span
-                                          className="relative ml-1 flex items-center justify-center rounded-full p-0.5 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]"
+                                          className={
+                                            name.includes("FLOW STABLE")
+                                              ? "relative ml-1 flex items-center justify-center rounded-full p-0.5"
+                                              : "relative ml-1 flex items-center justify-center rounded-full p-0.5 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)]"
+                                          }
                                           title={
                                             name.includes("FLOW STABLE")
                                               ? currentLanguage ===
@@ -286,7 +291,16 @@ const EvolutionPath: React.FC = () => {
                                             setShowTooltip(null)
                                           }
                                         >
-                                          <Star className="w-3.5 h-3.5 text-white" />
+                                          {name.includes("FLOW STABLE") ? (
+                                            <img
+                                              src={RandG}
+                                              alt="R&G"
+                                              className="h-4 sm:h-6 w-auto object-contain flex-shrink-0"
+                                            />
+                                          ) : (
+                                            <Star className="w-3.5 h-3.5 text-white" />
+                                          )}
+
                                           {showTooltip === idx && (
                                             <span className="absolute left-1/2 -top-8 -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs rounded px-2 py-1 pointer-events-none z-30 shadow-lg">
                                               {name.includes("FLOW STABLE")

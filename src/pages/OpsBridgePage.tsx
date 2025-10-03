@@ -35,8 +35,8 @@ const CTA_TEXTS: Record<
       "Discover how OpsBridge™ integrates people, processes, and technology to maximize efficiency, reduce variability, and ensure sustainable results across your organization.",
     primaryButtonText: "Contact Now",
     secondaryButtonText: "Download Brochure",
-    pdfHref: "assets/pdf/LYS-P109-OpsBridge–World-Class-Systems.pdf",
-    pdfDownload: "LYS-P109-OpsBridge–World-Class-Systems.pdf",
+    pdfHref: "assets/pdf/LYS-P109-OpsBridge-World-Class-Systems.pdf",
+    pdfDownload: "LYS-P109-OpsBridge-World-Class-Systems.pdf",
   },
   pt: {
     title: "Transforme sua operação com sistemas de classe mundial",
@@ -44,8 +44,8 @@ const CTA_TEXTS: Record<
       "Descubra como o OpsBridge™ integra pessoas, processos e tecnologia para maximizar a eficiência, reduzir a variabilidade e garantir resultados sustentáveis em toda a sua organização.",
     primaryButtonText: "Contatar Agora",
     secondaryButtonText: "Baixar Ficha Técnica",
-    pdfHref: "assets/pdf/LYS-P209-OpsBridge–World-Class-Systems.pdf",
-    pdfDownload: "LYS-P209-OpsBridge–World-Class-Systems.pdf",
+    pdfHref: "assets/pdf/LYS-P209-OpsBridge-World-Class-Systems.pdf",
+    pdfDownload: "LYS-P209-OpsBridge-World-Class-Systems.pdf",
   },
 };
 

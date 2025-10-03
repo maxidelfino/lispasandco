@@ -542,7 +542,7 @@ const AboutUsPage: React.FC = () => {
       <FloatingNavigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)]">
           <div className="absolute inset-0 bg-black/20"></div>
@@ -583,6 +583,17 @@ const AboutUsPage: React.FC = () => {
             {t.heroSubtitle}
           </p>
         </div>
+
+        <ScrollIndicator
+          scrollToContent={handleBiographyClick}
+          label={
+            currentLanguage === "es"
+              ? "Desliza hacia abajo o toca aquí para conocer más"
+              : currentLanguage === "en"
+              ? "Scroll down or tap here to learn more"
+              : "Deslize para baixo ou toque aqui para saber mais"
+          }
+        />
       </section>
 
       {/* Biography Section */}
@@ -852,17 +863,6 @@ const AboutUsPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <ScrollIndicator
-        scrollToContent={handleBiographyClick}
-        label={
-          currentLanguage === "es"
-            ? "Desliza hacia abajo o toca aquí para conocer más"
-            : currentLanguage === "en"
-            ? "Scroll down or tap here to learn more"
-            : "Deslize para baixo ou toque aqui para saber mais"
-        }
-      />
 
       <FloatingWhatsAppCTA />
     </div>

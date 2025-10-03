@@ -54,7 +54,7 @@ const structuredDataTranslations: Record<string, Record<Language, any>> = {
       areaServed: "Argentina",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Programa WasteZero™",
+        name: "WasteZero™",
         itemListElement: [
           {
             "@type": "Offer",
@@ -77,7 +77,7 @@ const structuredDataTranslations: Record<string, Record<Language, any>> = {
       areaServed: "Argentina",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "WasteZero™ Program",
+        name: "WasteZero™",
         itemListElement: [
           {
             "@type": "Offer",
@@ -101,7 +101,7 @@ const structuredDataTranslations: Record<string, Record<Language, any>> = {
       areaServed: "Argentina",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Programa WasteZero™",
+        name: "WasteZero™",
         itemListElement: [
           {
             "@type": "Offer",

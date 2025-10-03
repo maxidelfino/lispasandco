@@ -5,7 +5,9 @@ import ChangeBridgeContent from "../components/ChangeBridge/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
-import ChangeBridgeDiagram from "../assets/ChangeBridgeDiagram.png";
+import ChangeBridgeDiagramES from "../assets/ChangeBridgeDiagram.png";
+import ChangeBridgeDiagramEN from "../assets/ChangeBridgeDiagram-EN.png";
+import ChangeBridgeDiagramPT from "../assets/ChangeBridgeDiagram-PT.png";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
 
@@ -70,6 +72,14 @@ const ChangeBridgePage: React.FC = () => {
   const lang: Language = (currentLanguage as Language) || Language.SPANISH;
   const t = TEXTS[lang];
 
+  // Select diagram image based on language
+  let diagramImg = ChangeBridgeDiagramES;
+  if (lang === Language.ENGLISH) {
+    diagramImg = ChangeBridgeDiagramEN;
+  } else if (lang === Language.PORTUGUESE) {
+    diagramImg = ChangeBridgeDiagramPT;
+  }
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -91,7 +101,7 @@ const ChangeBridgePage: React.FC = () => {
               {t.diagramDescription}
             </p>
             <img
-              src={ChangeBridgeDiagram}
+              src={diagramImg}
               alt={t.diagramAlt}
               className="w-full h-auto rounded-lg shadow-lg border border-[var(--color-border)]"
             />

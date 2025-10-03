@@ -219,7 +219,7 @@ const translations = {
         id: "8",
         icon: HandCoins,
         title: "Beneficios",
-        subtitle: "Beneficios del programa WasteZero™",
+        subtitle: "Beneficios del programa AutoOps™",
         children: (
           <div className="grid grid-cols-2 gap-6">
             {[
@@ -564,7 +564,7 @@ const translations = {
         id: "8",
         icon: HandCoins,
         title: "Benefits",
-        subtitle: "Benefits of the WasteZero™ program",
+        subtitle: "Benefits of the AutoOps™ program",
         children: (
           <div className="grid grid-cols-2 gap-6">
             {[
@@ -908,7 +908,7 @@ const translations = {
         id: "8",
         icon: HandCoins,
         title: "Benefícios",
-        subtitle: "Benefícios do programa WasteZero™",
+        subtitle: "Benefícios do programa AutoOps™",
         children: (
           <div className="grid grid-cols-2 gap-6">
             {[

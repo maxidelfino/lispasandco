@@ -51,7 +51,10 @@ export const evolutionCards: {
         { name: "Ordenar sectores 5S PLUS™", featured: false },
         { name: "Resolver problemas KAIZEN ACTION™", featured: true },
         { name: "Gestionar los cambios CHANGE BRIDGE™", featured: false },
-        { name: "Ingeniería de procesos PROCESS DESIGN BRIDGE™", featured: true },
+        {
+          name: "Ingeniería de procesos PROCESS DESIGN BRIDGE™",
+          featured: true,
+        },
       ],
     },
     {
@@ -115,7 +118,7 @@ export const evolutionCards: {
       servicesData: servicesData_aplicaciones,
       programs: [
         {
-          name: "Optimizar sistema integral de gestion - OPS EXCELLENCE™",
+          name: "Optimizar sistema integral de gestion - OPS BRIDGE™ - WORLD CLASS",
           featured: false,
         },
         { name: "Seleccionar proyectos - PROJECT FOCUS™", featured: true },
@@ -206,7 +209,7 @@ export const evolutionCards: {
       servicesData: servicesData_aplicaciones_en,
       programs: [
         {
-          name: "Optimize management system - OPS EXCELLENCE™",
+          name: "Optimize management system - OpsBridge™ - World Class™",
           featured: false,
         },
         { name: "Select projects - PROJECT FOCUS™", featured: true },
@@ -233,7 +236,10 @@ export const evolutionCards: {
         { name: "Organizar setores 5S PLUS™", featured: false },
         { name: "Resolver problemas KAIZEN ACTION™", featured: true },
         { name: "Gerenciar mudanças CHANGE BRIDGE™", featured: false },
-        { name: "Engenharia de processos PROCESS DESIGN BRIDGE™", featured: true },
+        {
+          name: "Engenharia de processos PROCESS DESIGN BRIDGE™",
+          featured: true,
+        },
       ],
     },
     {

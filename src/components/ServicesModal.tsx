@@ -42,6 +42,7 @@ import AssetBridgeIcon from "./AssetBridge/AssetBridgeIcon";
 import MeasureBridgeIcon from "./MeasureBridge/MeasureBridgeIcon";
 import RandG from "../assets/RandG.png";
 import ProcessDesignBridgeIcon from "./ProcessDesignBridge/ProcessDesignBridgeIcon";
+import AutopsContentIcon from "./Autops/AutopsContentIcon";
 
 interface ServicesModalProps {
   isOpen: boolean;
@@ -83,6 +84,7 @@ const ICON_COMPONENTS_MAP = {
   "asset-control-bridge": AssetBridgeIcon,
   "measure-bridge": MeasureBridgeIcon,
   "process-design-bridge": ProcessDesignBridgeIcon,
+  autops: AutopsContentIcon,
 };
 
 // Traducciones para textos estáticos

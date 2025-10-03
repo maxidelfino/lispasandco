@@ -43,26 +43,6 @@ const translations = {
         subtitle: "Características del programa 5S Plus™",
         children: (
           <>
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                5S Plus™ es un programa práctico de intervención diseñado por
-                LYSPAS & CO para ayudar a las organizaciones a crear espacios de
-                trabajo limpios, ordenados, eficientes y seguros, como base
-                indispensable para cualquier camino de mejora continua.
-              </p>
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                A través de cinco pasos simples pero poderosos, 5S Plus™
-                identifica con claridad aquellas cosas que <strong>NO</strong>{" "}
-                deberían estar en el lugar y ayuda a ordenar aquellas otras que{" "}
-                <strong>SÍ</strong> lo deberían estar. Instala hábitos y
-                estándares que permiten sostener la disciplina operativa en el
-                tiempo.
-              </p>
-            </div>
-            <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
-              “5S no es una limpieza profunda. Es un cambio estructurado y
-              sostenido utilizando el orden como forma de trabajo.”
-            </blockquote>
             <div className="mb-6">
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
                 ¿Qué es?
@@ -311,25 +291,6 @@ const translations = {
         subtitle: "Features of the 5S Plus™ program",
         children: (
           <>
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                5S Plus™ is a practical intervention program designed by LYSPAS
-                & CO to help organizations create clean, organized, efficient,
-                and safe workspaces as an essential foundation for any
-                continuous improvement journey.
-              </p>
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                Through five simple yet powerful steps, 5S Plus™ clearly
-                identifies what <strong>SHOULD NOT</strong> be in place and
-                helps organize what <strong>SHOULD</strong> be. It establishes
-                habits and standards that sustain operational discipline over
-                time.
-              </p>
-            </div>
-            <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
-              “5S is not deep cleaning. It is a structured and sustained change
-              using order as a way of working.”
-            </blockquote>
             <div className="mb-6">
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
                 What is it?
@@ -576,25 +537,6 @@ const translations = {
         subtitle: "Características do programa 5S Plus™",
         children: (
           <>
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                5S Plus™ é um programa prático de intervenção desenvolvido pela
-                LYSPAS & CO para ajudar as organizações a criar espaços de
-                trabalho limpos, organizados, eficientes e seguros, como base
-                indispensável para qualquer caminho de melhoria contínua.
-              </p>
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                Através de cinco passos simples, porém poderosos, o 5S Plus™
-                identifica claramente o que <strong>NÃO</strong> deveria estar
-                no local e ajuda a organizar o que <strong>SIM</strong> deveria
-                estar. Instala hábitos e padrões que permitem sustentar a
-                disciplina operacional ao longo do tempo.
-              </p>
-            </div>
-            <blockquote className="mb-8 pl-6 border-l-4 border-[var(--color-secondary)] italic text-[var(--color-secondary)]">
-              “5S não é uma limpeza profunda. É uma mudança estruturada e
-              sustentada utilizando a ordem como forma de trabalho.”
-            </blockquote>
             <div className="mb-6">
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
                 O que é?
@@ -1024,29 +966,6 @@ const FiveSPlusContent: React.FC = () => {
         ...feature,
         children: (
           <div>
-            {/* Description */}
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
-                <strong>5S Plus™</strong>{" "}
-                {currentLanguage === Language.SPANISH
-                  ? "es un programa netamente practico en donde mas del 80% del mismo se desarrolla en el lugar en donde las cosas suceden y junto a las personas que están permanente involucradas en el sector de los hechos."
-                  : currentLanguage === Language.ENGLISH
-                  ? "is a fully practical program where more than 80% of it takes place where things happen and with the people permanently involved in the area."
-                  : "é um programa totalmente prático em que mais de 80% ocorre no local onde as coisas acontecem e junto às pessoas permanentemente envolvidas no setor."}
-              </p>
-              {t.methodologyDetails.map((detail, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start space-x-4 p-2 rounded-xl hover:bg-[var(--color-bg)] transition-colors duration-200"
-                >
-                  <div className="w-2 h-2 bg-[var(--color-secondary)] rounded-full mt-3 flex-shrink-0" />
-                  <span className="text-[var(--color-text)] leading-relaxed flex-1">
-                    {detail}
-                  </span>
-                </div>
-              ))}
-            </div>
-
             {/* Graphic Desktop only */}
             <div className="hidden lg:block mb-8 bg-gradient-to-br from-[var(--color-bg)] to-white rounded-2xl p-6 border border-[var(--color-border)]">
               <MethodologyFiveSPlus />

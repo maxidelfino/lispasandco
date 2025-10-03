@@ -133,7 +133,14 @@ const HeroSectionFlowStable: React.FC = () => {
       />
       {isDesktop && (
         <div
-          className={`absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 max-w-[200px] sm:max-w-[250px] group`}
+          className={`sticky bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 max-w-[200px] sm:max-w-[250px] group`}
+          style={{
+            top: "88px",
+            right: "1rem",
+            marginLeft: "auto",
+            marginRight: "2rem",
+            float: "right",
+          }}
           onMouseEnter={() => setActive(true)}
           onMouseLeave={() => setActive(false)}
         >
@@ -159,9 +166,9 @@ const HeroSectionFlowStable: React.FC = () => {
               }
               .stable-ops-download-btn.active {
                 opacity: 1;
-                max-height: 100px; /* Suficientemente grande para el botón */
-                padding-top: 0.5rem; /* Ajusta a tu necesidad */
-                padding-bottom: 0.5rem; /* Ajusta a tu necesidad */
+                max-height: 100px;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
                 pointer-events: auto;
                 transform: translateY(0) scale(1);
               }

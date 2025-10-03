@@ -17,7 +17,6 @@ import {
   DivideSquare,
   Gauge,
   ClipboardCheck,
-  Wrench,
 } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
@@ -43,54 +42,6 @@ interface ModalProps {
   };
   graphic: React.ReactNode;
 }
-
-const renderComingSoonContent = () => {
-  const { currentLanguage } = useLanguage();
-  const t = {
-    es: {
-      workingForYou: "Estamos trabajando para ti",
-      teamDeveloping:
-        "Nuestro equipo está desarrollando nuevos servicios innovadores para complementar este caminio.",
-      stayTuned: "Mantente atento a nuestras actualizaciones.",
-    },
-    en: {
-      workingForYou: "We are working for you",
-      teamDeveloping:
-        "Our team is developing new innovative services to complement this journey.",
-      stayTuned: "Stay tuned for our updates.",
-    },
-    pt: {
-      workingForYou: "Estamos trabalhando para você",
-      teamDeveloping:
-        "Nossa equipe está desenvolvendo novos serviços inovadores para complementar esta jornada.",
-      stayTuned: "Fique atento às nossas atualizações.",
-    },
-  };
-
-  const lang = currentLanguage as "es" | "en" | "pt";
-
-  return (
-    <div className="flex flex-col items-center justify-center py-12 px-8 text-center">
-      <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-accent)] flex items-center justify-center mb-6 shadow-lg">
-        <div className="relative">
-          <Wrench className="w-10 h-10 text-white" />
-        </div>
-      </div>
-
-      <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
-        {t[lang].workingForYou}
-      </h3>
-
-      <p className="text-[var(--color-text)] text-lg leading-relaxed mb-6 max-w-md">
-        {t[lang].teamDeveloping}
-      </p>
-
-      <div className="mt-8 text-sm text-[var(--color-text)] opacity-75">
-        {t[lang].stayTuned}
-      </div>
-    </div>
-  );
-};
 
 const translations = {
   clickForDetails: {
@@ -120,26 +71,6 @@ const translations = {
       children: {
         es: (
           <>
-            <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                Process Design Bridge™ es el programa de LYSPAS & CO diseñado
-                para unir la ingeniería de procesos industriales con las
-                prácticas de mejora continua.
-              </p>
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                Su objetivo es asegurar que los nuevos equipos, líneas de
-                producción o instalaciones completas sean concebidos, diseñados
-                y puestos en marcha desde la perspectiva de la eficiencia
-                operativa, la confiabilidad y la estabilidad de procesos.
-              </p>
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                El programa se aplica tanto en empresas industriales en
-                operación que desean rediseñar procesos críticos como en
-                proveedores de equipos y montajes que necesitan garantizar que
-                sus soluciones respondan a la verdadera problemática de los
-                clientes.
-              </p>
-            </div>
             <div className="mb-6">
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg mb-3">
                 ¿Qué es?
@@ -501,28 +432,25 @@ const translations = {
       children: {
         es: (
           <div>
-            {/* Description */}
+            {/* Descripción */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                El programa <strong>Process Design Bridge™</strong> se adapta a
-                cada contexto, con fases de diagnóstico, diseño, implementación
-                y capacitación. Se puede implementar en ciclos de{" "}
-                <strong>3 a 6 meses</strong>, con entregables medibles desde el
-                primer mes.
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                El programa <strong>Process Design Bridge™</strong> se
+                estructura en fases metodológicas que aseguran la integración
+                efectiva entre ingeniería y operación, adaptándose a cada
+                contexto organizacional.
               </p>
             </div>
-            {/* Details */}
+            {/* Fases metodológicas */}
             <div>
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
-                Fases principales:
+                Fases metodológicas:
               </p>
               <div className="flex flex-col space-y-2 mt-2">
                 {[
-                  "Diagnóstico: relevamiento y análisis de la situación actual.",
-                  "Diseño: definición de objetivos, indicadores y plan de acción.",
-                  "Implementación: ejecución de mejoras y herramientas en campo.",
-                  "Capacitación: formación práctica y acompañamiento al equipo.",
-                  "Seguimiento: medición de avances y ajustes continuos.",
+                  "Fase de diseño conceptual: identificación de variables críticas, construcción de SIPOC, definición de métricas iniciales.",
+                  "Fase de ingeniería básica y de detalle: integración de lazos de control, definiciones de instrumentación y puntos de medición.",
+                  "Fase de operación: validación de desempeño real vs. esperado, ajustes y optimización.",
                 ].map((fase, idx) => (
                   <div
                     key={idx}
@@ -538,7 +466,7 @@ const translations = {
               <p className="text-[var(--color-text)] leading-relaxed text-md mt-4">
                 La duración y el calendario se ajustan a las necesidades de cada
                 organización, permitiendo resultados visibles y medibles desde
-                el primer mes.
+                el inicio del proceso.
               </p>
             </div>
           </div>
@@ -547,26 +475,23 @@ const translations = {
           <div>
             {/* Description */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                The <strong>Process Design Bridge™</strong> program adapts to
-                each context, with phases of diagnosis, design, implementation,
-                and training. It can be implemented in cycles of{" "}
-                <strong>3 to 6 months</strong>, with measurable deliverables
-                from the first month.
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                The <strong>Process Design Bridge™</strong> program is
+                structured in methodological phases that ensure effective
+                integration between engineering and operations, adapting to each
+                organizational context.
               </p>
             </div>
-            {/* Details */}
+            {/* Methodological Phases */}
             <div>
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
-                Main phases:
+                Methodological phases:
               </p>
               <div className="flex flex-col space-y-2 mt-2">
                 {[
-                  "Diagnosis: survey and analysis of the current situation.",
-                  "Design: definition of objectives, indicators, and action plan.",
-                  "Implementation: execution of improvements and tools in the field.",
-                  "Training: practical training and team support.",
-                  "Follow-up: measurement of progress and continuous adjustments.",
+                  "Conceptual design phase: identification of critical variables, SIPOC construction, definition of initial metrics.",
+                  "Basic and detailed engineering phase: integration of control loops, instrumentation definitions, and measurement points.",
+                  "Operation phase: validation of actual vs. expected performance, adjustments, and optimization.",
                 ].map((fase, idx) => (
                   <div
                     key={idx}
@@ -582,7 +507,7 @@ const translations = {
               <p className="text-[var(--color-text)] leading-relaxed text-md mt-4">
                 The duration and schedule are adjusted to the needs of each
                 organization, allowing visible and measurable results from the
-                first month.
+                start of the process.
               </p>
             </div>
           </div>
@@ -591,26 +516,23 @@ const translations = {
           <div>
             {/* Descrição */}
             <div className="mb-8 p-6 bg-gradient-to-r from-[var(--color-secondary)]/5 to-[var(--color-accent)]/5 rounded-2xl border-l-4 border-[var(--color-secondary)]">
-              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium mb-4">
-                O programa <strong>Process Design Bridge™</strong> se adapta a
-                cada contexto, com fases de diagnóstico, design, implementação e
-                treinamento. Pode ser implementado em ciclos de{" "}
-                <strong>3 a 6 meses</strong>, com entregáveis mensuráveis desde
-                o primeiro mês.
+              <p className="text-[var(--color-text)] leading-relaxed text-lg font-medium">
+                O programa <strong>Process Design Bridge™</strong> é estruturado
+                em fases metodológicas que garantem a integração efetiva entre
+                engenharia e operação, adaptando-se a cada contexto
+                organizacional.
               </p>
             </div>
-            {/* Detalhes */}
+            {/* Fases metodológicas */}
             <div>
               <p className="text-[var(--color-text)] font-bold leading-relaxed text-lg">
-                Fases principais:
+                Fases metodológicas:
               </p>
               <div className="flex flex-col space-y-2 mt-2">
                 {[
-                  "Diagnóstico: levantamento e análise da situação atual.",
-                  "Design: definição de objetivos, indicadores e plano de ação.",
-                  "Implementação: execução de melhorias e ferramentas em campo.",
-                  "Treinamento: formação prática e acompanhamento da equipe.",
-                  "Acompanhamento: medição de avanços e ajustes contínuos.",
+                  "Fase de design conceitual: identificação de variáveis críticas, construção do SIPOC, definição de métricas iniciais.",
+                  "Fase de engenharia básica e detalhada: integração de laços de controle, definições de instrumentação e pontos de medição.",
+                  "Fase de operação: validação do desempenho real vs. esperado, ajustes e otimização.",
                 ].map((fase, idx) => (
                   <div
                     key={idx}
@@ -626,7 +548,7 @@ const translations = {
               <p className="text-[var(--color-text)] leading-relaxed text-md mt-4">
                 A duração e o cronograma são ajustados às necessidades de cada
                 organização, permitindo resultados visíveis e mensuráveis desde
-                o primeiro mês.
+                o início do processo.
               </p>
             </div>
           </div>
@@ -1308,14 +1230,14 @@ const ProcessDesignBridgeContent: React.FC = () => {
   const lang = currentLanguage as Language;
 
   const features = translations.features.map((feature) => {
-    if (feature.id === "4") {
-      return {
-        ...feature,
-        title: feature.title[lang],
-        subtitle: feature.subtitle[lang],
-        children: renderComingSoonContent(),
-      };
-    }
+    // if (feature.id === "4") {
+    //   return {
+    //     ...feature,
+    //     title: feature.title[lang],
+    //     subtitle: feature.subtitle[lang],
+    //     children: renderComingSoonContent(),
+    //   };
+    // }
     return {
       ...feature,
       title: feature.title[lang],

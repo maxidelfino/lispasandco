@@ -5,7 +5,7 @@ import type { Service } from "../types";
 export const servicesData_iniciar: Service[] = [
   {
     id: "wastezero",
-    name: "Programa WasteZero™",
+    name: "WasteZero™",
     description:
       "Programa táctico de implementación LEAN para reducir pérdidas operativas de manera concreta, visible y sostenida.",
     longDescription: [
@@ -65,7 +65,7 @@ export const servicesData_iniciar: Service[] = [
   },
   {
     id: "change-bridge",
-    name: "Programa Change Bridge™",
+    name: "Change Bridge™",
     description: "",
     route: "/change-bridge",
     longDescription: [
@@ -82,12 +82,12 @@ export const servicesData_iniciar: Service[] = [
   },
   {
     id: "process-design-bridge",
-    name: "PROCESS DESIGN BRIDGE™",
+    name: "Process Design Bridge™",
     description: "",
     longDescription: [
-      "PROCESS DESIGN BRIDGE™ es una intervención estructurada para diseñar o rediseñar procesos de negocio, integrando metodologías Lean y la participación activa de los equipos involucrados. El objetivo es lograr procesos simples, eficientes, estandarizados y alineados a los objetivos estratégicos de la organización.",
-      "El programa incluye diagnóstico de la situación actual, mapeo de procesos (AS-IS y TO-BE), identificación y eliminación de desperdicios, definición de roles y responsabilidades, y establecimiento de indicadores de gestión. Se trabaja con herramientas visuales y dinámicas colaborativas para asegurar la apropiación y sostenibilidad de los cambios.",
-      "Al finalizar, la organización cuenta con procesos claros, documentados y con un plan de implementación concreto, facilitando la mejora continua y la adaptación a nuevas necesidades del negocio.",
+      "Process Design Bridge™ es el programa de LYSPAS & CO diseñado para unir la ingeniería de procesos industriales con las prácticas de mejora continua.",
+      "Su objetivo es asegurar que los nuevos equipos, líneas de producción o instalaciones completas sean concebidos, diseñados y puestos en marcha desde la perspectiva de la eficiencia operativa, la confiabilidad y la estabilidad de procesos.",
+      "El programa se aplica tanto en empresas industriales en operación que desean rediseñar procesos críticos como en proveedores de equipos y montajes que necesitan garantizar que sus soluciones respondan a la verdadera problemática de los clientes.",
     ],
     route: "/process-design-bridge",
     isActive: true,
@@ -106,7 +106,7 @@ export const servicesData_iniciar: Service[] = [
 export const servicesData_iniciar_en: Service[] = [
   {
     id: "wastezero",
-    name: "WasteZero™ Program",
+    name: "WasteZero™",
     description:
       "Tactical LEAN implementation program to reduce operational losses in a concrete, visible, and sustained way.",
     longDescription: [
@@ -166,7 +166,7 @@ export const servicesData_iniciar_en: Service[] = [
   },
   {
     id: "change-bridge",
-    name: "Change Bridge™ Program",
+    name: "Change Bridge™",
     description: "",
     route: "/change-bridge",
     longDescription: [
@@ -183,12 +183,12 @@ export const servicesData_iniciar_en: Service[] = [
   },
   {
     id: "process-design-bridge",
-    name: "PROCESS DESIGN BRIDGE™",
+    name: "Process Design Bridge™",
     description: "",
     longDescription: [
-      "PROCESS DESIGN BRIDGE™ is a structured intervention to design or redesign business processes, integrating Lean methodologies and the active participation of the involved teams. The goal is to achieve simple, efficient, standardized processes aligned with the organization's strategic objectives.",
-      "The program includes diagnosis of the current situation, process mapping (AS-IS and TO-BE), identification and elimination of waste, definition of roles and responsibilities, and establishment of management indicators. Visual tools and collaborative dynamics are used to ensure ownership and sustainability of the changes.",
-      "At the end, the organization has clear, documented processes and a concrete implementation plan, facilitating continuous improvement and adaptation to new business needs.",
+      "Process Design Bridge™ is LYSPAS & CO’s program created to connect industrial process engineering with continuous improvement practices.",
+      "Its goal is to ensure that new equipment, production lines, or entire facilities are conceived, designed, and commissioned from the perspective of operational efficiency, reliability, and process stability.",
+      "The program applies both to operating industrial companies that want to redesign critical processes, and to equipment and assembly suppliers who need to ensure their solutions truly address their clients’ challenges.",
     ],
     route: "/process-design-bridge",
     isActive: true,
@@ -207,7 +207,7 @@ export const servicesData_iniciar_en: Service[] = [
 export const servicesData_iniciar_pt: Service[] = [
   {
     id: "wastezero",
-    name: "Programa WasteZero™",
+    name: "WasteZero™",
     description:
       "Programa tático de implementação LEAN para reduzir perdas operacionais de forma concreta, visível e sustentável.",
     longDescription: [
@@ -267,7 +267,7 @@ export const servicesData_iniciar_pt: Service[] = [
   },
   {
     id: "change-bridge",
-    name: "Programa Change Bridge™",
+    name: "Change Bridge™",
     description: "",
     route: "/change-bridge",
     longDescription: [
@@ -284,12 +284,12 @@ export const servicesData_iniciar_pt: Service[] = [
   },
   {
     id: "process-design-bridge",
-    name: "PROCESS DESIGN BRIDGE™",
+    name: "Process Design Bridge™",
     description: "",
     longDescription: [
-      "PROCESS DESIGN BRIDGE™ é uma intervenção estruturada para desenhar ou redesenhar processos de negócio, integrando metodologias Lean e a participação ativa das equipes envolvidas. O objetivo é alcançar processos simples, eficientes, padronizados e alinhados aos objetivos estratégicos da organização.",
-      "O programa inclui diagnóstico da situação atual, mapeamento de processos (AS-IS e TO-BE), identificação e eliminação de desperdícios, definição de papéis e responsabilidades, e estabelecimento de indicadores de gestão. Utiliza ferramentas visuais e dinâmicas colaborativas para garantir a apropriação e sustentabilidade das mudanças.",
-      "Ao final, a organização conta com processos claros, documentados e com um plano de implementação concreto, facilitando a melhoria contínua e a adaptação a novas necessidades do negócio.",
+      "O Process Design Bridge™ é o programa da LYSPAS & CO desenvolvido para integrar a engenharia de processos industriais com as práticas de melhoria contínua.",
+      "Seu objetivo é garantir que novos equipamentos, linhas de produção ou instalações completas sejam concebidos, projetados e colocados em operação sob a perspectiva da eficiência operacional, da confiabilidade e da estabilidade dos processos.",
+      "O programa se aplica tanto a empresas industriais em operação que desejam redesenhar processos críticos, quanto a fornecedores de equipamentos e montagens que precisam assegurar que suas soluções respondam de fato aos desafios dos clientes.",
     ],
     route: "/process-design-bridge",
     isActive: true,

@@ -22,7 +22,7 @@ const translations: Record<
 > = {
   es: {
     suppliers: "PROVEEDORES",
-    inputs: "INGRESOS",
+    inputs: "PROVEEDORES",
     process: "PROCESO",
     outputs: "SALIDAS",
     customers: "CLIENTES",
@@ -75,37 +75,54 @@ const translations: Record<
   },
 };
 
+const Card = ({
+  title,
+  description,
+  isProcess = false,
+}: {
+  title: string;
+  description: string;
+  isProcess?: boolean;
+}) => (
+  <div
+    className={`flex flex-col rounded-lg overflow-hidden border ${
+      isProcess
+        ? "bg-gradient-to-r from-blue-600 to-blue-800 border-blue-700 shadow-2xl scale-105 ring-4 ring-blue-300"
+        : "bg-white border-gray-200 shadow-sm"
+    }`}
+    style={isProcess ? { zIndex: 10 } : {}}
+  >
+    <div
+      className={`${
+        isProcess
+          ? "bg-transparent text-white font-extrabold text-xl py-6"
+          : "bg-blue-800 text-white font-bold py-3"
+      } px-4 text-center`}
+    >
+      <h3
+        className={isProcess ? "text-lg lg:text-2xl" : "text-sm lg:text-base"}
+      >
+        {title}
+      </h3>
+    </div>
+    <div
+      className={`p-4 flex-1 ${
+        isProcess
+          ? "text-white text-base lg:text-lg font-semibold"
+          : "text-gray-700 text-sm lg:text-base"
+      } leading-relaxed`}
+    >
+      {description}
+    </div>
+  </div>
+);
+
 const ProcessDesignBridgeDiagram: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
 
-  const Card = ({
-    title,
-    description,
-    isProcess = false,
-  }: {
-    title: string;
-    description: string;
-    isProcess?: boolean;
-  }) => (
-    <div className="flex flex-col bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-      <div
-        className={`${
-          isProcess ? "bg-blue-600" : "bg-blue-800"
-        } text-white font-bold px-4 py-3 text-center`}
-      >
-        <h3 className="text-sm lg:text-base">{title}</h3>
-      </div>
-      <div className="p-4 flex-1">
-        <p className="text-sm lg:text-base text-gray-700 leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="w-full max-w-6xl mx-auto p-6 space-y-8 mt-10">
+    <div className="w-full max-w-4xl mx-auto p-6 space-y-8 mt-10">
       {/* SIPOC Title */}
       <div className="text-center">
         <h2 className="text-2xl lg:text-3xl font-bold text-blue-800">
@@ -113,24 +130,27 @@ const ProcessDesignBridgeDiagram: React.FC = () => {
         </h2>
       </div>
 
-      {/* Grid Container for the Pyramid Layout */}
-      <div className="flex flex-col items-center gap-6">
-        {/* Top Row (2 columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full md:w-4/5">
-          <Card title={t.suppliers} description={t.suppliersDescription} />
-          <Card title={t.inputs} description={t.inputsDescription} />
-        </div>
+      {/* Fila 1: 2 columnas (PROVEEDORES, PROVEEDORES/INPUTS) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        <Card title={t.suppliers} description={t.suppliersDescription} />
+        <Card title={t.inputs} description={t.inputsDescription} />
+      </div>
 
-        {/* Bottom Row (3 columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+      {/* Fila 2: 1 columna (PROCESO) - Destacada */}
+      <div className="flex justify-center w-full relative z-10">
+        <div className="w-full md:w-2/3">
           <Card
             title={t.process}
             description={t.processDescription}
             isProcess
           />
-          <Card title={t.outputs} description={t.outputsDescription} />
-          <Card title={t.customers} description={t.customersDescription} />
         </div>
+      </div>
+
+      {/* Fila 3: 2 columnas (SALIDAS, CLIENTES) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        <Card title={t.outputs} description={t.outputsDescription} />
+        <Card title={t.customers} description={t.customersDescription} />
       </div>
 
       {/* Process Design Bridge */}

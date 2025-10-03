@@ -88,7 +88,7 @@ const translations = {
   },
 };
 
-const AutopsContentDiagram: React.FC = () => {
+const AutopsContentIcon: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const lang =
     currentLanguage === Language.SPANISH
@@ -317,14 +317,14 @@ const AutopsContentDiagram: React.FC = () => {
       <div className="flex justify-center items-center gap-2 w-full">
         {/* Medida */}
         <svg
-          width="66"
+          width="56"
           height="12"
-          viewBox="0 0 66 12"
+          viewBox="0 0 56 12"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           {/* Línea continua completa con flecha al inicio */}
-          <line x1="66" y1="6" x2="4" y2="6" stroke="#888" strokeWidth="2" />
+          <line x1="56" y1="6" x2="4" y2="6" stroke="#888" strokeWidth="2" />
           <polygon points="4,6 10,2 10,10" fill="#888" />
         </svg>
         <div className="flex flex-col items-center min-w-fit">
@@ -344,14 +344,14 @@ const AutopsContentDiagram: React.FC = () => {
           </div>
           {/* Flecha horizontal apuntando a la izquierda */}
           <svg
-            width="126"
+            width="116"
             height="12"
-            viewBox="0 0 126 12"
+            viewBox="0 0 116 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             {/* Línea continua */}
-            <line x1="126" y1="6" x2="4" y2="6" stroke="#888" strokeWidth="2" />
+            <line x1="116" y1="6" x2="4" y2="6" stroke="#888" strokeWidth="2" />
             {/* Flecha al inicio */}
             <polygon points="4,6 10,2 10,10" fill="#888" />
           </svg>
@@ -361,4 +361,4 @@ const AutopsContentDiagram: React.FC = () => {
   );
 };
 
-export default AutopsContentDiagram;
+export default AutopsContentIcon;
