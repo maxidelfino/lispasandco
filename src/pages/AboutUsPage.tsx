@@ -21,6 +21,8 @@ import { useLanguage } from "../contexts/LanguageContext";
 import SEOHead from "../components/SEOHead";
 import imgGonzalo from "../assets/gonzalo-luvani.png";
 import ScrollIndicator from "../components/ScrollIndicator";
+import { Language } from "../types";
+import IndiaPresentationQR from "../assets/QR-india-presentation.jpeg";
 
 type MisionCard = {
   title: string;
@@ -594,6 +596,60 @@ const AboutUsPage: React.FC = () => {
               : "Deslize para baixo ou toque aqui para saber mais"
           }
         />
+      </section>
+
+      <section className="py-12 px-4 bg-transparent" id="qr-india-presentation">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-0 md:gap-8 bg-white rounded-2xl shadow-xl border border-[var(--color-border)] overflow-hidden w-full max-w-md md:max-w-2xl">
+              {/* QR Image Side */}
+              <div className="flex items-center justify-center bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] p-8 md:p-10">
+                <img
+                  src={IndiaPresentationQR}
+                  alt="India Presentation QR"
+                  className="w-32 h-32 md:w-44 md:h-44 object-contain rounded-xl  shadow-lg transition-transform duration-300 hover:scale-105"
+                  style={{
+                    filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.10))",
+                  }}
+                />
+              </div>
+              {/* Text Side */}
+              <div className="flex flex-col justify-center px-6 py-8 md:px-8 md:py-10">
+                <div className="space-y-2 text-center md:text-left mb-3">
+                  <h3 className="text-lg md:text-xl font-bold text-[var(--color-primary)]">
+                    {currentLanguage === Language.SPANISH
+                      ? "Escanea el código QR para acceder a la presentación en India."
+                      : currentLanguage === Language.ENGLISH
+                      ? "Scan the QR code to access the presentation in India. "
+                      : "Escaneie o código QR para acessar a apresentação na Índia."}
+                  </h3>
+                </div>
+                <div className="text-[var(--color-text)] text-xs md:text-sm leading-relaxed text-center md:text-left flex flex-col items-center md:items-start gap-2">
+                  <span className="italic text-gray-500">
+                    {currentLanguage === Language.SPANISH
+                      ? "También puedes descargarla haciendo clic aquí:"
+                      : currentLanguage === Language.ENGLISH
+                      ? "Alternatively, you can download it by clicking here:"
+                      : "Você também pode baixá-la clicando aqui:"}
+                  </span>
+                  <a
+                    href="/assets/pdf/presentacion-INDORE.pdf"
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-1 px-4 py-2 bg-[var(--color-primary)] text-white rounded-full font-semibold text-xs md:text-sm shadow hover:bg-[var(--color-secondary)] transition-colors"
+                  >
+                    {currentLanguage === Language.SPANISH
+                      ? "Descargar PDF"
+                      : currentLanguage === Language.ENGLISH
+                      ? "Download PDF"
+                      : "Baixar PDF"}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Biography Section */}

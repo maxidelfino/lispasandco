@@ -4,7 +4,6 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
 import ScrollIndicator from "./ScrollIndicator";
 import RandG from "../assets/RandG.png";
-import IndiaPresentationQR from "../assets/QR-india-presentation.jpeg";
 import { useScreenSize } from "../hooks/useScreenSize";
 
 interface HomePageHeroProps {
@@ -103,38 +102,6 @@ const HomePageHero: React.FC<HomePageHeroProps> = ({ carouselSlides }) => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex-1 flex justify-center">
-              <div className="bg-gradient-to-br from-[var(--color-primary)]/90 to-[var(--color-accent)]/80 p-1 rounded-2xl shadow-xl w-full max-w-[220px] sm:max-w-[270px] flex flex-col items-center">
-                <div className="bg-white/90 rounded-xl px-4 py-3 flex flex-col items-center">
-                  <p className="text-xs sm:text-sm text-[var(--color-primary)] font-semibold text-center mb-2 tracking-wide drop-shadow-sm">
-                    {currentLanguage === Language.SPANISH
-                      ? "Escaneá el QR para seguir la presentación en India"
-                      : currentLanguage === Language.ENGLISH
-                      ? "Scan the QR to follow the presentation in India"
-                      : "Escaneie o QR para acompanhar a apresentação na Índia"}
-                  </p>
-                  <div className="flex items-center justify-center">
-                    <div className="p-2 bg-white rounded-lg shadow-lg border border-[var(--color-border)]">
-                      <img
-                        src={IndiaPresentationQR}
-                        alt="India Presentation QR"
-                        className="h-16 sm:h-20 w-auto object-contain flex-shrink-0 transition-transform duration-300 hover:scale-110"
-                        style={{
-                          filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.10))",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <span className="mt-2 text-[10px] text-gray-500 text-center italic">
-                    {currentLanguage === Language.SPANISH
-                      ? "¡Acceso instantáneo desde tu móvil!"
-                      : currentLanguage === Language.ENGLISH
-                      ? "Instant access from your phone!"
-                      : "Acesso instantâneo pelo celular!"}
-                  </span>
                 </div>
               </div>
             </div>
