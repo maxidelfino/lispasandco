@@ -29,6 +29,7 @@ import ProcessDesignBridgePage from "./pages/ProcessDesignBridgePage";
 
 import { useLanguage } from "./contexts/LanguageContext";
 import { Language } from "./types";
+import usePageView from "./hooks/usePageView";
 
 // Mapas multilingües
 const titleMap: Record<string, Record<Language, string>> = {
@@ -329,6 +330,7 @@ const PageWrapper = () => {
   const location = useLocation();
   const { currentLanguage } = useLanguage();
   const path = location.pathname;
+  usePageView();
 
   const title =
     titleMap[path]?.[currentLanguage] || titleMap[path]?.es || "LYSPAS & CO.";

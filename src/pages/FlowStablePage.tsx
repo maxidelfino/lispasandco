@@ -9,6 +9,8 @@ import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import SEOHead from "../components/SEOHead";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const translations: Record<
   Language,
@@ -73,7 +75,17 @@ const translations: Record<
 const FlowStablePage: React.FC = () => {
   useScrollToTop();
   const { currentLanguage } = useLanguage();
-  const t = translations[currentLanguage];
+  const lang: Language = (currentLanguage as Language) || "es";
+  const t = translations[lang];
+
+  const trackCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "flowstable",
+      location: "flowstable_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -105,6 +117,7 @@ const FlowStablePage: React.FC = () => {
         primaryButtonText={t.primaryButtonText}
         secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
           link.href = t.pdfHref;
           link.download = t.pdfDownload;

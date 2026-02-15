@@ -7,6 +7,8 @@ import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import AutopsContentDiagram from "../components/Autops/AutopsContentDiagram";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const diagramTranslations = {
   es: "Visualiza el flujo inteligente de automatización y control en procesos industriales.",
@@ -47,6 +49,15 @@ const AutopsPage: React.FC = () => {
   if (currentLanguage === "en") langKey = "en";
   else if (currentLanguage === "pt") langKey = "pt";
 
+  const trackCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "autoops",
+      location: "autoops_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -75,6 +86,7 @@ const AutopsPage: React.FC = () => {
         primaryButtonText={ctaTranslations[langKey].primaryButtonText}
         secondaryButtonText={ctaTranslations[langKey].secondaryButtonText}
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
           link.href = "assets/pdf/LYS-P017-AutoOps.pdf";
           link.download = "LYS-P017-AutoOps.pdf";

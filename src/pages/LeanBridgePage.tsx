@@ -8,6 +8,8 @@ import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const ctaTranslations: Record<
   Language,
@@ -60,6 +62,15 @@ const LeanBridgePage: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = ctaTranslations[currentLanguage];
 
+  const trackCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "leanbridge",
+      location: "leanbridge_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -85,6 +96,7 @@ const LeanBridgePage: React.FC = () => {
         primaryButtonText={t.primaryButtonText}
         secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
           link.href = t.pdfHref;
           link.download = t.pdfDownload;

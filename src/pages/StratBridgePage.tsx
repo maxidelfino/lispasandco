@@ -8,6 +8,8 @@ import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const TEXTS: Record<
   Language,
@@ -66,6 +68,15 @@ const StratBridgePage: React.FC = () => {
   const lang: Language = (currentLanguage as Language) || "es";
   const t = TEXTS[lang];
 
+  const trackCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "stratbridge",
+      location: "stratbridge_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -97,6 +108,7 @@ const StratBridgePage: React.FC = () => {
         primaryButtonText={t.primaryButton}
         secondaryButtonText={t.secondaryButton}
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
           link.href = t.pdfHref;
           link.download = t.pdfDownload;

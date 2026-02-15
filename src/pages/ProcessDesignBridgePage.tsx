@@ -8,47 +8,62 @@ import { useLanguage } from "../contexts/LanguageContext";
 import ProcessDesignBridgeHero from "../components/ProcessDesignBridge/ProcessDesignBridgeHero";
 import ProcessDesignBridgeContent from "../components/ProcessDesignBridge/ProcessDesignBridgeContent";
 import ProcessDesignBridgeDiagram from "../components/ProcessDesignBridge/ProcessDesignBridgeDiagram";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
+
+const CTA_TRANSLATIONS: Record<
+  Language,
+  {
+    title: string;
+    description: string;
+    primaryButtonText: string;
+    secondaryButtonText: string;
+    pdfHref: string;
+    pdfDownload: string;
+  }
+> = {
+  es: {
+    title: "¿Listo para digitalizar el diseño de procesos en tu operación?",
+    description:
+      "Descubre cómo Process Design Bridge™ conecta el diseño y la ejecución de procesos, mejorando la trazabilidad, el control y la eficiencia en toda tu cadena de valor.",
+    primaryButtonText: "Contactar Ahora",
+    secondaryButtonText: "Descargar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P019-Process-Design-Bridge.pdf",
+    pdfDownload: "LYS-P019-Process-Design-Bridge.pdf",
+  },
+  en: {
+    title: "Ready to digitize process design in your operation?",
+    description:
+      "Discover how Process Design Bridge™ connects process design and execution, improving traceability, control, and efficiency across your entire value chain.",
+    primaryButtonText: "Contact Now",
+    secondaryButtonText: "Download Datasheet",
+    pdfHref: "assets/pdf/LYS-P119-Process-Design-Bridge.pdf",
+    pdfDownload: "LYS-P119-Process-Design-Bridge.pdf",
+  },
+  pt: {
+    title: "Pronto para digitalizar o design de processos em sua operação?",
+    description:
+      "Descubra como o Process Design Bridge™ conecta o design e a execução de processos, melhorando a rastreabilidade, o controle e a eficiência em toda a sua cadeia de valor.",
+    primaryButtonText: "Contatar Agora",
+    secondaryButtonText: "Baixar Ficha Técnica",
+    pdfHref: "assets/pdf/LYS-P219-Process-Design-Bridge.pdf",
+    pdfDownload: "LYS-P219-Process-Design-Bridge.pdf",
+  },
+};
 
 const ProcessDesignBridgePage: React.FC = () => {
   useScrollToTop();
   const { currentLanguage } = useLanguage();
+  const lang = (currentLanguage as Language) || "es";
+  const t = CTA_TRANSLATIONS[lang];
 
-  const ctaTranslations = {
-    title: {
-      [Language.SPANISH]:
-        "¿Listo para digitalizar el diseño de procesos en tu operación?",
-      [Language.ENGLISH]: "Ready to digitize process design in your operation?",
-      [Language.PORTUGUESE]:
-        "Pronto para digitalizar o design de processos em sua operação?",
-    },
-    description: {
-      [Language.SPANISH]:
-        "Descubre cómo Process Design Bridge™ conecta el diseño y la ejecución de procesos, mejorando la trazabilidad, el control y la eficiencia en toda tu cadena de valor.",
-      [Language.ENGLISH]:
-        "Discover how Process Design Bridge™ connects process design and execution, improving traceability, control, and efficiency across your entire value chain.",
-      [Language.PORTUGUESE]:
-        "Descubra como o Process Design Bridge™ conecta o design e a execução de processos, melhorando a rastreabilidade, o controle e a eficiência em toda a sua cadeia de valor.",
-    },
-    primaryButtonText: {
-      [Language.SPANISH]: "Contactar Ahora",
-      [Language.ENGLISH]: "Contact Now",
-      [Language.PORTUGUESE]: "Contatar Agora",
-    },
-    secondaryButtonText: {
-      [Language.SPANISH]: "Descargar Ficha Técnica",
-      [Language.ENGLISH]: "Download Datasheet",
-      [Language.PORTUGUESE]: "Baixar Ficha Técnica",
-    },
-    pdfHref: {
-      [Language.SPANISH]: "assets/pdf/LYS-P019-Process-Design-Bridge.pdf",
-      [Language.ENGLISH]: "assets/pdf/LYS-P119-Process-Design-Bridge.pdf",
-      [Language.PORTUGUESE]: "assets/pdf/LYS-P219-Process-Design-Bridge.pdf",
-    },
-    pdfDownload: {
-      [Language.SPANISH]: "LYS-P019-Process-Design-Bridge.pdf",
-      [Language.ENGLISH]: "LYS-P119-Process-Design-Bridge.pdf",
-      [Language.PORTUGUESE]: "LYS-P219-Process-Design-Bridge.pdf",
-    },
+  const trackCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "process-design-bridge",
+      location: "process_design_bridge_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
   };
 
   return (
@@ -68,16 +83,15 @@ const ProcessDesignBridgePage: React.FC = () => {
       </div>
       {/* Call to Action */}
       <CTASection
-        title={ctaTranslations.title[currentLanguage]}
-        description={ctaTranslations.description[currentLanguage]}
-        primaryButtonText={ctaTranslations.primaryButtonText[currentLanguage]}
-        secondaryButtonText={
-          ctaTranslations.secondaryButtonText[currentLanguage]
-        }
+        title={t.title}
+        description={t.description}
+        primaryButtonText={t.primaryButtonText}
+        secondaryButtonText={t.secondaryButtonText}
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
-          link.href = ctaTranslations.pdfHref[currentLanguage];
-          link.download = ctaTranslations.pdfDownload[currentLanguage];
+          link.href = t.pdfHref;
+          link.download = t.pdfDownload;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

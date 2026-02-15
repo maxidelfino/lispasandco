@@ -5,6 +5,17 @@ import WasteZeroContent from "../components/WasteZero/ContentSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
+
+const trackCtaDownloadFicha = () => {
+  trackEvent(GA_EVENTS.CTA_CLICK, {
+    service: "safe-process",    // slug en kebab-case
+    location: "safeprocess_page",
+    label: "cta_descargar_ficha",
+    cta_type: "download",
+  });
+};
 
 const SafeProcessPage: React.FC = () => {
   useScrollToTop();
@@ -32,6 +43,7 @@ const SafeProcessPage: React.FC = () => {
         primaryButtonText="Contactar Ahora"
         secondaryButtonText="Descargar Ficha Técnica"
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
           link.href = "assets/pdf/LYS-P00";
           link.download = "LYS-P00";

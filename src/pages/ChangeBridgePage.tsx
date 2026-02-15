@@ -10,6 +10,8 @@ import ChangeBridgeDiagramEN from "../assets/ChangeBridgeDiagramEN.png";
 import ChangeBridgeDiagramPT from "../assets/ChangeBridgeDiagram-PT.png";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const TEXTS: Record<
   Language,
@@ -80,6 +82,21 @@ const ChangeBridgePage: React.FC = () => {
     diagramImg = ChangeBridgeDiagramPT;
   }
 
+  const handleCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "changebridge",
+      location: "changebridge_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+    const link = document.createElement("a");
+    link.href = t.pdfHref;
+    link.download = t.pdfDownload;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -114,14 +131,7 @@ const ChangeBridgePage: React.FC = () => {
         description={t.ctaDescription}
         primaryButtonText={t.primaryButton}
         secondaryButtonText={t.secondaryButton}
-        onSecondaryClick={() => {
-          const link = document.createElement("a");
-          link.href = t.pdfHref;
-          link.download = t.pdfDownload;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }}
+        onSecondaryClick={handleCtaDownloadFicha}
       />
 
       <FloatingWhatsAppCTA />

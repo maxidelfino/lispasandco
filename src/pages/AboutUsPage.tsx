@@ -23,6 +23,8 @@ import imgGonzalo from "../assets/gonzalo-luvani.png";
 import ScrollIndicator from "../components/ScrollIndicator";
 import { Language } from "../types";
 import IndiaPresentationQR from "../assets/QR-india-presentation.jpeg";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 type MisionCard = {
   title: string;
@@ -497,20 +499,41 @@ const AboutUsPage: React.FC = () => {
 
   const t = translations[currentLanguage];
 
+  const trackNavContactFooter = () => {
+    trackEvent(GA_EVENTS.NAV_CLICK, {
+      location: "about_page",
+      label: "cta_contactar_footer",
+      cta_type: "secondary",
+    });
+  };
+
+  const trackCtaConocerProgramas = () => {
+    trackEvent(GA_EVENTS.SERVICE_CLICK, {
+      service: "services",
+      location: "about_page",
+      label: "cta_conocer_programas",
+      cta_type: "primary",
+    });
+  };
+
   const handleContactClick = () => {
+    trackNavContactFooter();
     navigate("/");
     setTimeout(() => {
       const element = document.querySelector("footer");
       element?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    }, 150);
   };
 
   const handleServicesClick = () => {
-    navigate("/");
+    trackCtaConocerProgramas();
     setTimeout(() => {
-      const element = document.getElementById("services-section");
-      element?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById("services-section");
+        element?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }, 150);
   };
 
   const handleBiographyClick = () => {

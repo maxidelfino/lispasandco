@@ -8,6 +8,8 @@ import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const TEXTS = {
   es: {
@@ -48,11 +50,23 @@ const TEXTS = {
   },
 };
 
+const SERVICE_SLUG = "project-focus";
+const LOCATION = "project_focus_page";
+
 const ProjectFocusPage: React.FC = () => {
   useScrollToTop();
   const { currentLanguage } = useLanguage();
   const lang: Language = (currentLanguage as Language) || "es";
   const t = TEXTS[lang];
+
+  const trackCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: SERVICE_SLUG,
+      location: LOCATION,
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -86,6 +100,7 @@ const ProjectFocusPage: React.FC = () => {
         primaryButtonText={t.primaryButton}
         secondaryButtonText={t.secondaryButton}
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
           link.href = t.pdfHref;
           link.download = t.pdfDownload;

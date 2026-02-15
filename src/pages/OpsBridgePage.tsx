@@ -8,6 +8,8 @@ import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { OpsBridgeDiagram } from "../components/OpsBridge/OpsBridgeDiagram";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const CTA_TEXTS: Record<
   Language,
@@ -55,6 +57,15 @@ const OpsBridgePage: React.FC = () => {
 
   const cta = CTA_TEXTS[currentLanguage];
 
+  const trackCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "opsbridge",
+      location: "opsbridge_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -78,6 +89,7 @@ const OpsBridgePage: React.FC = () => {
         primaryButtonText={cta.primaryButtonText}
         secondaryButtonText={cta.secondaryButtonText}
         onSecondaryClick={() => {
+          trackCtaDownloadFicha();
           const link = document.createElement("a");
           link.href = cta.pdfHref;
           link.download = cta.pdfDownload;

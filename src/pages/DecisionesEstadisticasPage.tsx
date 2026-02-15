@@ -8,6 +8,8 @@ import DecisionesEstadisticasContent from "../components/DecisionesEstadisticas/
 import DecisionesEstadisticasDiagram from "../assets/DecisionesEstadisticasDiagram.png";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const translations: Record<
   Language,
@@ -71,6 +73,22 @@ const DecisionesEstadisticasPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
 
+  const handleCtaDownloadFicha = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      service: "decisiones-estadisticas",
+      location: "decisiones-estadisticas_page",
+      label: "cta_descargar_ficha",
+      cta_type: "download",
+    });
+
+    const link = document.createElement("a");
+    link.href = t.pdfHref;
+    link.download = t.pdfDownload;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       <FloatingNavigation />
@@ -105,14 +123,7 @@ const DecisionesEstadisticasPage: React.FC = () => {
         description={t.ctaDescription}
         primaryButtonText={t.primaryButtonText}
         secondaryButtonText={t.secondaryButtonText}
-        onSecondaryClick={() => {
-          const link = document.createElement("a");
-          link.href = t.pdfHref;
-          link.download = t.pdfDownload;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }}
+        onSecondaryClick={handleCtaDownloadFicha}
       />
 
       <FloatingWhatsAppCTA />
