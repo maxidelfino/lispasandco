@@ -16,6 +16,8 @@ import emailjs from "emailjs-com";
 
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 // Mensajes de validación multilenguaje
 const validationMessages = {
@@ -221,7 +223,7 @@ export const ContactFooter: React.FC = () => {
           .required()
           .messages(validationMessages.message[currentLanguage]),
       }),
-    [currentLanguage]
+    [currentLanguage],
   );
 
   const {
@@ -261,22 +263,35 @@ export const ContactFooter: React.FC = () => {
             (currentLanguage === Language.SPANISH
               ? "No especificado"
               : currentLanguage === Language.ENGLISH
-              ? "Not specified"
-              : "Não especificado"),
+                ? "Not specified"
+                : "Não especificado"),
           phone:
             data.phone ||
             (currentLanguage === Language.SPANISH
               ? "No especificado"
               : currentLanguage === Language.ENGLISH
-              ? "Not specified"
-              : "Não especificado"),
+                ? "Not specified"
+                : "Não especificado"),
           email: data.email,
           message: data.message,
         },
-        "UV6jxCVYKlwvH3GhS"
+        "UV6jxCVYKlwvH3GhS",
       );
 
       if (res.status !== 200) throw new Error("Error en servidor");
+
+      trackEvent(GA_EVENTS.FORM_SUBMIT, {
+        form_id: "contact_footer",
+        location: "footer",
+        status: "success",
+        method: "emailjs",
+        language: currentLanguage,
+        company_provided: !!data.company,
+        message_length: data.message.length,
+        // debug_mode: true, // solo en pruebas
+        send_to: "G-BVDQHM3XTL",
+      });
+
       setToast({
         type: "success",
         message: uiText.emailSuccess[currentLanguage],
@@ -284,6 +299,18 @@ export const ContactFooter: React.FC = () => {
       reset();
     } catch (err) {
       console.error(err);
+
+      trackEvent(GA_EVENTS.FORM_SUBMIT, {
+        form_id: "contact_footer",
+        location: "footer",
+        status: "error",
+        method: "emailjs",
+        language: currentLanguage,
+        company_provided: !!(data && data.company),
+        error_type: "emailjs_failed",
+        send_to: "G-BVDQHM3XTL",
+      });
+
       setToast({ type: "error", message: uiText.emailError[currentLanguage] });
     }
   };

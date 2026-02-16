@@ -26,6 +26,8 @@ import {
   Award,
 } from "lucide-react";
 import HomePageHero from "../components/HomePageHero";
+import AudioPlayer from "../components/AudioPlayer";
+import podcastAudio from "../assets/podcast/ES/programs/StratBridge_y_Hoshin_Kanri__De_la_Visión_a_la_Acción_con_KPIs_Reales.m4a";
 
 const SectionCTA: React.FC<{ scrollToServices?: () => void }> = ({
   scrollToServices,
@@ -95,6 +97,37 @@ const HomePage: React.FC = () => {
 
       {/* Services Section */}
       <EvolutionPath />
+
+      {/* <section className="py-20 px-4 bg-[var(--color-surface)]">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-[var(--color-primary)] mb-4">
+            {currentLanguage === Language.SPANISH
+              ? "🎧 Escucha Nuestro Podcast Piloto"
+              : currentLanguage === Language.ENGLISH
+              ? "🎧 Listen to Our Pilot Podcast"
+              : "🎧 Ouça Nosso Podcast Piloto"}
+          </h2>
+          <p className="mb-6 text-lg text-[var(--color-text)]">
+            {currentLanguage === Language.SPANISH
+              ? "Episodio: StratBridge y Hoshin Kanri - De la Visión a la Acción con KPIs Reales"
+              : currentLanguage === Language.ENGLISH
+              ? "Episode: StratBridge & Hoshin Kanri - From Vision to Action with Real KPIs"
+              : "Episódio: StratBridge & Hoshin Kanri - Da Visão à Ação com KPIs Reais"}
+          </p>
+          <div className="flex justify-center">
+            <AudioPlayer
+              src={podcastAudio}
+              title={
+                currentLanguage === Language.SPANISH
+                  ? "StratBridge y Hoshin Kanri - De la Visión a la Acción con KPIs Reales"
+                  : currentLanguage === Language.ENGLISH
+                  ? "StratBridge & Hoshin Kanri - From Vision to Action with Real KPIs"
+                  : "StratBridge & Hoshin Kanri - Da Visão à Ação com KPIs Reais"
+              }
+            />
+          </div>
+        </div>
+      </section> */}
 
       {/* Video Section */}
       <section

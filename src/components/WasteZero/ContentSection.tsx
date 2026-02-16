@@ -126,6 +126,44 @@ const Modal: React.FC<ModalProps> = ({
 
   if (!isOpen) return null;
 
+  const renderChildrenContent = (children: any) => {
+    if (!children) return null;
+
+    if (Array.isArray(children) && children.length > 0 && typeof children[0] === "object" && "title" in children[0]) {
+      return (
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+          {children.map((item: any, idx: number) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <div className="flex items-center mb-3 space-x-3">
+                  {Icon ? <Icon className="w-8 h-8" /> : null}
+                  <h4 className="text-lg font-semibold text-[var(--color-primary)]">
+                    {item.title}
+                  </h4>
+                </div>
+                {item.description && (
+                  <p className="text-[var(--color-text)] leading-relaxed">
+                    {item.description}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    if (Array.isArray(children)) {
+      return <>{children}</>;
+    }
+
+    return children;
+  };
+
   return (
     <div
       className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 ${
@@ -168,7 +206,7 @@ const Modal: React.FC<ModalProps> = ({
 
         {/* Content */}
         {content.children ? (
-          <div className="p-8">{content.children}</div>
+          <div className="p-8">{renderChildrenContent(content.children)}</div>
         ) : (
           <div className="p-8">
             {/* Description */}
