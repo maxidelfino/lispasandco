@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 const whatsappMessages: Record<Language, string> = {
   es: "Hola%20LYSPAS%20%26%20CO",
@@ -54,6 +56,13 @@ const FloatingWhatsAppCTA: React.FC = () => {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => {
+          trackEvent(GA_EVENTS.WHATSAPP_CLICK, {
+            location: "floating_cta",
+            language: currentLanguage,
+            page_path: window.location.pathname,
+          });
+        }}
         className="group relative w-16 h-16 bg-gradient-to-br from-[#4FCE5D] to-[#25D366] text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
         aria-label={ariaLabels[currentLanguage]}
         title={titles[currentLanguage]}
