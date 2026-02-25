@@ -36,7 +36,11 @@ const translations: Record<
 const HeroSectionLeanBridge: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "leanbridge",
+    location: "hero_section",
+    language: currentLanguage,
+  });
 
   return (
     <HeroBase

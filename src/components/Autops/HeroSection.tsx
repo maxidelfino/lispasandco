@@ -40,7 +40,11 @@ const HeroSection: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const lang: Language = (currentLanguage as Language) || "es";
   const t = TEXTS[lang];
-  const onDownload = useDownloadPdf("assets/pdf/LYS-P017-AutoOps.pdf", "LYS-P017-AutoOps.pdf");
+  const onDownload = useDownloadPdf("assets/pdf/LYS-P017-AutoOps.pdf", "LYS-P017-AutoOps.pdf", {
+    service: "autops",
+    location: "hero_section",
+    language: lang,
+  });
 
   return (
     <HeroBase

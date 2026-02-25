@@ -5,6 +5,8 @@ import { Language } from "../../types";
 import RandG from "../../assets/RandG.png";
 import { useScreenSize } from "../../hooks/useScreenSize";
 import { useDownloadPdf } from "../../hooks/useDownloadPdf";
+import { trackEvent } from "../../analytics/ga";
+import { GA_EVENTS } from "../../analytics/events";
 
 const translations: Record<
   Language,
@@ -109,7 +111,11 @@ const HeroSectionFlowStable: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
   const isDesktop = useScreenSize() === "desktop";
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "flowstable",
+    location: "hero_section",
+    language: currentLanguage,
+  });
   const [active, setActive] = useState(false);
 
   return (
@@ -214,6 +220,13 @@ const HeroSectionFlowStable: React.FC = () => {
                 onMouseEnter={() => setActive(true)}
                 onMouseLeave={() => setActive(true)}
                 onClick={() => {
+                  trackEvent(GA_EVENTS.DOWNLOAD_CLICK, {
+                    file_name: "R&G-StableOps.pdf",
+                    service: "flowstable-stableops",
+                    location: "hero_section_card",
+                    language: currentLanguage,
+                    page_path: window.location.pathname,
+                  });
                   const link = document.createElement("a");
                   link.href = "/assets/pdf/R&G-StableOps.pdf";
                   link.download = "R&G-StableOps.pdf";

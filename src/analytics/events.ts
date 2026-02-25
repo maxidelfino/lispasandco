@@ -4,4 +4,5 @@ export const GA_EVENTS = {
   SERVICE_CLICK: "service_click",
   WHATSAPP_CLICK: "whatsapp_click",
   FORM_SUBMIT: "form_submit",
+  DOWNLOAD_CLICK: "pdf_download",
 };

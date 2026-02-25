@@ -53,7 +53,11 @@ const TEXTS: Record<
 const HeroSection5S: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = TEXTS[currentLanguage];
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "ops-bridge",
+    location: "hero_section",
+    language: currentLanguage,
+  });
 
   return (
     <HeroBase

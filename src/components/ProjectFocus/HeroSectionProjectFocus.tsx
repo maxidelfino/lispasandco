@@ -48,7 +48,11 @@ const HeroSectionProjectFocus: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const lang: Language = (currentLanguage as Language) || "es";
   const t = TEXTS[lang];
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "projectfocus",
+    location: "hero_section",
+    language: lang,
+  });
 
   return (
     <HeroBase

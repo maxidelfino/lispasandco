@@ -63,7 +63,11 @@ const HeroSection: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const lang: Language = (currentLanguage as Language) || "es";
   const t = translations[lang];
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "measure-bridge",
+    location: "hero_section",
+    language: lang,
+  });
 
   return (
     <HeroBase

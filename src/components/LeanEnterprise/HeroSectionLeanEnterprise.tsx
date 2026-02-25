@@ -40,7 +40,11 @@ const translations: Record<
 const HeroSectionLeanEnterprise: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "lean-enterprise-transformation",
+    location: "hero_section",
+    language: currentLanguage,
+  });
 
   return (
     <HeroBase

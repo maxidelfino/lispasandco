@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 
 interface CTASectionProps {
   title: string;
@@ -21,6 +23,12 @@ const CTASection: React.FC<CTASectionProps> = ({
   const navigate = useNavigate();
 
   const handleContactClick = () => {
+    trackEvent(GA_EVENTS.CTA_CLICK, {
+      location: "cta_section",
+      label: "contact_button",
+      cta_type: "contact",
+      page_path: window.location.pathname,
+    });
     navigate("/");
     setTimeout(() => {
       const element = document.querySelector("footer");

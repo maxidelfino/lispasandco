@@ -73,7 +73,11 @@ const translations: Record<
 const HeroSection5S: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "5s-plus",
+    location: "hero_section",
+    language: currentLanguage,
+  });
 
   return (
     <HeroBase

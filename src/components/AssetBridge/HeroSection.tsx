@@ -106,7 +106,11 @@ const HeroSection: React.FC = () => {
     }
   })();
 
-  const onDownload = useDownloadPdf(pdfInfo.href, pdfInfo.download);
+  const onDownload = useDownloadPdf(pdfInfo.href, pdfInfo.download, {
+    service: "asset-control-bridge",
+    location: "hero_section",
+    language: currentLanguage,
+  });
 
   return (
     <HeroBase

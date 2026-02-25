@@ -38,7 +38,11 @@ const translations: Record<
 const HeroSectionKaizenAction: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
-  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload, {
+    service: "kaizen-action",
+    location: "hero_section",
+    language: currentLanguage,
+  });
 
   return (
     <HeroBase
