@@ -3,7 +3,7 @@ import HeroSectionLeanEnterprise from "../components/LeanEnterprise/HeroSectionL
 import LeanEnterpriseContent from "../components/LeanEnterprise/LeanEnterpriseContent";
 import FloatingNavigation from "../components/FloatingNavigation";
 import { useScrollToTop } from "../hooks/useScrollToTop";
-import LeanEnterpriseIcon from "../icons-componets/LeanEnterprise/LeanEnterpriseIcon";
+import LeanEnterpriseIcon from "../icons-components/LeanEnterprise/LeanEnterpriseIcon";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";

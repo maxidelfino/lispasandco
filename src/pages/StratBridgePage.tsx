@@ -3,7 +3,7 @@ import HeroSectionStratBridge from "../components/StratBridge/HeroSectionStratBr
 import StratBridgeContent from "../components/StratBridge/StratBridgeContent";
 import FloatingNavigation from "../components/FloatingNavigation";
 import { useScrollToTop } from "../hooks/useScrollToTop";
-import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
+import StratBridgeIcon from "../icons-components/StratBridge/StratBridgeIcon";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";

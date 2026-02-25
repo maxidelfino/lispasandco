@@ -1,26 +1,12 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap (recomendado para SEO)
 Sitemap: https://lyspasandco.com/sitemap.xml
 
-# Crawl-delay para evitar sobrecarga
-Crawl-delay: 1
-
-# Permitir acceso a recursos importantes
-Allow: /assets/
-Allow: /*.css
-Allow: /*.js
-Allow: /*.png
-Allow: /*.jpg
-Allow: /*.jpeg
-Allow: /*.gif
-Allow: /*.svg
-Allow: /*.pdf
-
-# Bloquear archivos innecesarios
+# Bloquear archivos y rutas innecesarios para crawlers
 Disallow: /api/
-Disallow: /*.json
+Disallow: /*.json$
 Disallow: /node_modules/
 Disallow: /src/
 Disallow: /.git/

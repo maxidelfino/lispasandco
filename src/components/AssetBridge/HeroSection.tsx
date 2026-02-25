@@ -1,9 +1,8 @@
-"use client";
-
 import type React from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
+import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 
 const HeroSection: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -87,7 +86,6 @@ const HeroSection: React.FC = () => {
     }
   })();
 
-  // Ajuste de PDF según idioma
   const pdfInfo = (() => {
     switch (currentLanguage) {
       case Language.ENGLISH:
@@ -108,20 +106,15 @@ const HeroSection: React.FC = () => {
     }
   })();
 
+  const onDownload = useDownloadPdf(pdfInfo.href, pdfInfo.download);
+
   return (
     <HeroBase
       badge={badgeText}
       title={mainTitle}
       subtitles={[subtitle]}
       scrollTargetId="AssetBridge-content"
-      onDownload={() => {
-        const link = document.createElement("a");
-        link.href = pdfInfo.href;
-        link.download = pdfInfo.download;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}
+      onDownload={onDownload}
       backgroundVariant="squares"
     />
   );

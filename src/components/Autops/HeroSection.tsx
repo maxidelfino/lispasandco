@@ -2,6 +2,7 @@ import React from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
+import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 
 const TEXTS: Record<
   Language,
@@ -39,6 +40,7 @@ const HeroSection: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const lang: Language = (currentLanguage as Language) || "es";
   const t = TEXTS[lang];
+  const onDownload = useDownloadPdf("assets/pdf/LYS-P017-AutoOps.pdf", "LYS-P017-AutoOps.pdf");
 
   return (
     <HeroBase
@@ -51,14 +53,7 @@ const HeroSection: React.FC = () => {
       }
       descriptions={[t.description1]}
       scrollTargetId="autoops-content"
-      onDownload={() => {
-        const link = document.createElement("a");
-        link.href = "assets/pdf/LYS-P017-AutoOps.pdf";
-        link.download = "LYS-P017-AutoOps.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}
+      onDownload={onDownload}
       backgroundVariant="mixed"
     />
   );

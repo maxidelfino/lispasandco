@@ -1,11 +1,10 @@
-"use client";
-
 import React, { useState } from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
 import RandG from "../../assets/RandG.png";
 import { useScreenSize } from "../../hooks/useScreenSize";
+import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 
 const translations: Record<
   Language,
@@ -110,7 +109,7 @@ const HeroSectionFlowStable: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
   const isDesktop = useScreenSize() === "desktop";
-
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
   const [active, setActive] = useState(false);
 
   return (
@@ -120,14 +119,7 @@ const HeroSectionFlowStable: React.FC = () => {
         title={t.mainTitle}
         descriptions={t.subtitles}
         scrollTargetId="flowstable-content"
-        onDownload={() => {
-          const link = document.createElement("a");
-          link.href = t.pdfHref;
-          link.download = t.pdfDownload;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }}
+        onDownload={onDownload}
         backgroundVariant="bars"
         hideDescriptionsOnMobile={false}
       />

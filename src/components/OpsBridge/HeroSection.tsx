@@ -1,9 +1,8 @@
-"use client";
-
 import type React from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
+import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 
 const TEXTS: Record<
   Language,
@@ -54,6 +53,7 @@ const TEXTS: Record<
 const HeroSection5S: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = TEXTS[currentLanguage];
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
 
   return (
     <HeroBase
@@ -71,14 +71,7 @@ const HeroSection5S: React.FC = () => {
       }
       descriptions={[t.description]}
       scrollTargetId="OpsBridge-content"
-      onDownload={() => {
-        const link = document.createElement("a");
-        link.href = t.pdfHref;
-        link.download = t.pdfDownload;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}
+      onDownload={onDownload}
       backgroundVariant="squares"
       hideDescriptionsOnMobile={false}
     />

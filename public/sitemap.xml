@@ -3,106 +3,118 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <!-- Página principal -->
   <url>
     <loc>https://lyspasandco.com/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Sobre nosotros -->
   <url>
     <loc>https://lyspasandco.com/sobre-nosotros</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Programas principales -->
   <url>
     <loc>https://lyspasandco.com/wastezero</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/flowstable</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/5splus</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/leanbridge</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/kaizen-action</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/stratbridge</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/projectfocus</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/change-bridge</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/decisiones-estadisticas</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/lean-enterprise-transformation</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/ops-bridge</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://lyspasandco.com/people-first</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://lyspasandco.com/asset-control-bridge</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lyspasandco.com/autops</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lyspasandco.com/safe-process</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lyspasandco.com/measure-bridge</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lyspasandco.com/process-design-bridge</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

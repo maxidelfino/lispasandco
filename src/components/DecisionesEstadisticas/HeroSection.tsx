@@ -2,6 +2,7 @@ import React from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
+import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 
 const translations: Record<
   Language,
@@ -53,6 +54,7 @@ const translations: Record<
 const HeroSection: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
 
   return (
     <HeroBase
@@ -70,14 +72,7 @@ const HeroSection: React.FC = () => {
       }
       descriptions={[t.description]}
       scrollTargetId="decisionesEstadisticas-content"
-      onDownload={() => {
-        const link = document.createElement("a");
-        link.href = t.pdfHref;
-        link.download = t.pdfDownload;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}
+      onDownload={onDownload}
       backgroundVariant="mixed"
       hideDescriptionsOnMobile={false}
     />

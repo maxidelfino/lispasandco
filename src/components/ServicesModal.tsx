@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import {
@@ -22,20 +20,20 @@ import {
   Puzzle,
 } from "lucide-react";
 import { Service, Language } from "../types";
-import EightGridWastes from "../icons-componets/EightGridWastes";
-import Central5SCircle from "../icons-componets/FiveSPlus/Central5SCircle";
-import FlowStableIcon from "../icons-componets/FlowStable/FlowStableIcon";
-import KaizenActionIcon from "../icons-componets/KaizenAction/KaizenActionIcon";
-import DecisionesEstadisticasIcon from "../icons-componets/DecisionesEstadisticasIcon";
-import LeanEnterpriseIcon from "../icons-componets/LeanEnterprise/LeanEnterpriseIcon";
-import StratBridgeIcon from "../icons-componets/StratBridge/StratBridgeIcon";
-import ProjectFocusIcon from "../icons-componets/ProjectFocus/ProjectFocusIcon";
-import BridgeIcon from "../icons-componets/LeanBridge/BridgeIcon";
+import EightGridWastes from "../icons-components/EightGridWastes";
+import Central5SCircle from "../icons-components/FiveSPlus/Central5SCircle";
+import FlowStableIcon from "../icons-components/FlowStable/FlowStableIcon";
+import KaizenActionIcon from "../icons-components/KaizenAction/KaizenActionIcon";
+import DecisionesEstadisticasIcon from "../icons-components/DecisionesEstadisticasIcon";
+import LeanEnterpriseIcon from "../icons-components/LeanEnterprise/LeanEnterpriseIcon";
+import StratBridgeIcon from "../icons-components/StratBridge/StratBridgeIcon";
+import ProjectFocusIcon from "../icons-components/ProjectFocus/ProjectFocusIcon";
+import BridgeIcon from "../icons-components/LeanBridge/BridgeIcon";
 import OpsBridgeIcon from "./OpsBridge/OpsBridgeIcon";
 import { isComingSoon } from "./ServiceCardList";
 import { useNavigate } from "react-router-dom";
 import { useScreenSize } from "../hooks/useScreenSize";
-import CentralChangeBridgeCircle from "../icons-componets/CentralChangeBridgeCircle";
+import CentralChangeBridgeCircle from "../icons-components/CentralChangeBridgeCircle";
 import { useLanguage } from "../contexts/LanguageContext";
 import PeopleFirstIcon from "./PeopleFirst/PeopleFirstIcon";
 import AssetBridgeIcon from "./AssetBridge/AssetBridgeIcon";

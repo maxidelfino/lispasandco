@@ -2,6 +2,7 @@ import React from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
+import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 
 const TEXTS: Record<
   Language,
@@ -51,6 +52,7 @@ const ProcessDesignBridgeHero: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const lang: Language = (currentLanguage as Language) || "es";
   const t = TEXTS[lang];
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
 
   return (
     <HeroBase
@@ -68,14 +70,7 @@ const ProcessDesignBridgeHero: React.FC = () => {
       }
       descriptions={[t.description1]}
       scrollTargetId="ProcessDesignBridge-content"
-      onDownload={() => {
-        const link = document.createElement("a");
-        link.href = t.pdfHref;
-        link.download = t.pdfDownload;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}
+      onDownload={onDownload}
       backgroundVariant="mixed"
     />
   );

@@ -1,9 +1,8 @@
-"use client";
-
 import type React from "react";
 import HeroBase from "../HeroBase";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { Language } from "../../types";
+import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 
 const translations: Record<
   Language,
@@ -41,6 +40,7 @@ const translations: Record<
 const HeroSectionLeanEnterprise: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
+  const onDownload = useDownloadPdf(t.pdfHref, t.pdfDownload);
 
   return (
     <HeroBase
@@ -48,14 +48,7 @@ const HeroSectionLeanEnterprise: React.FC = () => {
       title={<span className="block">{t.title}</span>}
       subtitles={[t.subtitle]}
       scrollTargetId="LeanEnterprise-content"
-      onDownload={() => {
-        const link = document.createElement("a");
-        link.href = "assets/pdf/LYS-P002-Lean-enterprise-tranformation.pdf";
-        link.download = "LYS-P002-Lean-enterprise-tranformation.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}
+      onDownload={onDownload}
       backgroundVariant="minimal"
     />
   );

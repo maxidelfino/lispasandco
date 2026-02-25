@@ -1,5 +1,3 @@
-"use client";
-
 import type React from "react";
 import { Language } from "../../types";
 import { useLanguage } from "../../contexts/LanguageContext";

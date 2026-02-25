@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -21,25 +21,33 @@
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
     <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" content="#1a1a2e" />
     <meta name="language" content="Spanish" />
+    <meta name="revisit-after" content="7 days" />
     <meta name="geo.region" content="AR-S" />
     <meta name="geo.placename" content="Rosario, Santa Fe" />
     <meta name="geo.position" content="-32.9442426;-60.6505388" />
     <meta name="ICBM" content="-32.9442426, -60.6505388" />
 
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-BVDQHM3XTL"
-    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
+    </script>
 
-      gtag("config", "G-BVDQHM3XTL", { send_page_view: false });
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-BVDQHM3XTL"
+    ></script>
+
+    <script>
+      gtag("config", "G-BVDQHM3XTL", {
+        send_page_view: false,
+        cookie_domain: "auto",
+      });
     </script>
 
     <script type="application/ld+json">

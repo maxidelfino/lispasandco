@@ -2,7 +2,7 @@ import type React from "react";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import HeroSectionLeanBridge from "../components/LeanBridge/HeroSectionLeanBridge";
 import LeanBridgeContent from "../components/LeanBridge/LeanBridgeContent";
-import BridgeDiagram from "../icons-componets/LeanBridge/BridgeDiagram";
+import BridgeDiagram from "../icons-components/LeanBridge/BridgeDiagram";
 import FloatingNavigation from "../components/FloatingNavigation";
 import CTASection from "../components/CTASection";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";

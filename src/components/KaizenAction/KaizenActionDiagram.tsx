@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { Target, Search, BarChart3, TrendingUp, Shield } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
