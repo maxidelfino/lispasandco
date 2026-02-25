@@ -1,12 +1,11 @@
 User-agent: *
 Allow: /
 
-# Sitemap (recomendado para SEO)
-Sitemap: https://lyspasandco.com/sitemap.xml
-
-# Bloquear archivos y rutas innecesarios para crawlers
+# Bloquear rutas innecesarias para crawlers
 Disallow: /api/
-Disallow: /*.json$
 Disallow: /node_modules/
 Disallow: /src/
 Disallow: /.git/
+
+# Sitemap
+Sitemap: https://lyspasandco.com/sitemap.xml
