@@ -1,35 +1,67 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
+  Link,
 } from "react-router-dom";
 import SEOHead from "./components/SEOHead";
 import StructuredData from "./components/StructuredData";
-import HomePage from "./pages/HomePage";
-import WasteZeroPage from "./pages/WasteZeroPage";
-import AboutUsPage from "./pages/AboutUsPage";
-import FiveSPlusPage from "./pages/FiveSPlusPage";
-import FlowStablePage from "./pages/FlowStablePage";
-import LeanBridgePage from "./pages/LeanBridgePage";
-import KaizenActionPage from "./pages/KaizenActionPage";
-import LeanEnterpriseTransformationPage from "./pages/LeanEnterpriseTransformationPage";
-import StratBridgePage from "./pages/StratBridgePage";
-import ProjectFocusPage from "./pages/ProjectFocusPage";
-import ChangeBridgePage from "./pages/ChangeBridgePage";
-import DecisionesEstadisticasPage from "./pages/DecisionesEstadisticasPage";
-import OpsBridgePage from "./pages/OpsBridgePage";
-import PeopleFirstPage from "./pages/PeopleFirstPage";
-import AssetControlBridgePage from "./pages/AssetControlBridgePage";
-import AutopsPage from "./pages/AutopsPage";
-import SafeProcessPage from "./pages/SafeProcessPage";
-import MeasureBridgePage from "./pages/MeasureBridgePage";
-import ProcessDesignBridgePage from "./pages/ProcessDesignBridgePage";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const WasteZeroPage = lazy(() => import("./pages/WasteZeroPage"));
+const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
+const FiveSPlusPage = lazy(() => import("./pages/FiveSPlusPage"));
+const FlowStablePage = lazy(() => import("./pages/FlowStablePage"));
+const LeanBridgePage = lazy(() => import("./pages/LeanBridgePage"));
+const KaizenActionPage = lazy(() => import("./pages/KaizenActionPage"));
+const LeanEnterpriseTransformationPage = lazy(() => import("./pages/LeanEnterpriseTransformationPage"));
+const StratBridgePage = lazy(() => import("./pages/StratBridgePage"));
+const ProjectFocusPage = lazy(() => import("./pages/ProjectFocusPage"));
+const ChangeBridgePage = lazy(() => import("./pages/ChangeBridgePage"));
+const DecisionesEstadisticasPage = lazy(() => import("./pages/DecisionesEstadisticasPage"));
+const OpsBridgePage = lazy(() => import("./pages/OpsBridgePage"));
+const PeopleFirstPage = lazy(() => import("./pages/PeopleFirstPage"));
+const AssetControlBridgePage = lazy(() => import("./pages/AssetControlBridgePage"));
+const AutopsPage = lazy(() => import("./pages/AutopsPage"));
+const SafeProcessPage = lazy(() => import("./pages/SafeProcessPage"));
+const MeasureBridgePage = lazy(() => import("./pages/MeasureBridgePage"));
+const ProcessDesignBridgePage = lazy(() => import("./pages/ProcessDesignBridgePage"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 
 import { useLanguage } from "./contexts/LanguageContext";
 import { Language } from "./types";
 import usePageView from "./hooks/usePageView";
+
+// ── 404 Page ─────────────────────────────────────────────────────────────────
+const NotFoundPage: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+  return (
+    <div
+      className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-bg)] text-center px-4"
+    >
+      <h1 className="text-6xl font-bold text-[var(--color-primary)] mb-4">404</h1>
+      <p className="text-2xl text-[var(--color-text)] mb-8">
+        {currentLanguage === Language.ENGLISH
+          ? "Page not found"
+          : currentLanguage === Language.PORTUGUESE
+          ? "Página não encontrada"
+          : "Página no encontrada"}
+      </p>
+      <Link
+        to="/"
+        className="bg-[var(--color-secondary)] text-white px-8 py-3 rounded-full font-semibold hover:bg-[var(--color-primary)] transition-colors duration-300"
+      >
+        {currentLanguage === Language.ENGLISH
+          ? "Back to Home"
+          : currentLanguage === Language.PORTUGUESE
+          ? "Voltar ao Início"
+          : "Volver al Inicio"}
+      </Link>
+    </div>
+  );
+};
 
 // Mapas multilingües
 const titleMap: Record<string, Record<Language, string>> = {
@@ -124,9 +156,14 @@ const titleMap: Record<string, Record<Language, string>> = {
     pt: "Measure Bridge™ - Melhoria em Laboratórios | LYSPAS & CO",
   },
   "/process-design-bridge": {
-    es: "PROCESS DESIGN BRIDGE™ - Diseño de Procesos | LYSPAS & CO",
-    en: "PROCESS DESIGN BRIDGE™ - Process Design | LYSPAS & CO",
-    pt: "PROCESS DESIGN BRIDGE™ - Design de Processos | LYSPAS & CO",
+    es: "Process Design Bridge™ - Diseño de Procesos | LYSPAS & CO",
+    en: "Process Design Bridge™ - Process Design | LYSPAS & CO",
+    pt: "Process Design Bridge™ - Design de Processos | LYSPAS & CO",
+  },
+  "/politica-de-privacidad": {
+    es: "Política de Privacidad | LYSPAS & CO",
+    en: "Privacy Policy | LYSPAS & CO",
+    pt: "Política de Privacidade | LYSPAS & CO",
   },
 };
 
@@ -222,9 +259,14 @@ const descriptionMap: Record<string, Record<Language, string>> = {
     pt: "Measure Bridge™ - Melhoria contínua em laboratórios. Precisão analítica, calibração de equipamentos, controle de qualidade em análises laboratoriais.",
   },
   "/process-design-bridge": {
-    es: "PROCESS DESIGN BRIDGE™ - Diseño y optimización de procesos industriales. Somos consultores especializados en ingeniería de procesos y mejora continua. ¡Diseña procesos eficientes desde cero!",
-    en: "PROCESS DESIGN BRIDGE™ - Design and optimization of industrial processes. Specialized consulting in process engineering and continuous improvement.",
-    pt: "PROCESS DESIGN BRIDGE™ - Design e otimização de processos industriais. Consultoria especializada em engenharia de processos e melhoria contínua.",
+    es: "Process Design Bridge™ - Diseño y optimización de procesos industriales. Somos consultores especializados en ingeniería de procesos y mejora continua. ¡Diseña procesos eficientes desde cero!",
+    en: "Process Design Bridge™ - Design and optimization of industrial processes. Specialized consulting in process engineering and continuous improvement.",
+    pt: "Process Design Bridge™ - Design e otimização de processos industriais. Consultoria especializada em engenharia de processos e melhoria contínua.",
+  },
+  "/politica-de-privacidad": {
+    es: "Política de Privacidad - LYSPAS & CO. Información sobre el uso de datos, cookies y derechos de privacidad.",
+    en: "Privacy Policy - LYSPAS & CO. Information about data usage, cookies and privacy rights.",
+    pt: "Política de Privacidade - LYSPAS & CO. Informações sobre uso de dados, cookies e direitos de privacidade.",
   },
 };
 
@@ -320,9 +362,14 @@ const keywordsMap: Record<string, Record<Language, string>> = {
     pt: "Measure Bridge, melhoria de laboratórios, precisão analítica, calibração de equipamentos, controle de qualidade, análise laboratorial",
   },
   "/process-design-bridge": {
-    es: "PROCESS DESIGN BRIDGE, diseño procesos, optimización, ingeniería procesos, mejora continua, procesos industriales, eficiencia",
-    en: "PROCESS DESIGN BRIDGE, process design, optimization, process engineering, continuous improvement, industrial processes, efficiency",
-    pt: "PROCESS DESIGN BRIDGE, design de processos, otimização, engenharia de processos, melhoria contínua, processos industriais, eficiência",
+    es: "Process Design Bridge, diseño procesos, optimización, ingeniería procesos, mejora continua, procesos industriales, eficiencia",
+    en: "Process Design Bridge, process design, optimization, process engineering, continuous improvement, industrial processes, efficiency",
+    pt: "Process Design Bridge, design de processos, otimização, engenharia de processos, melhoria contínua, processos industriais, eficiência",
+  },
+  "/politica-de-privacidad": {
+    es: "política de privacidad, protección datos, LYSPAS, privacidad, cookies",
+    en: "privacy policy, data protection, LYSPAS, privacy, cookies",
+    pt: "política de privacidade, proteção de dados, LYSPAS, privacidade, cookies",
   },
 };
 
@@ -347,39 +394,46 @@ const PageWrapper = () => {
     <>
       <SEOHead title={title} description={description} keywords={keywords} />
       <StructuredData />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/sobre-nosotros" element={<AboutUsPage />} />
-        <Route path="/wastezero" element={<WasteZeroPage />} />
-        <Route path="/5splus" element={<FiveSPlusPage />} />
-        <Route path="/flowstable" element={<FlowStablePage />} />
-        <Route path="/leanbridge" element={<LeanBridgePage />} />
-        <Route path="/kaizen-action" element={<KaizenActionPage />} />
-        <Route
-          path="/lean-enterprise-transformation"
-          element={<LeanEnterpriseTransformationPage />}
-        />
-        <Route path="/stratbridge" element={<StratBridgePage />} />
-        <Route path="/projectfocus" element={<ProjectFocusPage />} />
-        <Route path="/change-bridge" element={<ChangeBridgePage />} />
-        <Route
-          path="/decisiones-estadisticas"
-          element={<DecisionesEstadisticasPage />}
-        />
-        <Route path="/ops-bridge" element={<OpsBridgePage />} />
-        <Route path="/people-first" element={<PeopleFirstPage />} />
-        <Route
-          path="/asset-control-bridge"
-          element={<AssetControlBridgePage />}
-        />
-        <Route path="/autops" element={<AutopsPage />} />
-        <Route path="/safe-process" element={<SafeProcessPage />} />
-        <Route path="/measure-bridge" element={<MeasureBridgePage />} />
-        <Route
-          path="/process-design-bridge"
-          element={<ProcessDesignBridgePage />}
-        />
-      </Routes>
+      <Suspense fallback={<div className="min-h-screen bg-[var(--color-bg)]" />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/sobre-nosotros" element={<AboutUsPage />} />
+          <Route path="/wastezero" element={<WasteZeroPage />} />
+          <Route path="/5splus" element={<FiveSPlusPage />} />
+          <Route path="/flowstable" element={<FlowStablePage />} />
+          <Route path="/leanbridge" element={<LeanBridgePage />} />
+          <Route path="/kaizen-action" element={<KaizenActionPage />} />
+          <Route
+            path="/lean-enterprise-transformation"
+            element={<LeanEnterpriseTransformationPage />}
+          />
+          <Route path="/stratbridge" element={<StratBridgePage />} />
+          <Route path="/projectfocus" element={<ProjectFocusPage />} />
+          <Route path="/change-bridge" element={<ChangeBridgePage />} />
+          <Route
+            path="/decisiones-estadisticas"
+            element={<DecisionesEstadisticasPage />}
+          />
+          <Route path="/ops-bridge" element={<OpsBridgePage />} />
+          <Route path="/people-first" element={<PeopleFirstPage />} />
+          <Route
+            path="/asset-control-bridge"
+            element={<AssetControlBridgePage />}
+          />
+          <Route path="/autops" element={<AutopsPage />} />
+          <Route path="/safe-process" element={<SafeProcessPage />} />
+          <Route path="/measure-bridge" element={<MeasureBridgePage />} />
+          <Route
+            path="/process-design-bridge"
+            element={<ProcessDesignBridgePage />}
+          />
+          <Route
+            path="/politica-de-privacidad"
+            element={<PrivacyPolicyPage />}
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };

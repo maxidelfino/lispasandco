@@ -8,4 +8,4 @@ Disallow: /src/
 Disallow: /.git/
 
 # Sitemap
-Sitemap: https://lyspasandco.com/sitemap.xml
+Sitemap: https://www.lyspasandco.com/sitemap.xml

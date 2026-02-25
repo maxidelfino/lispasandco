@@ -40,12 +40,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
   keywords,
-  image = "https://lyspasandco.com/og-image.png",
+  image = "https://www.lyspasandco.com/og-image.png",
   type = "website",
 }) => {
   const location = useLocation();
   const { currentLanguage } = useLanguage();
-  const currentUrl = `https://lyspasandco.com${location.pathname}`;
+  const currentUrl = `https://www.lyspasandco.com${location.pathname}`;
 
   React.useEffect(() => {
     // ── Title ──────────────────────────────────────────────────────────────
@@ -78,6 +78,21 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     if (ogDescription && description) ogDescription.setAttribute("content", description);
     if (ogUrl) ogUrl.setAttribute("content", currentUrl);
     if (ogImage) ogImage.setAttribute("content", image);
+
+    // og:image dimensions + alt
+    const upsertMeta = (property: string, content: string) => {
+      let el = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("property", property);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+    upsertMeta("og:image:width", "1200");
+    upsertMeta("og:image:height", "630");
+    upsertMeta("og:image:alt", title ?? "LYSPAS & CO - Consultoría Lean y Mejora Continua");
+
     if (ogType) ogType.setAttribute("content", type);
     if (ogLocale) ogLocale.setAttribute("content", OG_LOCALES[currentLanguage] ?? "es_AR");
 

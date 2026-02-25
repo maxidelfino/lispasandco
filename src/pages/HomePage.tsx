@@ -8,7 +8,6 @@ import EvolutionPath from "../components/EvolutionPath";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
-import SEOHead from "../components/SEOHead";
 import {
   Cog,
   Factory,
@@ -85,11 +84,6 @@ const HomePage: React.FC = () => {
       className="min-h-screen"
       style={{ backgroundColor: "var(--color-bg)" }}
     >
-      <SEOHead
-        title="LYSPAS & CO - Consultoría Lean y Mejora Continua | Líderes en Argentina"
-        description="Especialistas en consultoría Lean con +13,000 seguidores. Programas WasteZero™, FlowStable™, 5S Plus™, Kaizen Action™. Reducimos desperdicios, optimizamos procesos industriales. Resultados garantizados en Argentina y Latinoamérica."
-        keywords="consultoría lean, mejora continua, reducción desperdicios, optimización procesos, WasteZero, FlowStable, 5S Plus, Kaizen Action, consultor lean Argentina, Rosario Santa Fe, eficiencia industrial, productividad, transformación lean, Six Sigma"
-      />
       <FloatingNavigation />
 
       {/* Hero Section */}
@@ -168,6 +162,7 @@ const HomePage: React.FC = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
+                loading="lazy"
                 style={{ width: "100%", height: "100%" }}
               ></iframe>
             </div>
@@ -646,118 +641,6 @@ const HomePage: React.FC = () => {
             ))}
           </div>
           <SectionCTA scrollToServices={scrollToServices} />
-        </div>
-      </section>
-
-      {/* Testimonios / Prueba Social */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
-              {currentLanguage === Language.SPANISH
-                ? "Confían en Nosotros"
-                : currentLanguage === Language.ENGLISH
-                ? "They Trust Us"
-                : "Confiam em Nós"}
-            </h2>
-            <div className="w-24 h-1 bg-[var(--color-secondary)] mx-auto mb-8"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-2xl p-8 text-white">
-              <div className="flex justify-center mb-4">
-                <MessageCircle className="w-12 h-12" />
-              </div>
-              <blockquote className="text-xl italic mb-6 leading-relaxed">
-                {currentLanguage === Language.SPANISH
-                  ? '"LYSPAS & CO nos ayudó a ver oportunidades donde solo veíamos problemas. Su enfoque práctico y metodología clara nos permitió reducir desperdicios y mejorar nuestra eficiencia sin grandes inversiones."'
-                  : currentLanguage === Language.ENGLISH
-                  ? '"LYSPAS & CO helped us see opportunities where we only saw problems. Their practical approach and clear methodology allowed us to reduce waste and improve efficiency without major investments."'
-                  : '"LYSPAS & CO nos ajudou a ver oportunidades onde só víamos problemas. Sua abordagem prática e metodologia clara nos permitiu reduzir desperdícios e melhorar eficiência sem grandes investimentos."'}
-              </blockquote>
-              <div className="text-white/80">
-                {currentLanguage === Language.SPANISH
-                  ? "— Gerente de Operaciones, Empresa Agroindustrial"
-                  : currentLanguage === Language.ENGLISH
-                  ? "— Operations Manager, Agribusiness Company"
-                  : "— Gerente de Operações, Empresa Agroindustrial"}
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-[var(--color-border)]">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[var(--color-accent)] rounded-full flex items-center justify-center mr-4">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[var(--color-primary)]">
-                      {currentLanguage === Language.SPANISH
-                        ? "Seguidores en LinkedIn"
-                        : currentLanguage === Language.ENGLISH
-                        ? "LinkedIn Followers"
-                        : "Seguidores no LinkedIn"}
-                    </h4>
-                    <p className="text-[var(--color-text)] text-sm">
-                      {currentLanguage === Language.SPANISH
-                        ? "Comunidad activa de profesionales"
-                        : currentLanguage === Language.ENGLISH
-                        ? "Active community of professionals"
-                        : "Comunidade ativa de profissionais"}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-[var(--color-border)]">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[var(--color-secondary)] rounded-full flex items-center justify-center mr-4">
-                    <Building2 className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[var(--color-primary)]">
-                      {currentLanguage === Language.SPANISH
-                        ? "Empresas Transformadas"
-                        : currentLanguage === Language.ENGLISH
-                        ? "Companies Transformed"
-                        : "Empresas Transformadas"}
-                    </h4>
-                    <p className="text-[var(--color-text)] text-sm">
-                      {currentLanguage === Language.SPANISH
-                        ? "En Argentina y Latinoamérica"
-                        : currentLanguage === Language.ENGLISH
-                        ? "In Argentina and Latin America"
-                        : "Na Argentina e América Latina"}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-[var(--color-border)]">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[var(--color-primary)] rounded-full flex items-center justify-center mr-4">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[var(--color-primary)]">
-                      {currentLanguage === Language.SPANISH
-                        ? "Años de Experiencia"
-                        : currentLanguage === Language.ENGLISH
-                        ? "Years of Experience"
-                        : "Anos de Experiência"}
-                    </h4>
-                    <p className="text-[var(--color-text)] text-sm">
-                      {currentLanguage === Language.SPANISH
-                        ? "Especializados en mejora continua"
-                        : currentLanguage === Language.ENGLISH
-                        ? "Specialized in continuous improvement"
-                        : "Especializados em melhoria contínua"}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

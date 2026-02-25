@@ -4,50 +4,54 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const baseUrl = "https://lyspasandco.com";
+const baseUrl = "https://www.lyspasandco.com";
 const currentDate = new Date().toISOString().split("T")[0];
 
 const routes = [
-  { path: "/", priority: "1.0", changefreq: "weekly" },
-  { path: "/sobre-nosotros", priority: "0.8", changefreq: "monthly" },
-  { path: "/wastezero", priority: "0.9", changefreq: "monthly" },
-  { path: "/flowstable", priority: "0.9", changefreq: "monthly" },
-  { path: "/5splus", priority: "0.9", changefreq: "monthly" },
-  { path: "/leanbridge", priority: "0.9", changefreq: "monthly" },
-  { path: "/kaizen-action", priority: "0.9", changefreq: "monthly" },
-  { path: "/stratbridge", priority: "0.8", changefreq: "monthly" },
-  { path: "/projectfocus", priority: "0.8", changefreq: "monthly" },
-  { path: "/change-bridge", priority: "0.8", changefreq: "monthly" },
-  { path: "/decisiones-estadisticas", priority: "0.8", changefreq: "monthly" },
-  {
-    path: "/lean-enterprise-transformation",
-    priority: "0.8",
-    changefreq: "monthly",
-  },
-  { path: "/ops-bridge", priority: "0.8", changefreq: "monthly" },
-  { path: "/people-first", priority: "0.8", changefreq: "monthly" },
-  { path: "/asset-control-bridge", priority: "0.8", changefreq: "monthly" },
-  { path: "/autops", priority: "0.8", changefreq: "monthly" },
-  { path: "/safe-process", priority: "0.8", changefreq: "monthly" },
-  { path: "/measure-bridge", priority: "0.8", changefreq: "monthly" },
-  { path: "/process-design-bridge", priority: "0.8", changefreq: "monthly" },
+  { path: "/" },
+  { path: "/sobre-nosotros" },
+  { path: "/wastezero" },
+  { path: "/flowstable" },
+  { path: "/5splus" },
+  { path: "/leanbridge" },
+  { path: "/kaizen-action" },
+  { path: "/stratbridge" },
+  { path: "/projectfocus" },
+  { path: "/change-bridge" },
+  { path: "/decisiones-estadisticas" },
+  { path: "/lean-enterprise-transformation" },
+  { path: "/ops-bridge" },
+  { path: "/people-first" },
+  { path: "/asset-control-bridge" },
+  { path: "/autops" },
+  { path: "/safe-process" },
+  { path: "/measure-bridge" },
+  { path: "/process-design-bridge" },
+  { path: "/politica-de-privacidad" },
 ];
+
+const hreflangEntry = (url, lang) =>
+  `    <xhtml:link rel="alternate" hreflang="${lang}" href="${url}" />`;
 
 const generateSitemap = () => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 ${routes
-  .map(
-    (route) => `  <url>
-    <loc>${baseUrl}${route.path}</loc>
+  .map((route) => {
+    const url = `${baseUrl}${route.path}`;
+    return `  <url>
+    <loc>${url}</loc>
     <lastmod>${currentDate}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
-  </url>`
-  )
+${hreflangEntry(url, "es")}
+${hreflangEntry(url, "en")}
+${hreflangEntry(url, "pt")}
+${hreflangEntry(url, "x-default")}
+  </url>`;
+  })
   .join("\n")}
 </urlset>`;
 

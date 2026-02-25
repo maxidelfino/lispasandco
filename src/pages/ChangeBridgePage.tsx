@@ -120,6 +120,9 @@ const ChangeBridgePage: React.FC = () => {
             <img
               src={diagramImg}
               alt={t.diagramAlt}
+              loading="lazy"
+              width="1200"
+              height="800"
               className="w-full h-auto rounded-lg shadow-lg border border-[var(--color-border)]"
             />
           </div>

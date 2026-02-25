@@ -1,120 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://lyspasandco.com/</loc>
+    <loc>https://www.lyspasandco.com/</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/sobre-nosotros</loc>
+    <loc>https://www.lyspasandco.com/sobre-nosotros</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/sobre-nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/sobre-nosotros" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/sobre-nosotros" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/sobre-nosotros" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/wastezero</loc>
+    <loc>https://www.lyspasandco.com/wastezero</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/wastezero" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/wastezero" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/wastezero" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/wastezero" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/flowstable</loc>
+    <loc>https://www.lyspasandco.com/flowstable</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/flowstable" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/flowstable" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/flowstable" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/flowstable" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/5splus</loc>
+    <loc>https://www.lyspasandco.com/5splus</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/5splus" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/5splus" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/5splus" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/5splus" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/leanbridge</loc>
+    <loc>https://www.lyspasandco.com/leanbridge</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/leanbridge" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/leanbridge" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/leanbridge" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/leanbridge" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/kaizen-action</loc>
+    <loc>https://www.lyspasandco.com/kaizen-action</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/kaizen-action" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/kaizen-action" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/kaizen-action" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/kaizen-action" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/stratbridge</loc>
+    <loc>https://www.lyspasandco.com/stratbridge</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/stratbridge" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/stratbridge" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/stratbridge" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/stratbridge" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/projectfocus</loc>
+    <loc>https://www.lyspasandco.com/projectfocus</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/projectfocus" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/projectfocus" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/projectfocus" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/projectfocus" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/change-bridge</loc>
+    <loc>https://www.lyspasandco.com/change-bridge</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/change-bridge" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/change-bridge" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/change-bridge" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/change-bridge" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/decisiones-estadisticas</loc>
+    <loc>https://www.lyspasandco.com/decisiones-estadisticas</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/decisiones-estadisticas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/decisiones-estadisticas" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/decisiones-estadisticas" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/decisiones-estadisticas" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/lean-enterprise-transformation</loc>
+    <loc>https://www.lyspasandco.com/lean-enterprise-transformation</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/lean-enterprise-transformation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/lean-enterprise-transformation" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/lean-enterprise-transformation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/lean-enterprise-transformation" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/ops-bridge</loc>
+    <loc>https://www.lyspasandco.com/ops-bridge</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/ops-bridge" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/ops-bridge" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/ops-bridge" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/ops-bridge" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/people-first</loc>
+    <loc>https://www.lyspasandco.com/people-first</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/people-first" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/people-first" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/people-first" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/people-first" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/asset-control-bridge</loc>
+    <loc>https://www.lyspasandco.com/asset-control-bridge</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/asset-control-bridge" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/asset-control-bridge" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/asset-control-bridge" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/asset-control-bridge" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/autops</loc>
+    <loc>https://www.lyspasandco.com/autops</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/autops" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/autops" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/autops" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/autops" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/safe-process</loc>
+    <loc>https://www.lyspasandco.com/safe-process</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/safe-process" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/safe-process" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/safe-process" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/safe-process" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/measure-bridge</loc>
+    <loc>https://www.lyspasandco.com/measure-bridge</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/measure-bridge" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/measure-bridge" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/measure-bridge" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/measure-bridge" />
   </url>
   <url>
-    <loc>https://lyspasandco.com/process-design-bridge</loc>
+    <loc>https://www.lyspasandco.com/process-design-bridge</loc>
     <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/process-design-bridge" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/process-design-bridge" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/process-design-bridge" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/process-design-bridge" />
+  </url>
+  <url>
+    <loc>https://www.lyspasandco.com/politica-de-privacidad</loc>
+    <lastmod>2026-02-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lyspasandco.com/politica-de-privacidad" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyspasandco.com/politica-de-privacidad" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.lyspasandco.com/politica-de-privacidad" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyspasandco.com/politica-de-privacidad" />
   </url>
 </urlset>

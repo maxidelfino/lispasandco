@@ -221,6 +221,7 @@ export default function BackgroundCarousel({
                     <img
                       src={RandG}
                       alt="R&G"
+                      loading="lazy"
                       className="h-8 sm:h-12 w-auto object-contain flex-shrink-0"
                     />
                   </div>
