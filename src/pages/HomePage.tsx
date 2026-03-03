@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import FloatingNavigation from "../components/FloatingNavigation";
 import { carouselSlides } from "../data/carouselSlides";
-import ContactFooter from "../components/Footer";
+const ContactFooter = lazy(() => import("../components/Footer"));
 import LinkedInCard from "../components/LinkedInCard";
 import EvolutionPath from "../components/EvolutionPath";
 import FloatingWhatsAppCTA from "../components/FloatingCTAs";
@@ -648,7 +648,9 @@ const HomePage: React.FC = () => {
       <LinkedInCard />
 
       {/* Contact Form Footer */}
-      <ContactFooter />
+      <Suspense fallback={<div className="min-h-[400px] bg-[var(--color-primary)]" />}>
+        <ContactFooter />
+      </Suspense>
 
       {/* Services Modal */}
       <FloatingWhatsAppCTA />

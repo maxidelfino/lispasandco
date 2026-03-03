@@ -81,8 +81,9 @@ const FloatingNavigation: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <button
-              onClick={handleLogoClick}
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleLogoClick(); }}
               className={`flex items-center h-16 space-x-3 overflow-hidden transition-colors duration-300 hover:scale-105 ${
                 isScrolled ? "text-[var(--color-primary)]" : "text-white"
               }`}
@@ -97,12 +98,13 @@ const FloatingNavigation: React.FC = () => {
                 width="80"
                 height="80"
               />
-            </button>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <button
-                onClick={() => handleNavigation("inicio")}
+              <a
+                href="/"
+                onClick={(e) => { e.preventDefault(); handleNavigation("inicio"); }}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${
                   isScrolled
                     ? "text-[var(--color-text)] hover:text-[var(--color-secondary)]"
@@ -116,9 +118,10 @@ const FloatingNavigation: React.FC = () => {
                   : currentLanguage === Language.PORTUGUESE
                   ? "Início"
                   : "Inicio"}
-              </button>
-              <button
-                onClick={handleAboutUsClick}
+              </a>
+              <a
+                href="/sobre-nosotros"
+                onClick={(e) => { e.preventDefault(); handleAboutUsClick(); }}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${
                   isScrolled
                     ? "text-[var(--color-text)] hover:text-[var(--color-secondary)]"
@@ -132,9 +135,10 @@ const FloatingNavigation: React.FC = () => {
                   : currentLanguage === Language.PORTUGUESE
                   ? "Sobre Nós"
                   : "Sobre Nosotros"}
-              </button>
-              <button
-                onClick={handleContactClick}
+              </a>
+              <a
+                href="/#contacto"
+                onClick={(e) => { e.preventDefault(); handleContactClick(); }}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${
                   isScrolled
                     ? "text-[var(--color-text)] hover:text-[var(--color-secondary)]"
@@ -148,7 +152,7 @@ const FloatingNavigation: React.FC = () => {
                   : currentLanguage === Language.PORTUGUESE
                   ? "Contato"
                   : "Contacto"}
-              </button>
+              </a>
 
               {/* Language Selector */}
               <div className="flex items-center space-x-2">
@@ -196,36 +200,39 @@ const FloatingNavigation: React.FC = () => {
           }`}
         >
           <div className="bg-white/95 backdrop-blur-md border-t border-[var(--color-border)] px-4 py-4 space-y-4">
-            <button
-              onClick={() => handleNavigation("inicio")}
-              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleNavigation("inicio"); }}
+              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left py-2"
             >
               {currentLanguage === Language.SPANISH
                 ? "Inicio"
                 : currentLanguage === Language.ENGLISH
                 ? "Home"
                 : "Início"}
-            </button>
-            <button
-              onClick={handleAboutUsClick}
-              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
+            </a>
+            <a
+              href="/sobre-nosotros"
+              onClick={(e) => { e.preventDefault(); handleAboutUsClick(); }}
+              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left py-2"
             >
               {currentLanguage === Language.SPANISH
                 ? "Sobre Nosotros"
                 : currentLanguage === Language.ENGLISH
                 ? "About Us"
                 : "Sobre Nós"}
-            </button>
-            <button
-              onClick={handleContactClick}
-              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left"
+            </a>
+            <a
+              href="/#contacto"
+              onClick={(e) => { e.preventDefault(); handleContactClick(); }}
+              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left py-2"
             >
               {currentLanguage === Language.SPANISH
                 ? "Contacto"
                 : currentLanguage === Language.ENGLISH
                 ? "Contact"
                 : "Contato"}
-            </button>
+            </a>
             <div className="flex items-center space-x-2 pt-2 border-t border-[var(--color-border)]">
               <Globe className="w-4 h-4 text-[var(--color-text)]" />
               <select

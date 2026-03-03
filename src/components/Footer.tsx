@@ -450,7 +450,7 @@ export const ContactFooter: React.FC = () => {
                 <span>gonzalo_luvani@lyspasandco.com</span>
               </a>
               <a
-                href="tel:+5434112345678"
+                href="tel:+5493416408758"
                 className="flex items-center space-x-2 hover:text-[var(--color-accent)]"
                 itemProp="telephone"
               >

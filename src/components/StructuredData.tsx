@@ -4,6 +4,13 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
 
 // ── Organization (shared provider reference) ─────────────────────────────────
+const logoImageObject = {
+  "@type": "ImageObject",
+  url: "https://www.lyspasandco.com/assets/lyspascoicon-black.png",
+  width: 423,
+  height: 113,
+};
+
 const organizationDataByLang: Record<Language, object> = {
   [Language.SPANISH]: {
     "@type": "ProfessionalService",
@@ -11,13 +18,19 @@ const organizationDataByLang: Record<Language, object> = {
     name: "LYSPAS & CO",
     alternateName: "LYSPAS AND CO",
     url: "https://www.lyspasandco.com",
-    logo: "https://www.lyspasandco.com/assets/lyspascoicon-black.png",
+    logo: logoImageObject,
+    image: "https://www.lyspasandco.com/og-image.png",
     description: "Consultoría especializada en Lean Manufacturing y mejora continua",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Rosario",
       addressRegion: "Santa Fe",
       addressCountry: "AR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -32.9442426,
+      longitude: -60.6505388,
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -26,6 +39,11 @@ const organizationDataByLang: Record<Language, object> = {
       email: "gonzalo_luvani@lyspasandco.com",
       availableLanguage: ["Spanish", "English", "Portuguese"],
     },
+    areaServed: [
+      { "@type": "Country", name: "Argentina" },
+      { "@type": "Country", name: "Brazil" },
+      { "@type": "Country", name: "Mexico" },
+    ],
     sameAs: [
       "https://www.linkedin.com/company/lyspasandco/",
     ],
@@ -36,13 +54,19 @@ const organizationDataByLang: Record<Language, object> = {
     name: "LYSPAS & CO",
     alternateName: "LYSPAS AND CO",
     url: "https://www.lyspasandco.com",
-    logo: "https://www.lyspasandco.com/assets/lyspascoicon-black.png",
+    logo: logoImageObject,
+    image: "https://www.lyspasandco.com/og-image.png",
     description: "Consulting specialized in Lean Manufacturing and continuous improvement",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Rosario",
       addressRegion: "Santa Fe",
       addressCountry: "AR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -32.9442426,
+      longitude: -60.6505388,
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -51,6 +75,11 @@ const organizationDataByLang: Record<Language, object> = {
       email: "gonzalo_luvani@lyspasandco.com",
       availableLanguage: ["Spanish", "English", "Portuguese"],
     },
+    areaServed: [
+      { "@type": "Country", name: "Argentina" },
+      { "@type": "Country", name: "Brazil" },
+      { "@type": "Country", name: "Mexico" },
+    ],
     sameAs: [
       "https://www.linkedin.com/company/lyspasandco/",
     ],
@@ -61,13 +90,19 @@ const organizationDataByLang: Record<Language, object> = {
     name: "LYSPAS & CO",
     alternateName: "LYSPAS AND CO",
     url: "https://www.lyspasandco.com",
-    logo: "https://www.lyspasandco.com/assets/lyspascoicon-black.png",
+    logo: logoImageObject,
+    image: "https://www.lyspasandco.com/og-image.png",
     description: "Consultoria especializada em Lean Manufacturing e melhoria contínua",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Rosario",
       addressRegion: "Santa Fe",
       addressCountry: "AR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -32.9442426,
+      longitude: -60.6505388,
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -76,6 +111,11 @@ const organizationDataByLang: Record<Language, object> = {
       email: "gonzalo_luvani@lyspasandco.com",
       availableLanguage: ["Spanish", "English", "Portuguese"],
     },
+    areaServed: [
+      { "@type": "Country", name: "Argentina" },
+      { "@type": "Country", name: "Brazil" },
+      { "@type": "Country", name: "Mexico" },
+    ],
     sameAs: [
       "https://www.linkedin.com/company/lyspasandco/",
     ],
@@ -633,6 +673,7 @@ const StructuredData: React.FC = () => {
       const serviceData = serviceByLang[currentLanguage];
       injectScript("structured-data", {
         "@context": "https://schema.org",
+        "@id": `https://www.lyspasandco.com${path}#service`,
         ...serviceData,
         provider: org,
       });
@@ -640,6 +681,7 @@ const StructuredData: React.FC = () => {
       // BreadcrumbList as a second JSON-LD script
       const pageName = serviceData.name as string;
       const pageUrl = serviceData.url as string;
+      const homeLabel = currentLanguage === Language.ENGLISH ? "Home" : currentLanguage === Language.PORTUGUESE ? "Início" : "Inicio";
       injectScript("structured-data-breadcrumb", {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -647,7 +689,7 @@ const StructuredData: React.FC = () => {
           {
             "@type": "ListItem",
             position: 1,
-            name: "Inicio",
+            name: homeLabel,
             item: "https://www.lyspasandco.com/",
           },
           {

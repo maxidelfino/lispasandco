@@ -124,14 +124,14 @@ export default function BackgroundCarousel({
                   <div
                     key={imageIndex}
                     className="relative overflow-hidden"
-                    style={{
-                      backgroundImage: `url(${image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                    role="img"
-                    aria-label={t.backgroundImage(imageIndex + 1)}
                   >
+                    <img
+                      src={image}
+                      alt={t.backgroundImage(imageIndex + 1)}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading={slideIndex === 0 && imageIndex === 0 ? "eager" : "lazy"}
+                      fetchPriority={slideIndex === 0 && imageIndex === 0 ? "high" : "auto"}
+                    />
                     <div className="absolute inset-0 bg-black/40"></div>
                   </div>
                 ))}
@@ -150,16 +150,14 @@ export default function BackgroundCarousel({
                   imageIndex === currentSlide ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <div
-                  className="relative overflow-hidden h-full"
-                  style={{
-                    backgroundImage: `url(${image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                  role="img"
-                  aria-label={t.backgroundImage(imageIndex + 1)}
-                >
+                <div className="relative overflow-hidden h-full">
+                  <img
+                    src={image}
+                    alt={t.backgroundImage(imageIndex + 1)}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading={imageIndex === 0 ? "eager" : "lazy"}
+                    fetchPriority={imageIndex === 0 ? "high" : "auto"}
+                  />
                   <div className="absolute inset-0 bg-black/40"></div>
                 </div>
               </div>
