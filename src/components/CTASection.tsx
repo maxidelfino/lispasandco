@@ -7,8 +7,9 @@ interface CTASectionProps {
   title: string;
   description: string | string[];
   primaryButtonText: string;
-  secondaryButtonText: string;
+  secondaryButtonText?: string;
   onSecondaryClick?: () => void;
+  showSecondaryButton?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ const CTASection: React.FC<CTASectionProps> = ({
   primaryButtonText,
   secondaryButtonText,
   onSecondaryClick,
+  showSecondaryButton = true,
   className = "",
 }) => {
   const navigate = useNavigate();
@@ -62,12 +64,14 @@ const CTASection: React.FC<CTASectionProps> = ({
             >
               {primaryButtonText}
             </button>
-            <button
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105"
-              onClick={onSecondaryClick}
-            >
-              {secondaryButtonText}
-            </button>
+            {showSecondaryButton && secondaryButtonText && (
+              <button
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105"
+                onClick={onSecondaryClick}
+              >
+                {secondaryButtonText}
+              </button>
+            )}
           </div>
         </div>
       </div>

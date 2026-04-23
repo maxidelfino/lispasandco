@@ -8,6 +8,7 @@ interface CTAButtonsProps {
   downloadLabel?: string;
   onContact?: () => void;
   onDownload?: () => void;
+  showDownload?: boolean;
 }
 
  const getContactLabel = (language: Language): string => {
@@ -39,6 +40,7 @@ const CTAButtons: React.FC<CTAButtonsProps> = ({
   downloadLabel,
   onContact,
   onDownload,
+  showDownload = true,
 }) => {
   const navigate = useNavigate();
   const { currentLanguage } = useLanguage();
@@ -76,12 +78,14 @@ const CTAButtons: React.FC<CTAButtonsProps> = ({
       >
         <span>{resolvedContactLabel}</span>
       </button>
-      <button
-        onClick={handleDownload}
-        className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105 hover:shadow-2xl"
-      >
-        <span>{resolvedDownloadLabel}</span>
-      </button>
+      {showDownload && (
+        <button
+          onClick={handleDownload}
+          className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[var(--color-primary)] hover:scale-105 hover:shadow-2xl"
+        >
+          <span>{resolvedDownloadLabel}</span>
+        </button>
+      )}
     </div>
   );
 };

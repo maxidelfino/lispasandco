@@ -19,14 +19,11 @@ import {
   BarChart2,
   Globe2,
   Lightbulb,
-  MessageCircle,
   Users,
   Building2,
   Award,
 } from "lucide-react";
 import HomePageHero from "../components/HomePageHero";
-import AudioPlayer from "../components/AudioPlayer";
-import { podcasts } from "../assets/podcast/podcast";
 
 const SectionCTA: React.FC<{ scrollToServices?: () => void }> = ({
   scrollToServices,
@@ -91,8 +88,6 @@ const HomePage: React.FC = () => {
 
       {/* Services Section */}
       <EvolutionPath />
-
-      <AudioPlayer podcasts={podcasts} />
 
       {/* Video Section */}
       <section

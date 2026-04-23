@@ -475,7 +475,7 @@ export const ContactFooter: React.FC = () => {
             <p className="text-white/50 text-xs mt-10">
               {uiText.developedBy[currentLanguage]}{" "}
               <a
-                href="https://maxidelfino.github.io/MyPortfolio/"
+                href="https://maxidelfino.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-[var(--color-accent)]"

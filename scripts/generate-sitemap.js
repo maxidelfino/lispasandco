@@ -27,6 +27,7 @@ const routes = [
   { path: "/safe-process" },
   { path: "/measure-bridge" },
   { path: "/process-design-bridge" },
+  { path: "/podcast" },
   { path: "/politica-de-privacidad" },
 ];
 

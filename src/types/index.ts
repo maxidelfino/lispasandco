@@ -51,3 +51,5 @@ export enum Language {
   ENGLISH = "en",
   PORTUGUESE = "pt",
 }
+
+export type { Podcast, PodcastCategory } from "./podcast";

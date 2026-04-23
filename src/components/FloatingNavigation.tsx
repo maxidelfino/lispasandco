@@ -53,6 +53,11 @@ const FloatingNavigation: React.FC = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const handlePodcastClick = () => {
+    navigate("/podcast");
+    setIsMobileMenuOpen(false);
+  };
+
   const handleContactClick = () => {
     if (location.pathname === "/") {
       // Ya estamos en homepage, scroll al formulario de contacto
@@ -137,6 +142,17 @@ const FloatingNavigation: React.FC = () => {
                   : "Sobre Nosotros"}
               </a>
               <a
+                href="/podcast"
+                onClick={(e) => { e.preventDefault(); handlePodcastClick(); }}
+                className={`font-medium transition-all duration-300 hover:scale-105 ${
+                  isScrolled
+                    ? "text-[var(--color-text)] hover:text-[var(--color-secondary)]"
+                    : "text-white/90 hover:text-white"
+                }`}
+              >
+                Podcast
+              </a>
+              <a
                 href="/#contacto"
                 onClick={(e) => { e.preventDefault(); handleContactClick(); }}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${
@@ -196,7 +212,7 @@ const FloatingNavigation: React.FC = () => {
         {/* Mobile Menu */}
         <div
           className={`md:hidden transition-all duration-300 overflow-hidden ${
-            isMobileMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+            isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="bg-white/95 backdrop-blur-md border-t border-[var(--color-border)] px-4 py-4 space-y-4">
@@ -221,6 +237,13 @@ const FloatingNavigation: React.FC = () => {
                 : currentLanguage === Language.ENGLISH
                 ? "About Us"
                 : "Sobre Nós"}
+            </a>
+            <a
+              href="/podcast"
+              onClick={(e) => { e.preventDefault(); handlePodcastClick(); }}
+              className="block text-[var(--color-text)] hover:text-[var(--color-secondary)] font-medium w-full text-left py-2"
+            >
+              Podcast
             </a>
             <a
               href="/#contacto"

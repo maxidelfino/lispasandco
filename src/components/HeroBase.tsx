@@ -20,6 +20,7 @@ export interface HeroBaseProps {
   backgroundVariant?: BackgroundVariant;
   hideSubtitlesOnMobile?: boolean;
   hideDescriptionsOnMobile?: boolean;
+  showDownloadButton?: boolean;
 }
 
 const renderBackground = (variant: BackgroundVariant = "circles") => {
@@ -126,6 +127,7 @@ const HeroBase: React.FC<HeroBaseProps> = ({
   backgroundVariant = "circles",
   hideSubtitlesOnMobile = false,
   hideDescriptionsOnMobile = true,
+  showDownloadButton = true,
 }) => {
   const scrollToContent = () => {
     const element = document.getElementById(scrollTargetId);
@@ -173,7 +175,7 @@ const HeroBase: React.FC<HeroBaseProps> = ({
           </p>
         ))}
 
-        <CTAButtons onDownload={onDownload} />
+        <CTAButtons onDownload={onDownload} showDownload={showDownloadButton} />
       </div>
 
       <ScrollIndicator scrollToContent={scrollToContent} />

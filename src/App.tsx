@@ -29,6 +29,7 @@ const SafeProcessPage = lazy(() => import("./pages/SafeProcessPage"));
 const MeasureBridgePage = lazy(() => import("./pages/MeasureBridgePage"));
 const ProcessDesignBridgePage = lazy(() => import("./pages/ProcessDesignBridgePage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const PodcastPage = lazy(() => import("./pages/PodcastPage"));
 
 import { useLanguage } from "./contexts/LanguageContext";
 import { Language } from "./types";
@@ -165,6 +166,11 @@ const titleMap: Record<string, Record<Language, string>> = {
     en: "Privacy Policy | LYSPAS & CO",
     pt: "Política de Privacidade | LYSPAS & CO",
   },
+  "/podcast": {
+    es: "Podcast - Voces de la Transformación Operacional | LYSPAS & CO",
+    en: "Podcast - Voices of Operational Transformation | LYSPAS & CO",
+    pt: "Podcast - Vozes da Transformação Operacional | LYSPAS & CO",
+  },
 };
 
 const descriptionMap: Record<string, Record<Language, string>> = {
@@ -267,6 +273,11 @@ const descriptionMap: Record<string, Record<Language, string>> = {
     es: "Política de Privacidad - LYSPAS & CO. Información sobre el uso de datos, cookies y derechos de privacidad.",
     en: "Privacy Policy - LYSPAS & CO. Information about data usage, cookies and privacy rights.",
     pt: "Política de Privacidade - LYSPAS & CO. Informações sobre uso de dados, cookies e direitos de privacidade.",
+  },
+  "/podcast": {
+    es: "Podcast LYSPAS & CO - Escuchá episodios sobre mejora continua, programas Lean y casos de estudio de transformación operacional en la industria.",
+    en: "LYSPAS & CO Podcast - Listen to episodes about continuous improvement, Lean programs and operational transformation case studies in industry.",
+    pt: "Podcast LYSPAS & CO - Ouça episódios sobre melhoria contínua, programas Lean e estudos de caso de transformação operacional na indústria.",
   },
 };
 
@@ -371,6 +382,11 @@ const keywordsMap: Record<string, Record<Language, string>> = {
     en: "privacy policy, data protection, LYSPAS, privacy, cookies",
     pt: "política de privacidade, proteção de dados, LYSPAS, privacidade, cookies",
   },
+  "/podcast": {
+    es: "podcast lean, mejora continua, LYSPAS podcast, transformación operacional, casos de estudio, programas lean, podcast industria",
+    en: "lean podcast, continuous improvement, LYSPAS podcast, operational transformation, case studies, lean programs, industry podcast",
+    pt: "podcast lean, melhoria contínua, LYSPAS podcast, transformação operacional, estudos de caso, programas lean, podcast indústria",
+  },
 };
 
 const PageWrapper = () => {
@@ -427,6 +443,7 @@ const PageWrapper = () => {
             path="/process-design-bridge"
             element={<ProcessDesignBridgePage />}
           />
+          <Route path="/podcast" element={<PodcastPage />} />
           <Route
             path="/politica-de-privacidad"
             element={<PrivacyPolicyPage />}
