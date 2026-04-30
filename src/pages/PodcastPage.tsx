@@ -41,12 +41,24 @@ const PodcastPage: React.FC = () => {
       <div id="podcast-player">
         <AudioPlayer podcasts={podcasts} />
       </div>
-      <CTASection
-        title={ctaTranslations.title[currentLanguage]}
-        description={ctaTranslations.description[currentLanguage]}
-        primaryButtonText={ctaTranslations.primaryButton[currentLanguage]}
-        showSecondaryButton={false}
-      />
+      <div className="relative -mt-10 pt-10 sm:-mt-12 sm:pt-12">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-28 sm:h-32"
+          style={{
+            background:
+              "linear-gradient(180deg, color-mix(in srgb, var(--color-secondary) 10%, white) 0%, color-mix(in srgb, var(--color-bg) 88%, white) 42%, rgba(255,255,255,0) 100%)",
+            filter: "blur(10px)",
+          }}
+        />
+        <CTASection
+          className="relative mt-0"
+          title={ctaTranslations.title[currentLanguage]}
+          description={ctaTranslations.description[currentLanguage]}
+          primaryButtonText={ctaTranslations.primaryButton[currentLanguage]}
+          showSecondaryButton={false}
+        />
+      </div>
       <FloatingWhatsAppCTA />
     </div>
   );
