@@ -8,6 +8,7 @@ import React, {
 import {
   AudioLines,
   BookOpen,
+  Download,
   Headphones,
   Mic,
   Pause,
@@ -18,6 +19,8 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
+import { trackEvent } from "../analytics/ga";
+import { GA_EVENTS } from "../analytics/events";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Language } from "../types";
 import type { Podcast, PodcastCategory } from "../types/podcast";
@@ -27,6 +30,7 @@ interface AudioPlayerProps {
 }
 
 type CategoryFilter = "all" | PodcastCategory;
+type PlaySource = "podcast_list" | "now_playing" | "transport_controls" | "autoplay";
 
 const categoryLabels: Record<CategoryFilter, Record<Language, string>> = {
   all: {
@@ -116,6 +120,8 @@ const getTitle = (podcast: Podcast, language: Language) =>
 const getDescription = (podcast: Podcast, language: Language) =>
   podcast.description[language] || podcast.description[Language.SPANISH];
 
+const PODCAST_PROGRESS_MILESTONES = [25, 50, 75, 90] as const;
+
 const Equalizer: React.FC<{ className?: string }> = ({ className }) => (
   <div className={cx("flex h-3.5 items-end gap-[2px]", className)} aria-hidden>
     <span className="w-[3px] rounded-full bg-current animate-eq-1" />
@@ -181,6 +187,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
   const { currentLanguage } = useLanguage();
   const audioRef = useRef<HTMLAudioElement>(null);
   const activeIndexRef = useRef<number | null>(null);
+  const trackedProgressRef = useRef<Set<number>>(new Set());
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -207,22 +214,42 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
 
   const activePodcast = activeIndex !== null ? podcasts[activeIndex] : null;
   const progressPct = duration > 0 ? (currentTime / duration) * 100 : 0;
+  const buildPodcastAnalyticsPayload = useCallback(
+    (podcast: Podcast) => ({
+      podcast_slug: podcast.slug,
+      podcast_title: getTitle(podcast, currentLanguage),
+      podcast_category: podcast.category,
+      podcast_episode_number: podcast.episodeNumber,
+      language: currentLanguage,
+      page_path: window.location.pathname,
+    }),
+    [currentLanguage]
+  );
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
-    const onLoadedMetadata = () => {
-      if (!Number.isNaN(audio.duration)) setDuration(audio.duration);
+    const syncDuration = () => {
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        setDuration(audio.duration);
+      }
     };
+    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const onLoadedMetadata = () => syncDuration();
+    const onDurationChange = () => syncDuration();
+    const onSeeked = () => setCurrentTime(audio.currentTime);
 
     audio.addEventListener("timeupdate", onTimeUpdate);
     audio.addEventListener("loadedmetadata", onLoadedMetadata);
+    audio.addEventListener("durationchange", onDurationChange);
+    audio.addEventListener("seeked", onSeeked);
 
     return () => {
       audio.removeEventListener("timeupdate", onTimeUpdate);
       audio.removeEventListener("loadedmetadata", onLoadedMetadata);
+      audio.removeEventListener("durationchange", onDurationChange);
+      audio.removeEventListener("seeked", onSeeked);
     };
   }, []);
 
@@ -240,8 +267,12 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
     }
   }, [currentLanguage]);
 
+  useEffect(() => {
+    trackedProgressRef.current = new Set();
+  }, [activeIndex, currentLanguage]);
+
   const playTrack = useCallback(
-    (globalIndex: number) => {
+    (globalIndex: number, source: PlaySource = "podcast_list") => {
       const audio = audioRef.current;
       const podcast = podcasts[globalIndex];
       if (!audio || !podcast) return;
@@ -267,8 +298,13 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
       audio.load();
       audio.play().catch(() => {});
       setIsPlaying(true);
+
+      trackEvent(GA_EVENTS.PODCAST_PLAY, {
+        ...buildPodcastAnalyticsPayload(podcast),
+        source,
+      });
     },
-    [activeIndex, currentLanguage, isPlaying, podcasts]
+    [activeIndex, buildPodcastAnalyticsPayload, currentLanguage, isPlaying, podcasts]
   );
 
   useEffect(() => {
@@ -282,12 +318,18 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
       const currentItem = podcasts[currentGlobalIndex];
       const currentFilteredIndex = filteredPodcasts.indexOf(currentItem);
 
+      trackEvent(GA_EVENTS.PODCAST_COMPLETE, {
+        ...buildPodcastAnalyticsPayload(currentItem),
+        duration: audio.duration,
+        listened_seconds: audio.currentTime,
+      });
+
       if (
         currentFilteredIndex !== -1 &&
         currentFilteredIndex < filteredPodcasts.length - 1
       ) {
         const nextItem = filteredPodcasts[currentFilteredIndex + 1];
-        playTrack(podcasts.indexOf(nextItem));
+        playTrack(podcasts.indexOf(nextItem), "autoplay");
       } else {
         setIsPlaying(false);
       }
@@ -295,12 +337,12 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
 
     audio.addEventListener("ended", onEnded);
     return () => audio.removeEventListener("ended", onEnded);
-  }, [filteredPodcasts, playTrack, podcasts]);
+  }, [buildPodcastAnalyticsPayload, filteredPodcasts, playTrack, podcasts]);
 
   const togglePlayPause = useCallback(() => {
     if (activeIndex === null) {
       const firstPodcast = filteredPodcasts[0];
-      if (firstPodcast) playTrack(podcasts.indexOf(firstPodcast));
+      if (firstPodcast) playTrack(podcasts.indexOf(firstPodcast), "now_playing");
       return;
     }
 
@@ -329,12 +371,12 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
       return;
     }
 
-    playTrack(podcasts.indexOf(filteredPodcasts[nextFilteredIndex]));
+    playTrack(podcasts.indexOf(filteredPodcasts[nextFilteredIndex]), "transport_controls");
   };
 
   const handleProgressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const audio = audioRef.current;
-    if (!audio || !duration) return;
+    if (!audio) return;
 
     const nextTime = Number(event.target.value);
     audio.currentTime = nextTime;
@@ -370,6 +412,54 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
   const canGoNext =
     activePodcast !== null &&
     filteredPodcasts.indexOf(activePodcast) < filteredPodcasts.length - 1;
+  const safeDuration = Number.isFinite(duration) && duration > 0 ? duration : 0;
+  const safeCurrentTime = Math.min(currentTime, safeDuration || currentTime);
+
+  useEffect(() => {
+    if (!activePodcast || safeDuration === 0) return;
+
+    PODCAST_PROGRESS_MILESTONES.forEach((milestone) => {
+      if (progressPct < milestone || trackedProgressRef.current.has(milestone)) {
+        return;
+      }
+
+      trackedProgressRef.current.add(milestone);
+      trackEvent(GA_EVENTS.PODCAST_PROGRESS, {
+        ...buildPodcastAnalyticsPayload(activePodcast),
+        progress_percent: milestone,
+        current_time: safeCurrentTime,
+        duration: safeDuration,
+      });
+    });
+  }, [
+    activePodcast,
+    buildPodcastAnalyticsPayload,
+    progressPct,
+    safeCurrentTime,
+    safeDuration,
+  ]);
+
+  const handleDownload = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    podcast: Podcast
+  ) => {
+    event.stopPropagation();
+
+    const src = podcast.audio[currentLanguage];
+    if (!src) return;
+
+    trackEvent(GA_EVENTS.PODCAST_DOWNLOAD, {
+      ...buildPodcastAnalyticsPayload(podcast),
+      source: "podcast_list",
+    });
+
+    const anchor = document.createElement("a");
+    anchor.href = src;
+    anchor.download = `${podcast.slug}-${currentLanguage}.m4a`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  };
 
   return (
     <section
@@ -629,9 +719,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
                         <input
                           type="range"
                           min={0}
-                          max={duration || 100}
+                          max={safeDuration || 100}
                           step={0.1}
-                          value={currentTime}
+                          value={safeCurrentTime}
                           onChange={handleProgressChange}
                           className="w-full cursor-pointer accent-[var(--color-accent)]"
                           aria-label="Audio progress"
@@ -640,8 +730,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
                           className="mt-1.5 flex justify-between font-mono text-[11px] tabular-nums"
                           style={{ color: "var(--color-text)", opacity: 0.62 }}
                         >
-                          <span>{fmt(currentTime)}</span>
-                          <span>-{fmt(Math.max(0, duration - currentTime))}</span>
+                          <span>{fmt(safeCurrentTime)}</span>
+                          <span>-{fmt(Math.max(0, safeDuration - safeCurrentTime))}</span>
                         </div>
                       </div>
 
@@ -807,63 +897,79 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
 
                     return (
                       <li key={`${podcast.slug}-${globalIndex}`}>
-                        <button
-                          type="button"
-                          onClick={() => playTrack(globalIndex)}
-                          className="group flex w-full items-center gap-3 px-3 py-3 text-left transition-colors hover:bg-[var(--color-bg)] sm:gap-4 sm:px-5 sm:py-4"
+                        <div
+                          className="group flex w-full items-center gap-3 px-3 py-3 transition-colors hover:bg-[var(--color-bg)] sm:gap-4 sm:px-5 sm:py-4"
                           style={{
                             background: isActiveTrack
                               ? "color-mix(in srgb, var(--color-accent) 8%, var(--color-surface))"
                               : undefined,
                             borderColor: "var(--color-border)",
                           }}
-                          aria-pressed={isActiveTrack}
                         >
-                          <div className="relative">
-                            <ArtworkTile
-                              episodeNumber={podcast.episodeNumber}
-                              category={podcast.category}
-                              size="sm"
-                            />
-                            <span
-                              className={cx(
-                                "absolute inset-0 flex items-center justify-center rounded-2xl bg-black/55 text-white transition-opacity",
-                                isActiveTrack
-                                  ? "opacity-100"
-                                  : "opacity-0 group-hover:opacity-100"
-                              )}
-                              aria-hidden
-                            >
-                              {isCurrentlyPlaying ? (
-                                <Pause className="h-4 w-4" />
-                              ) : (
-                                <Play className="ml-0.5 h-4 w-4" />
-                              )}
-                            </span>
-                          </div>
-
-                          <div className="min-w-0 flex-1">
-                            <p
-                              className="truncate text-sm font-semibold sm:text-[15px]"
-                              style={{
-                                color: isActiveTrack
-                                  ? "var(--color-secondary)"
-                                  : "var(--color-primary)",
-                              }}
-                            >
-                              {getTitle(podcast, currentLanguage)}
-                            </p>
-                            {getDescription(podcast, currentLanguage) && (
-                              <p
-                                className="mt-0.5 truncate text-xs sm:text-sm"
-                                style={{ color: "var(--color-text)", opacity: 0.7 }}
+                          <button
+                            type="button"
+                            onClick={() => playTrack(globalIndex)}
+                            className="flex min-w-0 flex-1 items-center gap-3 text-left sm:gap-4"
+                            aria-pressed={isActiveTrack}
+                          >
+                            <div className="relative">
+                              <ArtworkTile
+                                episodeNumber={podcast.episodeNumber}
+                                category={podcast.category}
+                                size="sm"
+                              />
+                              <span
+                                className={cx(
+                                  "absolute inset-0 flex items-center justify-center rounded-2xl bg-black/55 text-white transition-opacity",
+                                  isActiveTrack
+                                    ? "opacity-100"
+                                    : "opacity-0 group-hover:opacity-100"
+                                )}
+                                aria-hidden
                               >
-                                {getDescription(podcast, currentLanguage)}
+                                {isCurrentlyPlaying ? (
+                                  <Pause className="h-4 w-4" />
+                                ) : (
+                                  <Play className="ml-0.5 h-4 w-4" />
+                                )}
+                              </span>
+                            </div>
+
+                            <div className="min-w-0 flex-1">
+                              <p
+                                className="truncate text-sm font-semibold sm:text-[15px]"
+                                style={{
+                                  color: isActiveTrack
+                                    ? "var(--color-secondary)"
+                                    : "var(--color-primary)",
+                                }}
+                              >
+                                {getTitle(podcast, currentLanguage)}
                               </p>
-                            )}
-                          </div>
+                              {getDescription(podcast, currentLanguage) && (
+                                <p
+                                  className="mt-0.5 truncate text-xs sm:text-sm"
+                                  style={{ color: "var(--color-text)", opacity: 0.7 }}
+                                >
+                                  {getDescription(podcast, currentLanguage)}
+                                </p>
+                              )}
+                            </div>
+                          </button>
 
                           <div className="flex shrink-0 items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={(event) => handleDownload(event, podcast)}
+                              className="flex h-8 w-8 items-center justify-center rounded-full border transition-colors hover:bg-[var(--color-bg)]"
+                              style={{
+                                color: "var(--color-text)",
+                                borderColor: "var(--color-border)",
+                              }}
+                              aria-label={`Download ${getTitle(podcast, currentLanguage)}`}
+                            >
+                              <Download className="h-3.5 w-3.5" />
+                            </button>
                             {isCurrentlyPlaying ? (
                               <span
                                 className="flex h-8 w-8 items-center justify-center rounded-full"
@@ -893,7 +999,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ podcasts }) => {
                               </span>
                             )}
                           </div>
-                        </button>
+                        </div>
                       </li>
                     );
                   })}

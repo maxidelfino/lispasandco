@@ -64,6 +64,55 @@ const NotFoundPage: React.FC = () => {
   );
 };
 
+const RouteLoadingFallback: React.FC = () => {
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]">
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 95%, white) 0%, color-mix(in srgb, var(--color-secondary) 85%, white) 60%, color-mix(in srgb, var(--color-accent) 65%, white) 100%)",
+        }}
+      />
+      <div aria-hidden className="absolute inset-0 bg-black/10" />
+      <div
+        aria-hidden
+        className="absolute -top-24 right-[-4rem] h-72 w-72 rounded-full bg-white/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-[-5rem] left-[-3rem] h-80 w-80 rounded-full bg-white/10 blur-3xl"
+      />
+
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
+        <div className="mx-auto flex max-w-xl flex-col items-center text-center text-white">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+            <span className="text-sm font-medium tracking-[0.18em] uppercase text-white/90">
+              LYSPAS & CO
+            </span>
+          </div>
+
+          <div className="mt-8 flex items-end gap-[6px] h-12 text-white/95">
+            <span className="w-2 rounded-full bg-white animate-eq-1" />
+            <span className="w-2 rounded-full bg-white/90 animate-eq-2" />
+            <span className="w-2 rounded-full bg-white animate-eq-3" />
+            <span className="w-2 rounded-full bg-white/80 animate-eq-2" />
+          </div>
+
+          <p className="mt-8 text-3xl font-bold leading-tight sm:text-4xl">
+            Cargando experiencia
+          </p>
+          <p className="mt-3 max-w-md text-base leading-relaxed text-white/80 sm:text-lg">
+            Estamos preparando la siguiente pantalla para vos.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Mapas multilingües
 const titleMap: Record<string, Record<Language, string>> = {
   "/": {
@@ -410,7 +459,7 @@ const PageWrapper = () => {
     <>
       <SEOHead title={title} description={description} keywords={keywords} />
       <StructuredData />
-      <Suspense fallback={<div className="min-h-screen bg-[var(--color-bg)]" />}>
+      <Suspense fallback={<RouteLoadingFallback />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sobre-nosotros" element={<AboutUsPage />} />
